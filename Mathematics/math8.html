@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MATH-08 · Cubic Roots — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .graph-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+
+        canvas { max-width: 100%; height: auto; }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sign-table {
+            display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin: 1rem 0;
+            border: 1px solid var(--border-subtle); border-radius: 8px; overflow: hidden;
+        }
+        .sign-cell {
+            padding: 0.6rem; text-align: center; font-size: 0.8rem;
+            background: rgba(16,185,129,0.04); color: var(--text-body);
+        }
+        .sign-header {
+            background: rgba(16,185,129,0.12); font-weight: 700; color: var(--accent);
+            font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: MATH-08] · [STATUS: VERIFIED]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">CATEGORY 1 · GRAPHS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">y = (x−2)(x−5)(x−8)</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The classic cubic polynomial: three real roots, sign analysis between intervals, turning points, and the narrative that turns a polynomial into a story.</p>
+        </div>
+
+        <!-- Graph Canvas -->
+        <div class="graph-container">
+            <canvas id="cubicGraph" width="600" height="380"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">f(x) = (x−2)(x−5)(x−8) · Roots at x=2, 5, 8 · Leading coefficient +1 (rises right, falls left)</p>
+
+        <!-- Construction & Sign Analysis -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧱 Step‑by‑Step Construction & Sign Analysis</h2>
+            <p style="color:var(--text-body);"><strong>Step 1 — Identify roots:</strong> The function is already factorized. Set each factor to zero: x−2=0 → x=2; x−5=0 → x=5; x−8=0 → x=8. These are the three points where the graph crosses the x‑axis.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Step 2 — Determine end behaviour:</strong> The leading term is x³ (coefficient +1). As x→+∞, f(x)→+∞ (graph rises right). As x→−∞, f(x)→−∞ (graph falls left). This tells us the overall S‑shape of a positive cubic.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Step 3 — Sign analysis in intervals:</strong> Divide the real line at the roots: (−∞,2), (2,5), (5,8), (8,∞). For each interval, pick a test point and evaluate the sign of each factor and the product.</p>
+
+            <!-- Sign Table -->
+            <div class="sign-table">
+                <div class="sign-cell sign-header">Interval</div>
+                <div class="sign-cell sign-header">(x−2)</div>
+                <div class="sign-cell sign-header">(x−5)</div>
+                <div class="sign-cell sign-header">(x−8)</div>
+                <div class="sign-cell">(−∞, 2)</div><div class="sign-cell" style="color:var(--rose);">−</div><div class="sign-cell" style="color:var(--rose);">−</div><div class="sign-cell" style="color:var(--rose);">−</div>
+                <div class="sign-cell">(2, 5)</div><div class="sign-cell" style="color:var(--accent);">+</div><div class="sign-cell" style="color:var(--rose);">−</div><div class="sign-cell" style="color:var(--rose);">−</div>
+                <div class="sign-cell">(5, 8)</div><div class="sign-cell" style="color:var(--accent);">+</div><div class="sign-cell" style="color:var(--accent);">+</div><div class="sign-cell" style="color:var(--rose);">−</div>
+                <div class="sign-cell">(8, ∞)</div><div class="sign-cell" style="color:var(--accent);">+</div><div class="sign-cell" style="color:var(--accent);">+</div><div class="sign-cell" style="color:var(--accent);">+</div>
+            </div>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Result:</strong> (−∞,2): negative → graph below x‑axis. (2,5): positive → graph above. (5,8): negative → below. (8,∞): positive → above. So the curve alternates: below‑above‑below‑above.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Step 4 — Turning points (derivative):</strong> Expand: f(x)=x³−15x²+74x−80. f'(x)=3x²−30x+74. Set to zero: x = (30±√(900−888))/6 = (30±√12)/6 = 5 ± √3/3 ≈ 5 ± 0.577. So turning points near x≈4.42 (local max) and x≈5.58 (local min). Compute f(4.42)≈2.1, f(5.58)≈−2.1. This confirms the bumps between the roots.</p>
+        </div>
+
+        <!-- Narration Script -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🎙️ Interview Narration Script</h2>
+            <p style="color:var(--text-body);">"The function is a cubic with three real roots at x=2, 5, and 8. Since the leading coefficient is positive, the graph falls to the left and rises to the right. I start by marking the three x‑intercepts. Then I test the sign of each factor in the four intervals. For x less than 2, all three factors are negative, so the product is negative — the curve is below the x‑axis. Between 2 and 5, only (x−2) is positive, making the product positive. Between 5 and 8, the product is negative again, and beyond 8 it's positive. So the graph crosses at each root, alternating sign. The derivative reveals two turning points near 4.42 and 5.58, creating the classic cubic S‑curve. The key takeaway: understanding the sign of the product in each interval tells the whole story of where the graph sits relative to the x‑axis."</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Draw the graph of (x−2)(x−5)(x−8) and explain your process.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">First mark the three roots at x=2,5,8. Note the positive leading coefficient → falls left, rises right. Divide the real line into intervals using the roots, test a point in each to determine sign. The graph crosses the axis at each root because each factor has multiplicity 1 (simple root). Connect the intervals with smooth curves, respecting the alternating signs and the end behaviour.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: How do you find the turning points of this cubic?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Expand to get f(x)=x³−15x²+74x−80. Differentiate: f'(x)=3x²−30x+74. Set to zero and solve: x = (30±√(900−888))/6 = (30±√12)/6 = 5 ± √3/3. Approximate: x≈4.42 (local maximum) and x≈5.58 (local minimum). The second derivative f''(x)=6x−30 confirms the nature: f''(4.42)<0 → max, f''(5.58)>0 → min.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What does the sign of the product tell you between the roots?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">It tells whether the graph lies above or below the x‑axis. For (x−2)(x−5)(x−8), the sign alternates because there are an odd number of factors changing sign at each root. So the curve is below, then above, then below, then above as we move from left to right. This alternating pattern is typical for a cubic with three distinct real roots and a positive leading coefficient.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What would change if the function was (x−2)(x−5)(x−8)³?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The root at x=8 would have multiplicity 3 (odd), so the graph would still cross the x‑axis there, but with a different shape — the curve would flatten near x=8 and have an inflection point. The overall degree would be 5, and end behaviour would change (leading term x⁵ → falls left, rises right). The sign analysis would be affected because (x−8)³ changes sign only at x=8.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: How do you determine the y‑intercept?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Set x=0: f(0) = (0−2)(0−5)(0−8) = (-2)(-5)(-8) = -80. So the y‑intercept is (0,−80). This point is far below the x‑axis, consistent with the sign analysis (negative in the first interval).</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q6: What is the significance of the roots being distinct and real?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">All three roots are real and distinct, which guarantees the graph crosses the x‑axis at three different points. If there were a repeated root (e.g., a double root), the graph would touch the axis and turn back. If one root were complex, the graph would cross only once. The fact that all are real and distinct makes this a classic cubic with two turning points and three intercepts.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="margin-top:2.5rem;border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The cubic function y = (x−2)(x−5)(x−8) has three real roots at x=2, 5, and 8. Because the leading coefficient is positive, the graph falls to the left and rises to the right. By dividing the real line at the roots and testing the sign of each factor, we find the curve alternates between positive and negative in the four intervals, crossing the axis at each root. The derivative f'(x)=3x²−30x+74 yields turning points near 4.42 (local max) and 5.58 (local min). This problem is the canonical test of whether a student can connect factored form, sign analysis, and derivative information to produce a complete graph with clear reasoning."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('cubicGraph');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Coordinate mapping
+            const xMin = -1, xMax = 10, yMin = -90, yMax = 20;
+            const toCanvasX = (x) => (x - xMin) / (xMax - xMin) * (w - 60) + 30;
+            const toCanvasY = (y) => (yMax - y) / (yMax - yMin) * (h - 60) + 30;
+
+            // Axes
+            ctx.strokeStyle = '#4a5a52';
+            ctx.lineWidth = 1;
+            // x-axis (y=0)
+            ctx.beginPath();
+            ctx.moveTo(15, toCanvasY(0));
+            ctx.lineTo(w-10, toCanvasY(0));
+            ctx.stroke();
+            // y-axis (x=0)
+            ctx.beginPath();
+            ctx.moveTo(toCanvasX(0), 10);
+            ctx.lineTo(toCanvasX(0), h-10);
+            ctx.stroke();
+
+            // Tick marks and labels
+            ctx.fillStyle = '#6b7d74';
+            ctx.font = '9px "JetBrains Mono", monospace';
+            // x-axis ticks for roots
+            [2,5,8].forEach(x => {
+                const tx = toCanvasX(x);
+                ctx.beginPath(); ctx.moveTo(tx, toCanvasY(0)-4); ctx.lineTo(tx, toCanvasY(0)+4); ctx.stroke();
+                ctx.fillText(x, tx-5, toCanvasY(0)+16);
+            });
+            // y-axis ticks
+            for (let y = -80; y <= 10; y+=20) {
+                const ty = toCanvasY(y);
+                if (ty < 10 || ty > h-10) continue;
+                ctx.beginPath(); ctx.moveTo(toCanvasX(0)-4, ty); ctx.lineTo(toCanvasX(0)+4, ty); ctx.stroke();
+                ctx.fillText(y, toCanvasX(0)+6, ty+4);
+            }
+            ctx.fillText('0', toCanvasX(0)+4, toCanvasY(0)-4);
+
+            // Draw cubic curve
+            ctx.beginPath();
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2.5;
+            let first = true;
+            for (let px = 0; px < w; px++) {
+                const xVal = xMin + (px / w) * (xMax - xMin);
+                const yVal = (xVal-2)*(xVal-5)*(xVal-8);
+                const canvasY = toCanvasY(yVal);
+                if (canvasY < 0 || canvasY > h) { first = true; continue; }
+                if (first) { ctx.moveTo(px, canvasY); first = false; }
+                else ctx.lineTo(px, canvasY);
+            }
+            ctx.stroke();
+
+            // Mark roots
+            const roots = [2,5,8];
+            ctx.fillStyle = '#f59e0b';
+            roots.forEach(rx => {
+                ctx.beginPath();
+                ctx.arc(toCanvasX(rx), toCanvasY(0), 5, 0, 2*Math.PI);
+                ctx.fill();
+                ctx.fillStyle = '#f0f5f3';
+                ctx.font = '9px "JetBrains Mono", monospace';
+                ctx.fillText(`(${rx},0)`, toCanvasX(rx)+7, toCanvasY(0)-8);
+                ctx.fillStyle = '#f59e0b';
+            });
+
+            // Mark y-intercept
+            ctx.fillStyle = '#f43f5e';
+            ctx.beginPath();
+            ctx.arc(toCanvasX(0), toCanvasY(-80), 5, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = '9px "JetBrains Mono", monospace';
+            ctx.fillText('(0,-80)', toCanvasX(0)+8, toCanvasY(-80)-6);
+
+            // Turning points (approximate)
+            const tp1 = 4.4226, tp2 = 5.5774;
+            const y1 = (tp1-2)*(tp1-5)*(tp1-8), y2 = (tp2-2)*(tp2-5)*(tp2-8);
+            ctx.fillStyle = '#3b82f6';
+            [{x:tp1, y:y1, lbl:'max'}, {x:tp2, y:y2, lbl:'min'}].forEach(p => {
+                ctx.beginPath();
+                ctx.arc(toCanvasX(p.x), toCanvasY(p.y), 4, 0, 2*Math.PI);
+                ctx.fill();
+                ctx.fillStyle = '#f0f5f3';
+                ctx.font = '8px "JetBrains Mono", monospace';
+                ctx.fillText(p.lbl, toCanvasX(p.x)+6, toCanvasY(p.y)-6);
+                ctx.fillStyle = '#3b82f6';
+            });
+
+            // Interval sign labels
+            ctx.fillStyle = '#c8d6d0';
+            ctx.font = 'italic 10px "JetBrains Mono", monospace';
+            ctx.fillText('(−)', toCanvasX(1), toCanvasY(-20));
+            ctx.fillText('(+)', toCanvasX(3.5), toCanvasY(8));
+            ctx.fillText('(−)', toCanvasX(6.5), toCanvasY(-8));
+            ctx.fillText('(+)', toCanvasX(8.8), toCanvasY(12));
+
+            // Leading term indication
+            ctx.fillStyle = '#f59e0b';
+            ctx.font = '8px "JetBrains Mono", monospace';
+            ctx.fillText('as x→−∞, f(x)→−∞', 25, 25);
+            ctx.fillText('as x→+∞, f(x)→+∞', w-160, h-15);
+        })();
+    </script>
+</body>
+</html>

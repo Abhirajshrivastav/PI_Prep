@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MATH-14 · What Differentiability Means Visually — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .graph-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+            flex-wrap: wrap; gap: 1rem;
+        }
+
+        canvas { max-width: 100%; height: auto; }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: MATH-14] · [STATUS: VERIFIED]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">CATEGORY 2 · CONTINUITY & DIFFERENTIABILITY</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">What Differentiability Means Visually</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Smoothness, unique tangents, and the geometric intuition that separates a differentiable curve from a continuous one with sharp corners or cusps.</p>
+        </div>
+
+        <!-- Visual Comparison Canvas -->
+        <div class="graph-container">
+            <div style="text-align:center;">
+                <canvas id="diffGraph" width="270" height="260"></canvas>
+                <p class="font-mono" style="font-size:0.65rem;color:var(--accent);margin-top:0.3rem;">f(x) = x² · Differentiable everywhere</p>
+            </div>
+            <div style="text-align:center;">
+                <canvas id="nondiffGraph" width="270" height="260"></canvas>
+                <p class="font-mono" style="font-size:0.65rem;color:var(--rose);margin-top:0.3rem;">f(x) = |x| · Continuous but not differentiable at 0</p>
+            </div>
+        </div>
+
+        <!-- The Core Visual Intuition -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🔍 The Visual Test: Does a Unique Tangent Exist?</h2>
+            <p style="color:var(--text-body);">A function is differentiable at a point if you can draw exactly one non‑vertical tangent line that smoothly touches the curve at that point. If the graph has a sharp corner, a cusp, or a vertical tangent, then no single tangent line exists, and the function is not differentiable there.</p>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem;">
+                <div style="background:rgba(16,185,129,0.05);padding:1rem;border-radius:10px;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.65rem;">SHARP CORNER</p>
+                    <p style="color:var(--text-body);">Two different slopes meet abruptly (like |x|). No single slope can describe the point.</p>
+                </div>
+                <div style="background:rgba(244,63,94,0.05);padding:1rem;border-radius:10px;">
+                    <p class="font-mono" style="color:var(--rose);font-size:0.65rem;">CUSP / VERTICAL TANGENT</p>
+                    <p style="color:var(--text-body);">The slope becomes infinite (like x<sup>2/3</sup>). A vertical line is not a valid finite derivative.</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.05);padding:1rem;border-radius:10px;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.65rem;">SMOOTH CURVE</p>
+                    <p style="color:var(--text-body);">A parabola (x²) or sine wave has a well‑defined, finite slope at every point — it is differentiable.</p>
+                </div>
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;"><strong>Narration:</strong> "When I look at a graph, I ask: can I draw a single straight line that just grazes the curve at that point, without cutting through it, and does that line have a finite slope? If the answer is yes, the function is differentiable. If the graph has a corner, I can draw two different lines from each side — differentiability fails. If the graph plunges vertically, the tangent would be vertical — infinite slope, so the derivative does not exist."</p>
+        </div>
+
+        <!-- Contrast: Continuity vs Differentiability -->
+        <div class="glass-panel" style="margin:2rem 0; border-left: 4px solid var(--gold);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧠 Continuity ≠ Differentiability — The Visual Mantra</h2>
+            <p style="color:var(--text-body);">Continuity means the graph has no breaks or jumps — you can draw it without lifting your pen. Differentiability is a stronger condition: not only is there no break, but the graph must also be <strong>smooth</strong> at that point. |x| is the poster child: perfectly continuous, but the sharp corner at the origin means it's not smooth, so it's not differentiable.</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;">Interviewers love the follow‑up: <em>"So is every continuous function differentiable?"</em> The confident answer is <strong>"No. Continuity is necessary but not sufficient. |x| is continuous but not differentiable at zero — that's the canonical counterexample."</strong></p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: How can you tell visually if a function is differentiable at a point?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Look for a smooth, single tangent line with a finite slope. If there's a sharp corner (two possible tangents), a cusp (vertical tangent), or a break (discontinuity), the function is not differentiable there. The graph must be locally linear — zoom in, and it should look like a straight line.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Give a visual example of a function that is continuous but not differentiable.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">|x| at x = 0. The graph is a V‑shape with no break — it's continuous. But the left side approaches with slope -1, and the right side with slope +1. The corner prevents a unique tangent, so it's not differentiable.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What does "locally linear" mean in the context of differentiability?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">If you zoom in extremely close to a point on a differentiable function, the graph looks indistinguishable from a straight line — the tangent line at that point. For |x| at the origin, no matter how much you zoom, you still see a corner; it never becomes a straight line. Differentiable functions are locally linear.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Can a function be differentiable everywhere? Give an example.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Yes. f(x) = x² is differentiable for all real x, with derivative 2x. The exponential function eˣ is differentiable everywhere, as are sin x and cos x. Polynomials, exponentials, and trigonometric functions are all smooth and differentiable on their entire domains.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: How does the derivative relate to the slope of the tangent line?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The derivative f'(a) is exactly the slope of the tangent line to the graph at x = a. So if the derivative exists and equals m, the tangent line has slope m. If the derivative does not exist, there is no unique tangent line with a finite slope.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="margin-top:2.5rem;border-left:4px solid var(--accent);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--accent);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Differentiability is the geometric property of having a unique, non‑vertical tangent line at every point on a curve. Visually, a differentiable graph is smooth — no sharp corners, no cusps, and no vertical slopes. The absolute value function |x| is the classic counterexample: it is continuous at the origin but has a sharp corner, so it fails to be differentiable. This illustrates the crucial hierarchy: differentiability implies continuity, but not vice versa. Being able to recognise smoothness versus sharpness on a graph, and articulate it in plain language, is exactly what interviewers are testing when they ask about the meaning of the derivative."</em></p>
+        </div>
+    </main>
+
+    <script>
+        // Left graph: differentiable x² with tangent line
+        (function() {
+            const canvas = document.getElementById('diffGraph');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0,0,w,h);
+            const cx=w/2, cy=h/2+30, sc=45;
+            // axes
+            ctx.strokeStyle='#4a5a52'; ctx.lineWidth=1;
+            ctx.beginPath(); ctx.moveTo(20,cy); ctx.lineTo(w-15,cy); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(cx,10); ctx.lineTo(cx,h-10); ctx.stroke();
+            ctx.fillStyle='#6b7d74'; ctx.font='9px "JetBrains Mono", monospace';
+            ctx.fillText('0', cx+4, cy-4);
+            // parabola x²
+            ctx.beginPath(); ctx.strokeStyle='#10b981'; ctx.lineWidth=2.2;
+            let first=true;
+            for(let px=0;px<w;px++){
+                const xv=(px-cx)/sc;
+                const yv=xv*xv;
+                const py=cy-yv*sc;
+                if(py<5||py>h-5){first=true;continue;}
+                if(first){ctx.moveTo(px,py);first=false;}else ctx.lineTo(px,py);
+            }
+            ctx.stroke();
+            // tangent at x=0.8
+            const a=0.8, fa=a*a, der=2*a;
+            const tanX1=a-0.8, tanX2=a+0.8;
+            const tanY1=fa+der*(tanX1-a), tanY2=fa+der*(tanX2-a);
+            ctx.beginPath(); ctx.strokeStyle='#f59e0b'; ctx.lineWidth=1.5;
+            ctx.moveTo(cx+tanX1*sc, cy-tanY1*sc); ctx.lineTo(cx+tanX2*sc, cy-tanY2*sc);
+            ctx.stroke();
+            ctx.fillStyle='#f0f5f3'; ctx.font='9px "JetBrains Mono", monospace';
+            ctx.fillText('tangent', cx+30, cy-70);
+            ctx.fillStyle='#c8d6d0'; ctx.fillText('smooth', cx-60, cy-80);
+        })();
+
+        // Right graph: |x| with sharp corner
+        (function() {
+            const canvas = document.getElementById('nondiffGraph');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0,0,w,h);
+            const cx=w/2, cy=h/2+30, sc=45;
+            // axes
+            ctx.strokeStyle='#4a5a52'; ctx.lineWidth=1;
+            ctx.beginPath(); ctx.moveTo(20,cy); ctx.lineTo(w-15,cy); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(cx,10); ctx.lineTo(cx,h-10); ctx.stroke();
+            ctx.fillStyle='#6b7d74'; ctx.font='9px "JetBrains Mono", monospace';
+            ctx.fillText('0', cx+4, cy-4);
+            // |x|
+            ctx.beginPath(); ctx.strokeStyle='#f43f5e'; ctx.lineWidth=2.2;
+            ctx.moveTo(cx-3*sc, cy-3*sc); ctx.lineTo(cx,cy); ctx.lineTo(cx+3*sc, cy-3*sc);
+            ctx.stroke();
+            // sharp corner
+            ctx.fillStyle='#f43f5e';
+            ctx.beginPath(); ctx.arc(cx,cy,4,0,2*Math.PI); ctx.fill();
+            ctx.fillStyle='#f0f5f3'; ctx.font='9px "JetBrains Mono", monospace';
+            ctx.fillText('sharp corner', cx+8, cy-8);
+            // two tangent lines dashed
+            ctx.setLineDash([5,4]); ctx.strokeStyle='#f59e0b'; ctx.lineWidth=1;
+            ctx.beginPath(); ctx.moveTo(cx-40,cy+40); ctx.lineTo(cx,cy); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+40,cy-40); ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle='#c8d6d0'; ctx.fillText('two slopes', cx-60, cy+60);
+        })();
+    </script>
+</body>
+</html>

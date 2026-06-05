@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MATH-02 · cos x & tan x Graphs — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .graph-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+
+        canvas { width: 100%; max-width: 550px; height: auto; }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="./hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: MATH-02] · [STATUS: VERIFIED]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">CATEGORY 1 · GRAPHS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">cos x & tan x — Graphs</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Master the cosine wave and the tangent curve: key points, asymptotes, periodicity, and the narration that demonstrates genuine insight into trigonometric behavior.</p>
+        </div>
+
+        <!-- COSINE GRAPH -->
+        <div style="margin-bottom:2.5rem;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:0.8rem;">🌊 cos x — The Phase‑Shifted Wave</h2>
+            <div class="graph-container">
+                <canvas id="cosGraph" width="550" height="350"></canvas>
+            </div>
+            <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);">f(x) = cos x , x in [-2π, 2π] · Amplitude = 1 · Period = 2π</p>
+
+            <div class="glass-panel" style="margin-top:1.5rem;">
+                <h3 style="font-size:1.2rem;font-weight:600;">🔑 Anchor Points & Narration</h3>
+                <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:0.8rem;">
+                    <div><span class="font-mono" style="color:var(--accent);font-size:0.7rem;">Y‑INTERCEPT</span><p style="color:var(--text-body);">(0, 1) — cos 0 = 1</p></div>
+                    <div><span class="font-mono" style="color:var(--accent);font-size:0.7rem;">MAXIMA (y=1)</span><p style="color:var(--text-body);">x = ..., -2π, 0, 2π, ...</p></div>
+                    <div><span class="font-mono" style="color:var(--accent);font-size:0.7rem;">X‑INTERCEPTS</span><p style="color:var(--text-body);">x = ..., -3π/2, -π/2, π/2, 3π/2, ...</p></div>
+                    <div><span class="font-mono" style="color:var(--accent);font-size:0.7rem;">MINIMA (y=-1)</span><p style="color:var(--text-body);">x = ..., -π, π, ...</p></div>
+                </div>
+                <p style="color:var(--text-body);margin-top:1rem;"><strong>Narration:</strong> "Cosine starts at its maximum value of 1 when x=0, then smoothly descends to cross the x‑axis at π/2, reaches a minimum of -1 at π, rises back to zero at 3π/2, and completes the cycle at 2π. The derivative of cos x is -sin x, so the slope is zero at the peaks and steepest at the zero crossings, exactly as we'd expect from the sine‑cosine relationship."</p>
+            </div>
+        </div>
+
+        <!-- TANGENT GRAPH -->
+        <div style="margin-bottom:2.5rem;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:0.8rem;">📈 tan x — The Asymptotic Curve</h2>
+            <div class="graph-container">
+                <canvas id="tanGraph" width="550" height="350"></canvas>
+            </div>
+            <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);">f(x) = tan x , x in (-3π/2, 3π/2) · Vertical asymptotes at ±π/2, ±3π/2 · Period = π</p>
+
+            <div class="glass-panel" style="margin-top:1.5rem;">
+                <h3 style="font-size:1.2rem;font-weight:600;">🔑 Anchor Points & Narration</h3>
+                <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:0.8rem;">
+                    <div><span class="font-mono" style="color:var(--rose);font-size:0.7rem;">ASMPTOTES</span><p style="color:var(--text-body);">x = ±π/2, ±3π/2, ... (where cos x = 0)</p></div>
+                    <div><span class="font-mono" style="color:var(--accent);font-size:0.7rem;">X‑INTERCEPT</span><p style="color:var(--text-body);">x = ..., -π, 0, π, ... (where sin x = 0)</p></div>
+                    <div><span class="font-mono" style="color:var(--accent);font-size:0.7rem;">PERIOD</span><p style="color:var(--text-body);">π (repeats every 180°)</p></div>
+                    <div><span class="font-mono" style="color:var(--accent);font-size:0.7rem;">BEHAVIOR</span><p style="color:var(--text-body);">Rises from -∞ to +∞ between asymptotes</p></div>
+                </div>
+                <p style="color:var(--text-body);margin-top:1rem;"><strong>Narration:</strong> "Tangent is defined as sin x / cos x, so it has vertical asymptotes wherever cos x equals zero. Between asymptotes, the graph is strictly increasing, passing through the origin because tan 0 = 0. As x approaches π/2 from the left, tan x shoots to positive infinity; from the right, it comes from negative infinity. This discontinuity is fundamentally different from the smooth oscillation of sine and cosine — tangent is not bounded and its range is all real numbers."</p>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary>
+                    <span>Q1: How does the graph of cos x differ from sin x?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">Cosine is a phase shift of sine: cos x = sin(x + π/2). Visually, cos x starts at (0,1) — a maximum — while sin x starts at (0,0). The cosine wave is shifted left by π/2 relative to the sine wave, but they have identical amplitude, period, and shape.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary>
+                    <span>Q2: Why does tan x have vertical asymptotes?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">Because tan x = sin x / cos x. Wherever cos x = 0 (at odd multiples of π/2), the denominator becomes zero and the fraction blows up to ±∞. These are non‑removable discontinuities — the function is not defined at those points.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary>
+                    <span>Q3: What is the period of cos x? Of tan x? Why the difference?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">cos x repeats every 2π because cos(x + 2π) = cos x. tan x repeats every π because tan(x + π) = tan x — both sine and cosine flip sign after π, and their ratio cancels the sign change.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary>
+                    <span>Q4: How does the derivative of tan x relate to its graph?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">The derivative is sec² x = 1/cos² x, which is always positive. This explains why the tangent graph is strictly increasing on every interval between asymptotes — the slope is never zero or negative.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary>
+                    <span>Q5: Can you express cos x in terms of sine? What does that reveal?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">cos x = sin(π/2 - x) or cos x = sin(x + π/2). This shows that cosine is simply a horizontally shifted sine wave — the two functions are fundamentally the same shape, just offset in phase.</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="margin-top:2.5rem;border-left:4px solid var(--accent);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--accent);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The cosine graph is a smooth wave oscillating between -1 and 1, starting at its maximum when x=0. It completes one full cycle every 2π, crossing the x‑axis at odd multiples of π/2. The tangent graph, in contrast, has vertical asymptotes at odd multiples of π/2 because tan x = sin x / cos x. Between asymptotes, tan x is strictly increasing and unbounded, with a period of just π. Understanding these shapes, their derivatives, and their relationship to the unit circle provides the foundation for all trigonometric modeling — and panelists consistently probe this visual intuition."</em></p>
+        </div>
+    </main>
+
+    <script>
+        // Draw cos x
+        (function() {
+            const canvas = document.getElementById('cosGraph');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0,0,w,h);
+            // axes
+            ctx.strokeStyle = '#4a5a52'; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(50,h/2); ctx.lineTo(w-40,h/2); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(w/2,20); ctx.lineTo(w/2,h-20); ctx.stroke();
+            ctx.fillStyle = '#6b7d74'; ctx.font = '11px "JetBrains Mono", monospace';
+            ctx.fillText('0', w/2+5, h/2-5);
+            ctx.fillText('1', w/2+8, h/2-60);
+            ctx.fillText('-1', w/2+8, h/2+70);
+            const piX = 140;
+            for (let i=-2; i<=2; i++) {
+                const x = w/2 + i*piX;
+                ctx.beginPath(); ctx.moveTo(x, h/2-6); ctx.lineTo(x, h/2+6); ctx.stroke();
+                if(i!==0) {
+                    const lbl = (i===1)?'π':(i===-1)?'-π':(i===2)?'2π':(i===-2)?'-2π':'';
+                    ctx.fillText(lbl, x-12, h/2+20);
+                }
+            }
+            // cos curve
+            ctx.beginPath(); ctx.strokeStyle = '#10b981'; ctx.lineWidth = 2.2;
+            for (let px=0; px<w; px++) {
+                const xVal = (px - w/2) / piX * Math.PI;
+                const yVal = Math.cos(xVal);
+                const canvasY = h/2 - yVal*60;
+                if(px===0) ctx.moveTo(px, canvasY);
+                else ctx.lineTo(px, canvasY);
+            }
+            ctx.stroke();
+            // key points
+            const points = [{x:0,y:1,lbl:'(0,1)'},{x:Math.PI/2,y:0,lbl:'(π/2,0)'},{x:Math.PI,y:-1,lbl:'(π,-1)'},{x:3*Math.PI/2,y:0,lbl:'(3π/2,0)'}];
+            ctx.fillStyle = '#f59e0b';
+            points.forEach(p => {
+                const cx = w/2 + (p.x/Math.PI)*piX;
+                const cy = h/2 - p.y*60;
+                ctx.beginPath(); ctx.arc(cx,cy,4,0,2*Math.PI); ctx.fill();
+                ctx.fillStyle = '#f0f5f3'; ctx.font='9px "JetBrains Mono", monospace'; ctx.fillText(p.lbl,cx+7,cy-7);
+                ctx.fillStyle = '#f59e0b';
+            });
+        })();
+
+        // Draw tan x
+        (function() {
+            const canvas = document.getElementById('tanGraph');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0,0,w,h);
+            // axes
+            ctx.strokeStyle = '#4a5a52'; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(50,h/2); ctx.lineTo(w-40,h/2); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(w/2,20); ctx.lineTo(w/2,h-20); ctx.stroke();
+            ctx.fillStyle = '#6b7d74'; ctx.font='11px "JetBrains Mono", monospace';
+            ctx.fillText('0', w/2+5, h/2-5);
+            const piX = 140;
+            // asymptotes & labels
+            const asymPositions = [-3*Math.PI/2, -Math.PI/2, Math.PI/2, 3*Math.PI/2];
+            ctx.setLineDash([6,6]);
+            ctx.strokeStyle = '#f43f5e';
+            asymPositions.forEach(xVal => {
+                const cx = w/2 + (xVal/Math.PI)*piX;
+                if(cx>40 && cx<w-40) {
+                    ctx.beginPath(); ctx.moveTo(cx, 20); ctx.lineTo(cx, h-20); ctx.stroke();
+                }
+            });
+            ctx.setLineDash([]);
+            // x-axis ticks
+            for (let i=-1; i<=1; i++) {
+                const x = w/2 + i*piX;
+                ctx.beginPath(); ctx.moveTo(x, h/2-6); ctx.lineTo(x, h/2+6); ctx.strokeStyle = '#4a5a52'; ctx.stroke();
+                if(i!==0) {
+                    const lbl = (i===1)?'π':(i===-1)?'-π':'';
+                    ctx.fillText(lbl, x-8, h/2+20);
+                }
+            }
+            // draw tan branches
+            const branches = [
+                {start:-Math.PI/2+0.08, end:Math.PI/2-0.08},
+                {start:Math.PI/2+0.08, end:3*Math.PI/2-0.08},
+                {start:-3*Math.PI/2+0.08, end:-Math.PI/2-0.08}
+            ];
+            ctx.strokeStyle = '#10b981'; ctx.lineWidth = 2;
+            branches.forEach(branch => {
+                ctx.beginPath();
+                let first = true;
+                for (let t = branch.start; t <= branch.end; t += 0.05) {
+                    const cx = w/2 + (t/Math.PI)*piX;
+                    const cy = h/2 - Math.tan(t)*30;
+                    if (cy > 20 && cy < h-20) {
+                        if(first) { ctx.moveTo(cx, cy); first = false; }
+                        else ctx.lineTo(cx, cy);
+                    }
+                }
+                ctx.stroke();
+            });
+            // origin point
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath(); ctx.arc(w/2, h/2, 4, 0, 2*Math.PI); ctx.fill();
+            ctx.fillStyle = '#f0f5f3'; ctx.font='9px "JetBrains Mono", monospace'; ctx.fillText('(0,0)', w/2+7, h/2-7);
+        })();
+    </script>
+</body>
+</html>

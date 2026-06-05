@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sector 01 · Mathematics — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --border-active: #1a3a2c;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.35);
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.1);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.1);
+            --amber: #f59e0b;
+            --amber-dim: rgba(245, 158, 11, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        #starfield { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .star {
+            position: absolute; background: white; border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite; animation-delay: var(--delay); opacity: 0;
+        }
+        @keyframes twinkle {
+            0%,100% { opacity: 0.08; } 30% { opacity: 0.6; } 60% { opacity: 0.15; } 85% { opacity: 0.8; }
+        }
+
+        .ambient-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(120px); opacity: 0.07; }
+        .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #8b5cf6 0%, transparent 70%); top: -100px; right: -100px; }
+        .orb-2 { width: 350px; height: 350px; background: radial-gradient(circle, #10b981 0%, transparent 70%); bottom: -50px; left: -50px; }
+
+        .content-layer { position: relative; z-index: 1; }
+
+        .glass-panel {
+            background: rgba(8, 15, 12, 0.7); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--border-subtle); border-radius: 20px; transition: all 0.4s ease;
+        }
+
+        .glass-card {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;
+        }
+        .glass-card:hover {
+            border-color: var(--accent); transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(16,185,129,0.2), 0 0 60px rgba(16,185,129,0.06);
+            background: rgba(12,22,17,0.8);
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .search-input {
+            background: rgba(10,18,14,0.6); border: 1px solid var(--border-subtle); border-radius: 14px;
+            padding: 0.85rem 1.2rem; color: var(--text-bright); font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem; width: 100%; transition: all 0.35s ease; backdrop-filter: blur(10px);
+        }
+        .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 30px rgba(16,185,129,0.2), 0 0 0 4px var(--accent-dim); background: rgba(14,24,18,0.75); }
+        .search-input::placeholder { color: var(--text-dim); }
+
+        .module-tag {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; padding: 4px 10px; border-radius: 20px;
+            background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(16,185,129,0.2);
+            text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap;
+        }
+        .block-tag {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; padding: 3px 8px; border-radius: 4px;
+            background: var(--bg-deep); border: 1px solid var(--border-subtle); color: var(--text-muted); text-transform: uppercase;
+        }
+        .block-tag.gold { border-color: rgba(245,158,11,0.3); color: var(--gold); background: var(--gold-dim); }
+        .block-tag.info { border-color: rgba(59,130,246,0.3); color: var(--info); background: var(--info-dim); }
+        .block-tag.violet { border-color: rgba(139,92,246,0.3); color: var(--violet); background: var(--violet-dim); }
+        .block-tag.rose { border-color: rgba(244,63,94,0.3); color: var(--rose); background: var(--rose-dim); }
+        .block-tag.amber { border-color: rgba(245,158,11,0.3); color: var(--amber); background: var(--amber-dim); }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .block-header {
+            display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .block-header h2 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.4rem; color: var(--text-bright); }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--border-active); border-radius: 10px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+
+        .block-section { margin-bottom: 2.5rem; }
+    </style>
+</head>
+<body>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div id="starfield"></div>
+
+    <div class="content-layer">
+        <nav style="position:sticky;top:0;z-index:100;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.9rem 2rem;">
+            <div style="max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+                <a href="../index.html" class="back-link"><span style="font-size:1.2rem;">←</span> RETURN TO CENTRAL COMMAND</a>
+                <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">SECTOR 01 · MATHEMATICS</span>
+            </div>
+        </nav>
+
+        <header style="max-width:1400px;margin:0 auto;padding:2.5rem 2rem 1.5rem;">
+            <div style="display:flex;flex-direction:column;gap:1rem;">
+                <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+                    <span class="font-mono" style="font-size:0.7rem;color:var(--violet);letter-spacing:0.1em;">MODULE HUB</span>
+                    <span class="font-mono" style="font-size:0.65rem;color:var(--text-dim);">30% INTERVIEW PRIORITY</span>
+                    <span class="module-tag">9 CATEGORIES · 45+ MODULES</span>
+                </div>
+                <h1 class="font-display" style="font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;">Mathematics</h1>
+                <p style="color:var(--text-muted);font-size:1rem;max-width:750px;">Graph narration, continuity proofs, first‑principles differentiation, integration, limits, probability, and matrix operations — the complete PI mathematics syllabus, structured for spoken clarity under pressure.</p>
+            </div>
+        </header>
+
+        <main style="max-width:1400px;margin:0 auto;padding:1.5rem 2rem 2rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;">
+                <input type="text" class="search-input" id="searchInput" placeholder="Filter by title, tag, category, or module ID..." style="max-width:500px;">
+                <div class="glass-panel" style="padding:0.8rem 1.5rem;display:flex;align-items:center;gap:0.5rem;">
+                    <span class="font-mono" style="font-size:0.65rem;color:var(--text-dim);">ACTIVE MODULES</span>
+                    <span class="font-display" style="font-size:1.8rem;font-weight:900;color:var(--accent);" id="activeCount">0</span>
+                </div>
+            </div>
+
+            <div id="blocksContainer"></div>
+            <p id="noResults" style="text-align:center;color:var(--text-muted);margin-top:2rem;display:none;">No modules match your filter.</p>
+        </main>
+    </div>
+
+    <script>
+        (function() {
+            const sf = document.getElementById('starfield');
+            for (let i=0;i<80;i++) {
+                const s=document.createElement('div'); s.classList.add('star');
+                s.style.width=(Math.random()*2+0.7)+'px'; s.style.height=s.style.width;
+                s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%';
+                s.style.setProperty('--duration',(Math.random()*4+3)+'s');
+                s.style.setProperty('--delay',(Math.random()*6)+'s');
+                s.style.opacity=Math.random()*0.4+0.1; sf.appendChild(s);
+            }
+        })();
+
+        const blockData = {
+            block1: {
+                title: "CAT 1 · Graphs — The Universal Skill",
+                icon: "📈",
+                accent: "violet",
+                modules: [
+                    {id:"MATH-01",title:"sin x — Graph & Narration",tags:["trig","periodic","zero at origin"],url:"./math1.html"},
+                    {id:"MATH-02",title:"cos x & tan x Graphs",tags:["trig","asymptotes","period"],url:"./math2.html"},
+                    {id:"MATH-03",title:"|x| — Absolute Value Function",tags:["modulus","V-shape","piecewise"],url:"./math3.html"},
+                    {id:"MATH-04",title:"x² & x³ — Power Functions",tags:["parabola","odd function","symmetry"],url:"./math4.html"},
+                    {id:"MATH-05",title:"log x & |log x| Graphs",tags:["logarithm","vertical asymptote","reflection"],url:"./math5.html"},
+                    {id:"MATH-06",title:"e^x & 1/x Graphs",tags:["exponential","hyperbola","asymptotes"],url:"./math6.html"},
+                    {id:"MATH-07",title:"y = 50 - |x| (with y ≥ 0)",tags:["transformation","triangle","condition"],url:"./math7.html"},
+                    {id:"MATH-08",title:"y = (x-2)(x-5)(x-8) — Cubic Roots",tags:["polynomial","sign analysis","roots"],url:"./math8.html"},
+                    {id:"MATH-09",title:"Transformation Rules — Shift, Reflect, Scale",tags:["transformations","logic","general"],url:"./math9.html"},
+                ]
+            },
+            block2: {
+                title: "CAT 2 · Continuity & Differentiability",
+                icon: "🔍",
+                accent: "gold",
+                modules: [
+                    {id:"MATH-10",title:"|x| Continuity Proof at x = 0",tags:["LHL","RHL","limit definition"],url:"./math10.html"},
+                    {id:"MATH-11",title:"|x| Differentiability Proof at x = 0",tags:["LHD","RHD","sharp corner"],url:"./math11.html"},
+                    {id:"MATH-12",title:"Continuous but NOT Differentiable — Why",tags:["concept","|x|","necessary vs sufficient"],url:"./math12.html"},
+                    {id:"MATH-13",title:"Another Example: x^(2/3) Cusp",tags:["cusp","non-differentiable","vertical tangent"],url:"./math13.html"},
+                    {id:"MATH-14",title:"What Differentiability Means Visually",tags:["smooth","unique tangent","no sharp corners"],url:"./math14.html"},
+                ]
+            },
+            block3: {
+                title: "CAT 3 · Differentiation — First Principles & Chain Rule",
+                icon: "📐",
+                accent: "info",
+                modules: [
+                    {id:"MATH-15",title:"Differentiate x² from First Principles",tags:["limit definition","binomial","2x"],url:"./math15.html"},
+                    {id:"MATH-16",title:"Differentiate x³ from First Principles",tags:["expand (x+h)³","3x²","narrate steps"],url:"./math16.html"},
+                    {id:"MATH-17",title:"Differentiate e^x from First Principles",tags:["limit (e^h-1)/h","self-derivative"],url:"./math17.html"},
+                    {id:"MATH-18",title:"Chain Rule — log(cos⁻¹x)",tags:["composite","derivative","inverse trig"],url:"./math18.html"},
+                    {id:"MATH-19",title:"Chain Rule — sin(log x)",tags:["composite","log","cos"],url:"./math19.html"},
+                    {id:"MATH-20",title:"Successive Differentiation of sin(x²)",tags:["5th derivative","chain rule repeatedly"],url:"./math20.html"},
+                ]
+            },
+            block4: {
+                title: "CAT 4 · Integration & Area Under Curves",
+                icon: "∫",
+                accent: "rose",
+                modules: [
+                    {id:"MATH-21",title:"Area of y = 50 - |x| (Integration & Geometry)",tags:["triangle","definite integral","both methods"],url:"math"},
+                    {id:"MATH-22",title:"Area Between y = x and y = x³ [-1, 0]",tags:["intersection","which is top","subtract"],url:"math"},
+                    {id:"MATH-23",title:"Integrate |x(x-1)| from -2 to 2",tags:["absolute value","split at zeros","piecewise"],url:"math"},
+                    {id:"MATH-24",title:"What IS Integration Conceptually?",tags:["accumulated total","area","Fundamental Theorem"],url:"math"},
+                    {id:"MATH-25",title:"Real-World: Velocity → Displacement",tags:["application","work","F dx"],url:"math"},
+                ]
+            },
+            block5: {
+                title: "CAT 5 · Limits — The Conceptual Foundation",
+                icon: "→",
+                accent: "amber",
+                modules: [
+                    {id:"MATH-26",title:"lim(x→0) (sin x - x)/x³ = -1/6",tags:["L'Hôpital","0/0","three iterations"],url:"math"},
+                    {id:"MATH-27",title:"What IS a Limit? Plain English Explanation",tags:["approaches","value","not necessarily equals"],url:"math"},
+                    {id:"MATH-28",title:"L'Hôpital's Rule — When & How to Apply",tags:["0/0","∞/∞","derivative ratio"],url:"math"},
+                ]
+            },
+            block6: {
+                title: "CAT 6 · Functions & Relations — Definitions",
+                icon: "🔗",
+                accent: "violet",
+                modules: [
+                    {id:"MATH-29",title:"What is a Function? Formal Definition",tags:["one output per input","vertical line test"],url:"math"},
+                    {id:"MATH-30",title:"Is y = ±x a Function? (No)",tags:["two outputs","vertical line test fails"],url:"math"},
+                    {id:"MATH-31",title:"Is a Circle a Function? (No)",tags:["x²+y²=r²","vertical line crosses twice"],url:"math"},
+                    {id:"MATH-32",title:"Convex Function — Definition & f''(x) ≥ 0",tags:["second derivative","line segment above"],url:"math"},
+                    {id:"MATH-33",title:"Function ⊆ Relation — Subset Relationship",tags:["every function is a relation","not vice versa"],url:"math"},
+                ]
+            },
+            block7: {
+                title: "CAT 7 · Probability & Combinatorics",
+                icon: "🎲",
+                accent: "rose",
+                modules: [
+                    {id:"MATH-34",title:"Two Dice — Sum of 7 (1/6)",tags:["36 outcomes","6 favourable","probability"],url:"math"},
+                    {id:"MATH-35",title:"Two Dice — Sum of 9 (1/9)",tags:["4 favourable pairs","36 total"],url:"math"},
+                    {id:"MATH-36",title:"5 Rings, 10 Fingers + Bowl (11⁵ - 1)",tags:["multiplication principle","independent choices"],url:"math"},
+                    {id:"MATH-37",title:"2 Kids, One is a Boy → Both Boys? (1/3)",tags:["conditional probability","Bayesian","sample space"],url:"math"},
+                    {id:"MATH-38",title:"7 Students, 3 Chairs — 7C3 = 35",tags:["combinations","order doesn't matter"],url:"math"},
+                    {id:"MATH-39",title:"Combinations vs Permutations — When to Use",tags:["order matters vs not","nCr vs nPr"],url:"math"},
+                ]
+            },
+            block8: {
+                title: "CAT 8 · Statistics — Mean, Median, Mode, SD",
+                icon: "📊",
+                accent: "info",
+                modules: [
+                    {id:"MATH-40",title:"Mean, Median, Mode — Definitions",tags:["average","middle","most frequent"],url:"math"},
+                    {id:"MATH-41",title:"Standard Deviation — What It Measures",tags:["spread","68-95-99.7 rule","normal distribution"],url:"math"},
+                    {id:"MATH-42",title:"Why Median for Income? (Outlier Resistance)",tags:["billionaires skew mean","median better"],url:"math"},
+                    {id:"MATH-43",title:"Normal Distribution — Bell Curve Shape",tags:["symmetric","mean=median=mode","σ rules"],url:"math"},
+                ]
+            },
+            block9: {
+                title: "CAT 9 · Matrices — Process Over Answer",
+                icon: "▦",
+                accent: "gold",
+                modules: [
+                    {id:"MATH-44",title:"Determinant of 2×2 & 3×3 Matrices",tags:["ad - bc","cofactor expansion","Sarrus"],url:"math"},
+                    {id:"MATH-45",title:"Rank of a Matrix — Conceptual Meaning",tags:["linearly independent rows/columns"],url:"math"},
+                    {id:"MATH-46",title:"Singular Matrix — det = 0, No Inverse",tags:["non-invertible","zero determinant"],url:"math"},
+                    {id:"MATH-47",title:"Matrix Multiplication — Non-Commutative",tags:["AB ≠ BA generally","associative"],url:"math"},
+                    {id:"MATH-48",title:"Real-World: Systems of Linear Equations",tags:["Ax = b","cost equations","input-output"],url:"math"},
+                ]
+            },
+            block10: {
+                title: "CAT 10 · Narration Practice Protocol",
+                icon: "🎙️",
+                accent: "amber",
+                modules: [
+                    {id:"MATH-49",title:"Daily Recorded Narration Drills",tags:["speak while writing","listen back","identify silences"],url:"math"},
+                    {id:"MATH-50",title:"3 Problems Daily — Different Categories",tags:["routine","composure","articulation"],url:"math"},
+                ]
+            },
+        };
+
+        const allModules = Object.values(blockData).flatMap(b => b.modules);
+
+        function createCard(mod, blockColor) {
+            const card = document.createElement('a');
+            card.href = mod.url; card.classList.add('glass-card'); card.style.padding = '1.3rem';
+            card.innerHTML = `
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.6rem;">
+                    <span class="font-mono" style="font-size:0.65rem;color:var(--accent);">[${mod.id}]</span>
+                    <span class="block-tag ${blockColor}">CAT ${mod.block}</span>
+                </div>
+                <h3 class="font-display" style="font-size:1.15rem;font-weight:700;margin-bottom:0.5rem;flex-grow:1;line-height:1.35;">${mod.title}</h3>
+                <div style="display:flex;gap:0.35rem;flex-wrap:wrap;">${mod.tags.map(t=>`<span class="block-tag">${t}</span>`).join('')}</div>
+            `;
+            return card;
+        }
+
+        function renderAllBlocks(filteredModules) {
+            const container = document.getElementById('blocksContainer');
+            container.innerHTML = '';
+            Object.entries(blockData).forEach(([blockKey, block]) => {
+                const blockNum = blockKey.match(/\d+/)[0];
+                const blockModules = block.modules.filter(m => filteredModules.includes(m));
+                if (blockModules.length === 0 && filteredModules.length > 0) return;
+                const blockDiv = document.createElement('div');
+                blockDiv.className = 'block-section';
+                blockDiv.innerHTML = `
+                    <div class="block-header"><span style="font-size:1.8rem;">${block.icon}</span><div><h2>${block.title}</h2><span class="font-mono" style="font-size:0.6rem;color:var(--text-dim);">${blockModules.length} modules</span></div></div>
+                    <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;" id="grid-block${blockNum}"></div>
+                `;
+                container.appendChild(blockDiv);
+                const grid = blockDiv.querySelector(`#grid-block${blockNum}`);
+                blockModules.forEach(m => {
+                    const accentClass = block.accent || '';
+                    m.block = blockNum;
+                    grid.appendChild(createCard(m, accentClass));
+                });
+            });
+
+            document.getElementById('activeCount').textContent = filteredModules.length;
+            document.getElementById('noResults').style.display = filteredModules.length === 0 ? 'block' : 'none';
+        }
+
+        function filterModules(query) {
+            const q = query.toLowerCase().trim();
+            if (!q) return allModules;
+            return allModules.filter(m => 
+                m.title.toLowerCase().includes(q) || m.id.toLowerCase().includes(q) ||
+                m.tags.some(t => t.toLowerCase().includes(q)) || 
+                (m.block && m.block.toString().includes(q))
+            );
+        }
+
+        document.getElementById('searchInput').addEventListener('input', function() {
+            renderAllBlocks(filterModules(this.value));
+        });
+
+        renderAllBlocks(allModules);
+    </script>
+</body>
+</html>

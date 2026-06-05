@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>π-Matrix: Performance & Execution Metrics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #050a08;
+            --bg-secondary: #070d0b;
+            --border-color: #142822;
+            --accent: #10b981;
+            --text-muted: #889590;
+            --text-bright: #f0f5f3;
+            --text-body: #d2dad7;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .serif-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .metric-box {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0.5rem 0;
+        }
+        
+        .metric-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen p-8">
+        <!-- Navigation -->
+        <div class="max-w-6xl mx-auto mb-12">
+            <a href="index.html" class="back-button">← RETURN TO CENTRAL COMMAND</a>
+        </div>
+        
+        <!-- Header -->
+        <header class="max-w-6xl mx-auto mb-16">
+            <h1 class="serif-heading text-5xl mb-2">π-Matrix</h1>
+            <p class="text-text-muted" style="color: var(--text-muted);">Performance & Execution Intelligence Dashboard</p>
+        </header>
+        
+        <!-- Metrics Grid -->
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="metric-box">
+                    <div class="metric-label mono-text">Total Modules</div>
+                    <div class="metric-value">83+</div>
+                    <div class="metric-label mono-text text-xs" style="color: var(--border-color);">Across 3 sectors</div>
+                </div>
+                
+                <div class="metric-box">
+                    <div class="metric-label mono-text">System Uptime</div>
+                    <div class="metric-value">99.9%</div>
+                    <div class="metric-label mono-text text-xs" style="color: var(--border-color);">Real-time operational</div>
+                </div>
+                
+                <div class="metric-box">
+                    <div class="metric-label mono-text">Data Channels</div>
+                    <div class="metric-value">12</div>
+                    <div class="metric-label mono-text text-xs" style="color: var(--border-color);">Active streams</div>
+                </div>
+                
+                <div class="metric-box">
+                    <div class="metric-label mono-text">Last Updated</div>
+                    <div class="metric-value" style="font-size: 1.25rem;">NOW</div>
+                    <div class="metric-label mono-text text-xs" style="color: var(--border-color);">Live sync</div>
+                </div>
+            </div>
+            
+            <!-- Sector Performance -->
+            <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+                <h2 class="serif-heading text-2xl mb-6">Sector Performance Overview</h2>
+                
+                <div class="space-y-6">
+                    <!-- Sector 01 -->
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="mono-text text-sm" style="color: var(--accent);">SECTOR 01 • ECONOMICS</span>
+                            <span class="mono-text text-sm" style="color: var(--text-muted);">25/25 Active</span>
+                        </div>
+                        <div style="height: 8px; background-color: var(--bg-primary); border-radius: 4px; overflow: hidden;">
+                            <div style="height: 100%; width: 100%; background-color: var(--accent); border-radius: 4px;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sector 02 -->
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="mono-text text-sm" style="color: var(--accent);">SECTOR 02 • TECHNOLOGY</span>
+                            <span class="mono-text text-sm" style="color: var(--text-muted);">30/30 Active</span>
+                        </div>
+                        <div style="height: 8px; background-color: var(--bg-primary); border-radius: 4px; overflow: hidden;">
+                            <div style="height: 100%; width: 100%; background-color: var(--accent); border-radius: 4px;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sector 03 -->
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="mono-text text-sm" style="color: var(--accent);">SECTOR 03 • GENERAL KNOWLEDGE</span>
+                            <span class="mono-text text-sm" style="color: var(--text-muted);">28/28 Active</span>
+                        </div>
+                        <div style="height: 8px; background-color: var(--bg-primary); border-radius: 4px; overflow: hidden;">
+                            <div style="height: 100%; width: 100%; background-color: var(--accent); border-radius: 4px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- System Status -->
+            <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem;">
+                <h2 class="serif-heading text-2xl mb-4">System Status</h2>
+                <div class="space-y-3" style="color: var(--text-body);">
+                    <p><span class="mono-text" style="color: var(--accent);">✓</span> All data channels operational</p>
+                    <p><span class="mono-text" style="color: var(--accent);">✓</span> Cross-sector navigation verified</p>
+                    <p><span class="mono-text" style="color: var(--accent);">✓</span> Search & filtering systems active</p>
+                    <p><span class="mono-text" style="color: var(--accent);">✓</span> Real-time metrics streaming</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

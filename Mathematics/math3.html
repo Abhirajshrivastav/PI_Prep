@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MATH-03 · |x| — Absolute Value Function — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .graph-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+
+        canvas { width: 100%; max-width: 550px; height: auto; }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .highlight-box {
+            border-left: 3px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .danger-box {
+            border-left: 3px solid var(--rose); background: rgba(244,63,94,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: MATH-03] · [STATUS: VERIFIED]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">CATEGORY 1 · GRAPHS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">|x| — Absolute Value Function</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The V‑shaped modulus function: piecewise definition, sharp corner at the origin, and the classic interview proof that it is continuous but not differentiable at x = 0.</p>
+        </div>
+
+        <!-- Graph Canvas -->
+        <div class="graph-container">
+            <canvas id="absGraph" width="550" height="380"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.5rem;">f(x) = |x| · V‑shape · Continuous everywhere · Not differentiable at x = 0</p>
+
+        <!-- Piecewise Definition & Narration -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧩 Piecewise Definition & Anchor Points</h2>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;">
+                <div>
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">DEFINITION</p>
+                    <p style="color:var(--text-body);">|x| = { x &nbsp;if x ≥ 0<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { -x &nbsp;if x &lt; 0</p>
+                </div>
+                <div>
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">VERTEX</p>
+                    <p style="color:var(--text-body);">(0, 0) — the sharp corner</p>
+                </div>
+                <div>
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">LEFT ARM (x &lt; 0)</p>
+                    <p style="color:var(--text-body);">Line y = -x, slope = -1</p>
+                </div>
+                <div>
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">RIGHT ARM (x &gt; 0)</p>
+                    <p style="color:var(--text-body);">Line y = x, slope = +1</p>
+                </div>
+            </div>
+            <p style="color:var(--text-body);margin-top:1.2rem;line-height:1.7;">
+                <strong>Narration while drawing:</strong> "For x greater than or equal to zero, |x| is simply x — a straight line through the origin with slope 1. For x less than zero, |x| flips the sign and becomes -x, which is a straight line with slope -1. The two lines meet at the origin, forming a perfect V‑shape. Crucially, there is a sharp corner at (0,0) — the left side approaches with slope -1, the right side with slope +1, and these two slopes do not match. This geometric fact is the visual reason why |x| is not differentiable at x = 0, even though it is perfectly continuous there."
+            </p>
+        </div>
+
+        <!-- The Famous Proof -->
+        <div style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📐 The Classic Proof: Continuous but NOT Differentiable at x = 0</h2>
+            <div class="glass-panel" style="margin-bottom:1.2rem;">
+                <h3 style="font-size:1.15rem;font-weight:600;color:var(--accent);">Part 1: Continuity at x = 0 ✓</h3>
+                <p style="color:var(--text-body);margin-top:0.5rem;">
+                    <strong>Left‑hand limit:</strong> lim<sub>x→0⁻</sub> |x| = lim<sub>x→0⁻</sub> (-x) = 0<br>
+                    <strong>Right‑hand limit:</strong> lim<sub>x→0⁺</sub> |x| = lim<sub>x→0⁺</sub> (x) = 0<br>
+                    <strong>Function value:</strong> f(0) = |0| = 0<br>
+                    <strong>Conclusion:</strong> LHL = RHL = f(0) = 0, so |x| is <strong style="color:var(--accent);">continuous at x = 0</strong>.
+                </p>
+            </div>
+            <div class="glass-panel">
+                <h3 style="font-size:1.15rem;font-weight:600;color:var(--rose);">Part 2: Differentiability at x = 0 ✗</h3>
+                <p style="color:var(--text-body);margin-top:0.5rem;">
+                    <strong>Left‑hand derivative:</strong> lim<sub>h→0⁻</sub> [|0+h| - |0|] / h = lim<sub>h→0⁻</sub> |h|/h = lim<sub>h→0⁻</sub> (-h)/h = <strong style="color:var(--rose);">-1</strong><br>
+                    <strong>Right‑hand derivative:</strong> lim<sub>h→0⁺</sub> [|0+h| - |0|] / h = lim<sub>h→0⁺</sub> |h|/h = lim<sub>h→0⁺</sub> h/h = <strong style="color:var(--rose);">+1</strong><br>
+                    <strong>Conclusion:</strong> LHD (-1) ≠ RHD (+1), so the derivative does not exist at x = 0. |x| is <strong style="color:var(--rose);">not differentiable at x = 0</strong>.
+                </p>
+            </div>
+            <div class="highlight-box">
+                <p style="color:var(--text-body);"><strong>Key insight:</strong> Continuity is a necessary but not sufficient condition for differentiability. |x| is the canonical example that proves this distinction — a function can be perfectly unbroken (continuous) yet have a sharp corner where no unique tangent line can be drawn (non‑differentiable).</p>
+            </div>
+        </div>
+
+        <!-- Key Properties -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📋 Key Properties of |x|</h2>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+                <div style="background:rgba(16,185,129,0.04);padding:1rem;border-radius:10px;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.65rem;">DOMAIN</p>
+                    <p style="color:var(--text-body);">All real numbers: (-∞, ∞)</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);padding:1rem;border-radius:10px;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.65rem;">RANGE</p>
+                    <p style="color:var(--text-body);">[0, ∞) — never negative</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);padding:1rem;border-radius:10px;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.65rem;">EVEN FUNCTION</p>
+                    <p style="color:var(--text-body);">|−x| = |x| — symmetric about y‑axis</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);padding:1rem;border-radius:10px;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.65rem;">DERIVATIVE</p>
+                    <p style="color:var(--text-body);">f'(x) = 1 (x>0), -1 (x<0), undefined at x=0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary>
+                    <span>Q1: Draw the graph of |x| and explain its shape.</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">The graph is a V‑shape meeting at the origin. For x ≥ 0 it's the line y = x with slope +1; for x < 0 it's the line y = -x with slope -1. The sharp corner at (0,0) is the defining feature — it's where the function transitions from negative slope to positive slope abruptly.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary>
+                    <span>Q2: Is |x| continuous at x = 0? Prove it.</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">Yes. LHL as x→0⁻ of (-x) = 0. RHL as x→0⁺ of x = 0. f(0) = 0. Since all three are equal, |x| is continuous at x = 0. I can write this proof in under a minute.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary>
+                    <span>Q3: Is |x| differentiable at x = 0? Prove it.</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">No. LHD = lim<sub>h→0⁻</sub> |h|/h = lim<sub>h→0⁻</sub> (-h)/h = -1. RHD = lim<sub>h→0⁺</sub> |h|/h = lim<sub>h→0⁺</sub> h/h = +1. Since LHD ≠ RHD, the derivative does not exist. The sharp corner at the origin prevents a unique tangent line.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary>
+                    <span>Q4: What does the non‑differentiability of |x| tell us about continuity and differentiability?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">It proves that continuity is necessary but not sufficient for differentiability. A function can be perfectly continuous — no breaks, no jumps — yet still lack a derivative at a point. |x| is the simplest, most elegant demonstration of this crucial distinction.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary>
+                    <span>Q5: What is the derivative of |x| for x ≠ 0?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">For x > 0, the derivative is +1. For x < 0, the derivative is -1. This is often written as f'(x) = x/|x| for x ≠ 0, or simply as the signum function: f'(x) = sign(x) where sign(x) = 1 for x>0 and -1 for x<0.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary>
+                    <span>Q6: Give another example of a function that is continuous but not differentiable at a point.</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">x<sup>2/3</sup> at x = 0 — it has a cusp where the tangent becomes vertical. Also, the Weierstrass function is famously continuous everywhere but differentiable nowhere, though |x| is the cleanest, most interview‑friendly example.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary>
+                    <span>Q7: How would the graph of |x - 3| differ from |x|?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">It shifts the entire V‑shape 3 units to the right. The vertex moves from (0,0) to (3,0). The left arm (x < 3) has slope -1, the right arm (x > 3) has slope +1. The shape remains identical; only the location of the sharp corner changes.</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="margin-top:2.5rem;border-left:4px solid var(--gold);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The absolute value function |x| is defined piecewise: it equals x for x ≥ 0 and -x for x < 0, producing a V‑shaped graph with its vertex at the origin. It is continuous everywhere — the left and right limits both equal zero at the origin, matching the function value. However, it is not differentiable at x = 0 because the left‑hand derivative is -1 while the right‑hand derivative is +1. This sharp corner makes |x| the canonical proof that continuity does not guarantee differentiability. The derivative for non‑zero x is simply the signum function: +1 for positive x, -1 for negative x."</em></p>
+        </div>
+    </main>
+
+    <script>
+        // Draw |x| graph on canvas
+        (function() {
+            const canvas = document.getElementById('absGraph');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Axes
+            ctx.strokeStyle = '#4a5a52';
+            ctx.lineWidth = 1;
+            // x-axis
+            ctx.beginPath();
+            ctx.moveTo(40, h/2+40);
+            ctx.lineTo(w-30, h/2+40);
+            ctx.stroke();
+            // y-axis
+            ctx.beginPath();
+            ctx.moveTo(w/2, 20);
+            ctx.lineTo(w/2, h-20);
+            ctx.stroke();
+
+            // Labels
+            ctx.fillStyle = '#6b7d74';
+            ctx.font = '11px "JetBrains Mono", monospace';
+            ctx.fillText('0', w/2-15, h/2+55);
+            // x-axis numbers
+            for (let i = -4; i <= 4; i++) {
+                if (i === 0) continue;
+                const x = w/2 + i * 55;
+                ctx.beginPath();
+                ctx.moveTo(x, h/2+34);
+                ctx.lineTo(x, h/2+46);
+                ctx.stroke();
+                ctx.fillText(i, x-6, h/2+62);
+            }
+            // y-axis numbers
+            for (let i = 1; i <= 4; i++) {
+                const y = h/2+40 - i * 55;
+                ctx.beginPath();
+                ctx.moveTo(w/2-6, y);
+                ctx.lineTo(w/2+6, y);
+                ctx.stroke();
+                ctx.fillText(i, w/2+10, y+4);
+            }
+
+            // Draw |x| — V shape
+            ctx.beginPath();
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2.5;
+            // Left arm (x < 0): y = -x
+            ctx.moveTo(w/2 - 4*55, h/2+40 - 4*55); // (-4, 4)
+            ctx.lineTo(w/2, h/2+40); // (0,0)
+            // Right arm (x >= 0): y = x
+            ctx.lineTo(w/2 + 4*55, h/2+40 - 4*55); // (4, 4)
+            ctx.stroke();
+
+            // Mark the sharp corner
+            ctx.fillStyle = '#f43f5e';
+            ctx.beginPath();
+            ctx.arc(w/2, h/2+40, 6, 0, 2*Math.PI);
+            ctx.fill();
+
+            // Label the corner
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = '10px "JetBrains Mono", monospace';
+            ctx.fillText('sharp corner', w/2+12, h/2+28);
+            ctx.fillText('(0,0)', w/2+12, h/2+55);
+
+            // Slope labels
+            ctx.fillStyle = '#f59e0b';
+            ctx.font = 'italic 11px "JetBrains Mono", monospace';
+            ctx.fillText('slope = -1', w/2-150, h/2+40-75);
+            ctx.fillText('slope = +1', w/2+60, h/2+40-75);
+
+            // Draw tiny slope indicators
+            ctx.setLineDash([4, 4]);
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 1;
+            // Left indicator
+            ctx.beginPath();
+            ctx.moveTo(w/2-100, h/2+40-100);
+            ctx.lineTo(w/2-60, h/2+40-100);
+            ctx.lineTo(w/2-60, h/2+40-60);
+            ctx.stroke();
+            // Right indicator
+            ctx.beginPath();
+            ctx.moveTo(w/2+60, h/2+40-60);
+            ctx.lineTo(w/2+60, h/2+40-100);
+            ctx.lineTo(w/2+100, h/2+40-100);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Arrows on axes
+            ctx.fillStyle = '#4a5a52';
+            ctx.beginPath();
+            ctx.moveTo(w-30, h/2+37);
+            ctx.lineTo(w-30, h/2+43);
+            ctx.lineTo(w-15, h/2+40);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.moveTo(w/2-3, 20);
+            ctx.lineTo(w/2+3, 20);
+            ctx.lineTo(w/2, 5);
+            ctx.fill();
+        })();
+    </script>
+</body>
+</html>

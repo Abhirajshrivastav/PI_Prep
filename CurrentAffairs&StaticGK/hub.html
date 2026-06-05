@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sector 04 · Current Affairs & Static GK — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --border-active: #1a3a2c;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.35);
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.1);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        #starfield { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .star {
+            position: absolute; background: white; border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite; animation-delay: var(--delay); opacity: 0;
+        }
+        @keyframes twinkle {
+            0%,100% { opacity: 0.08; } 30% { opacity: 0.6; } 60% { opacity: 0.15; } 85% { opacity: 0.8; }
+        }
+
+        .ambient-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(120px); opacity: 0.07; }
+        .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #f43f5e 0%, transparent 70%); top: -100px; right: -100px; }
+        .orb-2 { width: 350px; height: 350px; background: radial-gradient(circle, #10b981 0%, transparent 70%); bottom: -50px; left: -50px; }
+
+        .content-layer { position: relative; z-index: 1; }
+
+        .glass-panel {
+            background: rgba(8, 15, 12, 0.7); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--border-subtle); border-radius: 20px; transition: all 0.4s ease;
+        }
+
+        .glass-card {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;
+        }
+        .glass-card:hover {
+            border-color: var(--accent); transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(16,185,129,0.2), 0 0 60px rgba(16,185,129,0.06);
+            background: rgba(12,22,17,0.8);
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .search-input {
+            background: rgba(10,18,14,0.6); border: 1px solid var(--border-subtle); border-radius: 14px;
+            padding: 0.85rem 1.2rem; color: var(--text-bright); font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem; width: 100%; transition: all 0.35s ease; backdrop-filter: blur(10px);
+        }
+        .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 30px rgba(16,185,129,0.2), 0 0 0 4px var(--accent-dim); background: rgba(14,24,18,0.75); }
+        .search-input::placeholder { color: var(--text-dim); }
+
+        .module-tag {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; padding: 4px 10px; border-radius: 20px;
+            background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(16,185,129,0.2);
+            text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap;
+        }
+        .block-tag {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; padding: 3px 8px; border-radius: 4px;
+            background: var(--bg-deep); border: 1px solid var(--border-subtle); color: var(--text-muted); text-transform: uppercase;
+        }
+        .block-tag.gold { border-color: rgba(245,158,11,0.3); color: var(--gold); background: var(--gold-dim); }
+        .block-tag.info { border-color: rgba(59,130,246,0.3); color: var(--info); background: var(--info-dim); }
+        .block-tag.violet { border-color: rgba(139,92,246,0.3); color: var(--violet); background: var(--violet-dim); }
+        .block-tag.rose { border-color: rgba(244,63,94,0.3); color: var(--rose); background: var(--rose-dim); }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .block-header {
+            display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .block-header h2 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.4rem; color: var(--text-bright); }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--border-active); border-radius: 10px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+
+        .block-section { margin-bottom: 2.5rem; }
+    </style>
+</head>
+<body>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div id="starfield"></div>
+
+    <div class="content-layer">
+        <nav style="position:sticky;top:0;z-index:100;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.9rem 2rem;">
+            <div style="max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+                <a href="../index.html" class="back-link"><span style="font-size:1.2rem;">←</span> RETURN TO CENTRAL COMMAND</a>
+                <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">SECTOR 04 · CURRENT AFFAIRS & STATIC GK</span>
+            </div>
+        </nav>
+
+        <header style="max-width:1400px;margin:0 auto;padding:2.5rem 2rem 1.5rem;">
+            <div style="display:flex;flex-direction:column;gap:1rem;">
+                <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+                    <span class="font-mono" style="font-size:0.7rem;color:var(--rose);letter-spacing:0.1em;">MODULE HUB</span>
+                    <span class="font-mono" style="font-size:0.65rem;color:var(--text-dim);">17% INTERVIEW PRIORITY</span>
+                    <span class="module-tag">10 BLOCKS · 60+ MODULES</span>
+                </div>
+                <h1 class="font-display" style="font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;">Current Affairs & Static GK</h1>
+                <p style="color:var(--text-muted);font-size:1rem;max-width:750px;">Live geopolitical situations, international bodies, geography, domestic politics, economic concepts, science & tech, awards, and bilateral relations — everything that defines PI awareness.</p>
+            </div>
+        </header>
+
+        <main style="max-width:1400px;margin:0 auto;padding:1.5rem 2rem 2rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;">
+                <input type="text" class="search-input" id="searchInput" placeholder="Filter by title, tag, block, or module ID..." style="max-width:500px;">
+                <div class="glass-panel" style="padding:0.8rem 1.5rem;display:flex;align-items:center;gap:0.5rem;">
+                    <span class="font-mono" style="font-size:0.65rem;color:var(--text-dim);">ACTIVE MODULES</span>
+                    <span class="font-display" style="font-size:1.8rem;font-weight:900;color:var(--accent);" id="activeCount">0</span>
+                </div>
+            </div>
+
+            <!-- Blocks 1-10 dynamically generated -->
+            <div id="blocksContainer"></div>
+            <p id="noResults" style="text-align:center;color:var(--text-muted);margin-top:2rem;display:none;">No modules match your filter.</p>
+        </main>
+    </div>
+
+    <script>
+        (function() {
+            const sf = document.getElementById('starfield');
+            for (let i=0;i<80;i++) {
+                const s=document.createElement('div'); s.classList.add('star');
+                s.style.width=(Math.random()*2+0.7)+'px'; s.style.height=s.style.width;
+                s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%';
+                s.style.setProperty('--duration',(Math.random()*4+3)+'s');
+                s.style.setProperty('--delay',(Math.random()*6)+'s');
+                s.style.opacity=Math.random()*0.4+0.1; sf.appendChild(s);
+            }
+        })();
+
+        const blockData = {
+            block1: {
+                title: "BLOCK 1 · Live International Situations",
+                icon: "🌍",
+                accent: "rose",
+                modules: [
+                    {id:"CA-01",title:"Iran Nuclear Program & JCPOA",tags:["Iran","nuclear","JCPOA"],url:"#"},
+                    {id:"CA-02",title:"Israel–Palestine Conflict",tags:["Gaza","Hamas","two-state"],url:"#"},
+                    {id:"CA-03",title:"Operation Sindoor (2025)",tags:["India","Pakistan","terror"],url:"#"},
+                    {id:"CA-04",title:"Russia–Ukraine War",tags:["NATO","Zelensky","sanctions"],url:"#"},
+                    {id:"CA-05",title:"US–China Trade War & Tariffs",tags:["Trump","tariffs","China+1"],url:"#"},
+                    {id:"CA-06",title:"Bangladesh Political Crisis",tags:["Hasina","Yunus","interim"],url:"#"},
+                    {id:"CA-07",title:"India–China Border Standoff",tags:["Galwan","LAC","disengagement"],url:"#"}
+                ]
+            },
+            block2: {
+                title: "BLOCK 2 · International Organizations",
+                icon: "🏛️",
+                accent: "info",
+                modules: [
+                    {id:"CA-08",title:"SAARC & Its Inactivity",tags:["SAARC","South Asia","boycott"],url:"#"},
+                    {id:"CA-09",title:"BRICS & Expansion",tags:["BRICS","dedollarization","new members"],url:"#"},
+                    {id:"CA-10",title:"G7 vs G20",tags:["G7","G20","India presidency"],url:"#"},
+                    {id:"CA-11",title:"SCO (Shanghai Cooperation Organisation)",tags:["SCO","China","Russia"],url:"#"},
+                    {id:"CA-12",title:"QUAD & Indo-Pacific",tags:["QUAD","China","maritime"],url:"#"},
+                    {id:"CA-13",title:"NATO & Article 5",tags:["NATO","collective defense"],url:"#"},
+                    {id:"CA-14",title:"IMF & World Bank",tags:["IMF","SDR","Ajay Banga"],url:"#"},
+                    {id:"CA-15",title:"WTO & Trade Disputes",tags:["WTO","subsidies","agriculture"],url:"#"},
+                    {id:"CA-16",title:"FATF (Financial Action Task Force)",tags:["FATF","grey list","money laundering"],url:"#"},
+                    {id:"CA-17",title:"ASEAN & Act East Policy",tags:["ASEAN","Southeast Asia","India"],url:"#"},
+                    {id:"CA-18",title:"AfCFTA (African Continental FTA)",tags:["AfCFTA","Africa","trade"],url:"#"}
+                ]
+            },
+            block3: {
+                title: "BLOCK 3 · World Geography & Strategic Chokepoints",
+                icon: "🗺️",
+                accent: "gold",
+                modules: [
+                    {id:"CA-19",title:"Strait of Hormuz",tags:["Iran","Oman","oil"],url:"#"},
+                    {id:"CA-20",title:"Strait of Malacca",tags:["Malaysia","Indonesia","shipping"],url:"#"},
+                    {id:"CA-21",title:"Bab el-Mandeb & Red Sea",tags:["Yemen","Houthi","shipping"],url:"#"},
+                    {id:"CA-22",title:"Suez Canal",tags:["Egypt","Ever Given","trade"],url:"#"},
+                    {id:"CA-23",title:"South China Sea Dispute",tags:["Nine-Dash Line","UNCLOS"],url:"#"},
+                    {id:"CA-24",title:"Middle East Land Borders",tags:["Lebanon to Oman","Iran borders"],url:"#"},
+                    {id:"CA-25",title:"Scandinavia vs Nordic Countries",tags:["Norway","Sweden","Finland"],url:"#"},
+                    {id:"CA-26",title:"Hemispheres & Latitudes",tags:["Northern","Eastern","Tropic of Cancer"],url:"#"},
+                    {id:"CA-27",title:"Highest Peaks (K2 vs Kangchenjunga)",tags:["K2","Kangchenjunga","India"],url:"#"},
+                    {id:"CA-28",title:"Largest & Smallest States of India",tags:["Rajasthan","Goa","UP"],url:"#"}
+                ]
+            },
+            block4: {
+                title: "BLOCK 4 · India Domestic Current Affairs",
+                icon: "🇮🇳",
+                accent: "violet",
+                modules: [
+                    {id:"CA-29",title:"2024 General Elections",tags:["BJP","NDA","TDP","JD(U)"],url:"#"},
+                    {id:"CA-30",title:"Union Budget 2025‑26",tags:["fiscal deficit","capex","tax relief"],url:"#"},
+                    {id:"CA-31",title:"India's Economic Indicators",tags:["GDP","inflation","repo rate"],url:"#"},
+                    {id:"CA-32",title:"Chandrayaan‑3 & Aditya‑L1",tags:["Moon south pole","Lagrange point"],url:"#"},
+                    {id:"CA-33",title:"Gaganyaan Mission",tags:["human spaceflight","Vyomnauts"],url:"#"},
+                    {id:"CA-34",title:"PLI Schemes & Semiconductor Mission",tags:["manufacturing","chips"],url:"#"},
+                    {id:"CA-35",title:"Viksit Bharat 2047",tags:["developed India","100 years"],url:"#"},
+                    {id:"CA-36",title:"UPI & Digital Payments Revolution",tags:["UPI","global expansion"],url:"#"}
+                ]
+            },
+            block5: {
+                title: "BLOCK 5 · Indian Polity (Static)",
+                icon: "📜",
+                accent: "rose",
+                modules: [
+                    {id:"CA-37",title:"President vs Prime Minister Powers",tags:["ceremonial","executive"],url:"#"},
+                    {id:"CA-38",title:"Lok Sabha vs Rajya Sabha",tags:["money bill","permanent house"],url:"#"},
+                    {id:"CA-39",title:"Union, State & Concurrent Lists",tags:["legislation","federal"],url:"#"},
+                    {id:"CA-40",title:"Federal Structure & Article 356",tags:["President's Rule","centralization"],url:"#"},
+                    {id:"CA-41",title:"NITI Aayog (replaced Planning Commission)",tags:["think tank","cooperative federalism"],url:"#"},
+                    {id:"CA-42",title:"73rd & 74th Amendments (Panchayati Raj)",tags:["local governance","reservations"],url:"#"},
+                    {id:"CA-43",title:"Fundamental Rights vs Directive Principles",tags:["justiciable","DPSP"],url:"#"}
+                ]
+            },
+            block6: {
+                title: "BLOCK 6 · Economic Concepts (Static)",
+                icon: "📊",
+                accent: "info",
+                modules: [
+                    {id:"CA-44",title:"GDP, GNP, NNP, NDP",tags:["national income","depreciation"],url:"#"},
+                    {id:"CA-45",title:"Fiscal Deficit vs Current Account Deficit",tags:["borrowing","trade balance"],url:"#"},
+                    {id:"CA-46",title:"Monetary Policy vs Fiscal Policy",tags:["RBI","repo rate","CRR","SLR"],url:"#"},
+                    {id:"CA-47",title:"Types of Inflation",tags:["demand-pull","cost-push","stagflation"],url:"#"},
+                    {id:"CA-48",title:"Phillips Curve",tags:["unemployment","inflation","trade-off"],url:"#"},
+                    {id:"CA-49",title:"Purchasing Power Parity (PPP)",tags:["living standards","GDP comparison"],url:"#"},
+                    {id:"CA-50",title:"Dedollarization",tags:["local currency trade","BRICS"],url:"#"},
+                    {id:"CA-51",title:"Quantitative Easing (QE)",tags:["central bank","liquidity"],url:"#"}
+                ]
+            },
+            block7: {
+                title: "BLOCK 7 · Science, Technology & AI",
+                icon: "🤖",
+                accent: "violet",
+                modules: [
+                    {id:"CA-52",title:"Generative AI & ChatGPT",tags:["LLMs","OpenAI","regulation"],url:"#"},
+                    {id:"CA-53",title:"Semiconductor Basics & Supply Chain",tags:["chips","TSMC","India mission"],url:"#"},
+                    {id:"CA-54",title:"Rare Earth Elements",tags:["critical minerals","China dominance"],url:"#"},
+                    {id:"CA-55",title:"RADAR & SONAR",tags:["detection","echo","stealth"],url:"#"},
+                    {id:"CA-56",title:"B2 Spirit Stealth Bomber",tags:["USAF","nuclear","flying wing"],url:"#"}
+                ]
+            },
+            block8: {
+                title: "BLOCK 8 · Awards, Sports & Culture",
+                icon: "🏆",
+                accent: "gold",
+                modules: [
+                    {id:"CA-57",title:"Gukesh D – World Chess Champion",tags:["chess","youngest","Chennai"],url:"#"},
+                    {id:"CA-58",title:"Paris Olympics 2024 – India Medals",tags:["Neeraj Chopra","javelin"],url:"#"},
+                    {id:"CA-59",title:"Nobel Prizes 2024",tags:["Hinton","AlphaFold","peace"],url:"#"},
+                    {id:"CA-60",title:"Bharat Ratna 2024",tags:["Karpoori Thakur","Advani","Swaminathan"],url:"#"},
+                    {id:"CA-61",title:"Gyanpeeth & Sangeet Natak Akademi",tags:["literature","performing arts"],url:"#"},
+                    {id:"CA-62",title:"Classical Dances of India",tags:["Bharatanatyam","Kathak","8 forms"],url:"#"}
+                ]
+            },
+            block9: {
+                title: "BLOCK 9 · India's Bilateral Relations",
+                icon: "🤝",
+                accent: "rose",
+                modules: [
+                    {id:"CA-63",title:"India–Maldives (Muizzu & 'India Out')",tags:["Maldives","China","strategic"],url:"#"},
+                    {id:"CA-64",title:"India–Canada (Khalistan & Nijjar)",tags:["Trudeau","allegations","strained"],url:"#"},
+                    {id:"CA-65",title:"India–Nepal (Border & China)",tags:["Kalapani","blockade","Madhesi"],url:"#"},
+                    {id:"CA-66",title:"India–Sri Lanka (Tamil & Economy)",tags:["civil war","economic crisis"],url:"#"},
+                    {id:"CA-67",title:"India–USA (Defence & Trade)",tags:["iCET","Major Defence Partner"],url:"#"}
+                ]
+            },
+            block10: {
+                title: "BLOCK 10 · Practice Framework",
+                icon: "🎯",
+                accent: "info",
+                modules: [
+                    {id:"CA-68",title:"Daily Reading & Opinion Drills",tags:["current affairs","note taking"],url:"#"},
+                    {id:"CA-69",title:"Weekly Deep Dives into Organizations",tags:["BRICS","IMF","research"],url:"#"},
+                    {id:"CA-70",title:"Explain Economics Simply (Feynman Technique)",tags:["monetary policy","inflation"],url:"#"}
+                ]
+            }
+        };
+
+        const allModules = Object.values(blockData).flatMap(b => b.modules);
+
+        function createCard(mod, blockColor) {
+            const card = document.createElement('a');
+            card.href = mod.url; card.classList.add('glass-card'); card.style.padding = '1.3rem';
+            card.innerHTML = `
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.6rem;">
+                    <span class="font-mono" style="font-size:0.65rem;color:var(--accent);">[${mod.id}]</span>
+                    <span class="block-tag ${blockColor}">BLOCK ${mod.block}</span>
+                </div>
+                <h3 class="font-display" style="font-size:1.15rem;font-weight:700;margin-bottom:0.5rem;flex-grow:1;line-height:1.35;">${mod.title}</h3>
+                <div style="display:flex;gap:0.35rem;flex-wrap:wrap;">${mod.tags.map(t=>`<span class="block-tag">${t}</span>`).join('')}</div>
+            `;
+            return card;
+        }
+
+        function renderAllBlocks(filteredModules) {
+            const container = document.getElementById('blocksContainer');
+            container.innerHTML = '';
+            Object.entries(blockData).forEach(([blockKey, block]) => {
+                const blockNum = blockKey.match(/\d+/)[0];
+                const blockModules = block.modules.filter(m => filteredModules.includes(m));
+                if (blockModules.length === 0 && filteredModules.length > 0) return;
+                const blockDiv = document.createElement('div');
+                blockDiv.className = 'block-section';
+                blockDiv.innerHTML = `
+                    <div class="block-header"><span style="font-size:1.8rem;">${block.icon}</span><div><h2>${block.title}</h2><span class="font-mono" style="font-size:0.6rem;color:var(--text-dim);">${blockModules.length} modules</span></div></div>
+                    <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;" id="grid-block${blockNum}"></div>
+                `;
+                container.appendChild(blockDiv);
+                const grid = blockDiv.querySelector(`#grid-block${blockNum}`);
+                blockModules.forEach(m => {
+                    const accentClass = block.accent || '';
+                    grid.appendChild(createCard(m, accentClass));
+                });
+            });
+
+            document.getElementById('activeCount').textContent = filteredModules.length;
+            document.getElementById('noResults').style.display = filteredModules.length === 0 ? 'block' : 'none';
+        }
+
+        function filterModules(query) {
+            const q = query.toLowerCase().trim();
+            if (!q) return allModules;
+            return allModules.filter(m => 
+                m.title.toLowerCase().includes(q) || m.id.toLowerCase().includes(q) ||
+                m.tags.some(t => t.toLowerCase().includes(q)) || 
+                (m.block && m.block.toString().includes(q))
+            );
+        }
+
+        document.getElementById('searchInput').addEventListener('input', function() {
+            renderAllBlocks(filterModules(this.value));
+        });
+
+        renderAllBlocks(allModules);
+    </script>
+</body>
+</html>

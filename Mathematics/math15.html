@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MATH-15 · Differentiate x² from First Principles — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .graph-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+
+        canvas { max-width: 100%; height: auto; }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .proof-block {
+            background: rgba(16,185,129,0.05); border-left: 4px solid var(--accent);
+            border-radius: 0 10px 10px 0; padding: 1.2rem 1.4rem; margin: 1.2rem 0;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-body);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: MATH-15] · [STATUS: VERIFIED]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">CATEGORY 3 · DIFFERENTIATION FROM FIRST PRINCIPLES</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Differentiate x² from First Principles</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The foundational derivation: start from the limit definition, expand (x+h)², cancel terms, and take the limit to reveal the derivative 2x.</p>
+        </div>
+
+        <!-- Graph Canvas: x² and its derivative line 2x -->
+        <div class="graph-container">
+            <canvas id="derivGraph" width="520" height="340"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">f(x) = x² (green) · f'(x) = 2x (gold) — the derivative at any x is the slope of the tangent</p>
+
+        <!-- The Proof -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📐 The First Principles Derivation</h2>
+            <p style="color:var(--text-body);">The derivative of f(x) at x is defined as:</p>
+            <div class="proof-block">
+                f'(x) = lim<sub>h→0</sub> [f(x+h) − f(x)] / h
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;">For f(x) = x²:</p>
+            <div class="proof-block">
+                f(x+h) = (x+h)² = x² + 2xh + h²
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;">Substitute into the definition:</p>
+            <div class="proof-block">
+                f'(x) = lim<sub>h→0</sub> [ (x² + 2xh + h²) − x² ] / h<br>
+                &nbsp;&nbsp;&nbsp;&nbsp; = lim<sub>h→0</sub> [ 2xh + h² ] / h<br>
+                &nbsp;&nbsp;&nbsp;&nbsp; = lim<sub>h→0</sub> (2x + h)
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;">Now take the limit as h → 0:</p>
+            <div class="proof-block">
+                f'(x) = 2x + 0 = <strong>2x</strong>
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;">Thus, the derivative of x² with respect to x is 2x.</p>
+        </div>
+
+        <!-- Narration Script -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🎙️ Interview Narration Script</h2>
+            <p style="color:var(--text-body);">"To differentiate x² from first principles, I start with the limit definition. I compute f(x+h) by expanding (x+h)², which gives x² + 2xh + h². I subtract f(x) — which is x² — leaving 2xh + h². Dividing by h gives 2x + h. As h approaches zero, this expression approaches 2x. Therefore, the derivative of x² is 2x. This derivation shows the power of the limit definition: it captures the instantaneous rate of change by looking at what happens to the secant slope as the two points become infinitely close."</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Derive the derivative of x² from first principles.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Write the definition: lim<sub>h→0</sub> [(x+h)² - x²]/h. Expand (x+h)² = x² + 2xh + h². Cancel x². Divide by h: (2xh + h²)/h = 2x + h. Take the limit as h→0: 2x. So f'(x) = 2x.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What is the geometrical meaning of the derivative 2x for the function x²?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">At any point x on the parabola, the slope of the tangent line is 2x. At x=0, the slope is 0 (horizontal tangent at the vertex). At x=1, the slope is 2. At x=-2, the slope is -4. The derivative tells us how steep the curve is at each point.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Why does the h² term disappear in the limit?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">After dividing by h, the h² term becomes h, which tends to zero as h→0. Higher powers of h become negligible compared to constant terms, leaving only the first‑order term 2x. This is why the derivative captures the instantaneous rate of change.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: How would you differentiate x³ from first principles using the same method?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">(x+h)³ = x³ + 3x²h + 3xh² + h³. Subtract x³, divide by h → 3x² + 3xh + h². As h→0, 3x² + 0 + 0 = 3x². So d/dx(x³) = 3x². The pattern continues: d/dx(xⁿ) = nxⁿ⁻¹.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What does this derivation tell us about the relationship between the secant line and the tangent line?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The secant line connects two points on the curve. As we bring the second point closer to the first (h→0), the secant approaches the tangent line. The limit of the secant slope is the slope of the tangent, which is the derivative.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="margin-top:2.5rem;border-left:4px solid var(--accent);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--accent);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The derivative of x² is found by applying the limit definition: f'(x) = lim<sub>h→0</sub> [(x+h)² - x²]/h. Expanding (x+h)² gives x² + 2xh + h²; canceling x² leaves 2xh + h². Dividing by h yields 2x + h, and taking the limit as h approaches zero gives 2x. This clean derivation demonstrates the core idea of calculus: the instantaneous rate of change is the limit of average rates of change. Every interviewer expects you to be able to produce this proof fluently and explain what each algebraic step represents."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('derivGraph');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Coordinate system
+            const xMin = -4, xMax = 4, yMin = -3, yMax = 10;
+            const toCanvasX = (x) => (x - xMin) / (xMax - xMin) * (w - 80) + 40;
+            const toCanvasY = (y) => (yMax - y) / (yMax - yMin) * (h - 60) + 30;
+
+            // Axes
+            ctx.strokeStyle = '#4a5a52'; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(20, toCanvasY(0)); ctx.lineTo(w-15, toCanvasY(0)); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(toCanvasX(0), 10); ctx.lineTo(toCanvasX(0), h-10); ctx.stroke();
+
+            // Ticks & labels
+            ctx.fillStyle = '#6b7d74'; ctx.font = '9px "JetBrains Mono", monospace';
+            for (let x = -3; x <= 3; x++) {
+                if (x === 0) continue;
+                const tx = toCanvasX(x);
+                ctx.beginPath(); ctx.moveTo(tx, toCanvasY(0)-3); ctx.lineTo(tx, toCanvasY(0)+3); ctx.stroke();
+                ctx.fillText(x, tx-4, toCanvasY(0)+14);
+            }
+            for (let y = 2; y <= 8; y+=2) {
+                const ty = toCanvasY(y);
+                ctx.beginPath(); ctx.moveTo(toCanvasX(0)-3, ty); ctx.lineTo(toCanvasX(0)+3, ty); ctx.stroke();
+                ctx.fillText(y, toCanvasX(0)+6, ty+4);
+            }
+            ctx.fillText('0', toCanvasX(0)+4, toCanvasY(0)-4);
+
+            // Draw f(x) = x²
+            ctx.beginPath();
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2.5;
+            let first = true;
+            for (let px = 0; px < w; px++) {
+                const xVal = (px - 40) / ((w-80)/(xMax-xMin)) + xMin;
+                const yVal = xVal * xVal;
+                const canvasY = toCanvasY(yVal);
+                if (canvasY < 0 || canvasY > h) { first = true; continue; }
+                if (first) { ctx.moveTo(px, canvasY); first = false; }
+                else ctx.lineTo(px, canvasY);
+            }
+            ctx.stroke();
+
+            // Draw f'(x) = 2x (derivative line)
+            ctx.beginPath();
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 1.8;
+            ctx.setLineDash([6, 4]);
+            // line from (-3, -6) to (3, 6) but keep within bounds
+            const x1 = -3.5, y1 = 2*x1, x2 = 3.5, y2 = 2*x2;
+            ctx.moveTo(toCanvasX(x1), toCanvasY(y1));
+            ctx.lineTo(toCanvasX(x2), toCanvasY(y2));
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Legend
+            ctx.fillStyle = '#10b981';
+            ctx.fillRect(50, h-60, 12, 12);
+            ctx.fillStyle = '#c8d6d0';
+            ctx.font = '10px "JetBrains Mono", monospace';
+            ctx.fillText('f(x) = x²', 68, h-51);
+            ctx.fillStyle = '#f59e0b';
+            ctx.fillRect(50, h-38, 12, 12);
+            ctx.fillText("f'(x) = 2x", 68, h-29);
+
+            // Tangent line at x = 1.5
+            const a = 1.5, fa = a*a, slope = 2*a;
+            const tanX1 = a-1.2, tanX2 = a+1.2;
+            const tanY1 = fa + slope*(tanX1-a), tanY2 = fa + slope*(tanX2-a);
+            ctx.beginPath();
+            ctx.strokeStyle = '#f43f5e';
+            ctx.lineWidth = 1.2;
+            ctx.setLineDash([3,3]);
+            ctx.moveTo(toCanvasX(tanX1), toCanvasY(tanY1));
+            ctx.lineTo(toCanvasX(tanX2), toCanvasY(tanY2));
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle = '#f43f5e';
+            ctx.fillText('tangent at x=1.5', toCanvasX(2.3), toCanvasY(3.5));
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MATH-09 · Transformation Rules — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .graph-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+
+        canvas { max-width: 100%; height: auto; }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .rule-card {
+            background: rgba(16,185,129,0.05); border: 1px solid var(--border-subtle); border-radius: 12px;
+            padding: 1.2rem; margin: 1rem 0;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: MATH-09] · [STATUS: VERIFIED]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">CATEGORY 1 · GRAPHS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Transformation Rules</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Shift, Reflect, Scale — the three core operations that turn any known graph into a family of related curves. Master the logic, and you'll never need to memorise a transformed graph again.</p>
+        </div>
+
+        <!-- Master Demo Canvas: y = x² and its transforms -->
+        <div class="graph-container">
+            <canvas id="transformCanvas" width="620" height="420"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">Base function f(x) = x² (white) · Shifted, reflected, and scaled variants overlaid</p>
+
+        <!-- Shift (Translation) -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📐 Shift (Translation)</h2>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;">
+                <div class="rule-card">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;margin-bottom:0.3rem;">VERTICAL SHIFT</p>
+                    <p style="color:var(--text-body);">f(x) + k<br>k > 0 → up, k < 0 → down</p>
+                    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:0.5rem;">Add a constant to the output. The entire graph moves up or down without changing shape.</p>
+                </div>
+                <div class="rule-card">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;margin-bottom:0.3rem;">HORIZONTAL SHIFT</p>
+                    <p style="color:var(--text-body);">f(x - h)<br>h > 0 → right, h < 0 → left</p>
+                    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:0.5rem;">Subtract from the input. The graph moves opposite to the sign: (x-2) shifts right, (x+3) shifts left.</p>
+                </div>
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;"><strong>Narration:</strong> "To shift a graph vertically, add a constant to the whole function — f(x)+2 lifts every point up by 2. To shift horizontally, replace x with (x−h). The trick is that (x−2) moves right, not left, because to get the same output as before, x must be 2 units larger. I always verify by checking the vertex or a key point."</p>
+        </div>
+
+        <!-- Reflect -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🪞 Reflect</h2>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;">
+                <div class="rule-card">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;margin-bottom:0.3rem;">ACROSS X‑AXIS</p>
+                    <p style="color:var(--text-body);">−f(x)</p>
+                    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:0.5rem;">Multiply the whole function by −1. Everything above the axis flips below, and vice versa. x‑intercepts stay fixed.</p>
+                </div>
+                <div class="rule-card">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;margin-bottom:0.3rem;">ACROSS Y‑AXIS</p>
+                    <p style="color:var(--text-body);">f(−x)</p>
+                    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:0.5rem;">Replace x with −x. The left and right sides of the graph swap. If the function is even, there is no visible change.</p>
+                </div>
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;"><strong>Narration:</strong> "Reflection across the x‑axis negates the output: y becomes −y. Reflection across the y‑axis negates the input: x becomes −x. These are fundamentally different operations — one flips vertically, the other horizontally. For odd functions like x³, both reflections produce the same result, but for general functions like eˣ, they are completely different."</p>
+        </div>
+
+        <!-- Scale (Stretch/Compress) -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🔍 Scale (Stretch / Compress)</h2>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;">
+                <div class="rule-card">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;margin-bottom:0.3rem;">VERTICAL SCALE</p>
+                    <p style="color:var(--text-body);">a·f(x)<br>|a| > 1 → stretch, 0 < |a| < 1 → compress</p>
+                    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:0.5rem;">Multiply the output. y‑values are scaled by a. If a is negative, it also reflects across the x‑axis.</p>
+                </div>
+                <div class="rule-card">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;margin-bottom:0.3rem;">HORIZONTAL SCALE</p>
+                    <p style="color:var(--text-body);">f(b·x)<br>|b| > 1 → compress, 0 < |b| < 1 → stretch</p>
+                    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:0.5rem;">Multiply the input. This is counter‑intuitive: b=2 makes the graph twice as narrow (compressed), b=0.5 makes it twice as wide (stretched).</p>
+                </div>
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;"><strong>Narration:</strong> "Vertical scaling multiplies all y‑coordinates. Horizontal scaling multiplies x‑coordinates by 1/b — that's why f(2x) compresses the graph: to reach the same y, x needs to be half as large. The order of transformations matters: if I have −2f(3x+1)+4, I'd work from the inside out — shift, then scale, then reflect and shift vertically."</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is the difference between vertical and horizontal shift?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Vertical shift adds a constant outside the function (f(x)+k), moving the graph up or down. Horizontal shift changes the input (f(x−h)), moving the graph left or right. Crucially, (x−2) shifts right, not left — this is the most common mistake.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: How would you graph y = −(x−3)² + 5 starting from y = x²?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Start with the parent parabola. Shift right by 3 (replace x with x−3) → vertex at (3,0). Reflect across x‑axis (multiply by −1) → opens downward. Then shift up by 5 → vertex moves to (3,5). The order: horizontal shift, reflection, vertical shift.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Why does f(2x) compress the graph horizontally rather than stretch it?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Because the x‑value needed to reach a given y is halved. For f(x)=x², the point (2,4) becomes (1,4) in f(2x) because f(2·1) = f(2) = 4. The graph squeezes toward the y‑axis. It's a compression by factor 1/2.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: How do you handle multiple transformations in the right order?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Work from the inside out, following BIDMAS/PEMDAS: 1) Horizontal shift (inside the bracket), 2) Horizontal scale (multiply x), 3) Reflection & vertical scale (multiply the function), 4) Vertical shift (add constant). Always apply transformations to the x or y values in that sequence.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What transformation turns f(x) into f(|x|)?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">That's a modulus on the input. It's not a simple shift/reflect/scale; it's a piecewise transformation: for x≥0, the graph stays the same; for x<0, we take the right‑side graph and mirror it to the left, making the function even. This is a fundamentally different operation and often creates sharp corners at x=0.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q6: If I have the graph of eˣ, how would I sketch y = 2eˣ⁻¹ − 3?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Start with eˣ. Shift right by 1 (eˣ⁻¹). Then stretch vertically by factor 2. Then shift down by 3. The horizontal asymptote moves from y=0 to y=−3. So the graph still grows exponentially but is twice as steep and sits 3 units lower.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="margin-top:2.5rem;border-left:4px solid var(--info);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--info);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Graph transformations are built on three operations. Shift: f(x)+k moves the graph vertically, f(x−h) moves it horizontally — remembering that (x−2) shifts right, not left. Reflect: −f(x) flips across the x‑axis, f(−x) flips across the y‑axis. Scale: a·f(x) stretches or compresses vertically; f(bx) does so horizontally, with the counter‑intuitive rule that |b|>1 compresses and 0<|b|<1 stretches. The correct order is horizontal shift, horizontal scale, reflection/vertical scale, then vertical shift. These rules allow you to sketch any transformed function from a known parent graph — a skill that signals genuine algebraic fluency far beyond rote memorisation."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('transformCanvas');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Coordinate system
+            const xMin = -5, xMax = 5, yMin = -3, yMax = 8;
+            const toCanvasX = (x) => (x - xMin) / (xMax - xMin) * (w - 80) + 40;
+            const toCanvasY = (y) => (yMax - y) / (yMax - yMin) * (h - 60) + 30;
+
+            // Axes
+            ctx.strokeStyle = '#4a5a52';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(25, toCanvasY(0)); ctx.lineTo(w-15, toCanvasY(0)); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(toCanvasX(0), 10); ctx.lineTo(toCanvasX(0), h-15); ctx.stroke();
+
+            // Ticks
+            ctx.fillStyle = '#6b7d74'; ctx.font = '9px "JetBrains Mono", monospace';
+            for (let x = -4; x <= 4; x++) {
+                if (x === 0) continue;
+                const tx = toCanvasX(x);
+                ctx.beginPath(); ctx.moveTo(tx, toCanvasY(0)-3); ctx.lineTo(tx, toCanvasY(0)+3); ctx.stroke();
+                ctx.fillText(x, tx-5, toCanvasY(0)+15);
+            }
+            for (let y = 1; y <= 7; y++) {
+                const ty = toCanvasY(y);
+                ctx.beginPath(); ctx.moveTo(toCanvasX(0)-3, ty); ctx.lineTo(toCanvasX(0)+3, ty); ctx.stroke();
+                ctx.fillText(y, toCanvasX(0)+6, ty+4);
+            }
+            ctx.fillText('0', toCanvasX(0)+4, toCanvasY(0)-4);
+
+            // Draw base function f(x) = x²
+            function drawCurve(func, color, width) {
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = width;
+                let first = true;
+                for (let px = 0; px < w; px++) {
+                    const xVal = xMin + (px / w) * (xMax - xMin);
+                    const yVal = func(xVal);
+                    const canvasY = toCanvasY(yVal);
+                    if (canvasY < 0 || canvasY > h) { first = true; continue; }
+                    if (first) { ctx.moveTo(px, canvasY); first = false; }
+                    else ctx.lineTo(px, canvasY);
+                }
+                ctx.stroke();
+            }
+
+            // Define transformations
+            const base = (x) => x * x;
+            const upShift = (x) => base(x) + 2;
+            const rightShift = (x) => base(x - 2);
+            const reflectX = (x) => -base(x);
+            const vertStretch = (x) => 2 * base(x);
+
+            // Draw curves
+            drawCurve(base, '#f0f5f3', 2.5);       // white base
+            drawCurve(upShift, '#10b981', 2.2);    // green up
+            drawCurve(rightShift, '#f59e0b', 2.2); // gold right
+            drawCurve(reflectX, '#f43f5e', 2.2);   // rose reflect
+            drawCurve(vertStretch, '#3b82f6', 2.2);// blue stretch
+
+            // Legend
+            const legendX = 50, startY = h - 85;
+            ctx.font = '11px "JetBrains Mono", monospace';
+            const items = [
+                { color: '#f0f5f3', text: 'f(x) = x²' },
+                { color: '#10b981', text: 'x² + 2 (shift up)' },
+                { color: '#f59e0b', text: '(x-2)² (shift right)' },
+                { color: '#f43f5e', text: '−x² (reflect x-axis)' },
+                { color: '#3b82f6', text: '2x² (vertical stretch)' }
+            ];
+            items.forEach((item, i) => {
+                const y = startY + i * 18;
+                ctx.fillStyle = item.color;
+                ctx.fillRect(legendX, y-7, 12, 12);
+                ctx.fillStyle = '#c8d6d0';
+                ctx.fillText(item.text, legendX + 20, y+3);
+            });
+        })();
+    </script>
+</body>
+</html>

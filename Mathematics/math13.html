@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MATH-13 · x^(2/3) Cusp — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .graph-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+
+        canvas { max-width: 100%; height: auto; }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .proof-block {
+            background: rgba(244,63,94,0.05); border-left: 4px solid var(--rose);
+            border-radius: 0 10px 10px 0; padding: 1.2rem 1.4rem; margin: 1.2rem 0;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-body);
+        }
+        .pass-block {
+            background: rgba(16,185,129,0.05); border-left: 4px solid var(--accent);
+            border-radius: 0 10px 10px 0; padding: 1.2rem 1.4rem; margin: 1.2rem 0;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-body);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: MATH-13] · [STATUS: VERIFIED]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">CATEGORY 2 · CONTINUITY & DIFFERENTIABILITY</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">x<sup>2/3</sup> — The Cusp Example</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Beyond the sharp corner: a function that is continuous at x = 0 but whose derivative becomes infinite, producing a vertical cusp that prevents differentiability.</p>
+        </div>
+
+        <!-- Graph Canvas -->
+        <div class="graph-container">
+            <canvas id="cuspGraph" width="500" height="300"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">f(x) = x<sup>2/3</sup> · Symmetric about y‑axis · Cusp at (0,0) — vertical tangent</p>
+
+        <!-- Continuity Proof -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">✅ Continuity at x = 0</h2>
+            <p style="color:var(--text-body);">f(0) = 0. As x→0 from either side, x<sup>2/3</sup> → 0. So LHL = RHL = f(0) = 0. The function is <strong>continuous</strong> at the origin.</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;">The graph approaches (0,0) smoothly from both sides — no jump, no break. But the way it approaches is the problem for differentiability.</p>
+        </div>
+
+        <!-- Differentiability Failure -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">❌ Why It's Not Differentiable at x = 0</h2>
+            <p style="color:var(--text-body);">The derivative is:</p>
+            <div class="proof-block">
+                f'(x) = (2/3) x<sup>-1/3</sup> = 2 / (3 · x<sup>1/3</sup>)
+            </div>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Now evaluate the limit of the derivative as x → 0:</p>
+            <div class="proof-block">
+                lim<sub>x→0⁺</sub> f'(x) = +∞<br>
+                lim<sub>x→0⁻</sub> f'(x) = -∞
+            </div>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The derivative tends to infinity (positive from the right, negative from the left). It does not approach a finite number. Therefore, by the definition of the derivative, <strong>f'(0) does not exist</strong>. The function is not differentiable at x = 0.</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;">Equivalently, using the limit definition: [f(h)-f(0)]/h = h<sup>2/3</sup>/h = h<sup>-1/3</sup>. As h→0, this does not approach any finite limit (it goes to ±∞), so the derivative is undefined.</p>
+        </div>
+
+        <!-- Visual Intuition -->
+        <div class="glass-panel" style="margin:2rem 0; border-left: 4px solid var(--gold);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🔍 Visual Intuition — The Vertical Cusp</h2>
+            <p style="color:var(--text-body);">The graph of x<sup>2/3</sup> looks like a smooth, rounded curve that comes to a sharp point at (0,0), with both sides plunging vertically into the origin. The tangent line at the cusp would be vertical — but a vertical line has infinite slope, which is not a valid derivative. Visually, you can see that the function becomes infinitely steep as you approach the origin, unlike |x| which simply changes slope abruptly but remains finite.</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><strong>Narration:</strong> "While |x| fails differentiability because of a sharp corner with two finite slopes, x^(2/3) fails because the slope becomes unbounded — it's a vertical cusp. Both are continuous at zero, but neither has a finite, unique tangent."</p>
+        </div>
+
+        <!-- Comparison with |x| -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚖️ |x| vs x<sup>2/3</sup> — Two Flavours of Non‑Differentiability</h2>
+            <div style="overflow-x:auto;">
+                <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left;padding:0.6rem 0.8rem;background:rgba(16,185,129,0.08);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:0.7rem;">Feature</th>
+                            <th style="text-align:left;padding:0.6rem 0.8rem;background:rgba(16,185,129,0.08);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:0.7rem;">|x|</th>
+                            <th style="text-align:left;padding:0.6rem 0.8rem;background:rgba(245,158,11,0.08);color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:0.7rem;">x<sup>2/3</sup></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);font-weight:600;">Type</td><td style="padding:0.6rem 0.8rem;">Sharp corner</td><td style="padding:0.6rem 0.8rem;">Vertical cusp</td></tr>
+                        <tr><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);font-weight:600;">LHD / RHD</td><td style="padding:0.6rem 0.8rem;">-1 and +1 (finite)</td><td style="padding:0.6rem 0.8rem;">-∞ and +∞ (infinite)</td></tr>
+                        <tr><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);font-weight:600;">Visual</td><td style="padding:0.6rem 0.8rem;">V‑shape, distinct slopes</td><td style="padding:0.6rem 0.8rem;">Smooth approach, vertical tangent</td></tr>
+                        <tr><td style="padding:0.6rem 0.8rem;font-weight:600;">Continuity</td><td style="padding:0.6rem 0.8rem;">Yes</td><td style="padding:0.6rem 0.8rem;">Yes</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;">Both are valid counterexamples to the statement "continuous implies differentiable," and panelists appreciate when you can discuss both.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Draw x<sup>2/3</sup> and explain its non‑differentiability at x = 0.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The graph is symmetric, continuous, and passes through (0,0). But as x→0 from either side, the slope becomes infinitely steep. Mathematically, the derivative (2/3)x^(-1/3) tends to ±∞, so the derivative does not exist at 0. The geometric feature is a vertical cusp.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: How does this differ from the non‑differentiability of |x|?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">|x| has finite left and right slopes that disagree (-1 vs +1) — a sharp corner. x^(2/3) has slopes that tend to infinity — a vertical cusp. Both fail differentiability, but for geometrically distinct reasons. Knowing both shows deeper understanding.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is the derivative of x<sup>2/3</sup> for x ≠ 0?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">f'(x) = (2/3) x^(-1/3). For x > 0, it is positive and decreasing; for x < 0, it is negative (since x^(1/3) is negative for negative x, but the fraction is negative) — actually f'(x) = (2/3)/x^(1/3), and the cube root of negative is negative, so f'(x) is negative for x<0, positive for x>0, and undefined at 0.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Can a function have a cusp and still be differentiable?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">No. By definition, a cusp occurs where the derivative tends to infinity (or minus infinity) on at least one side, so the limit of the derivative does not exist finite. Therefore, the function is not differentiable at that point. A cusp is a specific type of non‑differentiability.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What other common functions have a cusp at the origin?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">y = x^(1/3) has a vertical tangent at the origin (derivative tends to ∞), though it is differentiable? Actually x^(1/3) has infinite derivative at 0, so it's not differentiable — it has a vertical tangent, which is a form of non‑differentiability. y = |x|^(1/2) = sqrt(|x|) also has a cusp at 0. Many fractional power functions with exponent between 0 and 1 exhibit cusps.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="margin-top:2.5rem;border-left:4px solid var(--info);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--info);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The function f(x) = x^(2/3) is continuous at x=0, but its derivative (2/3)x^(-1/3) tends to positive infinity from the right and negative infinity from the left, so the derivative does not exist at the origin. Geometrically, the graph has a vertical cusp — it comes to a sharp point where the tangent would be vertical. This is a different failure of differentiability than the sharp corner of |x|: in that case, two finite slopes disagree; here, the slope becomes unbounded. Together, these examples illustrate that continuity is only a necessary condition for differentiability, never a sufficient one."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('cuspGraph');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Coordinate system: graph x^(2/3) which is symmetric, range [0, infinity)
+            const cx = w/2, cy = h/2 + 30;
+            const scaleX = 65, scaleY = 55;
+            // Axes
+            ctx.strokeStyle = '#4a5a52'; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(25, cy); ctx.lineTo(w-20, cy); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(cx, 15); ctx.lineTo(cx, h-15); ctx.stroke();
+            // Labels
+            ctx.fillStyle = '#6b7d74'; ctx.font = '10px "JetBrains Mono", monospace';
+            ctx.fillText('0', cx+5, cy-5);
+            for (let i = -3; i <= 3; i++) {
+                if (i===0) continue;
+                const tx = cx + i*scaleX;
+                ctx.beginPath(); ctx.moveTo(tx, cy-4); ctx.lineTo(tx, cy+4); ctx.stroke();
+                ctx.fillText(i, tx-5, cy+16);
+                if (i>0 && i<=2) {
+                    const ty = cy - i*scaleY;
+                    ctx.beginPath(); ctx.moveTo(cx-4, ty); ctx.lineTo(cx+4, ty); ctx.stroke();
+                    ctx.fillText(i, cx+8, ty+4);
+                }
+            }
+
+            // Draw x^(2/3)
+            function x23(x) { return Math.cbrt(x*x); } // x^(2/3)
+            ctx.beginPath();
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2.5;
+            let first = true;
+            for (let px = 0; px < w; px++) {
+                const xVal = (px - cx) / scaleX;
+                const yVal = x23(Math.abs(xVal)); // symmetric
+                const canvasY = cy - yVal * scaleY;
+                if (canvasY < 5 || canvasY > h-5) { first = true; continue; }
+                if (first) { ctx.moveTo(px, canvasY); first = false; }
+                else ctx.lineTo(px, canvasY);
+            }
+            ctx.stroke();
+
+            // Mark cusp point
+            ctx.fillStyle = '#f43f5e';
+            ctx.beginPath();
+            ctx.arc(cx, cy, 5, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = '10px "JetBrains Mono", monospace';
+            ctx.fillText('(0,0)', cx+8, cy-10);
+            ctx.fillText('cusp (vertical tangent)', cx+8, cy-25);
+
+            // Vertical dashed line at x=0 to emphasize
+            ctx.setLineDash([4,4]);
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(cx, cy-60); ctx.lineTo(cx, cy+60); ctx.stroke();
+            ctx.setLineDash([]);
+
+            ctx.fillStyle = '#c8d6d0';
+            ctx.font = 'italic 10px "JetBrains Mono", monospace';
+            ctx.fillText('slope → +∞', cx+60, cy-70);
+            ctx.fillText('slope → -∞', cx-100, cy-70);
+        })();
+    </script>
+</body>
+</html>

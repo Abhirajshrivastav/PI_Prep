@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MATH-07 · y = 50 - |x| (with y ≥ 0) — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .graph-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+
+        canvas { max-width: 100%; height: auto; }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .highlight-box {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1.2rem 1.4rem; margin: 1rem 0;
+        }
+        .formula-box {
+            border-left: 4px solid var(--accent); background: rgba(16,185,129,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.4rem; margin: 1rem 0;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-bright);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: MATH-07] · [STATUS: VERIFIED]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">CATEGORY 1 · GRAPHS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">y = 50 - |x| (with y ≥ 0)</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The classic interview triangle problem: building a constrained absolute value graph, verifying area via both geometry and integration, and demonstrating layered transformation thinking.</p>
+        </div>
+
+        <!-- Graph Canvas -->
+        <div class="graph-container">
+            <canvas id="mainGraph" width="550" height="380"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.5rem;">y = 50 - |x| , y ≥ 0 · Triangle with vertices (-50,0), (0,50), (50,0)</p>
+
+        <!-- Step-by-Step Construction -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧱 Step‑by‑Step Construction</h2>
+            <div class="space-y-3" style="color:var(--text-body);">
+                <p><strong>Step 1 — Base graph:</strong> Start with y = |x|. This is the V‑shape with vertex at (0,0), slope -1 for x<0 and +1 for x>0.</p>
+                <p><strong>Step 2 — Reflection:</strong> y = -|x|. This flips the V upside down, producing an inverted V with vertex still at (0,0), now opening downward. Slopes become +1 (left) and -1 (right).</p>
+                <p><strong>Step 3 — Vertical shift:</strong> y = 50 - |x|. Adding 50 shifts the entire graph upward by 50 units. The vertex moves from (0,0) to (0,50). The arms now extend downward from the vertex.</p>
+                <p><strong>Step 4 — Domain restriction:</strong> The condition y ≥ 0 cuts off any part of the graph below the x‑axis. Solve 50 - |x| = 0 → |x| = 50 → x = ±50. So the graph exists only for x ∈ [-50, 50], forming a closed triangle.</p>
+            </div>
+        </div>
+
+        <!-- Key Geometric Features -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📐 Geometric Properties</h2>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;">
+                <div style="background:rgba(16,185,129,0.04);padding:1rem;border-radius:10px;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.65rem;">VERTICES</p>
+                    <p style="color:var(--text-body);">A(-50, 0), B(0, 50), C(50, 0)</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);padding:1rem;border-radius:10px;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.65rem;">BASE LENGTH</p>
+                    <p style="color:var(--text-body);">100 units (from x=-50 to x=50)</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);padding:1rem;border-radius:10px;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.65rem;">HEIGHT</p>
+                    <p style="color:var(--text-body);">50 units (y‑coordinate of vertex)</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);padding:1rem;border-radius:10px;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.65rem;">AREA</p>
+                    <p style="color:var(--text-body);">½ × base × height = ½ × 100 × 50 = <strong style="color:var(--gold);">2500 sq units</strong></p>
+                </div>
+            </div>
+            <p style="color:var(--text-body);margin-top:1.2rem;"><strong>Slope analysis:</strong> For x < 0, y = 50 - (-x) = 50 + x → slope = +1. For x > 0, y = 50 - x → slope = -1. The vertex at (0,50) is a sharp corner where the slope changes abruptly from +1 to -1 — so the function is not differentiable at x = 0.</p>
+        </div>
+
+        <!-- Integration Verification -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧮 Area Verification via Integration</h2>
+            <p style="color:var(--text-body);">The area can be computed as the definite integral of (50 - |x|) from -50 to 50. Since the function is piecewise, we split at x = 0:</p>
+            <div class="formula-box">
+                Area = ∫<sub>-50</sub><sup>0</sup> (50 + x) dx &nbsp;+&nbsp; ∫<sub>0</sub><sup>50</sup> (50 - x) dx
+            </div>
+            <p style="color:var(--text-body);margin-top:0.8rem;">
+                <strong>Left integral:</strong> ∫(50 + x)dx = 50x + x²/2. Evaluated from -50 to 0: (0 + 0) - ( -2500 + 1250) = 0 - (-1250) = 1250.<br>
+                <strong>Right integral:</strong> ∫(50 - x)dx = 50x - x²/2. Evaluated from 0 to 50: (2500 - 1250) - 0 = 1250.<br>
+                <strong>Total:</strong> 1250 + 1250 = 2500, matching the geometric formula.
+            </p>
+            <div class="highlight-box" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview Narration:</strong> "I can confirm this area in two completely independent ways — the geometric formula for a triangle and the definite integral. The fact that they match confirms both the graphical analysis and the integration. This dual verification is exactly what a panelist wants to see: understanding, not just computation."</p>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Draw the graph of y = 50 - |x| with y ≥ 0. Explain each transformation.</span><span class="icon">+</span></summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">Start with |x| (V at origin). Reflect to -|x| (inverted V). Shift up by 50 → vertex at (0,50). The condition y ≥ 0 restricts the domain to [-50,50]. The resulting graph is an isosceles triangle. I narrate each transformation while drawing to demonstrate layered thinking.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What is the area under this graph? Show two methods.</span><span class="icon">+</span></summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);"><strong>Method 1 (Geometry):</strong> Triangle with base 100, height 50 → area = ½ × 100 × 50 = 2500.<br><strong>Method 2 (Integration):</strong> Split at x=0. ∫<sub>-50</sub><sup>0</sup> (50+x)dx + ∫<sub>0</sub><sup>50</sup> (50-x)dx = 1250 + 1250 = 2500. Both methods agree.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Is the function differentiable at x = 0? Why?</span><span class="icon">+</span></summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">No. For x<0, f(x)=50+x → derivative +1. For x>0, f(x)=50-x → derivative -1. The left‑hand derivative is +1, the right‑hand derivative is -1. They do not match, so the function is not differentiable at x=0. The sharp vertex confirms this visually.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: How would the graph change if the condition was y ≥ 10 instead of y ≥ 0?</span><span class="icon">+</span></summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">We would clip the graph at y = 10, creating a truncated triangle — a trapezoid. The new x‑intercepts: solve 50 - |x| = 10 → |x| = 40 → x = ±40. The graph would be a trapezoid with top base from (-40,10) to (40,10) and bottom base from (-50,0) to (50,0). Area would be that of the original triangle minus the small triangle on top.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What real‑world situation could this graph represent?</span><span class="icon">+</span></summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">A water reservoir with a triangular cross‑section: depth 50m at center, width 100m at top, with the water surface at y=0. Or a cost function that decreases linearly as you move away from a central point, until it reaches zero. The absolute value models symmetric penalties or distances.</p>
+                </div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q6: How would you handle the integral if the function was y = |50 - |x||?</span><span class="icon">+</span></summary>
+                <div class="details-content">
+                    <p style="color:var(--text-body);">That would be a W‑shaped graph. For x between -50 and 50, 50 - |x| is already ≥ 0, so the absolute value does nothing. Outside that interval, 50 - |x| becomes negative, and the absolute value would flip it upward, creating additional triangular regions. The integral would need to be split at ±50 and handled piecewise.</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="margin-top:2.5rem;border-left:4px solid var(--gold);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The graph of y = 50 - |x| with y ≥ 0 is an isosceles triangle formed by transforming the basic absolute value function through reflection, vertical shift, and domain restriction. The vertices are at (-50,0), (0,50), and (50,0). The area of 2500 square units can be verified both geometrically (½ × base × height) and analytically (definite integral split at the vertex). The function is not differentiable at x = 0 because the left‑hand derivative is +1 and the right‑hand derivative is -1. This problem tests transformation logic, piecewise integration, and the connection between graphical shape and calculus — exactly the skills panelists evaluate."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('mainGraph');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Coordinate system
+            const cx = w / 2, cy = h / 2 + 60;
+            const scaleX = 4.2, scaleY = 3.8; // pixels per unit
+            const xMin = -60, xMax = 60, yMin = -10, yMax = 60;
+
+            function toCanvasX(x) { return cx + x * scaleX; }
+            function toCanvasY(y) { return cy - y * scaleY; }
+
+            // Axes
+            ctx.strokeStyle = '#4a5a52';
+            ctx.lineWidth = 1;
+            // x-axis
+            ctx.beginPath();
+            ctx.moveTo(20, toCanvasY(0));
+            ctx.lineTo(w - 20, toCanvasY(0));
+            ctx.stroke();
+            // y-axis
+            ctx.beginPath();
+            ctx.moveTo(toCanvasX(0), 15);
+            ctx.lineTo(toCanvasX(0), h - 20);
+            ctx.stroke();
+
+            // Ticks & labels
+            ctx.fillStyle = '#6b7d74';
+            ctx.font = '9px "JetBrains Mono", monospace';
+            for (let x = -50; x <= 50; x += 25) {
+                const tx = toCanvasX(x);
+                ctx.beginPath();
+                ctx.moveTo(tx, toCanvasY(0) - 4);
+                ctx.lineTo(tx, toCanvasY(0) + 4);
+                ctx.stroke();
+                if (x !== 0) ctx.fillText(x, tx - 10, toCanvasY(0) + 16);
+            }
+            for (let y = 10; y <= 50; y += 10) {
+                const ty = toCanvasY(y);
+                ctx.beginPath();
+                ctx.moveTo(toCanvasX(0) - 4, ty);
+                ctx.lineTo(toCanvasX(0) + 4, ty);
+                ctx.stroke();
+                ctx.fillText(y, toCanvasX(0) + 8, ty + 4);
+            }
+            ctx.fillText('0', toCanvasX(0) + 4, toCanvasY(0) - 4);
+
+            // Draw the graph: y = 50 - |x| for |x| ≤ 50
+            ctx.beginPath();
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2.8;
+            // Left segment: x from -50 to 0, y = 50 + x
+            ctx.moveTo(toCanvasX(-50), toCanvasY(0));
+            ctx.lineTo(toCanvasX(0), toCanvasY(50));
+            // Right segment: x from 0 to 50, y = 50 - x
+            ctx.lineTo(toCanvasX(50), toCanvasY(0));
+            ctx.stroke();
+
+            // Fill area under the triangle (translucent)
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.08)';
+            ctx.beginPath();
+            ctx.moveTo(toCanvasX(-50), toCanvasY(0));
+            ctx.lineTo(toCanvasX(0), toCanvasY(50));
+            ctx.lineTo(toCanvasX(50), toCanvasY(0));
+            ctx.closePath();
+            ctx.fill();
+
+            // Mark vertices
+            const vertices = [
+                { x: -50, y: 0, label: '(-50,0)' },
+                { x: 0, y: 50, label: '(0,50)' },
+                { x: 50, y: 0, label: '(50,0)' }
+            ];
+            ctx.fillStyle = '#f59e0b';
+            vertices.forEach(v => {
+                ctx.beginPath();
+                ctx.arc(toCanvasX(v.x), toCanvasY(v.y), 5, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.fillStyle = '#f0f5f3';
+                ctx.font = '9px "JetBrains Mono", monospace';
+                ctx.fillText(v.label, toCanvasX(v.x) + 8, toCanvasY(v.y) - 8);
+                ctx.fillStyle = '#f59e0b';
+            });
+
+            // Slopes annotations
+            ctx.fillStyle = '#f59e0b';
+            ctx.font = 'italic 9px "JetBrains Mono", monospace';
+            ctx.fillText('slope = +1', toCanvasX(-30), toCanvasY(25));
+            ctx.fillText('slope = -1', toCanvasX(12), toCanvasY(25));
+
+            // Sharp corner indicator
+            ctx.fillStyle = '#f43f5e';
+            ctx.beginPath();
+            ctx.arc(toCanvasX(0), toCanvasY(50), 5, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = '8px "JetBrains Mono", monospace';
+            ctx.fillText('not differentiable', toCanvasX(0) + 10, toCanvasY(50) - 12);
+
+            // Domain cutoff lines
+            ctx.setLineDash([4, 4]);
+            ctx.strokeStyle = '#6b7d74';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(toCanvasX(-50), toCanvasY(0));
+            ctx.lineTo(toCanvasX(-50), toCanvasY(60));
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(toCanvasX(50), toCanvasY(0));
+            ctx.lineTo(toCanvasX(50), toCanvasY(60));
+            ctx.stroke();
+            ctx.setLineDash([]);
+        })();
+    </script>
+</body>
+</html>

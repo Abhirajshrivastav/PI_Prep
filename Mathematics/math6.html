@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MATH-06 · Graph Transformations: |f(x)| and f(|x|) — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        .graph-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+            flex-wrap: wrap; gap: 1rem;
+        }
+        canvas { max-width: 100%; height: auto; }
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+        .rule-box {
+            border-left: 4px solid var(--accent); background: rgba(16,185,129,0.06);
+            border-radius: 0 10px 10px 0; padding: 1.2rem 1.4rem; margin: 1rem 0;
+        }
+        .warn-box {
+            border-left: 4px solid var(--rose); background: rgba(244,63,94,0.06);
+            border-radius: 0 10px 10px 0; padding: 1.2rem 1.4rem; margin: 1rem 0;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: MATH-06] · [STATUS: VERIFIED]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">CATEGORY 1 · GRAPHS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Graph Transformations: |f(x)| and f(|x|)</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The two modulus transformations that panelists love: reflecting below the x‑axis upward, and mirroring the right half to the left. Master the logic, not the memorisation.</p>
+        </div>
+
+        <!-- TRANSFORMATION 1: |f(x)| -->
+        <div style="margin-bottom:2.5rem;">
+            <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;">📐 Transformation 1: |f(x)| — Reflect Negative Parts Upward</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">Take any graph. Wherever f(x) is negative, flip that portion above the x‑axis. Where f(x) is already ≥ 0, leave it unchanged. The result is never below the x‑axis.</p>
+
+            <div class="graph-container">
+                <div style="text-align:center;">
+                    <canvas id="sinGraph" width="250" height="280"></canvas>
+                    <p class="font-mono" style="font-size:0.6rem;color:var(--text-dim);">f(x) = sin x</p>
+                </div>
+                <div style="text-align:center;">
+                    <span style="font-size:1.5rem;color:var(--accent);">→</span>
+                </div>
+                <div style="text-align:center;">
+                    <canvas id="absSinGraph" width="250" height="280"></canvas>
+                    <p class="font-mono" style="font-size:0.6rem;color:var(--accent);">|f(x)| = |sin x|</p>
+                </div>
+            </div>
+            <div class="rule-box">
+                <p style="color:var(--text-body);"><strong>Rule in plain English:</strong> "The absolute value of the output. Draw the original graph. Every part that dips below the x‑axis gets reflected upward. The parts already above stay put. The x‑intercepts remain fixed — they become sharp corners if the original graph crossed the axis smoothly."</p>
+            </div>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><strong>Examples panelists ask:</strong> |sin x| (bouncing wave), |ln x| (sharp corner at x=1), |x² - 4| (W‑shaped), |x - 2| (V‑shape shifted).</p>
+        </div>
+
+        <!-- TRANSFORMATION 2: f(|x|) -->
+        <div style="margin-bottom:2.5rem;">
+            <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;">📐 Transformation 2: f(|x|) — Mirror Right Half to Left</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">Take the right half of the graph (x ≥ 0). Copy it exactly to the left side (x &lt; 0), replacing whatever was there. The result is always symmetric about the y‑axis — an even function.</p>
+
+            <div class="graph-container">
+                <div style="text-align:center;">
+                    <canvas id="x2Graph" width="250" height="280"></canvas>
+                    <p class="font-mono" style="font-size:0.6rem;color:var(--text-dim);">f(x) = x² - 2x (note: not even)</p>
+                </div>
+                <div style="text-align:center;">
+                    <span style="font-size:1.5rem;color:var(--gold);">→</span>
+                </div>
+                <div style="text-align:center;">
+                    <canvas id="fAbsXGraph" width="250" height="280"></canvas>
+                    <p class="font-mono" style="font-size:0.6rem;color:var(--gold);">f(|x|) = |x|² - 2|x|</p>
+                </div>
+            </div>
+            <div class="rule-box" style="border-left-color: var(--gold); background:rgba(245,158,11,0.06);">
+                <p style="color:var(--text-body);"><strong>Rule in plain English:</strong> "The absolute value of the input. Draw the graph for x ≥ 0. Now reflect that right half across the y‑axis to fill x &lt; 0. The left side becomes the mirror image of the right. The graph is always symmetric about the y‑axis — this forces f(|x|) to be an even function."</p>
+            </div>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><strong>Examples panelists ask:</strong> sin(|x|) (sine wave folded at origin), e<sup>|x|</sup> (exponential growth on both sides), |x| itself (the simplest case — f(x)=x becomes f(|x|)=|x|).</p>
+        </div>
+
+        <!-- KEY DISTINCTION TABLE -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚖️ |f(x)| vs f(|x|) — Critical Distinction</h2>
+            <div style="overflow-x:auto;">
+                <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left;padding:0.6rem 0.8rem;background:rgba(16,185,129,0.08);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;">Feature</th>
+                            <th style="text-align:left;padding:0.6rem 0.8rem;background:rgba(16,185,129,0.08);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;">|f(x)|</th>
+                            <th style="text-align:left;padding:0.6rem 0.8rem;background:rgba(245,158,11,0.08);color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;">f(|x|)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);font-weight:600;">What changes</td><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);">Output (y‑values)</td><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);">Input (x‑values)</td></tr>
+                        <tr><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);font-weight:600;">Effect on graph</td><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);">Reflect negative parts above x‑axis</td><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);">Copy right half to left side</td></tr>
+                        <tr><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);font-weight:600;">Symmetry</td><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);">Not necessarily symmetric</td><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);">Always even (y‑axis symmetry)</td></tr>
+                        <tr><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);font-weight:600;">Sharp corners</td><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);">At every x‑intercept of f(x)</td><td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border-subtle);">At x=0 if f'(0⁺) ≠ 0</td></tr>
+                        <tr><td style="padding:0.6rem 0.8rem;font-weight:600;">Range</td><td style="padding:0.6rem 0.8rem;">Always ≥ 0</td><td style="padding:0.6rem 0.8rem;">Same as f(x) for x≥0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- The y = 50 - |x| Master Example -->
+        <div class="glass-panel" style="margin:2rem 0; border-left: 4px solid var(--violet);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌟 Master Example: y = 50 - |x| (with y ≥ 0)</h2>
+            <p style="color:var(--text-body);">This appeared directly in a transcript. <strong>Step 1:</strong> Start with y = |x| — V‑shape at origin. <strong>Step 2:</strong> y = -|x| — flip it downward (inverted V). <strong>Step 3:</strong> y = 50 - |x| — shift the whole graph up by 50 units. The vertex moves from (0,0) to (0,50). The arms extend downward with slope -1 (right) and +1 (left). <strong>Step 4:</strong> The condition y ≥ 0 cuts the graph at y=0 — solve 50 - |x| = 0 → |x| = 50 → x = ±50. The graph is a triangle with vertices at (-50,0), (0,50), and (50,0). Area = ½ × base × height = ½ × 100 × 50 = 2500 square units. <strong>Narration:</strong> "I'll verify this using both geometry and integration — the triangle formula gives 2500, and the definite integral of (50 - |x|) from -50 to 50 should give the same result, confirming the graphical analysis."</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is the difference between graphing |f(x)| and f(|x|)?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);"><strong>|f(x)|</strong> takes the absolute value of the output — reflect any negative parts of the graph above the x‑axis. <strong>f(|x|)</strong> takes the absolute value of the input — copy the right half of the graph to the left side, making the function even. They produce completely different graphs for the same underlying f(x).</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Draw |sin x| starting from sin x. Where are the sharp corners?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Take the sine wave. Every time it dips below the x‑axis (between π and 2π, and symmetrically on the negative side), reflect that hump upward. The result is a bouncing wave that only touches zero at multiples of π. Sharp corners appear at every multiple of π — these are the former x‑intercepts where the original sine crossed smoothly. The period effectively becomes π instead of 2π.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: How would you graph y = 50 - |x| with the condition y ≥ 0?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Start with |x|, flip it to -|x| (inverted V), shift up by 50 → vertex at (0,50). Arms go down with slope ±1. y=0 when |x|=50 → x=±50. The condition y≥0 clips nothing extra. The graph is an isosceles triangle with base 100 and height 50. Area = 2500. I can confirm with integration: ∫₋₅₀⁰ (50+x)dx + ∫₀⁵⁰ (50-x)dx = 2500.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Is |f(x)| always continuous if f(x) is continuous? What about differentiability?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Yes, |f(x)| is always continuous if f(x) is continuous — the absolute value function itself is continuous, and the composition of continuous functions is continuous. However, differentiability may be lost at points where f(x)=0 and the original graph crossed the axis with non‑zero slope — those become sharp corners, like in |sin x| or |ln x|.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: Why is f(|x|) always an even function?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Because f(|-x|) = f(|x|) — the input to f is always non‑negative after the modulus. The function's value at any negative x is identical to its value at the corresponding positive x, which is the definition of an even function. Graphically, this forces perfect symmetry about the y‑axis.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q6: How would sin(|x|) look different from |sin x|?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">For sin(|x|): take the right half of the sine wave (x≥0). For x<0, mirror that right half exactly. The result is a wave that starts at sin(0)=0, rises to 1 at π/2, and then oscillates normally for x>0. For x<0, it's the mirror — so sin(|-π/2|) = sin(π/2) = 1. The left side is a mirror of the right, making it even. In contrast, |sin x| bounces and has sharp corners at every multiple of π. Completely different.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q7: What happens when you apply both transformations — |f(|x|)|?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">First, f(|x|) makes the graph even (mirror right to left). Then, the outer absolute value reflects any remaining negative parts above the x‑axis. The result is always non‑negative and symmetric about the y‑axis. Example: start with f(x)=x-2. f(|x|)=|x|-2 (V‑shape shifted down). Then ||x|-2| reflects the bottom of the V above the axis — producing a W‑shaped graph with sharp corners at x=±2.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="margin-top:2.5rem;border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Graph transformations using modulus come in two fundamentally different types. <strong>|f(x)|</strong> takes the absolute value of the output — reflect any part of the graph below the x‑axis upward, leaving the rest unchanged; this creates sharp corners at every x‑intercept where the original crossed smoothly. <strong>f(|x|)</strong> takes the absolute value of the input — mirror the right half of the graph to the left, forcing the function to become even and symmetric about the y‑axis. The classic interview example is y = 50 - |x| with y ≥ 0, which produces a triangle with vertices at (-50,0), (0,50), and (50,0). Understanding these two transformations means you can handle any composite graph they throw at you — it's always just layering shifts, reflections, and modulus in sequence."</em></p>
+        </div>
+    </main>
+
+    <script>
+        function drawAxes(ctx, w, h, cx, cy, xScale, yScale, xMin, xMax, yMin, yMax) {
+            ctx.strokeStyle = '#4a5a52'; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(20, cy); ctx.lineTo(w-15, cy); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(cx, 10); ctx.lineTo(cx, h-15); ctx.stroke();
+            ctx.fillStyle = '#6b7d74'; ctx.font = '9px "JetBrains Mono", monospace';
+            ctx.fillText('0', cx+4, cy-4);
+        }
+
+        // sin x → |sin x|
+        (function() {
+            const c = document.getElementById('sinGraph');
+            const ctx = c.getContext('2d');
+            const w=c.width, h=c.height, cx=w/2, cy=h/2, xs=55;
+            ctx.clearRect(0,0,w,h);
+            drawAxes(ctx,w,h,cx,cy,xs,40,-3.5,3.5,-1.5,1.5);
+            ctx.strokeStyle = '#6b7d74'; ctx.lineWidth=1;
+            for(let i=-3;i<=3;i++){const tx=cx+i*xs;ctx.beginPath();ctx.moveTo(tx,cy-4);ctx.lineTo(tx,cy+4);ctx.stroke();if(i!==0)ctx.fillText(i,tx-4,cy+16);}
+            ctx.fillText('1',cx+6,cy-55); ctx.fillText('-1',cx+6,cy+55);
+            ctx.beginPath();ctx.strokeStyle='#10b981';ctx.lineWidth=2;
+            let first=true;
+            for(let px=0;px<w;px++){const xv=(px-cx)/xs;const yv=Math.sin(xv);const py=cy-yv*55;if(first){ctx.moveTo(px,py);first=false;}else ctx.lineTo(px,py);}
+            ctx.stroke();
+        })();
+        (function() {
+            const c = document.getElementById('absSinGraph');
+            const ctx = c.getContext('2d');
+            const w=c.width, h=c.height, cx=w/2, cy=h/2, xs=55;
+            ctx.clearRect(0,0,w,h);
+            drawAxes(ctx,w,h,cx,cy,xs,40,-3.5,3.5,-1.5,1.5);
+            ctx.strokeStyle='#6b7d74';ctx.lineWidth=1;
+            for(let i=-3;i<=3;i++){const tx=cx+i*xs;ctx.beginPath();ctx.moveTo(tx,cy-4);ctx.lineTo(tx,cy+4);ctx.stroke();if(i!==0)ctx.fillText(i,tx-4,cy+16);}
+            ctx.fillText('1',cx+6,cy-55);
+            ctx.beginPath();ctx.strokeStyle='#f59e0b';ctx.lineWidth=2;
+            let first=true;
+            for(let px=0;px<w;px++){const xv=(px-cx)/xs;const yv=Math.abs(Math.sin(xv));const py=cy-yv*55;if(first){ctx.moveTo(px,py);first=false;}else ctx.lineTo(px,py);}
+            ctx.stroke();
+            // mark sharp corners
+            ctx.fillStyle='#f43f5e';
+            [-2,-1,0,1,2].forEach(i=>{const tx=cx+i*Math.PI*xs;ctx.beginPath();ctx.arc(tx,cy,3,0,2*Math.PI);ctx.fill();});
+        })();
+
+        // f(x)=x²-2x → f(|x|)
+        (function() {
+            const c = document.getElementById('x2Graph');
+            const ctx = c.getContext('2d');
+            const w=c.width, h=c.height, cx=w/2, cy=h/2+30, xs=45, ys=30;
+            ctx.clearRect(0,0,w,h);
+            drawAxes(ctx,w,h,cx,cy,xs,ys,-3.5,3.5,-2,3);
+            ctx.strokeStyle='#6b7d74';ctx.lineWidth=1;
+            for(let i=-3;i<=3;i++){const tx=cx+i*xs;ctx.beginPath();ctx.moveTo(tx,cy-3);ctx.lineTo(tx,cy+3);ctx.stroke();if(i!==0)ctx.fillText(i,tx-3,cy+15);}
+            ctx.fillText('2',cx+6,cy-60); ctx.fillText('-1',cx+6,cy+30);
+            ctx.beginPath();ctx.strokeStyle='#8b5cf6';ctx.lineWidth=2;
+            let first=true;
+            for(let px=0;px<w;px++){const xv=(px-cx)/xs;const yv=xv*xv-2*xv;const py=cy-yv*ys;if(py<2||py>h-2){first=true;continue;}if(first){ctx.moveTo(px,py);first=false;}else ctx.lineTo(px,py);}
+            ctx.stroke();
+            ctx.fillStyle='#8b5cf6';ctx.font='8px "JetBrains Mono",monospace';ctx.fillText('f(x)=x²-2x',cx-25,cy-70);
+        })();
+        (function() {
+            const c = document.getElementById('fAbsXGraph');
+            const ctx = c.getContext('2d');
+            const w=c.width, h=c.height, cx=w/2, cy=h/2+30, xs=45, ys=30;
+            ctx.clearRect(0,0,w,h);
+            drawAxes(ctx,w,h,cx,cy,xs,ys,-3.5,3.5,-2,3);
+            ctx.strokeStyle='#6b7d74';ctx.lineWidth=1;
+            for(let i=-3;i<=3;i++){const tx=cx+i*xs;ctx.beginPath();ctx.moveTo(tx,cy-3);ctx.lineTo(tx,cy+3);ctx.stroke();if(i!==0)ctx.fillText(i,tx-3,cy+15);}
+            ctx.fillText('2',cx+6,cy-60);
+            ctx.beginPath();ctx.strokeStyle='#f59e0b';ctx.lineWidth=2;
+            let first=true;
+            for(let px=0;px<w;px++){const xv=Math.abs((px-cx)/xs);const yv=xv*xv-2*xv;const py=cy-yv*ys;if(py<2||py>h-2){first=true;continue;}if(first){ctx.moveTo(px,py);first=false;}else ctx.lineTo(px,py);}
+            ctx.stroke();
+            ctx.fillStyle='#f59e0b';ctx.font='8px "JetBrains Mono",monospace';ctx.fillText('f(|x|) — even',cx-30,cy-70);
+            // symmetry indicator
+            ctx.setLineDash([4,4]);ctx.strokeStyle='#f59e0b';ctx.lineWidth=1;
+            ctx.beginPath();ctx.moveTo(cx,10);ctx.lineTo(cx,h-10);ctx.stroke();ctx.setLineDash([]);
+        })();
+    </script>
+</body>
+</html>
