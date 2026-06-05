@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MATH-16 · Differentiate x³ from First Principles — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .graph-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+
+        canvas { max-width: 100%; height: auto; }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .proof-block {
+            background: rgba(16,185,129,0.05); border-left: 4px solid var(--accent);
+            border-radius: 0 10px 10px 0; padding: 1.2rem 1.4rem; margin: 1.2rem 0;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-body);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: MATH-16] · [STATUS: VERIFIED]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">CATEGORY 3 · DIFFERENTIATION FROM FIRST PRINCIPLES</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Differentiate x³ from First Principles</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Extend the binomial expansion to the cubic: the derivative of x³ is 3x², revealed cleanly by the limit definition and algebraic cancellation.</p>
+        </div>
+
+        <!-- Graph Canvas: x³ and its derivative 3x² -->
+        <div class="graph-container">
+            <canvas id="derivGraph" width="520" height="340"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">f(x) = x³ (green) · f'(x) = 3x² (gold) — the derivative is always non‑negative, touching zero at the inflection point</p>
+
+        <!-- The Proof -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📐 The First Principles Derivation</h2>
+            <p style="color:var(--text-body);">The derivative is defined as:</p>
+            <div class="proof-block">
+                f'(x) = lim<sub>h→0</sub> [f(x+h) − f(x)] / h
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;">For f(x) = x³, expand (x+h)³ using the binomial theorem:</p>
+            <div class="proof-block">
+                (x+h)³ = x³ + 3x²h + 3xh² + h³
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;">Subtract f(x) = x³:</p>
+            <div class="proof-block">
+                f(x+h) − f(x) = 3x²h + 3xh² + h³
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;">Divide by h:</p>
+            <div class="proof-block">
+                [f(x+h) − f(x)] / h = 3x² + 3xh + h²
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;">Now take the limit as h → 0:</p>
+            <div class="proof-block">
+                f'(x) = lim<sub>h→0</sub> (3x² + 3xh + h²) = 3x² + 0 + 0 = <strong>3x²</strong>
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;">Thus, the derivative of x³ with respect to x is 3x².</p>
+        </div>
+
+        <!-- Narration Script -->
+        <div class="glass-panel" style="margin:2rem 0;">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🎙️ Interview Narration Script</h2>
+            <p style="color:var(--text-body);">"To differentiate x³ from first principles, I start with the limit definition. I expand (x+h)³ using the binomial formula: x³ + 3x²h + 3xh² + h³. Subtracting x³ leaves 3x²h + 3xh² + h³. Dividing by h gives 3x² + 3xh + h². As h approaches zero, the terms 3xh and h² both vanish, leaving 3x². So the derivative is 3x². Notice that the derivative is always non‑negative, which reflects the fact that the cubic function is monotonically increasing except for a momentary flattening at the origin."</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Derive the derivative of x³ from first principles.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Start with the limit definition. Expand (x+h)³ = x³ + 3x²h + 3xh² + h³. Subtract x³, divide by h → 3x² + 3xh + h². As h→0, this becomes 3x². So f'(x) = 3x².</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: How does the derivative 3x² reflect the behavior of the cubic graph?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The derivative is always ≥ 0, confirming that x³ is non‑decreasing everywhere. At x=0, the derivative is 0, corresponding to the inflection point where the curve momentarily flattens. For x>0, the slope is positive and grows quadratically, pulling the graph steeply upward.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Why do the terms 3xh and h² disappear in the limit?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Both contain the factor h, which tends to zero. When multiplied by h (or h² after dividing), they become arbitrarily small and vanish as h→0. Only the term without h, 3x², survives. This is the essence of differentiation: retaining the first‑order change and discarding higher‑order infinitesimals.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: How does the derivative 3x² relate to the Power Rule?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Power Rule states that d/dx(xⁿ) = n·xⁿ⁻¹. For n=3, this gives 3x², exactly what we derived. The first‑principles derivation for x³ is a specific instance of the general rule, which can be proven for any positive integer using the binomial theorem.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: Can you differentiate 2x³ from first principles using linearity?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Yes. Since the derivative of a constant times a function is the constant times the derivative, d/dx(2x³) = 2 · d/dx(x³) = 2 · 3x² = 6x². Alternatively, you could work from the limit definition directly with 2(x+h)³ and factor out the 2.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="margin-top:2.5rem;border-left:4px solid var(--accent);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--accent);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The derivative of x³ is derived by evaluating the limit as h approaches zero of [(x+h)³ − x³]/h. Expanding (x+h)³ yields x³ + 3x²h + 3xh² + h³; canceling x³ leaves 3x²h + 3xh² + h³. Dividing by h gives 3x² + 3xh + h². Taking the limit, the terms containing h vanish, producing the derivative 3x². This result not only confirms the Power Rule for n=3 but also reveals why the cubic graph has an inflection point at the origin and is everywhere non‑decreasing. The ability to derive this from first principles signals genuine fluency with the fundamental concept of a derivative."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('derivGraph');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Coordinate mapping
+            const xMin = -4, xMax = 4, yMin = -12, yMax = 12;
+            const toCanvasX = (x) => (x - xMin) / (xMax - xMin) * (w - 80) + 40;
+            const toCanvasY = (y) => (yMax - y) / (yMax - yMin) * (h - 60) + 30;
+
+            // Axes
+            ctx.strokeStyle = '#4a5a52'; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(20, toCanvasY(0)); ctx.lineTo(w-15, toCanvasY(0)); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(toCanvasX(0), 10); ctx.lineTo(toCanvasX(0), h-10); ctx.stroke();
+
+            // Ticks
+            ctx.fillStyle = '#6b7d74'; ctx.font = '9px "JetBrains Mono", monospace';
+            for (let x = -3; x <= 3; x++) {
+                if (x === 0) continue;
+                const tx = toCanvasX(x);
+                ctx.beginPath(); ctx.moveTo(tx, toCanvasY(0)-3); ctx.lineTo(tx, toCanvasY(0)+3); ctx.stroke();
+                ctx.fillText(x, tx-5, toCanvasY(0)+14);
+            }
+            for (let y = -8; y <= 8; y+=4) {
+                if (y === 0) continue;
+                const ty = toCanvasY(y);
+                ctx.beginPath(); ctx.moveTo(toCanvasX(0)-3, ty); ctx.lineTo(toCanvasX(0)+3, ty); ctx.stroke();
+                ctx.fillText(y, toCanvasX(0)+6, ty+4);
+            }
+            ctx.fillText('0', toCanvasX(0)+4, toCanvasY(0)-4);
+
+            // Draw f(x) = x³
+            ctx.beginPath();
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2.5;
+            let first = true;
+            for (let px = 0; px < w; px++) {
+                const xVal = (px - 40) / ((w-80)/(xMax-xMin)) + xMin;
+                const yVal = xVal * xVal * xVal;
+                const canvasY = toCanvasY(yVal);
+                if (canvasY < 0 || canvasY > h) { first = true; continue; }
+                if (first) { ctx.moveTo(px, canvasY); first = false; }
+                else ctx.lineTo(px, canvasY);
+            }
+            ctx.stroke();
+
+            // Draw f'(x) = 3x² (derivative parabola)
+            ctx.beginPath();
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 1.8;
+            ctx.setLineDash([6, 4]);
+            first = true;
+            for (let px = 0; px < w; px++) {
+                const xVal = (px - 40) / ((w-80)/(xMax-xMin)) + xMin;
+                const yVal = 3 * xVal * xVal;
+                const canvasY = toCanvasY(yVal);
+                if (canvasY < 0 || canvasY > h || yVal > yMax || yVal < yMin) { first = true; continue; }
+                if (first) { ctx.moveTo(px, canvasY); first = false; }
+                else ctx.lineTo(px, canvasY);
+            }
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Legend
+            ctx.fillStyle = '#10b981';
+            ctx.fillRect(50, h-60, 12, 12);
+            ctx.fillStyle = '#c8d6d0';
+            ctx.font = '10px "JetBrains Mono", monospace';
+            ctx.fillText('f(x) = x³', 68, h-51);
+            ctx.fillStyle = '#f59e0b';
+            ctx.fillRect(50, h-38, 12, 12);
+            ctx.fillText("f'(x) = 3x²", 68, h-29);
+
+            // Tangent line at x = 1.2
+            const a = 1.2, fa = a*a*a, slope = 3*a*a;
+            const tanX1 = a-1.0, tanX2 = a+1.0;
+            const tanY1 = fa + slope*(tanX1-a), tanY2 = fa + slope*(tanX2-a);
+            ctx.beginPath();
+            ctx.strokeStyle = '#f43f5e';
+            ctx.lineWidth = 1.2;
+            ctx.setLineDash([3,3]);
+            ctx.moveTo(toCanvasX(tanX1), toCanvasY(tanY1));
+            ctx.lineTo(toCanvasX(tanX2), toCanvasY(tanY2));
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle = '#f43f5e';
+            ctx.fillText('tangent at x=1.2', toCanvasX(2.4), toCanvasY(4));
+        })();
+    </script>
+</body>
+</html>
