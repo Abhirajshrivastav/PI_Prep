@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-03 · Deputy CMs — Keshav Prasad Maurya & Brajesh Pathak — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .profile-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem;
+        }
+        .profile-card h3 { color: var(--accent); font-size: 1.2rem; margin-bottom: 0.3rem; }
+        .profile-card .role { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-03] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Deputy CMs — Keshav Prasad Maurya & Brajesh Pathak</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The two faces of UP's deputy leadership — one representing the OBC caste calculus, the other the Brahmin constituency — and how the dual Deputy CM model balances political representation in India's most complex state.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Deputy CM 1</span><div class="value">Keshav Prasad Maurya</div></div>
+                <div class="fact-box"><span class="label">Deputy CM 2</span><div class="value">Brajesh Pathak</div></div>
+                <div class="fact-box"><span class="label">Party</span><div class="value">Bharatiya Janata Party (BJP)</div></div>
+                <div class="fact-box"><span class="label">Maurya's Community</span><div class="value">OBC (Other Backward Classes) — Maurya/Kushwaha caste</div></div>
+                <div class="fact-box"><span class="label">Pathak's Community</span><div class="value">Brahmin (upper caste)</div></div>
+                <div class="fact-box"><span class="label">Maurya's Previous Role</span><div class="value">State BJP President (2016‑2022); Union Minister of State</div></div>
+                <div class="fact-box"><span class="label">Pathak's Previous Role</span><div class="value">UP Law Minister; former BSP and Congress member</div></div>
+                <div class="fact-box"><span class="label">CM Yogi's Caste</span><div class="value">Thakur (Rajput) — upper caste</div></div>
+            </div>
+        </div>
+
+        <!-- Keshav Prasad Maurya Profile -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">👤 Keshav Prasad Maurya — The OBC Face</h2>
+            <div class="profile-card">
+                <h3>Keshav Prasad Maurya</h3>
+                <div class="role">Deputy Chief Minister, Uttar Pradesh (since 2022; previously 2017‑2022)</div>
+                <p style="color:var(--text-body);">Keshav Prasad Maurya is the senior of the two Deputy CMs. He was born in a modest farming family in Sirathu, Kaushambi district. His rise through the BJP ranks is closely tied to the party's strategy of cultivating <strong>non‑Yadav OBC</strong> leadership in Uttar Pradesh. The Maurya/Kushwaha community — traditionally farmers and agriculturalists — is numerically significant in eastern and central UP, and having a Maurya in the top leadership directly addresses caste‑based electoral arithmetic.</p>
+                <p style="color:var(--text-body);margin-top:0.5rem;">He served as the <strong>State President of the BJP in Uttar Pradesh</strong> from 2016 to 2022, a period during which the party won both the 2017 assembly elections and the 2019 Lok Sabha elections in the state. As a former Union Minister of State for MSME, he also carries central government experience. His portfolios in the UP government include <strong>Rural Development, Food Processing, and Panchayati Raj</strong> — all critical for the rural, agricultural base that is his political constituency.</p>
+            </div>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Strategic logic:</strong> With CM Yogi Adityanath being a Thakur (upper caste), the BJP needed to balance its leadership with strong OBC representation. Keshav Maurya fills that role. The Maurya community, historically aligned with the Samajwadi Party and BSP, has been a key swing constituency that the BJP has successfully courted.</p>
+            </div>
+        </div>
+
+        <!-- Brajesh Pathak Profile -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">👤 Brajesh Pathak — The Brahmin Face</h2>
+            <div class="profile-card">
+                <h3>Brajesh Pathak</h3>
+                <div class="role">Deputy Chief Minister, Uttar Pradesh (since 2022)</div>
+                <p style="color:var(--text-body);">Brajesh Pathak is the second Deputy CM, representing the <strong>Brahmin community</strong>, which constitutes approximately 10‑12% of UP's population and has historically been influential in the state's politics. A lawyer by training, Pathak began his political career in the <strong>Bahujan Samaj Party (BSP)</strong> and later moved to the <strong>Congress</strong> before joining the BJP — his political journey reflects the shifting allegiances of caste‑based politics in UP.</p>
+                <p style="color:var(--text-body);margin-top:0.5rem;">He was the <strong>Law Minister</strong> in the first Yogi government (2017‑2022) and was elevated to Deputy CM in 2022. His portfolios include <strong>Law, Justice, and Legislative Affairs</strong>, along with several other departments. The elevation was widely seen as a message to the Brahmin electorate, which had shown signs of discontent with the BJP over issues like reservation policies and perceived neglect under a Thakur Chief Minister.</p>
+            </div>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Strategic logic:</strong> The Brahmins are a traditional BJP support base, but there were murmurs of dissatisfaction before the 2022 elections. Elevating a Brahmin face to Deputy CM was a direct political response to consolidate this crucial vote bank. Pathak's legal background and experience across multiple parties also give him a reputation as an effective administrator.</p>
+            </div>
+        </div>
+
+        <!-- The Dual Deputy CM Concept -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧠 Why Two Deputy CMs? — The Political Logic</h2>
+            <p style="color:var(--text-body);">Uttar Pradesh is one of the few Indian states that has <strong>two Deputy Chief Ministers</strong> simultaneously. The arrangement is not mandated by the Constitution — the post of Deputy CM itself is not a constitutional office but a political designation — but it serves a clear political purpose:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.5rem;"><strong>Caste balancing:</strong> With a Thakur CM, the BJP needs to reassure both OBCs and Brahmins that their interests are represented at the highest level of the state government. Keshav Maurya (OBC) and Brajesh Pathak (Brahmin) together cover two crucial electoral constituencies.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Administrative distribution:</strong> Two Deputy CMs can share the administrative burden, each focusing on their assigned portfolios, in a state as large as UP.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Internal party management:</strong> Both leaders have independent political bases and aspirations. Including them in the top leadership is also a way to manage internal dynamics and prevent factionalism.</li>
+            </ul>
+            <div class="callout" style="margin-top:0.8rem;">
+                <p style="color:var(--text-body);"><strong>Interview insight:</strong> "The post of Deputy Chief Minister is not constitutional — it is a political designation. UP has two Deputy CMs: Keshav Prasad Maurya, who represents the OBC community, and Brajesh Pathak, who represents the Brahmin community. With a Thakur Chief Minister, this arrangement is a carefully calibrated caste coalition."</p>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Who are the two Deputy Chief Ministers of Uttar Pradesh?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Keshav Prasad Maurya and Brajesh Pathak. Both are from the BJP and have been serving since the formation of the second Yogi Adityanath government in 2022. Maurya represents the OBC community; Pathak represents the Brahmin community.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Why does Uttar Pradesh have two Deputy Chief Ministers?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">It is a political arrangement designed to balance caste representation in the state leadership. With CM Yogi Adityanath being a Thakur (upper caste), Keshav Maurya provides representation to the OBC community, and Brajesh Pathak to the Brahmin community. This helps the BJP consolidate its support across multiple caste groups that are crucial to electoral success in UP.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Is the post of Deputy Chief Minister a constitutional position?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">No. The Constitution of India does not mention the post of Deputy Chief Minister. It is a political designation, not a constitutional office. A Deputy CM is essentially a cabinet minister who has been given the additional title and status of Deputy Chief Minister for political or administrative reasons.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is Keshav Prasad Maurya's political background?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">He comes from the Maurya/Kushwaha OBC community. He was the State President of the BJP in UP from 2016 to 2022, a period that saw the party's major electoral victories. He has also served as Union Minister of State for MSME. His political rise is closely tied to the BJP's strategy of building leadership among non‑Yadav OBC castes in Uttar Pradesh.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What is Brajesh Pathak's background, and why was he elevated to Deputy CM?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Brajesh Pathak is a lawyer by training and a Brahmin by caste. He started his political career in the BSP, later joined the Congress, and eventually moved to the BJP. He served as Law Minister in the first Yogi government and was elevated to Deputy CM in 2022. His elevation was seen as a move to address potential discontent among Brahmin voters, who are a traditional BJP support base.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Uttar Pradesh has two Deputy Chief Ministers — Keshav Prasad Maurya and Brajesh Pathak — both from the BJP. Maurya, who belongs to the OBC Maurya community, previously served as the state BJP president and is a key figure in the party's outreach to non‑Yadav backward castes. Pathak, a Brahmin and a lawyer, was the state's Law Minister before being elevated in 2022. The dual Deputy CM arrangement is a political strategy: with a Thakur Chief Minister in Yogi Adityanath, it ensures that both OBC and Brahmin communities feel represented at the highest level of the state government. The post of Deputy CM itself is not constitutional but a political designation."</em></p>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>LOC-01 · Government Opium & Alkaloid Works, Ghazipur — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .timeline-node {
+            display: flex; gap: 1rem; align-items: baseline;
+            border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0;
+        }
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.85rem; min-width: 5rem;
+        }
+        .timeline-desc { color: var(--text-body); font-size: 0.9rem; }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: LOC-01] · [STATUS: VERIFIED] · [BLOCK 1: GHAZIPUR]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 1 · GHAZIPUR — YOUR CITY</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Government Opium & Alkaloid Works</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Asia's largest government-run opium processing factory — a living link between colonial trade, modern pharmaceutical regulation, and global narcotics control.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Established</span><div class="value">1820</div></div>
+                <div class="fact-box"><span class="label">Location</span><div class="value">Ghazipur, Uttar Pradesh</div></div>
+                <div class="fact-box"><span class="label">Original Owner</span><div class="value">British East India Company</div></div>
+                <div class="fact-box"><span class="label">Current Authority</span><div class="value">Dept. of Revenue, Ministry of Finance, GoI</div></div>
+                <div class="fact-box"><span class="label">Status</span><div class="value">Asia's largest legal opium factory</div></div>
+                <div class="fact-box"><span class="label">Products</span><div class="value">Morphine, Codeine, Thebaine, Noscapine</div></div>
+                <div class="fact-box"><span class="label">Purpose</span><div class="value">Medicinal & scientific alkaloid production</div></div>
+                <div class="fact-box"><span class="label">Regulation</span><div class="value">NDPS Act, 1985 · UN Single Convention 1961 · INCB oversight</div></div>
+            </div>
+        </div>
+
+        <!-- What It Actually Is -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏭 What the Factory Actually Does</h2>
+            <p style="color:var(--text-body);">The Government Opium and Alkaloid Works (GOAW) is not a museum or a relic — it is a fully operational, high‑security government facility that processes raw opium gum into purified alkaloids for the global pharmaceutical industry. It operates under the <strong>Central Bureau of Narcotics</strong>, which is part of the Department of Revenue.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Licensed farmers in designated districts of Madhya Pradesh, Rajasthan, and Uttar Pradesh cultivate opium poppy under strict government supervision. The raw opium is collected, dried, and transported to Ghazipur where it undergoes chemical extraction. The final products — morphine, codeine, thebaine, and noscapine — are sold to pharmaceutical companies for manufacturing painkillers, cough suppressants, and other essential medicines.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Critical distinction:</strong> The factory produces <strong>pharmaceutical raw material</strong>, not recreational narcotics. The same chemical compounds that can destroy lives as street drugs are, under controlled medical use, indispensable for surgery, cancer pain management, and palliative care.</p>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📜 Timeline — From Opium Wars to Modern Medicine</h2>
+            <div>
+                <div class="timeline-node"><span class="timeline-year">1820</span><span class="timeline-desc">East India Company establishes the opium factory in Ghazipur to process opium for export to China.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1839–1860</span><span class="timeline-desc">Opium Wars: Britain forces China to accept opium imports, much of it processed in Ghazipur and Patna.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1947</span><span class="timeline-desc">Post‑Independence, the factory comes under the Government of India; production shifts toward medicinal alkaloids.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1961</span><span class="timeline-desc">India signs the UN Single Convention on Narcotic Drugs, committing to regulated cultivation for medical use only.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1985</span><span class="timeline-desc">NDPS Act enacted, providing the domestic legal framework for licensing, production quotas, and enforcement.</span></div>
+                <div class="timeline-node"><span class="timeline-year">2020s</span><span class="timeline-desc">Ghazipur remains one of only a handful of licensed opium processing facilities globally, alongside facilities in Turkey and Australia.</span></div>
+            </div>
+        </div>
+
+        <!-- Why It Exists Today -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">💊 Why India Still Cultivates and Processes Opium</h2>
+            <p style="color:var(--text-body);">The global demand for opiate‑based medicines is enormous and growing. Morphine is on the <strong>WHO Model List of Essential Medicines</strong>. Codeine is used in millions of cough formulations. Thebaine is a precursor for advanced opioids like oxycodone. There is no synthetic alternative that matches the efficacy and cost‑effectiveness of natural opium alkaloids.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">India is one of only <strong>12 countries licensed by the International Narcotics Control Board (INCB)</strong> to legally cultivate opium poppy. The INCB sets annual production quotas, and the Ghazipur factory operates within those strictly enforced limits. The entire supply chain — from seed to final alkaloid — is tracked and audited to prevent diversion into illegal channels.</p>
+        </div>
+
+        <!-- Global & Strategic Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌐 Strategic & Geopolitical Context</h2>
+            <p style="color:var(--text-body);">The global licit opium supply is concentrated in a few countries — primarily India, Turkey, and Australia. Any disruption in one region can create shortages of essential pain medications worldwide. The Ghazipur facility is therefore a <strong>strategically critical asset</strong> for global health security.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">From a management perspective, the GOAW embodies a <strong>principal‑agent problem</strong>: the Government of India (the principal) must design a system where farmers and factory operators (the agents) have no incentive to divert opium to the black market, which would offer far higher prices. The solution is a combination of stringent licensing, satellite monitoring of fields, real‑time reporting, and severe penalties — a case study in regulatory design.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Interview gold:</strong> "The same substance — opium — has been at the centre of colonial exploitation, global crime, and essential modern medicine. The difference lies entirely in governance, regulation, and intent."</p>
+            </div>
+        </div>
+
+        <!-- Interview Questions & Active Recall -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is the Government Opium and Alkaloid Works, and why is it located in Ghazipur?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">It is Asia's largest government‑run opium processing factory, established in 1820 by the British East India Company. Ghazipur was chosen for its location on the Ganga — enabling easy river transport — and its position in the fertile Gangetic plains, ideal for opium poppy cultivation. Today it operates under the Ministry of Finance and produces medicinal alkaloids like morphine and codeine.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: How is opium cultivation legal in India when it is illegal almost everywhere else?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Under the UN Single Convention on Narcotic Drugs (1961), countries can cultivate opium for medical and scientific purposes under strict government licensing. India is one of about 12 countries with this license. The entire process — from farmer to factory — is regulated by the NDPS Act and monitored by the International Narcotics Control Board (INCB).</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What alkaloids does the factory produce, and what are they used for?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);"><strong>Morphine</strong> — severe pain relief, post‑surgery, cancer palliative care. <strong>Codeine</strong> — cough suppressants, mild analgesia. <strong>Thebaine</strong> — precursor for oxycodone and other semi‑synthetic opioids. <strong>Noscapine</strong> — antitussive, also being researched for anticancer properties. These are all WHO‑listed essential medicines.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is the difference between medicinal narcotics and illegal ones?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The difference lies in <strong>regulation, dosage, purity, and purpose</strong>, not the chemical substance itself. Medicinal opioids are manufactured under controlled conditions, prescribed by doctors, and administered for specific health needs. Illegal narcotics are produced and distributed outside regulatory systems, often adulterated, and used recreationally. The key is that the same molecule — morphine — can be a life‑saving medicine in one context and a destructive drug in another.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What were the Opium Wars, and how is Ghazipur connected to them?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Opium Wars (1839–1842, 1856–1860) were conflicts between Britain and China. Britain was exporting Indian opium — much of it processed in Ghazipur and Patna — into China, despite Chinese prohibition. When China attempted to stop the trade, Britain used military force. The wars resulted in unequal treaties that forced China to open its ports and cede Hong Kong. Ghazipur's factory was part of this colonial supply chain.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q6: How does the factory illustrate the concept of a principal‑agent problem in governance?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The government (principal) needs to ensure that farmers and factory workers (agents) do not divert opium to the black market where prices are far higher. The solution is a system of strict licenses, production quotas, real‑time monitoring, and severe legal penalties. This is a classic regulatory design problem: aligning individual incentives with public health and international obligations.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--accent);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--accent);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The Government Opium and Alkaloid Works in Ghazipur, established by the East India Company in 1820, is today Asia's largest government‑run opium processing facility. Operating under the Ministry of Finance, it legally processes raw opium into morphine, codeine, and other essential alkaloids for the global pharmaceutical industry. India's right to cultivate opium is governed by the UN Single Convention on Narcotic Drugs and enforced domestically through the NDPS Act. The factory is a powerful example of how a colonial commodity chain transformed into a regulated public health asset — and how governance, not the substance itself, determines whether opium is a medicine or a menace."</em></p>
+        </div>
+    </main>
+</body>
+</html>

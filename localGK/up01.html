@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-01 · CM Yogi Adityanath — Profile & Significance — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .timeline-node {
+            display: flex; gap: 1rem; align-items: baseline;
+            border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0;
+        }
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.85rem; min-width: 5rem;
+        }
+        .timeline-desc { color: var(--text-body); font-size: 0.9rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-01] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">CM Yogi Adityanath — Profile & Significance</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The monk‑politician who transformed Uttar Pradesh's governance — from Gorakhnath Math to the state's longest‑serving Chief Minister, and what his leadership means for India's most populous state.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Full Name</span><div class="value">Yogi Adityanath (born Ajay Mohan Bisht)</div></div>
+                <div class="fact-box"><span class="label">Born</span><div class="value">5 June 1972, Pauri Garhwal, Uttarakhand</div></div>
+                <div class="fact-box"><span class="label">Political Party</span><div class="value">Bharatiya Janata Party (BJP)</div></div>
+                <div class="fact-box"><span class="label">Current Position</span><div class="value">Chief Minister of Uttar Pradesh (since 2017)</div></div>
+                <div class="fact-box"><span class="label">Religious Role</span><div class="value">Mahant (Head Priest) of Gorakhnath Math, Gorakhpur</div></div>
+                <div class="fact-box"><span class="label">Lok Sabha Record</span><div class="value">5‑time MP from Gorakhpur (1998–2017)</div></div>
+                <div class="fact-box"><span class="label">Electoral First</span><div class="value">First UP CM to win a second consecutive term since 1985</div></div>
+                <div class="fact-box"><span class="label">Key Slogan</span><div class="value">"Sabka Saath, Sabka Vikas" (Collective Efforts, Inclusive Development)</div></div>
+            </div>
+        </div>
+
+        <!-- Early Life & Gorakhnath Math -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🕉️ From Ajay Bisht to Yogi Adityanath — The Gorakhnath Connection</h2>
+            <p style="color:var(--text-body);">Born Ajay Mohan Bisht in a Garhwali Rajput family in Uttarakhand, he left home at a young age to join the <strong>Gorakhnath Math</strong> in Gorakhpur, one of the most influential Nath sect monasteries in India. He was initiated as a disciple of <strong>Mahant Avaidyanath</strong>, a powerful figure who was both the head of the math and a four‑term BJP MP from Gorakhpur.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Upon Avaidyanath's death in 2014, Yogi Adityanath succeeded him as <strong>Mahant of Gorakhnath Math</strong>, becoming the religious and spiritual head of a centuries‑old institution. This dual identity — a saffron‑robed monk who is simultaneously the elected Chief Minister of India's largest state — is unique in Indian political history and is central to understanding his public persona and political appeal.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Interview significance:</strong> When asked about the CM, you can say: "Yogi Adityanath is not just a politician — he is the Mahant of Gorakhnath Math in Gorakhpur. His identity as a spiritual leader shapes his governance style, his connect with the electorate, and the BJP's strategy in Uttar Pradesh."</p>
+            </div>
+        </div>
+
+        <!-- Political Career Timeline -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📜 Political Career Timeline</h2>
+            <div>
+                <div class="timeline-node"><span class="timeline-year">1994</span><span class="timeline-desc">Appointed head of the Gorakhnath Math's youth wing; begins political engagement through the Hindu Yuva Vahini.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1998</span><span class="timeline-desc">Elected to Lok Sabha for the first time from Gorakhpur at age 26 — becomes one of the youngest MPs.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1999–2014</span><span class="timeline-desc">Re‑elected from Gorakhpur in four consecutive general elections; builds a reputation as a firebrand Hindutva leader and a strong constituency representative.</span></div>
+                <div class="timeline-node"><span class="timeline-year">2017</span><span class="timeline-desc">Appointed Chief Minister of Uttar Pradesh after BJP's landslide victory (325/403 seats). A surprise choice — many expected a more conventional politician.</span></div>
+                <div class="timeline-node"><span class="timeline-year">2022</span><span class="timeline-desc">Won a second consecutive term (255/403 seats), becoming the first UP CM in 37 years to be re‑elected after completing a full term.</span></div>
+            </div>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Key electoral fact:</strong> The BJP under Yogi Adityanath won 325 seats in 2017 and 255 in 2022. The 2022 victory, though reduced, was historically significant — no UP incumbent had been re‑elected since 1985. This stability is a major talking point about his governance.</p>
+            </div>
+        </div>
+
+        <!-- Key Policies -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📋 Key Policies & Governance Initiatives</h2>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">LAW & ORDER</p>
+                    <p style="color:var(--text-body);">Emphasised zero‑tolerance for crime. Bulldozer actions against alleged criminals became a symbol of his administration, generating both domestic support and criticism from human rights groups.</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">INFRASTRUCTURE</p>
+                    <p style="color:var(--text-body);">Accelerated expressway projects (Purvanchal, Bundelkhand, Ganga Expressways). Focused on improving road connectivity, power supply, and urban infrastructure across the state.</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">INVESTMENT</p>
+                    <p style="color:var(--text-body);">Hosted the UP Global Investors Summit (2023), attracting investment proposals worth over ₹35 lakh crore. Positioned UP as a manufacturing and industrial destination under the "UP‑India's Growth Engine" narrative.</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">SOCIAL WELFARE</p>
+                    <p style="color:var(--text-body);">Expanded PM Awas Yojana (rural housing), Ujjwala (LPG connections), and Har Ghar Jal (tap water). Implemented direct benefit transfers and monitored welfare delivery through the CM Helpline.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Significance for UP & India -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌏 Significance — What Yogi Adityanath Represents</h2>
+            <p style="color:var(--text-body);">Yogi Adityanath's leadership matters far beyond the boundaries of Uttar Pradesh. He represents several intersecting trends in Indian politics:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.5rem;"><strong>The religious‑political fusion:</strong> His identity as a saffron‑clad monk who governs a state of 240 million people is unprecedented and signals the BJP's successful integration of Hindutva ideology with governance.</li>
+                <li style="margin-bottom:0.5rem;"><strong>UP as a national bellwether:</strong> With 80 Lok Sabha seats, UP is decisive in national elections. Yogi's ability to deliver seats for the BJP makes him one of the most important Chief Ministers in India.</li>
+                <li style="margin-bottom:0.5rem;"><strong>The "double‑engine government" narrative:</strong> The alignment of the BJP at the state and Centre under Yogi and Modi enables coordinated policy implementation, infrastructure development, and political messaging.</li>
+                <li style="margin-bottom:0.5rem;"><strong>A potential national role:</strong> His repeated electoral success and prominence within the BJP make him a frequently discussed name for future national leadership — though such speculation should be treated cautiously in an interview.</li>
+            </ul>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Who is the current Chief Minister of Uttar Pradesh, and what is his background?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Yogi Adityanath is the current Chief Minister of Uttar Pradesh, in office since 2017. He is a five‑time former MP from Gorakhpur and the Mahant (head priest) of Gorakhnath Math. His dual identity as a saffron‑robed monk and the elected head of India's most populous state is unique in Indian political history.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What is significant about his 2022 re‑election?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">He became the first Chief Minister of Uttar Pradesh to be re‑elected for a second consecutive term after completing a full five years since 1985. This broke a 37‑year incumbency cycle in UP, signalling a significant shift in voter behaviour and a validation of his governance model.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What are the major policies or achievements associated with his government?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">His government has prioritised law and order — including the controversial bulldozer actions against alleged criminals — as well as infrastructure development (Purvanchal Expressway, Bundelkhand Expressway). The 2023 UP Global Investors Summit attracted massive investment proposals. Welfare schemes like PM Awas Yojana and Ujjwala have been expanded, and direct benefit transfers have been streamlined.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: How does his role as Mahant of Gorakhnath Math influence his politics?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">It gives him a distinct identity and a deep connect with the religious electorate. It also represents the BJP's successful fusion of Hindutva ideology with governance. Being a religious head adds moral authority to his political persona, which the party leverages for electoral mobilisation and ideological consolidation.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: Why is Uttar Pradesh's Chief Minister so important nationally?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Uttar Pradesh sends 80 members to the Lok Sabha — the most of any state — making its political dynamics decisive for national elections. A CM who can deliver UP for the BJP is therefore central to the party's national strategy. Additionally, UP's size and economic potential make its governance a model for the rest of India, and the "double‑engine" alignment with the Centre accelerates policy implementation.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The Chief Minister of Uttar Pradesh is Yogi Adityanath — a five‑time former MP from Gorakhpur and the Mahant of Gorakhnath Math. He became CM in 2017 after the BJP's historic mandate, and in 2022 he broke a 37‑year incumbency cycle by winning a second consecutive term. His governance emphasises law and order, infrastructure development, and welfare delivery. His dual identity as a saffron‑robed monk and elected administrator is unique in Indian politics and symbolises the BJP's strategy of merging Hindutva ideology with state governance. As the head of India's most populous state — which sends 80 MPs to the Lok Sabha — he is arguably one of the most politically significant Chief Ministers in the country."</em></p>
+        </div>
+    </main>
+</body>
+</html>

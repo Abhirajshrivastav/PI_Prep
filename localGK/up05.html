@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-05 · Lucknow — Capital & City of Nawabs — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .monument-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem;
+        }
+        .monument-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.3rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-05] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Lucknow — Capital & City of Nawabs</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">From the refined court of Awadh to the political nerve centre of modern Uttar Pradesh — the city of tehzeeb, kebabs, chikankari, and constitutional power.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Status</span><div class="value">Capital of Uttar Pradesh</div></div>
+                <div class="fact-box"><span class="label">Historical Role</span><div class="value">Capital of the Nawabs of Awadh (Oudh)</div></div>
+                <div class="fact-box"><span class="label">Nickname</span><div class="value">City of Nawabs, City of Tehzeeb (Etiquette)</div></div>
+                <div class="fact-box"><span class="label">Founded</span><div class="value">As a major city under Nawab Asaf-ud-Daula (1775–1797)</div></div>
+                <div class="fact-box"><span class="label">Key Monument</span><div class="value">Bara Imambara, Rumi Darwaza, Chota Imambara, British Residency</div></div>
+                <div class="fact-box"><span class="label">Famous Crafts</span><div class="value">Chikankari embroidery, zardozi, ittar (perfume)</div></div>
+                <div class="fact-box"><span class="label">Cuisine</span><div class="value">Awadhi biryani, galouti kebab, nihari, sheermal</div></div>
+                <div class="fact-box"><span class="label">Modern Significance</span><div class="value">Political capital, growing IT/startup hub, Lucknow Metro</div></div>
+            </div>
+        </div>
+
+        <!-- History & Nawabi Culture -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">👑 The Nawabs of Awadh — Architects of Elegance</h2>
+            <p style="color:var(--text-body);">Lucknow's golden age began in the late 18th century, when the Mughal Empire was declining and the Nawabs of Awadh — originally governors appointed by the Mughal emperor — became increasingly autonomous. <strong>Nawab Asaf-ud-Daula</strong> (1775–1797) moved the capital from Faizabad to Lucknow and transformed it into a magnificent cultural centre. He commissioned the <strong>Bara Imambara</strong> — one of the largest vaulted structures in the world — and the iconic <strong>Rumi Darwaza</strong>, a towering gateway inspired by Constantinople.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The Nawabs were patrons of art, poetry, music, and cuisine. Under their rule, Lucknow developed a distinct culture known as <strong>tehzeeb</strong> — a code of refined etiquette, polite speech ("pehle aap" — "after you"), and sophisticated manners that still defines the city's identity. This was the era when Lucknow became synonymous with gracious living, and its influence extended across North India.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The <strong>British annexation of Awadh in 1856</strong> — on the pretext of misrule — was one of the direct triggers of the <strong>1857 Rebellion</strong>. The <strong>Siege of Lucknow</strong> and the defence of the British Residency became one of the defining episodes of that conflict. Today, the Residency ruins are a protected monument, preserving bullet‑scarred walls as a testament to that history.</p>
+        </div>
+
+        <!-- Iconic Monuments -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏛️ Iconic Monuments & Architecture</h2>
+            <div class="monument-card">
+                <h3>🕌 Bara Imambara (1784)</h3>
+                <p style="color:var(--text-body);">Built by Asaf-ud-Daula, this grand congregational hall is famous for its <strong>unsupported central hall</strong> — one of the largest vaulted ceilings in the world without pillars. It also houses the <strong>Bhool Bhulaiya</strong>, a labyrinth of narrow passages designed as a strategic defence feature. The complex was built during a famine to provide employment — an early example of a public works relief programme.</p>
+            </div>
+            <div class="monument-card">
+                <h3>🚪 Rumi Darwaza</h3>
+                <p style="color:var(--text-body);">A 60‑foot‑tall gateway modelled on the Sublime Porte of Constantinople. It is the most recognisable symbol of Lucknow's skyline and an outstanding example of Awadhi architecture — blending Mughal, Persian, and European elements.</p>
+            </div>
+            <div class="monument-card">
+                <h3>🏰 British Residency</h3>
+                <p style="color:var(--text-body);">The residence of the British Resident General, which became the site of a prolonged siege during the 1857 Rebellion. The ruins have been preserved as a memorial, with cannonball marks still visible on the walls. It is now a museum managed by the Archaeological Survey of India.</p>
+            </div>
+        </div>
+
+        <!-- Cuisine & Crafts -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🍽️ Cuisine, Crafts & The Art of Living</h2>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">AWADHI CUISINE</p>
+                    <p style="color:var(--text-body);">Known for slow‑cooked dum‑style biryani, melt‑in‑the‑mouth <strong>galouti kebabs</strong> (legend says they were created for a toothless Nawab), nihari, and a range of breads like sheermal and kulcha.</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">CHIKANKARI</p>
+                    <p style="color:var(--text-body);">Lucknow's most famous craft — delicate white thread embroidery on muslin and cotton. It is a <strong>GI‑tagged product</strong> (Geographical Indication) and a major source of livelihood for women artisans.</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">TEHZEEB & CULTURE</p>
+                    <p style="color:var(--text-body);">The city's cultural DNA includes a tradition of Urdu poetry (Marsiya, Ghazal), classical music (Lucknow Gharana), and a distinct etiquette emphasising courtesy and hospitality.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modern Lucknow -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏙️ Modern Lucknow — Beyond the Nawabi Legacy</h2>
+            <p style="color:var(--text-body);">Today, Lucknow is not merely a city of historical nostalgia. It is the <strong>political and administrative capital of Uttar Pradesh</strong> — housing the Vidhan Sabha, the Secretariat, and the Raj Bhavan. It is a key centre for governance, law (the Lucknow Bench of the Allahabad High Court), and education (University of Lucknow, IIM Lucknow, and SGPGI for medical sciences).</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The city has also embraced modern infrastructure: the <strong>Lucknow Metro</strong>, the expansive <strong>Janeshwar Mishra Park</strong> (one of Asia's largest parks), and a growing IT and startup ecosystem. The <strong>Lucknow‑Agra Expressway</strong> has improved connectivity. The city manages a delicate balance — preserving its heritage while expanding as a modern urban centre.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Why is Lucknow called the "City of Nawabs"?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Lucknow was the capital of the Nawabs of Awadh, particularly under Nawab Asaf-ud-Daula, who transformed it into a magnificent cultural centre in the late 18th century. The Nawabs were great patrons of art, architecture, cuisine, and etiquette — their legacy gave Lucknow its refined culture, earning it the title "City of Nawabs."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What is the Bara Imambara, and why is it famous?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">It is a grand congregational hall built in 1784 by Asaf-ud-Daula. Its central hall has one of the largest unsupported vaulted ceilings in the world. It also contains the Bhool Bhulaiya, an intricate labyrinth. Interestingly, it was built during a famine to provide employment — an early example of a public works programme.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What are the most famous crafts and foods of Lucknow?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);"><strong>Chikankari</strong> — delicate white‑thread embroidery, a GI‑tagged product — is the city's most famous craft. For food, Lucknow is renowned for <strong>Awadhi cuisine</strong>: dum‑style biryani, galouti kebabs (so tender they were supposedly created for a toothless Nawab), nihari, and sheermal bread.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is the significance of the British Residency in Lucknow?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">It was the site of the Siege of Lucknow during the 1857 Rebellion. The British garrison was besieged for months, and the building still bears cannonball marks. It is now a protected monument and a poignant reminder of the uprising against colonial rule. The annexation of Awadh, of which Lucknow was the capital, was one of the direct causes of the rebellion.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Lucknow, the capital of Uttar Pradesh, is historically celebrated as the 'City of Nawabs' — the seat of the refined Awadh kingdom, known for its architectural marvels like the Bara Imambara and Rumi Darwaza, its exquisite chikankari embroidery, and its legendary Awadhi cuisine. The city's culture is defined by tehzeeb — a tradition of grace and courtesy. Today, it is also a modern political and administrative hub, housing the Vidhan Sabha, the Raj Bhavan, and key institutions like IIM Lucknow and the Lucknow Bench of the Allahabad High Court. Lucknow's identity is a living blend of regal history and contemporary governance."</em></p>
+        </div>
+    </main>
+</body>
+</html>

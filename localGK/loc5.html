@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>LOC-05 · Ghazipur ODOP — One District One Product — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-info {
+            border-left: 4px solid var(--info); background: rgba(59,130,246,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .product-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem; margin-bottom: 0.8rem;
+        }
+        .product-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.4rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: LOC-05] · [STATUS: VERIFIED] · [BLOCK 1: GHAZIPUR]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 1 · GHAZIPUR — YOUR CITY</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Ghazipur ODOP — One District One Product</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">How a state‑level policy to promote local crafts and industries has identified Ghazipur's traditional products — and what this means for employment, entrepreneurship, and regional identity.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Scheme Name</span><div class="value">One District One Product (ODOP)</div></div>
+                <div class="fact-box"><span class="label">Launched By</span><div class="value">Government of Uttar Pradesh (2018)</div></div>
+                <div class="fact-box"><span class="label">Nodal Department</span><div class="value">MSME & Export Promotion, GoUP</div></div>
+                <div class="fact-box"><span class="label">Ghazipur Product</span><div class="value">Jute Products & Traditional Crafts</div></div>
+                <div class="fact-box"><span class="label">Other Local Products</span><div class="value">Banana fibre products, terracotta, handloom</div></div>
+                <div class="fact-box"><span class="label">Objective</span><div class="value">Preserve traditional crafts, generate local employment, boost exports</div></div>
+                <div class="fact-box"><span class="label">National Adoption</span><div class="value">ODOP concept adopted nationally under Atmanirbhar Bharat</div></div>
+                <div class="fact-box"><span class="label">Ghazipur's Connection</span><div class="value">Historical jute cultivation along the Ganga floodplains</div></div>
+            </div>
+        </div>
+
+        <!-- What is ODOP -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏛️ What Is the One District One Product Scheme?</h2>
+            <p style="color:var(--text-body);">The One District One Product (ODOP) scheme was launched by the Uttar Pradesh government in 2018. The idea is elegantly simple: <strong>every district in the state identifies one product — a craft, a manufactured good, or an agricultural item — that it has traditionally produced or has the potential to produce at scale</strong>. The government then provides support in the form of credit, training, marketing, branding, and export facilitation.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The scheme draws inspiration from Japan's "One Village One Product" (OVOP) movement, which began in Oita Prefecture in 1979. That movement successfully revitalised rural economies by focusing on local specialities — from shiitake mushrooms to traditional pottery. India's version adapts this philosophy to its district‑level administrative structure.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The scheme was later adopted at the national level under the <strong>Atmanirbhar Bharat</strong> (Self‑Reliant India) initiative, with the Ministry of Commerce and Industry extending the framework across all states. However, Uttar Pradesh remains the pioneer and most comprehensive implementer.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Policy rationale:</strong> ODOP addresses three problems simultaneously — <strong>unemployment</strong> (by creating local livelihoods), <strong>rural‑urban migration</strong> (by making it viable to stay in one's hometown), and <strong>loss of traditional crafts</strong> (by providing market access and institutional support). For a district like Ghazipur, where out‑migration is a central challenge, ODOP is directly relevant.</p>
+            </div>
+        </div>
+
+        <!-- Ghazipur's ODOP Products -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧶 Ghazipur's Designated Products</h2>
+            <div class="product-card">
+                <h3>🎋 Jute Products — The Primary ODOP</h3>
+                <p style="color:var(--text-body);">Ghazipur's location on the Gangetic floodplain makes it suitable for jute cultivation. Under ODOP, the district has focused on <strong>jute bags, jute handicrafts, jute textiles, and jute‑based packaging materials</strong>. Jute is a natural, biodegradable fibre — increasingly valuable as the world moves away from single‑use plastics. The government has established common facility centres for jute processing and provides training to artisans, particularly women's self‑help groups.</p>
+                <p style="color:var(--text-body);margin-top:0.5rem;">The jute value chain in Ghazipur involves: farmers cultivating raw jute → retting and fibre extraction → spinning into yarn → weaving into fabric or crafting into products → marketing and export. ODOP interventions target each stage of this chain.</p>
+            </div>
+            <div class="product-card">
+                <h3>🍌 Banana Fibre Products — Emerging Sector</h3>
+                <p style="color:var(--text-body);">Ghazipur and surrounding Purvanchal districts produce significant quantities of bananas. The pseudostem (the trunk‑like structure of the banana plant, which is typically discarded after harvest) can be processed to extract <strong>banana fibre</strong> — a strong, silky, biodegradable fibre. Under ODOP, banana fibre is being promoted for <strong>handicrafts, textiles, paper, and rope‑making</strong>. This is a classic example of <strong>waste‑to‑wealth</strong>: a by‑product that was burned or left to rot becomes a source of income.</p>
+            </div>
+            <div class="product-card">
+                <h3>🏺 Terracotta & Traditional Pottery</h3>
+                <p style="color:var(--text-body);">Ghazipur has a long, though not widely celebrated, tradition of <strong>terracotta work and pottery</strong>. The alluvial clay of the Ganga basin is well‑suited for pottery. Under ODOP, traditional potters have received support for design innovation, access to kilns, and marketing linkages. While not as commercially prominent as jute, terracotta represents the scheme's commitment to preserving cultural heritage alongside economic goals.</p>
+            </div>
+            <div class="product-card">
+                <h3>🧵 Handloom & Textile Work</h3>
+                <p style="color:var(--text-body);">Scattered across Ghazipur district are weaver communities producing <strong>handloom fabrics, durries (flat‑woven rugs), and embroidered textiles</strong>. ODOP provides credit support through schemes like the PMEGP (Prime Minister's Employment Generation Programme) and Mudra loans, along with marketing platforms such as ODOP exhibitions and e‑commerce integration.</p>
+            </div>
+        </div>
+
+        <!-- Economic & Policy Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Economic & Policy Context — Why ODOP Matters</h2>
+            <p style="color:var(--text-body);">ODOP is not merely a cultural preservation exercise. It is designed as an <strong>economic intervention</strong> targeting the structural weaknesses of districts like Ghazipur:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.5rem;"><strong>Countering migration:</strong> If a jute artisan or banana fibre entrepreneur can earn a stable income in Ghazipur, they do not need to migrate to Surat or Mumbai for textile work. ODOP aims to create that local livelihood.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Value addition at source:</strong> Historically, raw materials left Ghazipur and were processed elsewhere — raw jute to Kolkata mills, raw bananas to city markets. ODOP encourages processing within the district, capturing more of the value chain locally.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Women's empowerment:</strong> Many ODOP interventions — particularly jute handicrafts and banana fibre — are implemented through women's self‑help groups (SHGs), providing income and agency to women who often have limited economic opportunities.</li>
+                <li style="margin-bottom:0.5rem;"><strong>MSME formalisation:</strong> Small artisans and producers often operate in the informal economy, without access to credit, insurance, or formal markets. ODOP brings them into the formal fold, enabling access to government schemes and institutional support.</li>
+            </ul>
+            <div class="callout-info">
+                <p style="color:var(--text-body);"><strong>Management‑school relevance:</strong> ODOP is a live case study in <strong>cluster‑based development</strong> — the economic geography concept that co‑location of related producers creates shared infrastructure, knowledge spillovers, and collective bargaining power. It is also an example of the <strong>principal‑agent problem</strong> in policy: how does the government design incentives so that artisans actually benefit, rather than middlemen capturing the subsidies?</p>
+            </div>
+        </div>
+
+        <!-- How to Talk About It in an Interview -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">💡 How to Discuss ODOP in Your Interview</h2>
+            <p style="color:var(--text-body);">When a panelist asks about your district's economy or what your city is known for, ODOP gives you a natural, structured answer that demonstrates awareness of government policy without sounding rehearsed.</p>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Sample natural delivery:</strong> "Ghazipur's designated product under the One District One Product scheme is jute — jute bags, handicrafts, and textiles. It makes sense because the Gangetic soil here supports jute cultivation, and the scheme provides training, credit, and market access to local artisans. What I find interesting is how a policy like ODOP tries to address the root cause of migration — if a jute artisan can earn sustainably in Ghazipur, they don't have to leave for a textile job in Surat."</p>
+            </div>
+            <p style="color:var(--text-body);margin-top:0.8rem;">This answer works because it is specific (names the product), connected to geography (Gangetic soil), linked to a larger issue (migration), and shows analytical thinking (the policy logic).</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is the ODOP scheme, and what is Ghazipur's ODOP product?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">ODOP stands for One District One Product — a scheme launched by the UP government in 2018 to promote a unique craft, manufactured good, or agricultural product from each district. For Ghazipur, the primary product is <strong>jute — jute bags, handicrafts, and textiles</strong>. Banana fibre products, terracotta, and handloom are also promoted under the scheme.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What is the logic behind ODOP as a development policy?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">ODOP addresses three problems at once: local unemployment, migration, and loss of traditional crafts. By providing training, credit, branding, and market access for a district's traditional product, it tries to create sustainable local livelihoods. For Ghazipur — where out‑migration is a major challenge — enabling a jute artisan to earn locally directly addresses the root cause of why people leave.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Besides jute, what other local products are promoted in Ghazipur?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Banana fibre products — extracting fibre from banana pseudostems that would otherwise be agricultural waste — is an emerging sector. Terracotta pottery uses the alluvial clay of the Ganga basin. Traditional handloom and durrie weaving by local artisan communities is also supported. Each of these connects to the district's agricultural base or artisanal heritage.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: How does ODOP connect to the broader issue of migration from Purvanchal?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Migration from Purvanchal is largely driven by the absence of local industrial and non‑farm employment. ODOP attempts to fill that gap — not through large factories, but by strengthening traditional livelihoods that already exist. A jute craftsman who gets training, credit, and market access through ODOP has a reason to stay and build a business in Ghazipur rather than migrating to Surat or Mumbai. It is a bottom‑up approach to a structural problem.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What is the origin of the ODOP concept, and how has it been adopted nationally?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">ODOP is inspired by Japan's "One Village One Product" movement, which began in Oita Prefecture in 1979 and successfully revitalised rural economies through local specialities. UP launched its version in 2018. The concept was later adopted at the national level under the Atmanirbhar Bharat initiative, coordinated by the Ministry of Commerce and Industry, extending the framework across India.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Under the One District One Product scheme launched by the Uttar Pradesh government, Ghazipur's designated product is jute — including jute bags, handicrafts, and textiles. The scheme also supports banana fibre extraction, terracotta pottery, and traditional handloom weaving. The policy logic is compelling: by providing training, credit, branding, and market access for products rooted in the district's agricultural and artisanal heritage, ODOP attempts to create sustainable local livelihoods and reduce the pressure to migrate. It is a practical example of cluster‑based development — and for a district like Ghazipur, where migration is the central economic story, it represents one of the most direct policy responses to the structural challenge the region faces."</em></p>
+        </div>
+    </main>
+</body>
+</html>

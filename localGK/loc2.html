@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>LOC-02 · Ghazipur & The Ganga River — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: LOC-02] · [STATUS: VERIFIED] · [BLOCK 1: GHAZIPUR]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 1 · GHAZIPUR — YOUR CITY</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Ghazipur & The Ganga River</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The geography, culture, and lifeblood of your city — how the Ganga shapes Ghazipur’s identity and connects it to the wider Gangetic plains.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📍 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Location</span><div class="value">Ghazipur city lies on the southern (left) bank of the Ganga</div></div>
+                <div class="fact-box"><span class="label">River Reach</span><div class="value">The Ganga flows through the district for ~80 km</div></div>
+                <div class="fact-box"><span class="label">Direction of Flow</span><div class="value">West → East (toward Bihar)</div></div>
+                <div class="fact-box"><span class="label">Key Tributary</span><div class="value">Karmanasa River (forms UP‑Bihar border)</div></div>
+                <div class="fact-box"><span class="label">Distance to Varanasi</span><div class="value">~80 km (upstream)</div></div>
+                <div class="fact-box"><span class="label">Distance to Lucknow</span><div class="value">~300 km (north‑west)</div></div>
+                <div class="fact-box"><span class="label">Cultural Significance</span><div class="value">Ghats, rituals, and the Ganga Aarti at various local ghats</div></div>
+                <div class="fact-box"><span class="label">Economic Role</span><div class="value">Irrigation, fishing, sand mining, river‑based livelihoods</div></div>
+            </div>
+        </div>
+
+        <!-- Geographic & Hydrological Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌊 The Ganga in Ghazipur — Geography & Flow</h2>
+            <p style="color:var(--text-body);">Ghazipur is situated on the southern bank of the Ganga, roughly midway between Varanasi and the Bihar border. The river enters the district from the west, flows past the city, and continues eastward. This stretch of the Ganga is wide and slow‑moving, depositing rich alluvial soil that makes the surrounding farmland incredibly productive.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The city’s ghats — most notably the ones near the old town — are central to daily life. Early mornings see rituals, boatmen ferrying passengers, and farmers bringing produce across the river. The Ganga is not just a water body here; it is an economic artery, a spiritual anchor, and a geographical landmark that defines local identity.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Key detail for interviews:</strong> "Ghazipur sits on the southern bank of the Ganga, about 80 km downstream from Varanasi. The river flows eastward through the district, and the Karmanasa river — a tributary that joins the Ganga nearby — forms the natural boundary between Uttar Pradesh and Bihar."</p>
+            </div>
+        </div>
+
+        <!-- The Karmanasa River Connection -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏞️ The Karmanasa River — UP‑Bihar Border</h2>
+            <p style="color:var(--text-body);">The Karmanasa (sometimes spelled Karmnasa) is a significant tributary of the Ganga that flows through the southern part of Ghazipur district before joining the Ganga. It is notable because it <strong>forms part of the border between Uttar Pradesh and Bihar</strong> — specifically separating Ghazipur from Buxar district in Bihar.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The name "Karmanasa" is derived from Sanskrit, meaning "destroyer of karma" — a reflection of local folklore rather than hydrological fact. For your interview, knowing this river by name and its border‑forming role demonstrates precise local knowledge that most candidates will not have.</p>
+        </div>
+
+        <!-- Broader Significance & Personal Observation -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧠 Why This Matters for Your Interview</h2>
+            <p style="color:var(--text-body);">When a panelist asks about your hometown, mentioning the Ganga is expected — but mentioning it with precision sets you apart. Instead of saying "Ghazipur is on the Ganga," you can say: "Ghazipur lies on the southern bank of the Ganga, about 80 km downstream from Varanasi. The river flows eastward through the district, and the Karmanasa tributary forms the UP‑Bihar border near my city."</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">This signals that you have observed your surroundings with attention, understand basic geography, and can articulate it clearly. It also opens up natural follow‑up questions about river systems, the Purvanchal region, and economic activities tied to the river — all of which you will be prepared for.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Where is Ghazipur located in relation to the Ganga?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Ghazipur city is located on the southern (left) bank of the Ganga. The river flows through the district from west to east, and the city itself is situated roughly 80 km downstream from Varanasi and about 300 km from Lucknow.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Which river forms the border between UP and Bihar near Ghazipur?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Karmanasa River. It flows through Ghazipur district and joins the Ganga, and along much of its course it forms the natural boundary between Uttar Pradesh and Bihar, specifically separating Ghazipur from Buxar district.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: How far is Ghazipur from Varanasi and Lucknow?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Ghazipur is approximately 80 km from Varanasi (downstream, to the east) and approximately 300 km from Lucknow (the state capital, to the northwest). These distances are useful to know because panelists sometimes ask about connectivity to major cities.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is the direction of the Ganga's flow through Ghazipur?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Ganga flows from west to east through Ghazipur district. It enters from the Varanasi side, passes the city of Ghazipur, and continues eastward toward Bihar. This eastward flow is characteristic of the entire Gangetic plain, which slopes gently toward the Bay of Bengal.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What economic or cultural role does the Ganga play in Ghazipur?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The river supports agriculture through irrigation, provides a livelihood for fishermen and boatmen, and is central to religious rituals at the city's ghats. Sand mining is also an economic activity along the riverbed. Culturally, the Ganga is woven into daily life — from morning aartis to festival immersions.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--accent);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--accent);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Ghazipur is a city on the southern bank of the Ganga, located about 80 kilometres downstream from Varanasi and around 300 kilometres from Lucknow. The river flows eastward through the district, and the Karmanasa tributary forms the natural border between Uttar Pradesh and Bihar near the city. The Ganga is central to local life — it supports agriculture, fishing, and religious practices, and its ghats are focal points of daily activity. Knowing the river's geography and its role in the city's identity shows genuine familiarity with the region rather than a memorised list of facts."</em></p>
+        </div>
+    </main>
+</body>
+</html>

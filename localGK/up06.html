@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-06 · UP Districts — 75 (Most in India) — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem; text-align: center;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; }
+        .fact-box .value { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-top: 0.3rem; }
+
+        .compare-table {
+            width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0;
+        }
+        .compare-table th {
+            text-align: left; padding: 0.6rem 0.8rem; background: rgba(16,185,129,0.08);
+            color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+            text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .compare-table td {
+            padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border-subtle); color: var(--text-body);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-06] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">UP Districts — 75 (Most in India)</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Why does your state have the highest number of districts? The administrative logic, the colonial hangover, the post‑Independence splits, and what 75 districts mean for governance and identity.</p>
+        </div>
+
+        <!-- Key Facts Dashboard Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Administrative Dashboard</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Total Districts</span><div class="value">75</div></div>
+                <div class="fact-box"><span class="label">Administrative Divisions</span><div class="value">18</div></div>
+                <div class="fact-box"><span class="label">Tehsils / Taluks</span><div class="value">~350</div></div>
+                <div class="fact-box"><span class="label">Police Stations</span><div class="value">~1,500+</div></div>
+                <div class="fact-box"><span class="label">Gram Panchayats</span><div class="value">~58,000</div></div>
+                <div class="fact-box"><span class="label">Most Populous District</span><div class="value" style="font-size:1rem;">Lucknow / Ghaziabad</div></div>
+            </div>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-top:0.8rem;">Data reflects the administrative structure of the most populous state in India. Note that police jurisdictions (police stations) and revenue jurisdictions (tehsils) do not always align perfectly.</p>
+        </div>
+
+        <!-- Comparison with Other States -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚖️ Comparative Analysis — Top 5 States by Districts</h2>
+            <div style="overflow-x:auto;">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>State</th>
+                            <th>Districts</th>
+                            <th>Population (Approx)</th>
+                            <th>Avg. Pop. per District</th>
+                            <th>Key Reason for High Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:700; color:var(--accent);">Uttar Pradesh</td>
+                            <td>75</td>
+                            <td>~240 Million</td>
+                            <td>~3.2 Million</td>
+                            <td>Highest population; vast area; political expediency</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:600;">Madhya Pradesh</td>
+                            <td>55</td>
+                            <td>~85 Million</td>
+                            <td>~1.5 Million</td>
+                            <td>Largest area; tribal &amp; forest districts</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:600;">Rajasthan</td>
+                            <td>50</td>
+                            <td>~80 Million</td>
+                            <td>~1.6 Million</td>
+                            <td>Largest area; desert administration zones</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:600;">Bihar</td>
+                            <td>38</td>
+                            <td>~125 Million</td>
+                            <td>~3.3 Million</td>
+                            <td>Very high density; historical divisions</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:600;">Maharashtra</td>
+                            <td>36</td>
+                            <td>~125 Million</td>
+                            <td>~3.4 Million</td>
+                            <td>Large urban‑rural split; coastal regions</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Key Insight:</strong> While UP has the most districts, it also has the second‑highest average population per district (after Maharashtra). This highlights a relentless administrative pressure — even with 75 districts, a single District Magistrate in UP serves an average of 3.2 million people, far more than their counterpart in, say, Tamil Nadu.</p>
+            </div>
+        </div>
+
+        <!-- History & Formation -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🗺️ How Did UP Get to 75? — A Brief History</h2>
+            <p style="color:var(--text-body);">The district, as an administrative unit, is largely a British colonial innovation. Under the Mughals, the equivalent unit was the <strong>sarkar</strong>. The British needed a tighter administrative grid for revenue collection and law and order. At Independence, UP inherited roughly 49 districts from the United Provinces.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The journey from 49 to 75 happened in waves:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.5rem;list-style-type:disc;">
+                <li style="margin-bottom:0.4rem;"><strong>1950s‑70s:</strong> Early post‑Independence reorganisations to manage population growth and administrative convenience. Districts like Jalaun, Hamirpur, and Banda were carved out.</li>
+                <li style="margin-bottom:0.4rem;"><strong>1980s‑90s:</strong> A wave of new districts created, often for political reasons. For instance, Amethi was carved out of Sultanpur; Chitrakoot from Banda.</li>
+                <li style="margin-bottom:0.4rem;"><strong>2000 (Uttarakhand Split):</strong> 13 hill districts were carved out to form Uttarakhand, reducing UP's count temporarily, but new districts were subsequently created in the plains to manage the remaining population.</li>
+                <li style="margin-bottom:0.4rem;"><strong>2010s‑2020s:</strong> Recent additions include Shamli (from Muzaffarnagar), Hapur (from Ghaziabad), and a few others. The creation of new districts often accompanies electoral promises to bring administration closer to the people.</li>
+            </ul>
+        </div>
+
+        <!-- Governance & Challenges -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏛️ Governance: The District Magistrate & The Double‑Edged Sword</h2>
+            <p style="color:var(--text-body);">The administrative head of a district is the <strong>District Magistrate (DM)</strong> — an IAS officer who acts as the lynchpin of law and order, revenue collection, disaster management, and development coordination. They are assisted by the <strong>Superintendent of Police (SSP)</strong> for law enforcement and the <strong>Chief Development Officer (CDO)</strong> for development programmes.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Having 75 districts is a profound structural choice with inherent trade‑offs:</p>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem;">
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">ADVANTAGES</p>
+                    <ul style="color:var(--text-body);margin-left:1rem;font-size:0.9rem;list-style-type:'✓ ';">
+                        <li>Closer administration</li>
+                        <li>More focused development</li>
+                        <li>Better disaster response</li>
+                        <li>Political accessibility</li>
+                    </ul>
+                </div>
+                <div style="background:rgba(244,63,94,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--rose);font-size:0.7rem;">CHALLENGES</p>
+                    <ul style="color:var(--text-body);margin-left:1rem;font-size:0.9rem;list-style-type:'✗ ';">
+                        <li>Coordination overhead</li>
+                        <li>Higher bureaucratic costs</li>
+                        <li>Jurisdictional disputes</li>
+                        <li>Strain on IAS cadre strength</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: How many districts are there in Uttar Pradesh?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">There are <strong>75 districts</strong> in Uttar Pradesh, the highest of any state in India. They are grouped into 18 administrative divisions.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Which state has the second highest number of districts?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Madhya Pradesh, with 55 districts. Rajasthan has 50. After that, Bihar and Maharashtra are in the 36‑38 range. UP is significantly ahead of the pack.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Why does UP have so many districts compared to other states?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The primary reason is <strong>population</strong> — UP is the most populous state in India, and managing 240 million people requires a finer administrative grid. Second, it is the <strong>4th largest state by area</strong>. Third, there is a <strong>political dimension</strong>: state governments often create new districts to bring administration "closer to the people" and fulfil electoral promises.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Who heads the administration of a district in UP?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The <strong>District Magistrate (DM)</strong> — an IAS officer — is the head of the district administration, responsible for law and order, revenue, disaster management, and development coordination. They are assisted by the <strong>SSP</strong> (police) and the <strong>Chief Development Officer</strong> (development programmes).</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What are the pros and cons of having so many districts?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The advantage is <strong>proximity</strong> — smaller districts mean better accessibility for citizens and more focused local development. The disadvantage is <strong>coordination</strong> — managing 75 DMs, reconciling inter‑district disputes, and the sheer bureaucratic cost of so many administrative units. It is a classic trade‑off between granular governance and administrative efficiency.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Uttar Pradesh has 75 districts — the highest number for any state in India, well ahead of Madhya Pradesh which has 55. This administrative density is driven by UP's massive population of 240 million and its large geographical area. The district system, headed by the District Magistrate, is a colonial legacy that post‑Independence governments have expanded to bring governance closer to citizens. However, managing 75 districts also creates significant coordination challenges and bureaucratic overhead. Understanding this number means understanding the very architecture of governance in India's most politically significant state."</em></p>
+        </div>
+    </main>
+</body>
+</html>

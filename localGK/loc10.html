@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>LOC-10 · Ghazipur Distances — Varanasi & Lucknow — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .distance-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem;
+        }
+        .distance-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.3rem; }
+        .distance-card .km { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--text-bright); }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: LOC-10] · [STATUS: VERIFIED] · [BLOCK 1: GHAZIPUR]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 1 · GHAZIPUR — YOUR CITY</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Ghazipur Distances — Varanasi & Lucknow</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Spatial awareness of your hometown — the distances to major cities, the transport links, and what these connections mean for daily life, migration, and economic opportunity.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Distances at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">To Varanasi</span><div class="value">~80 km (west / upstream)</div></div>
+                <div class="fact-box"><span class="label">To Lucknow</span><div class="value">~300 km (north‑west)</div></div>
+                <div class="fact-box"><span class="label">To Patna</span><div class="value">~120‑130 km (east)</div></div>
+                <div class="fact-box"><span class="label">To Delhi</span><div class="value">~850 km (north‑west)</div></div>
+                <div class="fact-box"><span class="label">Nearest Major Railway</span><div class="value">Ghazipur City Railway Station (connected to Varanasi, Patna, Delhi)</div></div>
+                <div class="fact-box"><span class="label">Nearest Airport</span><div class="value">Lal Bahadur Shastri International Airport, Varanasi (~80 km)</div></div>
+                <div class="fact-box"><span class="label">Highway Connectivity</span><div class="value">NH‑31 (Ghazipur‑Patna); Purvanchal Expressway access near Ghazipur</div></div>
+                <div class="fact-box"><span class="label">Travel Time to Varanasi</span><div class="value">~1.5‑2 hours by road; ~1 hour by train</div></div>
+            </div>
+        </div>
+
+        <!-- Varanasi Connection -->
+        <div class="distance-card">
+            <h3>🛕 Ghazipur → Varanasi (~80 km)</h3>
+            <p style="color:var(--text-body);">Varanasi (Kashi) is the closest major city to Ghazipur. Located approximately 80 kilometres to the west, it is accessible by road in about an hour and a half via NH‑31. The railway line between Ghazipur and Varanasi is well‑established, with multiple passenger and express trains daily. Varanasi serves as the primary urban anchor for Ghazipur residents seeking higher education (Banaras Hindu University is there), specialised healthcare (Sir Sunderlal Hospital, various private hospitals), and air connectivity to the rest of India and abroad. For many in Ghazipur, a trip to Varanasi is not a long journey — it is part of the monthly rhythm of life.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Interview nuance:</strong> "Varanasi is about 80 kilometres from Ghazipur — close enough that many families have students at BHU or patients in Varanasi hospitals, but far enough that daily commuting is impractical. It shapes the district's access to urban services."</p>
+            </div>
+        </div>
+
+        <!-- Lucknow Connection -->
+        <div class="distance-card">
+            <h3>🏛️ Ghazipur → Lucknow (~300 km)</h3>
+            <p style="color:var(--text-body);">Lucknow, the state capital, is approximately 300 kilometres to the north‑west. The journey by road takes about 5‑6 hours, depending on the route. With the opening of the <strong>Purvanchal Expressway</strong>, which has a terminus near Ghazipur (at Haidaria village), travel time to Lucknow has been significantly reduced — what once took 7‑8 hours on older highways now takes closer to 4‑5 hours. Lucknow is the administrative and political centre of Uttar Pradesh, and for Ghazipur residents, it represents access to state‑level governance, higher‑order legal institutions (Lucknow Bench of the Allahabad High Court), and a broader range of educational and employment opportunities.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Infrastructure context:</strong> "The Purvanchal Expressway, which starts near Lucknow and terminates near Ghazipur, has transformed connectivity. A journey that used to take most of a day now takes under five hours. This is a tangible infrastructure improvement that directly affects economic integration."</p>
+            </div>
+        </div>
+
+        <!-- Patna Connection -->
+        <div class="distance-card">
+            <h3>🌉 Ghazipur → Patna (~120‑130 km)</h3>
+            <p style="color:var(--text-body);">Patna, the capital of Bihar, lies approximately 120‑130 kilometres to the east, across the Ganga. Although it is in a different state, Patna is actually <strong>closer to Ghazipur than Lucknow</strong>. For many residents of eastern Ghazipur, Patna is a more accessible metropolitan centre for higher education (Patna University, IIT Patna), medical treatment (AIIMS Patna), and specialised commerce. This is a classic example of <strong>functional economic geography overriding administrative geography</strong> — the nearest large city is not necessarily in one's own state. The cross‑border cultural and linguistic continuity (both sides speak Bhojpuri) makes this connection feel entirely natural.</p>
+        </div>
+
+        <!-- Delhi Connection -->
+        <div class="distance-card">
+            <h3>🏙️ Ghazipur → Delhi (~850 km)</h3>
+            <p style="color:var(--text-body);">Delhi, the national capital, is approximately 850 kilometres away. While not a daily or even monthly destination for most residents, Delhi represents the ultimate migration magnet. Many young people from Ghazipur — like much of Purvanchal — make the long journey to Delhi for employment, higher education, or to catch international flights. The railway connection from Ghazipur to Delhi is direct but slow; many prefer to travel via Varanasi or Patna for better train options. The distance is significant, but it is a well‑trodden path — the migrant networks that connect Ghazipur to Delhi's labour markets are generations deep.</p>
+        </div>
+
+        <!-- Significance of Distances -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧭 Why Distances Matter — More Than Just Numbers</h2>
+            <p style="color:var(--text-body);">Distances shape the economic and social geography of a region in profound ways. For a district like Ghazipur, the proximity to Varanasi (80 km) means access to a university town, an airport, and a tourism economy that creates spill‑over opportunities. The distance from Lucknow (300 km) — now shortened by the expressway — determines how connected the district is to state‑level administration and policy. The closeness to Patna (120 km) means that the functional metropolitan area for Ghazipur crosses state boundaries.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">And the 850 km to Delhi? That is not just a number — it is the distance that migrant workers, students, and entrepreneurs travel, often leaving behind families for months at a time. The remittances that flow back along that 850‑km corridor are a crucial part of Ghazipur's economy. Understanding these distances is understanding the geography of ambition, necessity, and connection that defines the Purvanchal region.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: How far is Ghazipur from Varanasi and Lucknow?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Ghazipur is approximately 80 kilometres from Varanasi — about an hour and a half by road. Lucknow is approximately 300 kilometres away, but the Purvanchal Expressway has reduced travel time to about 4‑5 hours. Patna, the Bihar capital, is actually closer — about 120‑130 kilometres to the east.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: How has the Purvanchal Expressway changed connectivity to Ghazipur?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The expressway terminates near Ghazipur and connects it directly to Lucknow. Travel time has been cut from 7‑8 hours to about 4‑5 hours. This has significantly improved logistics for agricultural produce, reduced the isolation of the district, and potentially opens up new economic opportunities by integrating Purvanchal more closely with the state capital.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Why might a Ghazipur resident go to Patna rather than Lucknow?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Patna is about 120‑130 km away — closer than Lucknow (300 km). It has institutions like Patna University, IIT Patna, and AIIMS Patna that attract students and patients from eastern UP. The shared Bhojpuri language and culture make it feel less "foreign" than a distant state capital. Functionally, Patna is often a more accessible metropolitan centre for Ghazipur residents than Lucknow.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is the significance of the distance to Delhi for Ghazipur?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Delhi is about 850 km away. This distance is travelled by thousands of migrant workers from Ghazipur every year — it's the corridor along which remittances flow back to the district. While not a daily connection, Delhi represents economic opportunity, higher education, and international connectivity that the district itself does not provide. The migrant networks between Ghazipur and Delhi are generations deep and economically significant.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: How do distances from Ghazipur reflect broader patterns in Purvanchal?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Ghazipur is relatively close to major cities (Varanasi 80 km, Patna 120 km) but historically far from state decision‑making centres (Lucknow 300 km). This reflects a broader Purvanchal pattern: proximity to cultural and regional hubs, but distance from political and administrative power. Projects like the Purvanchal Expressway are explicitly designed to close this gap, physically and economically.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Ghazipur sits at an interesting geographic crossroads. It is about 80 kilometres from Varanasi — close enough for daily access to a major university and airport. Lucknow, the state capital, is 300 kilometres away, but the Purvanchal Expressway has cut travel time to under five hours. Patna is even closer — just 120 kilometres across the Ganga — meaning that for many residents, the functional metropolitan centre is actually in a different state. Delhi, 850 kilometres away, represents the migration corridor that defines Purvanchal's economy. These distances tell a story of connectivity, migration, and the gap between administrative geography and lived reality."</em></p>
+        </div>
+    </main>
+</body>
+</html>

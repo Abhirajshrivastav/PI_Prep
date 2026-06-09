@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-04 · History: United Provinces to Uttar Pradesh — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .timeline-node {
+            display: flex; gap: 1rem; align-items: baseline;
+            border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0;
+        }
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.85rem; min-width: 5rem;
+        }
+        .timeline-desc { color: var(--text-body); font-size: 0.9rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-04] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">History: United Provinces to Uttar Pradesh</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The colonial origins of your state's name, the administrative reorganisations that shaped it, and why "United Provinces" became "Uttar Pradesh" — a story that reveals much about India's journey from empire to republic.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Colonial Name</span><div class="value">United Provinces of Agra and Oudh (1902) → United Provinces (1937)</div></div>
+                <div class="fact-box"><span class="label">Post‑Independence Name</span><div class="value">Uttar Pradesh (24 January 1950)</div></div>
+                <div class="fact-box"><span class="label">Meaning</span><div class="value">"Northern Province" (Uttar = North, Pradesh = Province)</div></div>
+                <div class="fact-box"><span class="label">Pre‑British Regions</span><div class="value">Awadh (Oudh), Agra Province, and parts of the Delhi Territory</div></div>
+                <div class="fact-box"><span class="label">Capital</span><div class="value">Allahabad (now Prayagraj) under British rule; shifted to Lucknow after Independence</div></div>
+                <div class="fact-box"><span class="label">Uttarakhand Split</span><div class="value">Carved out of UP on 9 November 2000</div></div>
+                <div class="fact-box"><span class="label">Current Districts</span><div class="value">75 (most in India)</div></div>
+                <div class="fact-box"><span class="label">First CM of UP</span><div class="value">Govind Ballabh Pant (1950–1954)</div></div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📜 Timeline — From Imperial Provinces to Modern State</h2>
+            <div>
+                <div class="timeline-node"><span class="timeline-year">1834</span><span class="timeline-desc">British East India Company creates the <strong>Agra Province</strong> (also called the North‑Western Provinces), carved out of the Bengal Presidency. Ghazipur falls within this territory.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1856</span><span class="timeline-desc">The British annex <strong>Awadh (Oudh)</strong> — the Nawabi kingdom centred on Lucknow — after charging the Nawab with misrule. This brings Lucknow under direct British control.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1857</span><span class="timeline-desc">The Indian Rebellion. Both the Agra Province and Awadh are major centres of uprising. After the rebellion, the Crown takes over from the Company.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1877</span><span class="timeline-desc">The Agra Province and Awadh are merged into the <strong>North‑Western Provinces and Oudh</strong>. The capital shifts between Agra and Allahabad.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1902</span><span class="timeline-desc">Renamed the <strong>United Provinces of Agra and Oudh</strong> — a more dignified name for what was now the most populous province of British India.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1937</span><span class="timeline-desc">Provincial autonomy under the Government of India Act, 1935. The name is shortened to simply <strong>United Provinces (UP)</strong>. The first provincial elections are held.</span></div>
+                <div class="timeline-node"><span class="timeline-year">24 Jan 1950</span><span class="timeline-desc">Two days before India becomes a Republic, the United Provinces is renamed <strong>Uttar Pradesh</strong> — literally "Northern Province" — by an order of the Constituent Assembly. The name change reflected the end of colonial nomenclature and the assertion of a new Indian identity.</span></div>
+                <div class="timeline-node"><span class="timeline-year">9 Nov 2000</span><span class="timeline-desc">The hill districts of Uttar Pradesh are carved out to form <strong>Uttarakhand</strong> (originally named Uttaranchal). This reduces UP's district count and geographic size but it remains the most populous state.</span></div>
+            </div>
+        </div>
+
+        <!-- The Meaning of "Uttar Pradesh" -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧾 What's in a Name? — "United Provinces" to "Uttar Pradesh"</h2>
+            <p style="color:var(--text-body);">The old name — <strong>United Provinces</strong> — was a colonial administrative label. It described a political convenience: the union of different territories under British rule. The new name — <strong>Uttar Pradesh</strong> — was a deliberate assertion of Indian identity. It placed the state within the geography of the new nation, not within the administrative logic of empire.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The transition was formalised by the <strong>Constitution of India</strong> itself. In the First Schedule, the state is listed as "Uttar Pradesh" — the name by which it has been known since 24 January 1950. Govind Ballabh Pant, a key figure in the freedom movement and the state's first Chief Minister, was instrumental in the renaming.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Interview‑ready line:</strong> "Before Independence, my state was called the United Provinces — or earlier, the United Provinces of Agra and Oudh. It was renamed Uttar Pradesh on 24 January 1950, just two days before India became a Republic. The change symbolised moving away from a colonial administrative label toward a name rooted in Indian geography."</p>
+            </div>
+        </div>
+
+        <!-- Why This Matters -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">💡 Why This History Matters for Your Interview</h2>
+            <p style="color:var(--text-body);">When a panelist asks "what was the old name of Uttar Pradesh?", they are not just testing a fact. They are checking whether you have thought about the history of the place you come from. The name "United Provinces" is a window into:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.4rem;"><strong>Colonial administration:</strong> How the British organised and named territories for their convenience, not for cultural or linguistic coherence.</li>
+                <li style="margin-bottom:0.4rem;"><strong>The Awadh region:</strong> Lucknow and its surrounding areas were once an independent kingdom. The British annexation of Awadh in 1856 was a major cause of the 1857 Rebellion. Knowing this adds depth to your understanding of Lucknow's history.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Post‑Independence identity:</strong> The renaming of states — United Provinces to Uttar Pradesh, Madras to Tamil Nadu, Orissa to Odisha — was part of a larger project of decolonising India's map.</li>
+                <li style="margin-bottom:0.4rem;"><strong>The Uttarakhand split (2000):</strong> The creation of Uttarakhand from UP's hill districts is a significant event in modern Indian federalism, demonstrating how regional aspirations can lead to state reorganisation even decades after Independence.</li>
+            </ul>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What was the old name of Uttar Pradesh under British rule?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The United Provinces — or more precisely, the United Provinces of Agra and Oudh, as it was known from 1902 until it was shortened to "United Provinces" in 1937. Before that, it was called the North‑Western Provinces and Oudh. The name "Uttar Pradesh" was adopted on 24 January 1950, just before India became a Republic.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Why was the name changed from United Provinces to Uttar Pradesh?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"United Provinces" was a colonial administrative label that described the union of territories under British rule. After Independence, there was a deliberate effort to replace such labels with names rooted in Indian geography and identity. "Uttar Pradesh" — meaning "Northern Province" — was chosen to reflect the state's location in the new nation. The renaming was formalised by the Constituent Assembly on 24 January 1950.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What was the significance of the Awadh region in UP's history?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Awadh (Oudh) was a prosperous Nawabi kingdom centred on Lucknow, known for its refined culture, cuisine, and architecture. The British annexed it in 1856, alleging misrule — a major trigger for the 1857 Rebellion. After the rebellion, Awadh was merged with the Agra Province to form the North‑Western Provinces and Oudh, which later became the United Provinces. The legacy of Awadh is still visible in Lucknow's culture and identity today.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: When was Uttarakhand carved out of Uttar Pradesh?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Uttarakhand (originally named Uttaranchal) was created on 9 November 2000, carved out of the hill districts of Uttar Pradesh. This was the result of a long‑standing demand for a separate hill state. UP's district count reduced after the split, but it remains the most populous state in India.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Before Independence, my state was known as the United Provinces — short for the United Provinces of Agra and Oudh, a British administrative entity that combined the Agra Province with the annexed kingdom of Awadh. On 24 January 1950, two days before India became a Republic, the Constituent Assembly renamed it 'Uttar Pradesh' — literally 'Northern Province' — a name rooted in Indian geography rather than colonial convenience. Later, in 2000, the hill districts were carved out to form Uttarakhand. This history is a reminder that the map of India as we know it is not ancient — it was shaped by colonial decisions, freedom‑movement aspirations, and post‑Independence reorganisation."</em></p>
+        </div>
+    </main>
+</body>
+</html>

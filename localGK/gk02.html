@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEC-03 // INDIA: GEOPOLITICAL MATRIX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #050a08;
+            --bg-secondary: #070d0b;
+            --border-color: #142822;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.15);
+            --text-muted: #889590;
+            --text-bright: #f0f5f3;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: 
+                linear-gradient(rgba(20, 40, 34, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(20, 40, 34, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px;
+        }
+
+        .serif-font { font-family: 'Playfair Display', serif; }
+        .mono-font { font-family: 'JetBrains Mono', monospace; }
+
+        .cyber-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .cyber-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .scanlines {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+            background-size: 100% 4px;
+            z-index: 9999; pointer-events: none; opacity: 0.3;
+        }
+
+        input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
+        
+        /* Custom Scrollbar for Matrix */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    </style>
+</head>
+<body class="min-h-screen relative antialiased selection:bg-[#10b981] selection:text-black pb-16">
+    <div class="scanlines"></div>
+
+    <!-- Status Bar -->
+    <div class="w-full border-b border-[#142822] bg-[#070d0b]/80 backdrop-blur-md px-6 py-3 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs mono-font tracking-wider text-[#889590]">
+            <div class="flex items-center space-x-4">
+                <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
+                <span class="text-[#f0f5f3]">NODE: INDIA_STATES_CAPITALS</span>
+                <span class="text-[#142822]">|</span>
+                <span>SEC-03: REGIONAL GK</span>
+            </div>
+            <div class="mt-2 sm:mt-0 flex items-center space-x-4">
+                <span>TOTAL_NODES: <span class="text-[#10b981]">36</span> (28 STATES, 8 UT)</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-6 pt-12">
+        <!-- Header & Search Interface -->
+        <header class="mb-12 border-b border-[#142822] pb-8 flex flex-col md:flex-row justify-between items-end gap-6">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-bold text-[#f0f5f3] tracking-tight serif-font mb-2">
+                    Republic of India: Sub-National Matrix
+                </h1>
+                <p class="text-[#889590] text-sm max-w-2xl leading-relaxed">
+                    A high-density structural breakdown of Indian states and union territories. Optimized for macroeconomic awareness, technological corridors, and demographic distribution analysis.
+                </p>
+            </div>
+            
+            <!-- Terminal Search Engine -->
+            <div class="w-full md:w-96 relative">
+                <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#10b981] mono-font text-sm">></div>
+                <input type="text" id="searchInput" placeholder="QUERY NODE (e.g., 'Tech', 'Hyderabad', 'UP')..." 
+                       class="w-full bg-[#030706] border border-[#142822] text-[#f0f5f3] mono-font text-xs py-3 pl-8 pr-4 rounded-md transition-all placeholder-[#51635d]">
+            </div>
+        </header>
+
+        <!-- Dynamic Data Grid -->
+        <div id="matrixGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <!-- Rendered via JS -->
+        </div>
+    </main>
+
+    <script>
+        // High-Density Knowledge Database
+        const indiaData = [
+            // === THE SOUTHERN TECH & ECONOMIC ENGINE ===
+            {
+                name: "Telangana",
+                capital: "Hyderabad",
+                type: "State",
+                zone: "Southern Economic Engine",
+                founded: "June 2, 2014",
+                context: "A premier node for AI, Machine Learning, and Computer Science research. Hyderabad houses leading institutes like IIIT-H and acts as a massive global capability center (GCC) for multinational tech and pharma corps.",
+                tags: ["tech", "ai", "pharma"]
+            },
+            {
+                name: "Karnataka",
+                capital: "Bengaluru",
+                type: "State",
+                zone: "Southern Economic Engine",
+                founded: "Nov 1, 1956",
+                context: "The undisputed 'Silicon Valley of India'. A powerhouse of aerospace, defense, biotechnology, and Web3/software development startups. Commands massive venture capital inflow.",
+                tags: ["startup", "software", "aerospace"]
+            },
+            {
+                name: "Tamil Nadu",
+                capital: "Chennai",
+                type: "State",
+                zone: "Southern Economic Engine",
+                founded: "Jan 26, 1950",
+                context: "The Detroit of Asia. India's top manufacturing and automotive hub. Boasts the highest number of factories and a highly industrialized, globally integrated coastal economy.",
+                tags: ["manufacturing", "automotive", "coastal"]
+            },
+            {
+                name: "Kerala",
+                capital: "Thiruvananthapuram",
+                type: "State",
+                zone: "Southern Economic Engine",
+                founded: "Nov 1, 1956",
+                context: "Leading state in Human Development Index (HDI), literacy, and healthcare. Economy heavily driven by remittances, tourism, and a growing presence in digital infrastructure.",
+                tags: ["hdi", "literacy", "tourism"]
+            },
+            {
+                name: "Andhra Pradesh",
+                capital: "Amaravati",
+                type: "State",
+                zone: "Southern Economic Engine",
+                founded: "Nov 1, 1956",
+                context: "A major agrarian base rapidly pivoting toward IT and coastal trade. Possesses India's second-longest coastline, heavily anchoring the Eastern maritime logistics corridor.",
+                tags: ["agriculture", "maritime", "trade"]
+            },
+
+            // === THE NORTHERN DEMOGRAPHIC CORE ===
+            {
+                name: "Uttar Pradesh",
+                capital: "Lucknow",
+                type: "State",
+                zone: "Northern Demographic Core",
+                founded: "Jan 24, 1950",
+                context: "India's demographic heavyweight. A massive agricultural breadbasket now aggressively deploying defense corridors and expressways. Contains critical spiritual/cultural anchor nodes like Varanasi and Ayodhya.",
+                tags: ["population", "agriculture", "infrastructure", "varanasi"]
+            },
+            {
+                name: "Delhi",
+                capital: "New Delhi",
+                type: "Union Territory",
+                zone: "Federal Capital Region",
+                founded: "Nov 1, 1956",
+                context: "The geopolitical heart of the Republic. A massive urban agglomeration (NCR) driving high-end services, sovereign decision-making, and significant startup incubation.",
+                tags: ["capital", "ncr", "services"]
+            },
+            {
+                name: "Haryana",
+                capital: "Chandigarh",
+                type: "State",
+                zone: "Northern Demographic Core",
+                founded: "Nov 1, 1966",
+                context: "High per-capita income state flanking the capital. Gurugram acts as a mega-hub for Fortune 500 corporate offices, business process management, and automotive manufacturing.",
+                tags: ["gurugram", "corporate", "automotive"]
+            },
+            {
+                name: "Punjab",
+                capital: "Chandigarh",
+                type: "State",
+                zone: "Northern Demographic Core",
+                founded: "Nov 1, 1966",
+                context: "The traditional breadbasket of India. Highly dependent on agriculture and heavily integrated into the armed forces, though facing modern economic diversification challenges.",
+                tags: ["agriculture", "farming", "military"]
+            },
+            {
+                name: "Madhya Pradesh",
+                capital: "Bhopal",
+                type: "State",
+                zone: "Central Core",
+                founded: "Nov 1, 1956",
+                context: "The geographical center of India. Extremely resource-rich with vast forest cover, immense agricultural output (especially soybeans), and rising logistics hubs like Indore.",
+                tags: ["resources", "logistics", "indore"]
+            },
+
+            // === THE WESTERN FINANCIAL & INDUSTRIAL HUB ===
+            {
+                name: "Maharashtra",
+                capital: "Mumbai",
+                type: "State",
+                zone: "Western Financial Hub",
+                founded: "May 1, 1960",
+                context: "India's highest GDP contributor. Mumbai acts as the undisputed financial and entertainment sovereign, while Pune serves as a massive IT and automotive engineering counter-weight.",
+                tags: ["finance", "gdp", "pune"]
+            },
+            {
+                name: "Gujarat",
+                capital: "Gandhinagar",
+                type: "State",
+                zone: "Western Financial Hub",
+                founded: "May 1, 1960",
+                context: "India's premier trading, petrochemical, and manufacturing powerhouse. Houses massive ports (Kandla/Mundra) and the upcoming GIFT City (global financial and tech gateway).",
+                tags: ["trade", "petrochemical", "ports"]
+            },
+            {
+                name: "Rajasthan",
+                capital: "Jaipur",
+                type: "State",
+                zone: "Western Frontier",
+                founded: "Mar 30, 1949",
+                context: "India's largest state by landmass. A dominant force in renewable energy (solar), tourism, and mineral extraction, sharing a highly sensitive international border.",
+                tags: ["solar", "tourism", "minerals"]
+            },
+
+            // === EASTERN & NORTHEASTERN STRATEGIC FRONTIER ===
+            {
+                name: "West Bengal",
+                capital: "Kolkata",
+                type: "State",
+                zone: "Eastern Strategic Gateway",
+                founded: "Jan 26, 1950",
+                context: "The historical economic capital of British India. It serves as the critical geopolitical bridge between the Indian mainland and the Northeastern states (Siliguri Corridor/Chicken's Neck).",
+                tags: ["gateway", "historical", "trade"]
+            },
+            {
+                name: "Odisha",
+                capital: "Bhubaneswar",
+                type: "State",
+                zone: "Eastern Strategic Gateway",
+                founded: "April 1, 1936",
+                context: "India's mineral and metallurgical anchor. Houses massive reserves of iron ore and coal, making it the epicenter of the nation's steel and aluminum production networks.",
+                tags: ["minerals", "steel", "mining"]
+            },
+            {
+                name: "Bihar",
+                capital: "Patna",
+                type: "State",
+                zone: "Eastern Strategic Gateway",
+                founded: "Mar 22, 1912",
+                context: "A region of immense historical antiquity and deep demographic density. A major source of labor mobility across the subcontinent, currently focused on infrastructural catching-up.",
+                tags: ["history", "demographics", "labor"]
+            },
+            {
+                name: "Assam",
+                capital: "Dispur",
+                type: "State",
+                zone: "Northeastern Frontier",
+                founded: "Jan 26, 1950",
+                context: "The anchor of the Northeast. Globally renowned for its tea estates and biodiversity, while strategically sitting atop significant petroleum reserves and border infrastructure.",
+                tags: ["tea", "biodiversity", "petroleum"]
+            },
+            {
+                name: "Arunachal Pradesh",
+                capital: "Itanagar",
+                type: "State",
+                zone: "Northeastern Frontier",
+                founded: "Feb 20, 1987",
+                context: "A highly sensitive, militarized strategic node bordering China. Immense untapped hydroelectric potential, though restricted by geopolitical realities.",
+                tags: ["border", "hydroelectric", "military"]
+            },
+
+            // === OTHER STATES (COMPACT DATA) ===
+            { name: "Chhattisgarh", capital: "Raipur", type: "State", zone: "Central Core", founded: "Nov 1, 2000", context: "A heavily forested, power-generating state holding massive coal and steel infrastructure.", tags: ["coal", "power", "forest"] },
+            { name: "Jharkhand", capital: "Ranchi", type: "State", zone: "Eastern Strategic Gateway", founded: "Nov 15, 2000", context: "Houses ~40% of India's mineral wealth. The industrial city of Jamshedpur is a legendary node of private industrialization.", tags: ["minerals", "jamshedpur", "industry"] },
+            { name: "Goa", capital: "Panaji", type: "State", zone: "Western Financial Hub", founded: "May 30, 1987", context: "Highest per-capita GDP in India. A global tourism magnet with a burgeoning secondary ecosystem for remote tech talent.", tags: ["tourism", "per-capita", "coast"] },
+            { name: "Himachal Pradesh", capital: "Shimla", type: "State", zone: "Northern Demographic Core", founded: "Jan 25, 1971", context: "A mountainous pharmaceutical manufacturing hub and critical source of glacial freshwater for the Northern plains.", tags: ["pharma", "mountains", "water"] },
+            { name: "Uttarakhand", capital: "Dehradun", type: "State", zone: "Northern Demographic Core", founded: "Nov 9, 2000", context: "The 'Land of Gods'. Ecologically sensitive border state with high military deployment and massive spiritual tourism economies.", tags: ["military", "tourism", "ecology"] },
+            { name: "Sikkim", capital: "Gangtok", type: "State", zone: "Northeastern Frontier", founded: "May 16, 1975", context: "India's first fully organic state. A highly strategic, heavily fortified wedge between Nepal, China, and Bhutan.", tags: ["organic", "border", "strategic"] },
+            { name: "Meghalaya", capital: "Shillong", type: "State", zone: "Northeastern Frontier", founded: "Jan 21, 1972", context: "The 'Abode of Clouds'. Known for extreme rainfall and unique ecological engineering (living root bridges).", tags: ["ecology", "rain"] },
+            { name: "Manipur", capital: "Imphal", type: "State", zone: "Northeastern Frontier", founded: "Jan 21, 1972", context: "A critical node in India's 'Act East' policy, aiming to connect by land to Southeast Asian markets via Myanmar.", tags: ["act-east", "border"] },
+            { name: "Mizoram", capital: "Aizawl", type: "State", zone: "Northeastern Frontier", founded: "Feb 20, 1987", context: "Highly literate state with a tight-knit tribal society. Economy relies heavily on agriculture and border trade.", tags: ["literacy", "tribal"] },
+            { name: "Nagaland", capital: "Kohima", type: "State", zone: "Northeastern Frontier", founded: "Dec 1, 1963", context: "Fiercely independent cultural heritage. Known for the Hornbill Festival and complex internal socio-political dynamics.", tags: ["culture", "tribal"] },
+            { name: "Tripura", capital: "Agartala", type: "State", zone: "Northeastern Frontier", founded: "Jan 21, 1972", context: "Surrounded on three sides by Bangladesh, making it a critical logistical hub for cross-border transit and trade.", tags: ["transit", "bangladesh"] },
+
+            // === UNION TERRITORIES ===
+            { name: "Jammu & Kashmir", capital: "Srinagar (S) / Jammu (W)", type: "Union Territory", zone: "Federal Northern Node", founded: "Oct 31, 2019", context: "Highly sensitive geopolitical flashpoint. Moving toward economic integration through tourism and new rail infrastructure.", tags: ["border", "tourism", "conflict"] },
+            { name: "Ladakh", capital: "Leh / Kargil", type: "Union Territory", zone: "Federal Northern Node", founded: "Oct 31, 2019", context: "A high-altitude cold desert of extreme strategic value, militarized to counter external geopolitical threats.", tags: ["military", "altitude"] },
+            { name: "Andaman & Nicobar", capital: "Sri Vijaya Puram", type: "Union Territory", zone: "Federal Maritime Command", founded: "Nov 1, 1956", context: "India's unsinkable aircraft carrier. Provides command over the Malacca Strait, one of global trade's most critical chokepoints.", tags: ["military", "navy", "trade-route"] },
+            { name: "Chandigarh", capital: "Chandigarh", type: "Union Territory", zone: "Federal Node", founded: "Nov 1, 1966", context: "A meticulously master-planned city serving as the shared capital for Punjab and Haryana.", tags: ["planned-city", "capital"] },
+            { name: "Puducherry", capital: "Puducherry", type: "Union Territory", zone: "Federal Node", founded: "Nov 1, 1954", context: "Former French enclave. Characterized by high administrative autonomy, tourism, and unique cultural blending.", tags: ["french", "tourism"] },
+            { name: "Lakshadweep", capital: "Kavaratti", type: "Union Territory", zone: "Federal Maritime Command", founded: "Nov 1, 1956", context: "A strategic coral archipelago in the Arabian Sea. Increasing in importance for naval outposting and luxury tourism.", tags: ["archipelago", "navy"] },
+            { name: "Dadra & Nagar Haveli and Daman & Diu", capital: "Daman", type: "Union Territory", zone: "Federal Node", founded: "Jan 26, 2020", context: "Coastal enclaves acting as manufacturing and industrial tax havens wedged into Gujarat's geography.", tags: ["manufacturing", "industry"] }
+        ];
+
+        const grid = document.getElementById('matrixGrid');
+        const searchInput = document.getElementById('searchInput');
+
+        function renderMatrix(data) {
+            grid.innerHTML = '';
+            data.forEach(node => {
+                const isState = node.type === "State";
+                const typeColor = isState ? "text-[#10b981]" : "text-[#fbbf24]";
+                const typeBg = isState ? "bg-[#10b981]/10" : "bg-[#fbbf24]/10";
+                
+                const card = document.createElement('div');
+                card.className = "cyber-card rounded-xl p-6 flex flex-col justify-between h-full";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="mono-font text-[10px] font-bold ${typeColor} ${typeBg} px-2 py-1 rounded tracking-wider uppercase">
+                                ${node.type}
+                            </span>
+                            <span class="mono-font text-[10px] text-[#51635d]">EST: ${node.founded}</span>
+                        </div>
+                        <h3 class="serif-font text-2xl font-bold text-[#f0f5f3] mb-1">
+                            ${node.name}
+                        </h3>
+                        <div class="mono-font text-xs text-[#889590] mb-4 flex items-center space-x-2">
+                            <span>CAPITAL:</span>
+                            <span class="text-[#f0f5f3] font-bold">${node.capital}</span>
+                        </div>
+                        <div class="inline-block border border-[#142822] bg-[#030706] px-2 py-1 rounded text-[10px] mono-font text-[#51635d] mb-4">
+                            ZONE // ${node.zone}
+                        </div>
+                        <p class="text-sm text-[#889590] leading-relaxed mb-6">
+                            ${node.context}
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-[#142822] flex flex-wrap gap-2">
+                        ${node.tags.map(tag => `<span class="mono-font text-[9px] text-[#51635d] bg-[#050a08] border border-[#142822] px-1.5 py-0.5 rounded">#${tag}</span>`).join('')}
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Search/Filter Engine
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = indiaData.filter(node => 
+                node.name.toLowerCase().includes(query) ||
+                node.capital.toLowerCase().includes(query) ||
+                node.context.toLowerCase().includes(query) ||
+                node.zone.toLowerCase().includes(query) ||
+                node.tags.some(tag => tag.toLowerCase().includes(query))
+            );
+            renderMatrix(filtered);
+        });
+
+        // Initialize Matrix
+        renderMatrix(indiaData);
+    </script>
+</body>
+</html>

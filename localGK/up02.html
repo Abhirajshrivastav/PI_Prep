@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-02 · Governor of Uttar Pradesh — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-02] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Governor of Uttar Pradesh</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The constitutional head of India's largest state — a distinguished former Chief Minister and Governor, and the delicate balance of power between the Raj Bhavan and the Chief Minister's office.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Current Governor</span><div class="value">Smt. Anandiben Patel</div></div>
+                <div class="fact-box"><span class="label">Assumed Office</span><div class="value">29 July 2019</div></div>
+                <div class="fact-box"><span class="label">Appointed By</span><div class="value">President of India (Ram Nath Kovind at the time)</div></div>
+                <div class="fact-box"><span class="label">Previous Roles</span><div class="value">CM of Gujarat (2014‑2016), Governor of Madhya Pradesh, Governor of Chhattisgarh</div></div>
+                <div class="fact-box"><span class="label">Party Background</span><div class="value">Bharatiya Janata Party (BJP)</div></div>
+                <div class="fact-box"><span class="label">Residence</span><div class="value">Raj Bhavan, Lucknow</div></div>
+                <div class="fact-box"><span class="label">Constitutional Basis</span><div class="value">Article 153 (Governor for each state) & Article 154 (Executive power of state)</div></div>
+                <div class="fact-box"><span class="label">Term</span><div class="value">5 years (holds office at the pleasure of the President)</div></div>
+            </div>
+        </div>
+
+        <!-- Who is Anandiben Patel -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">👤 Who Is Anandiben Patel?</h2>
+            <p style="color:var(--text-body);">Anandiben Patel is one of India's most experienced political figures in the role of Governor. Born in 1941 in Mehsana, Gujarat, she began her career as a schoolteacher before joining the BJP. She rose through the party ranks, becoming a cabinet minister in Gujarat under then‑Chief Minister Narendra Modi. In 2014, when Modi became Prime Minister, she succeeded him as the <strong>first woman Chief Minister of Gujarat</strong>, serving from 2014 to 2016.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">After resigning as CM — taking responsibility for the party's electoral performance — she was appointed Governor of Madhya Pradesh (2018‑2019) and later given additional charge of Chhattisgarh. In July 2019, she was appointed Governor of Uttar Pradesh, succeeding Ram Naik. Her appointment to UP — the most politically significant state governorship in India — signalled the central government's trust in her administrative experience and political judgment.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Interview‑ready line:</strong> "The current Governor of Uttar Pradesh is Anandiben Patel — a former Chief Minister of Gujarat, the first woman to hold that post, and a senior BJP leader who has previously served as Governor of Madhya Pradesh and Chhattisgarh. She has held the UP Governor's office since July 2019."</p>
+            </div>
+        </div>
+
+        <!-- Constitutional Role -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📜 Constitutional Role of the Governor</h2>
+            <p style="color:var(--text-body);">The Governor is the <strong>constitutional head of the state</strong>, appointed by the President of India under Article 153. The office is modelled on the Westminster system — the Governor acts as the representative of the Union government in the state, while real executive power rests with the <strong>Chief Minister and the Council of Ministers</strong>, who are collectively responsible to the elected Legislative Assembly.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Under Article 163, the Governor is required to act on the "aid and advice" of the Council of Ministers in most matters. However, there are specific areas where the Governor has <strong>discretionary powers</strong> — these include:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.5rem;list-style-type:disc;">
+                <li style="margin-bottom:0.4rem;"><strong>Reserving bills for Presidential consideration</strong> (Article 200) — if the Governor believes a bill passed by the state legislature may contravene constitutional provisions or national interests.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Recommending President's Rule</strong> (Article 356) — if the Governor reports a breakdown of constitutional machinery in the state, though this is subject to judicial review (S.R. Bommai case, 1994).</li>
+                <li style="margin-bottom:0.4rem;"><strong>Appointing the Chief Minister</strong> — particularly in hung assembly situations where no party has a clear majority.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Role in university administration</strong> — the Governor serves as Chancellor of all state universities, appointing Vice‑Chancellors and overseeing academic governance.</li>
+            </ul>
+            <p style="color:var(--text-body);margin-top:0.8rem;">In practice, the Governor's role is largely ceremonial, but it becomes critically important during <strong>political crises, constitutional disputes, or hung assemblies</strong>. The relationship between the Governor and the elected government can sometimes become contentious — especially when the Governor is seen as acting on behalf of the central government rather than as a neutral constitutional authority.</p>
+        </div>
+
+        <!-- Governor vs CM -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚖️ Governor vs Chief Minister — Who Holds Real Power?</h2>
+            <p style="color:var(--text-body);">This is a common interview question, and the answer demonstrates understanding of India's parliamentary system:</p>
+            <div class="callout" style="margin-top:0.8rem;">
+                <p style="color:var(--text-body);"><strong>Clear distinction:</strong> "The Governor is the constitutional head — largely ceremonial. The real executive power vests in the Chief Minister and the elected Council of Ministers. The Governor acts on their advice in almost all matters. However, the Governor retains certain discretionary powers, especially regarding the reservation of bills, appointment of the Chief Minister in uncertain electoral scenarios, and oversight of state universities."</p>
+            </div>
+            <p style="color:var(--text-body);margin-top:0.8rem;">For Uttar Pradesh, this distinction is particularly interesting because the Governor (Anandiben Patel) and the Chief Minister (Yogi Adityanath) are from the same political party. This typically ensures a harmonious relationship, though the Governor still serves as a channel of communication between the state and the Union government.</p>
+        </div>
+
+        <!-- Significance -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏛️ Why the UP Governorship Matters</h2>
+            <p style="color:var(--text-body);">The Governor of Uttar Pradesh holds one of the most prestigious and politically sensitive constitutional offices in the country. Uttar Pradesh is India's most populous state, with the largest legislative assembly (403 elected members) and the maximum number of Lok Sabha seats (80). The Governor's decisions — whether on reserving bills, handling hung assembly scenarios, or managing university administration — have outsized national implications.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Additionally, the UP Raj Bhavan has historically been a launchpad or a significant posting for senior political figures. Former Governors include <strong>Ram Naik</strong> (a veteran BJP leader), <strong>B.L. Joshi</strong> (former diplomat), and <strong>T.V. Rajeswar</strong> (former Intelligence Bureau director). The appointment of a former Chief Minister like Anandiben Patel reflects the weight the central government places on the office.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Who is the current Governor of Uttar Pradesh, and what is her background?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The current Governor is <strong>Anandiben Patel</strong>. She took office in July 2019. She was previously the <strong>Chief Minister of Gujarat</strong> — the first woman to hold that post — and has served as Governor of both Madhya Pradesh and Chhattisgarh. She is a senior BJP leader with extensive administrative and political experience.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What is the constitutional role of the Governor in India?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Governor is the constitutional head of the state, appointed by the President under Article 153. Under Article 163, the Governor acts on the aid and advice of the Council of Ministers in most matters. However, the Governor has discretionary powers in specific areas — reserving bills for the President, appointing the Chief Minister in uncertain electoral scenarios, and overseeing state universities as Chancellor.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Who has more power — the Governor or the Chief Minister?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Chief Minister holds the real executive power, being the elected head of government responsible to the Legislative Assembly. The Governor is the nominal, constitutional head who acts on the CM's advice. However, in specific situations — hung assemblies, constitutional crises, or when reserving bills — the Governor can exercise independent discretion. In UP currently, both are from the BJP, so the relationship is generally harmonious.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Why does the UP Governor's office matter particularly?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Uttar Pradesh is India's most populous state, with the largest legislative assembly and 80 Lok Sabha seats. The Governor's decisions have outsized national implications. Additionally, the UP Governor serves as Chancellor of all state universities, giving the office significant influence over higher education in the state. The appointment of a former Chief Minister like Anandiben Patel reflects the office's political weight.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The current Governor of Uttar Pradesh is Anandiben Patel, a senior BJP leader and the former Chief Minister of Gujarat — the first woman to hold that post. She assumed office in July 2019 after serving as Governor of Madhya Pradesh and Chhattisgarh. Under the Constitution, the Governor is the nominal head of the state, while real executive power rests with the Chief Minister. However, the Governor holds important discretionary powers — particularly regarding the reservation of bills, appointment of the Chief Minister in hung assembly scenarios, and oversight of state universities as Chancellor. Given UP's size and political significance, the Governor's office is one of the most consequential constitutional positions in India."</em></p>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>LOC-03 · Lord Cornwallis — Death & Tomb in Ghazipur — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-rose {
+            border-left: 4px solid var(--rose); background: rgba(244,63,94,0.05);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .timeline-node {
+            display: flex; gap: 1rem; align-items: baseline;
+            border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0;
+        }
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.85rem; min-width: 5rem;
+        }
+        .timeline-desc { color: var(--text-body); font-size: 0.9rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: LOC-03] · [STATUS: VERIFIED] · [BLOCK 1: GHAZIPUR]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 1 · GHAZIPUR — YOUR CITY</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Lord Cornwallis — Death & Tomb in Ghazipur</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The British Governor‑General who surrendered at Yorktown, reshaped India's land revenue system, and died in your hometown — a story that connects Ghazipur to the arc of global imperial history.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Full Name</span><div class="value">Charles Cornwallis, 1st Marquess Cornwallis</div></div>
+                <div class="fact-box"><span class="label">Born / Died</span><div class="value">31 December 1738 — 5 October 1805</div></div>
+                <div class="fact-box"><span class="label">American Connection</span><div class="value">Surrendered to George Washington at Yorktown (1781)</div></div>
+                <div class="fact-box"><span class="label">India Role</span><div class="value">Governor‑General of Bengal (1786–1793, 1805)</div></div>
+                <div class="fact-box"><span class="label">Major Reform</span><div class="value">Permanent Settlement of Bengal (1793)</div></div>
+                <div class="fact-box"><span class="label">Died In</span><div class="value">Ghazipur, Uttar Pradesh (5 October 1805)</div></div>
+                <div class="fact-box"><span class="label">Burial Site</span><div class="value">Cornwallis Tomb, Ghazipur — a protected monument under ASI</div></div>
+                <div class="fact-box"><span class="label">Why in Ghazipur?</span><div class="value">Died while travelling up the Ganga to assume command</div></div>
+            </div>
+        </div>
+
+        <!-- Who Cornwallis Was -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">👤 Who Was Lord Cornwallis?</h2>
+            <p style="color:var(--text-body);">Charles Cornwallis is one of the most historically layered figures in British imperial history — and he is directly connected to your hometown. He is simultaneously remembered as the general who <strong>lost the American colonies</strong> at Yorktown (1781), the Governor‑General who <strong>introduced the Permanent Settlement</strong> in India (1793), and the commander who <strong>died in Ghazipur</strong> while returning for a second term in India (1805).</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">After his defeat at Yorktown effectively ended the American Revolutionary War, Cornwallis did not retreat into obscurity. Instead, he was appointed Governor‑General of Bengal in 1786. His administration focused on administrative reform, judicial restructuring, and — most consequentially — the <strong>Permanent Settlement of Bengal</strong>, which fixed land revenue demands in perpetuity and created a new class of zamindars. This system shaped agrarian relations in eastern India for over a century.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Why this arc matters:</strong> Cornwallis is one of the few figures who appears in both American and Indian history textbooks for completely different reasons. Drawing that connection in an interview — "the same man who surrendered at Yorktown later died in my hometown" — is intellectually memorable.</p>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📜 Cornwallis Timeline — From Yorktown to Ghazipur</h2>
+            <div>
+                <div class="timeline-node"><span class="timeline-year">1781</span><span class="timeline-desc">Surrenders to Washington and Rochambeau at Yorktown, effectively ending the American Revolutionary War.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1786–1793</span><span class="timeline-desc">Serves as Governor‑General of Bengal. Introduces the Permanent Settlement (1793), reorganises the judiciary, and codifies criminal law.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1798–1801</span><span class="timeline-desc">Serves as Lord Lieutenant of Ireland; suppresses the Irish Rebellion of 1798.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1802</span><span class="timeline-desc">Negotiates the Treaty of Amiens with Napoleonic France.</span></div>
+                <div class="timeline-node"><span class="timeline-year">July 1805</span><span class="timeline-desc">Re‑appointed Governor‑General of India; sails from England to assume command.</span></div>
+                <div class="timeline-node"><span class="timeline-year">October 1805</span><span class="timeline-desc">Travelling up the Ganga from Calcutta toward the upper provinces, falls seriously ill near Ghazipur. Dies on 5 October 1805.</span></div>
+                <div class="timeline-node"><span class="timeline-year">Post‑1805</span><span class="timeline-desc">A tomb is erected over his grave in Ghazipur. It becomes a protected monument under the Archaeological Survey of India.</span></div>
+            </div>
+        </div>
+
+        <!-- The Tomb Today -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🪦 The Cornwallis Tomb — A Protected Monument</h2>
+            <p style="color:var(--text-body);">Cornwallis's tomb is located in Ghazipur city, maintained by the <strong>Archaeological Survey of India (ASI)</strong> as a protected monument. It is a domed structure in the colonial funerary style — understated compared to Mughal tombs, but dignified and well‑proportioned. The tomb sits within a small walled enclosure and bears inscriptions commemorating his career.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">For a local resident, the tomb may be a familiar but unremarkable landmark. For an interviewer encountering a candidate from Ghazipur, the fact that you <strong>know about the tomb, know who is buried there, and know why he was in Ghazipur</strong> immediately signals historical awareness that most candidates lack entirely.</p>
+            <div class="callout-rose">
+                <p style="color:var(--text-body);"><strong>Geographic logic:</strong> Cornwallis was travelling from Calcutta (then the capital of British India) toward the upper provinces — likely toward Agra or Delhi — when he fell ill. Ghazipur was a natural stopping point on the Ganga route. The river was the primary transport artery of British India, and Ghazipur's location on its southern bank made it a regular halt for officials and goods moving between Calcutta and the interior.</p>
+            </div>
+        </div>
+
+        <!-- The Permanent Settlement & Its Legacy -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📜 The Permanent Settlement (1793) — Cornwallis's Indian Legacy</h2>
+            <p style="color:var(--text-body);">The Permanent Settlement of Bengal (also called the Zamindari System) was Cornwallis's most consequential Indian reform. Under this system, zamindars (landlords) were recognised as the permanent owners of the land, and the land revenue they owed to the British government was fixed in perpetuity — it would never be increased.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Intended effects:</strong> Cornwallis believed that fixed revenue demands would give zamindars the incentive to invest in land improvement, leading to agricultural growth and a stable revenue stream. He was influenced by the physiocratic idea that agriculture was the true source of national wealth.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Actual consequences:</strong> The fixed demand was set too high. Many zamindars could not pay and lost their estates to speculators. The system created an absentee landlord class with little connection to the land, while peasants (ryots) became tenants with few rights. The Permanent Settlement is now studied as a classic example of <strong>well‑intentioned policy with deeply problematic outcomes</strong> — a subject directly relevant to development economics and Poor Economics.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Interview connection:</strong> If you mention Cornwallis's tomb and the panelist asks about his policies, you can segue naturally: "His most significant Indian policy was the Permanent Settlement of 1793, which fixed land revenue in perpetuity. It is an interesting case study in how even well‑intentioned administrative reforms can produce unintended consequences when they don't account for local conditions — something I think about when reading Poor Economics."</p>
+            </div>
+        </div>
+
+        <!-- Why This Is Interview Gold -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">💡 Why This Connection Matters for Your PI</h2>
+            <p style="color:var(--text-body);">Most candidates from smaller cities describe their hometown with generic statements about food, festivals, or temples. When you say: <em>"My city, Ghazipur, is the burial place of Lord Cornwallis — the British Governor‑General who introduced the Permanent Settlement and who, earlier in his career, surrendered to George Washington at Yorktown,"</em> you achieve several things at once:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.4rem;">You demonstrate <strong>historical awareness</strong> that goes beyond textbooks.</li>
+                <li style="margin-bottom:0.4rem;">You connect a small Indian city to <strong>global history</strong> — both American independence and British Indian revenue policy.</li>
+                <li style="margin-bottom:0.4rem;">You open the door to follow‑up questions about the Permanent Settlement, land reforms, or colonial economic policy — all areas you can prepare for.</li>
+                <li style="margin-bottom:0.4rem;">You signal that you <strong>observe your surroundings</strong> with intellectual curiosity, not just passivity.</li>
+            </ul>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Who was Lord Cornwallis, and why is he connected to Ghazipur?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Lord Cornwallis was a British General and Governor‑General of India. He is historically significant for surrendering at Yorktown (1781), ending the American Revolutionary War, and for introducing the Permanent Settlement in India (1793). In 1805, while returning to India for a second term, he fell ill while travelling up the Ganga and died in Ghazipur. His tomb is located there, maintained by the Archaeological Survey of India.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What was the Permanent Settlement, and why is it important?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Permanent Settlement (1793) was a land revenue system introduced by Cornwallis in Bengal. It fixed the land revenue demand permanently, making zamindars the hereditary owners of the land. The intention was to encourage investment in agriculture. However, it led to the creation of an absentee landlord class, dispossession of peasants, and concentrated land ownership. It is studied as a classic example of top‑down reform with unintended consequences.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: How does Cornwallis connect American and Indian history?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Cornwallis is one of the few figures who appears prominently in both histories. In 1781, he surrendered to George Washington at Yorktown, effectively ending the American Revolutionary War. Just five years later, he was appointed Governor‑General of India, where he enacted major administrative reforms. His tomb in Ghazipur is a physical link between these two worlds — a reminder that imperial careers spanned continents.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Why did Cornwallis die in Ghazipur specifically?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">He was travelling from Calcutta toward the upper provinces of British India via the Ganga — the primary transport route of the era. He fell seriously ill near Ghazipur, which was a natural stopping point on the river. He died there on 5 October 1805. Ghazipur's location on the southern bank of the Ganga made it a regular halt for river traffic between Calcutta and the interior.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What is the current status of Cornwallis's tomb in Ghazipur?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The tomb is a protected monument under the Archaeological Survey of India (ASI). It is a domed colonial‑era funerary structure within a walled enclosure, bearing inscriptions about Cornwallis's life and achievements. While not a major tourist destination, it is a significant local landmark and a piece of world history located in a small eastern UP city.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--accent);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--accent);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"One of the most historically distinctive facts about my hometown, Ghazipur, is that it is the burial place of Lord Cornwallis. He was the British Governor‑General who introduced the Permanent Settlement of Bengal in 1793 — a land revenue system that shaped agrarian relations for over a century. Earlier in his career, he was the general who surrendered to George Washington at Yorktown in 1781, effectively ending the American Revolutionary War. He died in Ghazipur in 1805 while travelling up the Ganga to assume command for a second term. His tomb, maintained by the Archaeological Survey of India, is a quiet reminder that even a small city in eastern UP is connected to the largest arcs of global history."</em></p>
+        </div>
+    </main>
+</body>
+</html>
