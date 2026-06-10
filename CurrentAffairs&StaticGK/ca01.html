@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA‑IRAN · Iran: Nuclear Program, JCPOA & Strait of Hormuz — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+            --crimson: #e84533;
+            --crimson-dim: rgba(232, 69, 51, 0.06);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--crimson); box-shadow: 0 0 20px rgba(232,69,51,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--crimson); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #7a1e1a; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-crimson {
+            border-left: 4px solid var(--crimson); background: var(--crimson-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .power-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem;
+        }
+        .power-card h3 { font-family: 'Playfair Display', serif; font-weight: 700; margin-bottom: 0.4rem; }
+
+        .timeline-node {
+            display: flex; gap: 1rem; align-items: baseline;
+            border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0;
+        }
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace; color: var(--crimson); font-size: 0.85rem; min-width: 5rem;
+        }
+        .timeline-desc { color: var(--text-body); font-size: 0.9rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: CA‑IRAN] · [STATUS: VERIFIED] · [BLOCK: INTERNATIONAL RELATIONS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--crimson);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · HIGH‑VALUE IR TOPIC</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Iran: Nuclear Program, JCPOA & Strait of Hormuz</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Nuclear proliferation, energy security, Middle East geopolitics, and global trade — a topic that combines everything panelists look for in assessing international awareness.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Old Name</span><div class="value">Persia (until 1935)</div></div>
+                <div class="fact-box"><span class="label">Country</span><div class="value">Islamic Republic of Iran</div></div>
+                <div class="fact-box"><span class="label">Capital</span><div class="value">Tehran</div></div>
+                <div class="fact-box"><span class="label">Supreme Leader</span><div class="value">Ali Khamenei (since 1989)</div></div>
+                <div class="fact-box"><span class="label">President</span><div class="value">Masoud Pezeshkian (elected 2024)</div></div>
+                <div class="fact-box"><span class="label">Key Nuclear Deal</span><div class="value">JCPOA — Joint Comprehensive Plan of Action (2015)</div></div>
+                <div class="fact-box"><span class="label">Critical Chokepoint</span><div class="value">Strait of Hormuz (~20% of global oil)</div></div>
+                <div class="fact-box"><span class="label">US Fifth Fleet Base</span><div class="value">Bahrain (securing Gulf sea lanes)</div></div>
+            </div>
+        </div>
+
+        <!-- Political System -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏛️ The Dual Power Structure — Who Actually Rules Iran?</h2>
+            <p style="color:var(--text-body);">Many people incorrectly assume the President is the most powerful person in Iran. In reality, the <strong>Supreme Leader</strong> holds ultimate authority. This dual structure is the single most important thing to understand about Iranian politics for an interview.</p>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem;">
+                <div class="power-card" style="border-left: 4px solid var(--crimson);">
+                    <h3 style="color:var(--crimson);">🔴 Supreme Leader</h3>
+                    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:0.3rem;">Historically: Ali Khamenei (since 1989)</p>
+                    <ul style="color:var(--text-body);margin-left:1rem;font-size:0.9rem;list-style-type:disc;">
+                        <li>Oversees military & security institutions (IRGC)</li>
+                        <li>Has major influence over foreign policy</li>
+                        <li>Appoints key officials — judiciary, military commanders, half of Guardian Council</li>
+                        <li>Stands above the President in the constitutional structure</li>
+                        <li>Elected by the Assembly of Experts (88 clerics)</li>
+                    </ul>
+                </div>
+                <div class="power-card" style="border-left: 4px solid var(--accent);">
+                    <h3 style="color:var(--accent);">🟢 President</h3>
+                    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:0.3rem;">Current: Masoud Pezeshkian (since 2024)</p>
+                    <ul style="color:var(--text-body);margin-left:1rem;font-size:0.9rem;list-style-type:disc;">
+                        <li>Runs day-to-day government</li>
+                        <li>Manages economic and administrative matters</li>
+                        <li>Elected by popular vote every 4 years</li>
+                        <li>Is <strong>subordinate</strong> to the Supreme Leader</li>
+                        <li>Cannot control military or security policy independently</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="callout-crimson" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview line:</strong> "Iran has a unique political system where the Supreme Leader — historically Ali Khamenei — holds the highest authority, overseeing the military and foreign policy. The President, currently Masoud Pezeshkian, runs the day-to-day government but is constitutionally subordinate to the Supreme Leader."</p>
+            </div>
+        </div>
+
+        <!-- Nuclear Program & JCPOA Timeline -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">☢️ The Nuclear Program & JCPOA — A Timeline</h2>
+            <div>
+                <div class="timeline-node"><span class="timeline-year">Pre‑2015</span><span class="timeline-desc">Iran develops nuclear capabilities. Western nations impose sanctions, alleging weapons ambitions. Iran insists its program is for peaceful energy and research.</span></div>
+                <div class="timeline-node"><span class="timeline-year">2015</span><span class="timeline-desc"><strong>JCPOA signed</strong> — Joint Comprehensive Plan of Action — between Iran and P5+1 (US, UK, France, Germany, Russia, China) plus the EU. Iran agrees to limit uranium enrichment to 3.67%, allow IAEA inspections, and reduce centrifuges. In exchange, sanctions are lifted.</span></div>
+                <div class="timeline-node"><span class="timeline-year">2018</span><span class="timeline-desc"><strong>US withdraws</strong> under President Trump. Reason: the deal did not address Iran's missile program or regional activities. US reimposes sanctions — the "maximum pressure" campaign begins. Iran's economy is severely hit.</span></div>
+                <div class="timeline-node"><span class="timeline-year">2019‑2024</span><span class="timeline-desc">Iran expands enrichment beyond JCPOA limits, reaching up to <strong>60% purity</strong> — dangerously close to the 90% weapons‑grade threshold. The IAEA reports reduced monitoring access.</span></div>
+                <div class="timeline-node"><span class="timeline-year">2026</span><span class="timeline-desc">Tensions persist. Sanctions remain a major issue. Negotiations and confrontations alternate. The situation remains fluid — <strong>recheck the latest status 2‑3 days before your interview.</strong></span></div>
+            </div>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>The central dispute:</strong> "Iran says its nuclear program is for peaceful purposes such as energy and research. Many Western countries worry that highly enriched uranium could shorten the time needed to build a nuclear weapon."</p>
+            </div>
+        </div>
+
+        <!-- Strait of Hormuz -->
+        <div class="glass-panel" style="border-left: 4px solid var(--crimson);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🚢 Strait of Hormuz — The World's Oil Chokepoint</h2>
+            <p style="color:var(--text-body);">Located between <strong>Iran and Oman</strong>, the Strait of Hormuz is a narrow waterway — only about 33 km wide at its narrowest point — through which roughly <strong>one‑fifth of the world's oil</strong> passes daily. Major Gulf oil exporters — Saudi Arabia, Iraq, Kuwait, UAE, Qatar — depend on it to reach global markets. It is, without exaggeration, one of the most critical maritime chokepoints in the global economy.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Strategic significance:</strong> If Iran were to block or significantly disrupt the Strait, global oil prices would spike immediately, triggering cascading effects across every economy dependent on energy imports — which is virtually every major economy. The <strong>US Fifth Fleet</strong>, based in Bahrain, has long been the primary guarantor of freedom of navigation in the Gulf. Iran has threatened to close the Strait during periods of heightened tension, making it a central bargaining chip in its strategic calculus.</p>
+            <div class="callout-crimson" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview answer:</strong> "The Strait of Hormuz is a narrow waterway between Iran and Oman through which about 20% of global oil exports pass. Any disruption there can quickly affect global energy prices. That is why the US Fifth Fleet in Bahrain is positioned to keep this sea lane open."</p>
+            </div>
+            <div style="margin-top:1rem;background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">📊 MANAGEMENT‑SCHOOL CONTEXT</p>
+                <p style="color:var(--text-body);font-size:0.9rem;">The Strait of Hormuz is a textbook example of <strong>supply‑chain concentration risk</strong>. A single geographic chokepoint handling 20% of global oil creates enormous systemic vulnerability. This is why countries maintain <strong>Strategic Petroleum Reserves (SPRs)</strong> — the US SPR holds ~700 million barrels — and why insurance premiums for tankers transiting the Strait spike during geopolitical crises. The shipping industry's <strong>war risk premiums</strong> and the resulting increase in <strong>tonne‑mile demand</strong> (as ships take longer alternative routes) directly affect corporate logistics costs worldwide.</p>
+            </div>
+        </div>
+
+        <!-- Why the US Cares -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇺🇸 Why the United States Cares</h2>
+            <p style="color:var(--text-body);">The US and its allies support <strong>freedom of navigation</strong> through the Strait because global energy markets — and therefore the global economy — depend on it. A disruption in the Gulf does not stay in the Gulf. Oil price spikes translate into higher transport costs, higher manufacturing costs, and higher consumer prices worldwide. The US military presence in the Gulf, anchored by the Fifth Fleet in Bahrain, has been a pillar of regional maritime security for decades.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Beyond energy, the US‑Iran dynamic is shaped by broader regional concerns: Iran's support for proxy groups (Hezbollah in Lebanon, Houthis in Yemen, various militias in Iraq and Syria), its ballistic missile program, and its rivalry with US allies — particularly Saudi Arabia and Israel.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Who holds the highest political authority in Iran?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The <strong>Supreme Leader</strong> — historically Ali Khamenei since 1989 — holds the highest authority. He controls the military (including the IRGC), has major influence over foreign policy, and appoints key officials. The elected President runs the day‑to‑day government but is constitutionally subordinate to the Supreme Leader. This dual structure is the defining feature of Iran's political system.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What was the JCPOA, and what happened to it?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Joint Comprehensive Plan of Action (JCPOA) was signed in 2015 between Iran and the P5+1 (US, UK, France, Germany, Russia, China) plus the EU. Iran agreed to limit uranium enrichment to 3.67%, allow IAEA inspections, and reduce centrifuges in exchange for sanctions relief. In 2018, President Trump withdrew the US from the deal, reimposing sanctions under the "maximum pressure" campaign. Iran subsequently expanded enrichment beyond JCPOA limits, reaching up to 60% purity.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Why is the Strait of Hormuz strategically vital?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">It is a narrow waterway between Iran and Oman through which roughly <strong>one‑fifth of the world's oil</strong> passes daily. Any disruption — whether from military conflict, mining, or political blockade — would spike global oil prices instantly, affecting every major economy. The US Fifth Fleet in Bahrain is positioned primarily to keep this chokepoint open. It is the single most important maritime passage for global energy security.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Why can't Iran simply build a nuclear weapon?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The issue is not only technical capability. Building a nuclear weapon could trigger <strong>severe international sanctions, regional instability, and potentially a nuclear arms race in the Middle East</strong> — Saudi Arabia, Turkey, and Egypt might feel compelled to pursue their own nuclear deterrents. That is why negotiations have focused on limiting enrichment and increasing IAEA inspections. It is a diplomatic problem as much as a technical one.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: How does the US‑Iran tension affect India?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">India has historically balanced its relationship with Iran — particularly for energy imports and the Chabahar port project (which provides a route to Afghanistan and Central Asia bypassing Pakistan) — with its strategic partnership with the US. US sanctions on Iran have forced India to reduce oil imports from Iran significantly over the years. India also has a large diaspora in the Gulf, and any conflict in the region directly affects remittance flows and the safety of Indian workers. India's position is typically one of de‑escalation and dialogue.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--crimson);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--crimson);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Iran, formerly known as Persia, has a unique political system in which the Supreme Leader — historically Ali Khamenei — holds greater authority than the President, currently Masoud Pezeshkian. Its nuclear program has been the focus of international negotiations, leading to the 2015 JCPOA deal, which the United States withdrew from in 2018 under the 'maximum pressure' campaign. A major strategic factor is the Strait of Hormuz between Iran and Oman — through which roughly one‑fifth of global oil trade passes — making it one of the world's most important maritime chokepoints and a constant variable in global energy security calculations."</em></p>
+        </div>
+    </main>
+</body>
+</html>

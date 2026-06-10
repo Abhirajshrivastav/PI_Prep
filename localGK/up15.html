@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-15 · Prayagraj — Kumbh Mela & Triveni Sangam — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-15] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Prayagraj — Kumbh Mela & Triveni Sangam</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The sacred city where three rivers converge, where the world's largest peaceful gathering unfolds, and where India's freedom movement and legal traditions found their anchor.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Former Name</span><div class="value">Allahabad (renamed Prayagraj in 2018)</div></div>
+                <div class="fact-box"><span class="label">Sacred Confluence</span><div class="value">Triveni Sangam — Ganga, Yamuna, Saraswati (mythical)</div></div>
+                <div class="fact-box"><span class="label">Mughal Name</span><div class="value">Ilahabas (given by Akbar in 1575)</div></div>
+                <div class="fact-box"><span class="label">Key Festival</span><div class="value">Kumbh Mela (every 12 years); Ardh Kumbh (every 6 years)</div></div>
+                <div class="fact-box"><span class="label">UNESCO Status</span><div class="value">Kumbh Mela recognised as Intangible Cultural Heritage (2017)</div></div>
+                <div class="fact-box"><span class="label">Legal Significance</span><div class="value">Allahabad High Court (one of India's oldest; established 1866)</div></div>
+                <div class="fact-box"><span class="label">Freedom Movement Role</span><div class="value">Anand Bhavan (Nehru family home); epicentre of Congress activities</div></div>
+                <div class="fact-box"><span class="label">Famous Institution</span><div class="value">Prayagraj Kumbh 2019 attracted ~240 million pilgrims</div></div>
+            </div>
+        </div>
+
+        <!-- The Triveni Sangam -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌊 The Triveni Sangam — Where Three Rivers Meet</h2>
+            <p style="color:var(--text-body);">The defining spiritual feature of Prayagraj is the <strong>Triveni Sangam</strong> — the sacred confluence of three rivers. The <strong>Ganga</strong>, flowing from the Himalayas, is visibly greenish‑brown with its load of glacial silt. The <strong>Yamuna</strong>, having travelled from Yamunotri, is darker and bluish‑green. At their meeting point near the fort, the two rivers maintain their distinct colours for a short distance before merging completely. The third river, the <strong>Saraswati</strong>, is believed to flow invisibly beneath the surface — it is a river of myth and scripture, not geography, and its presence completes the trinity.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The Sangam is the holiest site in Prayagraj and, according to Hindu belief, bathing here during the Kumbh Mela washes away sins and helps liberate the soul from the cycle of rebirth. The spot is marked by a raised platform where priests perform rituals, and pilgrims of every background — from the rural farmer to the international seeker — immerse themselves in the freezing waters during the winter months of the mela.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Interview line:</strong> "Prayagraj is defined by the Triveni Sangam — the meeting point of the Ganga, the Yamuna, and the mythical Saraswati. It is the spiritual fulcrum of the Kumbh Mela and, for Hindus, the holiest river confluence in India."</p>
+            </div>
+        </div>
+
+        <!-- The Kumbh Mela -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🕉️ The Kumbh Mela — The World's Largest Peaceful Gathering</h2>
+            <p style="color:var(--text-body);">The <strong>Kumbh Mela</strong> is not merely a festival; it is the largest congregation of human beings on the planet. In 2019, the Prayagraj Kumbh attracted an estimated <strong>240 million pilgrims</strong> over its 49‑day duration. The mela rotates between four locations — <strong>Prayagraj, Haridwar, Ujjain, and Nashik</strong> — based on specific astrological alignments involving Jupiter (Brihaspati), the Sun (Surya), and the Moon (Chandra).</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Astronomical Basis:</strong> The timing of the Kumbh Mela is determined by the <strong>position of Jupiter in the zodiac</strong>, combined with the Sun and Moon's positions. When Jupiter enters Aquarius (Kumbha rashi) and the Sun enters Aries, the Kumbh is held at Prayagraj. This astrological logic is rooted in the ancient Hindu calendar and reflects the deep connection between astronomy and ritual in Indian civilisation.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>UNESCO Recognition:</strong> In 2017, UNESCO inscribed the <strong>Kumbh Mela on its Representative List of the Intangible Cultural Heritage of Humanity</strong>. The citation acknowledged it as "the largest peaceful congregation of pilgrims on earth" and recognised its transmission of knowledge, oral traditions, and community identity across generations.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Management‑school perspective:</strong> The Kumbh Mela is a phenomenal case study in <strong>megacity‑scale temporary infrastructure</strong> — a city of tents, sanitation, electricity, transport, and security that is built, operated, and dismantled within weeks. Harvard and other global universities have studied the logistics of the Kumbh as a model of rapid urban deployment.</p>
+            </div>
+        </div>
+
+        <!-- Historical & Legal Significance -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚖️ The Legal & Freedom Movement Legacy</h2>
+            <p style="color:var(--text-body);"><strong>Allahabad High Court:</strong> Established in <strong>1866</strong>, it is one of India's oldest High Courts. Its jurisdiction covers Uttar Pradesh. It has delivered landmark judgments, including the 2010 verdict on the Ayodhya title dispute (later superseded by the Supreme Court). The High Court's bar has produced many of India's most distinguished jurists and political leaders, including <strong>Motilal Nehru</strong>, the patriarch of the Nehru‑Gandhi family, who practiced law here.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Anand Bhavan:</strong> The ancestral home of the Nehru family, donated to the Indian National Congress in 1930. It was the epicentre of the freedom movement in the United Provinces. <strong>Jawaharlal Nehru</strong>, India's first Prime Minister, was born here in 1889. The building is now a museum preserving the Nehru family's legacy and the history of the independence struggle. Adjacent to it is <strong>Swaraj Bhavan</strong> (originally Anand Bhavan), the older Nehru residence where Indira Gandhi was born.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Prayagraj in the Freedom Movement:</strong> The city was at the heart of the Congress's activities in northern India. It hosted multiple Congress sessions and was a hub of nationalist journalism, with publications like <strong>The Leader</strong> and <strong>The Pioneer</strong> operating from here.</p>
+        </div>
+
+        <!-- Renaming & Modern Significance -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏙️ Allahabad to Prayagraj — The Renaming</h2>
+            <p style="color:var(--text-body);">In October 2018, the Uttar Pradesh government officially renamed <strong>Allahabad</strong> to <strong>Prayagraj</strong>, restoring the city's ancient name. The original name "Prayag" (meaning "place of sacrifice") appears in the <strong>Rigveda</strong> and is associated with Lord Brahma performing a yajna at the Sangam. The Mughal emperor Akbar renamed it "Ilahabas" in 1575, which later became "Allahabad" — a Persian‑Arabic name meaning "abode of God". The 2018 renaming is part of a broader movement across India to restore indigenous names to cities that were renamed during colonial or Mughal rule.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Interview approach:</strong> "Prayagraj, formerly Allahabad, is a city where ancient Hindu pilgrimage, Mughal history, and modern Indian politics all intersect. The renaming in 2018 restored its Vedic name, reflecting a broader cultural reclamation."</p>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is the Triveni Sangam, and which rivers meet there?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Triveni Sangam is the confluence of three rivers in Prayagraj: the <strong>Ganga</strong>, the <strong>Yamuna</strong>, and the <strong>Saraswati</strong>. The Ganga and Yamuna are physically visible — the Ganga is greenish‑brown, the Yamuna darker and bluish — and can be seen meeting at the Sangam. The Saraswati is believed to be a mythical river that flows invisibly beneath the surface. Bathing at this confluence during the Kumbh Mela is considered the holiest of Hindu rituals.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What is the Kumbh Mela, and how is its timing determined?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Kumbh Mela is the <strong>world's largest peaceful gathering</strong>, rotating among four locations — Prayagraj, Haridwar, Ujjain, and Nashik. Its timing is determined by <strong>astrological alignments</strong>: specifically, the position of Jupiter (Brihaspati) in the zodiac, combined with the Sun and Moon. When Jupiter enters Aquarius (Kumbha rashi), the Kumbh is held at Prayagraj. In 2017, UNESCO recognised it as an Intangible Cultural Heritage of Humanity.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is the historical significance of Prayagraj in India's freedom movement?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Prayagraj was a central hub of the Indian National Congress. <strong>Anand Bhavan</strong>, the Nehru family home donated to the Congress, was the epicentre of nationalist activity in the United Provinces. Jawaharlal Nehru was born here, and the city hosted multiple Congress sessions. Motilal Nehru and other prominent leaders practiced law at the Allahabad High Court. The city's newspapers, like The Leader, were instrumental in spreading nationalist ideas.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Why was Allahabad renamed to Prayagraj?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The city was renamed in October 2018 to restore its ancient Vedic name. "Prayag" — meaning "place of sacrifice" — appears in the Rigveda and refers to the site where Lord Brahma is believed to have performed a yajna. The Mughal emperor Akbar renamed it "Ilahabas" in 1575, which later became "Allahabad". The 2018 renaming is part of a broader cultural movement across India to reclaim indigenous place names.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Prayagraj — formerly Allahabad — is defined by the Triveni Sangam, the sacred confluence of the Ganga, Yamuna, and the mythical Saraswati. It hosts the Kumbh Mela, the largest peaceful gathering on earth, recognised by UNESCO as an Intangible Cultural Heritage. The city was a nerve centre of India's freedom movement: Anand Bhavan, the Nehru family home, was the Congress's operational hub in northern India, and the Allahabad High Court — one of India's oldest — has been a pillar of the country's legal system. Renamed in 2018 to restore its ancient Vedic identity, Prayagraj is a city where the spiritual, the legal, and the political converge — a true microcosm of Indian civilisation."</em></p>
+        </div>
+    </main>
+</body>
+</html>

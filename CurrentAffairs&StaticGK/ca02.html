@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA‑ISRAEL · Israel–Palestine Conflict — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+            --sky: #0ea5e9;
+            --sky-dim: rgba(14, 165, 233, 0.06);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--sky); box-shadow: 0 0 20px rgba(14,165,233,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--sky); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #0369a1; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-sky {
+            border-left: 4px solid var(--sky); background: var(--sky-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-rose {
+            border-left: 4px solid var(--rose); background: rgba(244,63,94,0.05);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .authority-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem;
+        }
+        .authority-card h3 { font-family: 'Playfair Display', serif; font-weight: 700; margin-bottom: 0.4rem; }
+
+        .map-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+        canvas { max-width: 100%; height: auto; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: CA‑ISRAEL] · [STATUS: VERIFIED] · [BLOCK: INTERNATIONAL RELATIONS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--sky);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · HIGH‑PROBABILITY IR TOPIC</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Israel–Palestine Conflict</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">History, geopolitics, religion, international law, and diplomacy — a conflict that tests your ability to understand multiple actors, competing claims, and India's carefully balanced position.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Israel Location</span><div class="value">Western Asia (Middle East)</div></div>
+                <div class="fact-box"><span class="label">Israel Borders</span><div class="value">Lebanon, Syria, Jordan, Egypt, Mediterranean Sea</div></div>
+                <div class="fact-box"><span class="label">Declared Capital</span><div class="value">Jerusalem (disputed; many embassies in Tel Aviv)</div></div>
+                <div class="fact-box"><span class="label">Israel PM</span><div class="value">Benjamin Netanyahu</div></div>
+                <div class="fact-box"><span class="label">Israel President</span><div class="value">Isaac Herzog (largely ceremonial)</div></div>
+                <div class="fact-box"><span class="label">Gaza Controller</span><div class="value">Hamas (militant organization)</div></div>
+                <div class="fact-box"><span class="label">West Bank Authority</span><div class="value">Palestinian Authority (more moderate)</div></div>
+                <div class="fact-box"><span class="label">Key Concept</span><div class="value">Two‑State Solution</div></div>
+            </div>
+        </div>
+
+        <!-- Israel: Basic Facts + Schematic Map -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇮🇱 Israel — Basic Facts & Borders</h2>
+            <div class="map-container">
+                <canvas id="israelMap" width="500" height="300"></canvas>
+            </div>
+            <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">Israel & Palestinian Territories — schematic map</p>
+            <p style="color:var(--text-body);margin-top:1rem;">Israel is located in <strong>Western Asia</strong> (Middle East), bordering <strong>Lebanon</strong> to the north, <strong>Syria</strong> to the northeast, <strong>Jordan</strong> to the east, <strong>Egypt</strong> to the southwest, and the <strong>Mediterranean Sea</strong> to the west. It declares <strong>Jerusalem</strong> as its capital, but Jerusalem's status is disputed internationally. While the United States and a few other countries recognise Jerusalem as Israel's capital and have moved their embassies there, most countries maintain their embassies in <strong>Tel Aviv</strong> due to the unresolved legal status of Jerusalem under international law (UNSC Resolution 242).</p>
+            <div class="callout-sky">
+                <p style="color:var(--text-body);"><strong>Interview line:</strong> "Israel declares Jerusalem as its capital, but the city's status is one of the most sensitive issues in the conflict — it is sacred to Judaism, Christianity, and Islam, and both Israelis and Palestinians attach national significance to it."</p>
+            </div>
+        </div>
+
+        <!-- Leadership Structure -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏛️ Current Leadership — PM vs President</h2>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
+                <div class="authority-card" style="border-left: 4px solid var(--sky);">
+                    <h3 style="color:var(--sky);">🔵 Prime Minister</h3>
+                    <p style="color:var(--text-body);font-weight:700;font-size:1.1rem;">Benjamin Netanyahu</p>
+                    <p style="color:var(--text-muted);font-size:0.85rem;">Head of Government</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;margin-top:0.5rem;">The Prime Minister is the head of government — the most powerful elected official in Israel. He leads the Knesset (parliament), forms the cabinet, and directs foreign and security policy.</p>
+                </div>
+                <div class="authority-card" style="border-left: 4px solid var(--gold);">
+                    <h3 style="color:var(--gold);">🟡 President</h3>
+                    <p style="color:var(--text-body);font-weight:700;font-size:1.1rem;">Isaac Herzog</p>
+                    <p style="color:var(--text-muted);font-size:0.85rem;">Head of State</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;margin-top:0.5rem;">The President is the head of state — a largely ceremonial role. He performs constitutional duties like signing laws and appointing the Prime Minister after elections, but does not run the government.</p>
+                </div>
+            </div>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Important distinction:</strong> "In Israel, the Prime Minister is the head of government — currently Benjamin Netanyahu — and holds real executive power. The President, Isaac Herzog, is largely ceremonial. This is similar to India's parliamentary system where the PM governs and the President is the constitutional head."</p>
+            </div>
+        </div>
+
+        <!-- Palestine's Divided Structure -->
+        <div class="glass-panel" style="border-left: 4px solid var(--sky);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇵🇸 Palestine — A Divided Authority</h2>
+            <p style="color:var(--text-body);">Many people think Palestine has one government. In practice, the Palestinian territories are split between two very different political authorities — a distinction that is frequently tested in interviews.</p>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem;">
+                <div class="authority-card" style="border-left: 4px solid var(--rose);">
+                    <h3 style="color:var(--rose);">🔴 Hamas — Controls Gaza</h3>
+                    <p style="color:var(--text-body);font-size:0.9rem;">Considered a militant organization by many countries (including the US, EU, UK, and others), Hamas has functioned as the de‑facto governing authority in the <strong>Gaza Strip</strong>. It does not recognise Israel and is listed as a terrorist entity by several nations. It won the 2006 Palestinian legislative elections and took full control of Gaza in 2007 after a conflict with the Palestinian Authority.</p>
+                </div>
+                <div class="authority-card" style="border-left: 4px solid var(--accent);">
+                    <h3 style="color:var(--accent);">🟢 Palestinian Authority (PA) — West Bank</h3>
+                    <p style="color:var(--text-body);font-size:0.9rem;">Operates in parts of the <strong>West Bank</strong>, is internationally engaged in diplomacy, and is generally viewed as more moderate than Hamas. It recognises Israel and has been the primary Palestinian interlocutor for peace negotiations under the <strong>Oslo Accords (1993/1995)</strong>. The PA is dominated by the Fatah party.</p>
+                </div>
+            </div>
+            <div class="callout-rose" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Key distinction for interviews:</strong> "Hamas governs Gaza, while the Palestinian Authority administers parts of the West Bank. That internal division is critical to understanding why a unified Palestinian negotiation position is so difficult to achieve."</p>
+            </div>
+        </div>
+
+        <!-- October 7, 2023 -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚠️ October 7, 2023 — The Attack & Its Aftermath</h2>
+            <p style="color:var(--text-body);">On <strong>October 7, 2023</strong>, Hamas launched a large‑scale, coordinated attack on Israel from Gaza. Militants breached the heavily fortified border, attacked civilian communities and a music festival, and took <strong>hostages into Gaza</strong>. Hundreds of civilians and security personnel were killed — it was the deadliest single day for Israel since the Holocaust.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Israel responded with a <strong>major military campaign in Gaza</strong> — airstrikes followed by a ground invasion — aimed at destroying Hamas's military capabilities and rescuing hostages. The conflict has produced <strong>large‑scale casualties</strong> on both sides, severe <strong>humanitarian concerns</strong> in Gaza (displacement, famine risk, destruction of hospitals and infrastructure), <strong>regional tensions</strong> (Hezbollah attacks from Lebanon, Houthi attacks on Red Sea shipping, Iran‑Israel exchanges), and extensive <strong>international debate</strong> at the UN, ICJ, and ICC.</p>
+            <div style="margin-top:1rem;background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">📊 MANAGEMENT‑SCHOOL CONTEXT</p>
+                <p style="color:var(--text-body);font-size:0.9rem;">The conflict has disrupted <strong>global supply chains</strong> — Houthi attacks on commercial vessels in the Red Sea have forced ships to reroute around the Cape of Good Hope, increasing voyage times by 10‑14 days and freight costs by 200‑300% on some routes. This directly affects Indian exporters and importers. It is a live case study in <strong>geopolitical risk assessment</strong>, <strong>supply‑chain diversification</strong>, and <strong>crisis management</strong> — all core management concerns.</p>
+            </div>
+        </div>
+
+        <!-- The Two-State Solution -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🕊️ The Two‑State Solution — The Central Concept</h2>
+            <p style="color:var(--text-body);">The <strong>Two‑State Solution</strong> is the most widely endorsed framework for resolving the conflict. The idea is that <strong>Israel exists as one sovereign state</strong> and <strong>Palestine exists as another sovereign state</strong>, both coexisting peacefully with agreed borders and security arrangements. Many governments — including India, the US, EU member states, and the UN — officially support some version of this framework.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">However, major disagreements remain regarding the core "final status" issues:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.5rem;list-style-type:disc;">
+                <li style="margin-bottom:0.3rem;"><strong>Borders:</strong> Where exactly would the line between the two states be drawn? The pre‑1967 borders with land swaps? Or something else?</li>
+                <li style="margin-bottom:0.3rem;"><strong>Settlements:</strong> Over 700,000 Israeli settlers live in the West Bank and East Jerusalem — what happens to them and their communities?</li>
+                <li style="margin-bottom:0.3rem;"><strong>Jerusalem:</strong> Both sides claim it as their capital. How would it be shared or divided?</li>
+                <li style="margin-bottom:0.3rem;"><strong>Refugees:</strong> Millions of Palestinians claim the right to return to homes lost in 1948 and 1967 — how is this claim addressed?</li>
+                <li style="margin-bottom:0.3rem;"><strong>Security:</strong> How does Israel ensure it is not attacked from a future Palestinian state?</li>
+            </ul>
+            <div class="callout-sky">
+                <p style="color:var(--text-body);"><strong>The Abraham Accords (2020):</strong> A series of agreements that normalised relations between Israel and several Arab states — UAE, Bahrain, Morocco, and Sudan. This shifted the regional diplomatic landscape, showing that Arab‑Israeli normalisation is possible even without a final resolution of the Palestinian issue. However, the October 7 conflict has complicated further expansion of these accords.</p>
+            </div>
+        </div>
+
+        <!-- India's Position -->
+        <div class="glass-panel" style="border-left: 4px solid var(--violet);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇮🇳 India's Position — A Careful Balance</h2>
+            <p style="color:var(--text-body);">India has long maintained a carefully calibrated position on the Israel‑Palestine conflict. Historically, India was a strong supporter of the Palestinian cause — it was one of the first non‑Arab states to recognise Palestine (1988) and consistently voted in favour of Palestinian rights at the UN. At the same time, India has built <strong>strong strategic ties with Israel</strong> in recent decades — in defence (missile systems, drones, radar), agriculture (drip irrigation, horticulture), technology (startup cooperation, R&D), and intelligence sharing.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">India's modern position can be described as: <em>"maintaining strong ties with Israel while continuing support for a negotiated two‑state solution and the legitimate aspirations of the Palestinian people."</em> This formulation allows India to engage deeply with both sides without being forced into an either‑or position.</p>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Safest interview formulation:</strong> "India maintains strong relations with Israel — particularly in defence, agriculture, and technology — while continuing to support Palestinian aspirations and a negotiated two‑state solution. India has consistently called for dialogue and de‑escalation."</p>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Who controls Gaza and who controls the West Bank?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);"><strong>Hamas</strong> controls the Gaza Strip. It is considered a militant organisation by many countries and does not recognise Israel. The <strong>Palestinian Authority (PA)</strong>, dominated by the Fatah party, administers parts of the West Bank and is internationally engaged in diplomacy. This internal division makes a unified Palestinian negotiation position extremely difficult.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What is the Two‑State Solution?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Two‑State Solution envisions <strong>Israel and a future Palestinian state</strong> coexisting peacefully with mutually agreed borders and security arrangements. It is the framework supported by the UN, most governments, and multiple peace initiatives. However, core issues remain unresolved — borders, settlements, Jerusalem, refugees, and security. The Abraham Accords (2020) showed that Arab‑Israeli normalisation is possible, but the Palestinian question remains central to any durable peace.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: How does India balance its relations with Israel and Palestine?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">India maintains <strong>strong strategic ties with Israel</strong> in defence, agriculture, technology, and intelligence, while continuing to support <strong>Palestinian aspirations</strong> and a negotiated two‑state solution. India abstained on several UN resolutions critical of Israel and has called consistently for dialogue and de‑escalation. This balanced approach protects India's diplomatic flexibility in West Asia.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Why is Jerusalem so disputed?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Both Israelis and Palestinians attach <strong>national and historical significance</strong> to Jerusalem. It is also sacred to Judaism, Christianity, and Islam — housing sites like the Western Wall, the Church of the Holy Sepulchre, and the Al‑Aqsa Mosque. Its status is one of the most sensitive final‑status issues in any peace negotiation.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What happened on October 7, 2023?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);"><strong>Hamas launched a large‑scale attack</strong> on Israel, killing civilians and taking hostages into Gaza. It was the deadliest single day for Israel since the Holocaust. Israel responded with a major military campaign in Gaza — airstrikes and a ground invasion — triggering a protracted conflict with severe humanitarian consequences, regional escalation, and extensive international legal proceedings at the ICJ and ICC.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--sky);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--sky);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The Israel–Palestine conflict centres on competing national claims and security concerns. Hamas controls Gaza, while the Palestinian Authority operates in parts of the West Bank — a crucial internal division. After the Hamas attack on October 7, 2023, Israel launched a major military campaign in Gaza, leading to large‑scale casualties and regional tensions. Many countries support a two‑state solution, under which Israel and a future Palestinian state would coexist peacefully, though core issues like borders, settlements, Jerusalem, and refugees remain unresolved. India maintains strong relations with Israel while continuing to support Palestinian aspirations and a negotiated settlement — a carefully balanced diplomatic position."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('israelMap');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Israel outline (schematic)
+            ctx.fillStyle = 'rgba(14, 165, 233, 0.12)';
+            ctx.strokeStyle = '#0ea5e9';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(180, 60);
+            ctx.lineTo(250, 55);
+            ctx.lineTo(290, 90);
+            ctx.lineTo(310, 130);
+            ctx.lineTo(280, 200);
+            ctx.lineTo(240, 240);
+            ctx.lineTo(190, 230);
+            ctx.lineTo(160, 190);
+            ctx.lineTo(150, 140);
+            ctx.lineTo(160, 100);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = 'bold 13px "JetBrains Mono", monospace';
+            ctx.fillText('ISRAEL', 200, 155);
+
+            // Gaza Strip
+            ctx.fillStyle = 'rgba(244, 63, 94, 0.15)';
+            ctx.strokeStyle = '#f43f5e';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(150, 195);
+            ctx.lineTo(170, 200);
+            ctx.lineTo(165, 225);
+            ctx.lineTo(140, 220);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#f43f5e';
+            ctx.font = '9px "JetBrains Mono", monospace';
+            ctx.fillText('GAZA', 140, 212);
+
+            // West Bank
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.12)';
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 1.5;
+            ctx.setLineDash([4, 3]);
+            ctx.beginPath();
+            ctx.moveTo(260, 110);
+            ctx.lineTo(290, 125);
+            ctx.lineTo(300, 160);
+            ctx.lineTo(275, 190);
+            ctx.lineTo(250, 200);
+            ctx.lineTo(240, 170);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle = '#10b981';
+            ctx.font = '9px "JetBrains Mono", monospace';
+            ctx.fillText('WEST BANK', 252, 155);
+
+            // Jerusalem marker
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath();
+            ctx.arc(265, 155, 7, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = 'bold 8px "JetBrains Mono", monospace';
+            ctx.fillText('Jerusalem', 275, 150);
+
+            // Neighboring countries
+            const neighbors = [
+                { name: 'LEBANON', x: 210, y: 30 },
+                { name: 'SYRIA', x: 310, y: 40 },
+                { name: 'JORDAN', x: 340, y: 140 },
+                { name: 'EGYPT', x: 110, y: 240 },
+                { name: 'Mediterranean Sea', x: 100, y: 70, sea: true }
+            ];
+            ctx.fillStyle = '#6b7d74';
+            ctx.font = '8px "JetBrains Mono", monospace';
+            neighbors.forEach(n => {
+                if (n.sea) {
+                    ctx.fillStyle = '#3b82f6';
+                    ctx.fillText(n.name, n.x, n.y);
+                    ctx.fillStyle = '#6b7d74';
+                } else {
+                    ctx.fillText(n.name, n.x-20, n.y);
+                }
+            });
+
+            // Tel Aviv marker
+            ctx.fillStyle = '#0ea5e9';
+            ctx.beginPath();
+            ctx.arc(175, 155, 4, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.fillText('Tel Aviv', 180, 162);
+        })();
+    </script>
+</body>
+</html>

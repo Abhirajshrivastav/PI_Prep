@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-10 · UP Agriculture — Wheat, Sugarcane, Potatoes — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1rem; }
+
+        .crop-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem;
+        }
+        .crop-card h3 { color: var(--accent); font-size: 1.2rem; margin-bottom: 0.3rem; }
+        .crop-card .belt { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-10] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">UP Agriculture — Wheat, Sugarcane, Potatoes</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">How India's most populous state became its agricultural powerhouse — the crops, the belts, the policies, and the economic reality behind the farm.</p>
+        </div>
+
+        <!-- Key Facts Dashboard Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Agricultural Powerhouse Dashboard</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">WHEAT</span><div class="value">Largest Producer in India (~32% of national output)</div></div>
+                <div class="fact-box"><span class="label">SUGARCANE</span><div class="value">Largest Producer in India (~45% of national output)</div></div>
+                <div class="fact-box"><span class="label">POTATOES</span><div class="value">Largest Producer in India (~30% of national output)</div></div>
+                <div class="fact-box"><span class="label">RICE</span><div class="value">2nd Largest Producer (~13% of national output)</div></div>
+                <div class="fact-box"><span class="label">MUSTARD</span><div class="value">Major Producer (~20% of national output)</div></div>
+                <div class="fact-box"><span class="label">AGRICULTURAL GDP SHARE</span><div class="value">~12% of India's total agricultural GDP</div></div>
+                <div class="fact-box"><span class="label">IRRIGATED AREA</span><div class="value">~75% of cultivated area (highest among large states)</div></div>
+                <div class="fact-box"><span class="label">MAJOR REGIONS</span><div class="value">Western UP (Green Revolution), Central UP, Purvanchal (Rice)</div></div>
+            </div>
+        </div>
+
+        <!-- Crop Deep Dives -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌾 The Big Three — Wheat, Sugarcane, Potatoes</h2>
+
+            <div class="crop-card">
+                <h3>🌿 Wheat — The Green Revolution Legacy</h3>
+                <div class="belt">Belt: Western & Central UP (Meerut, Saharanpur, Bulandshahr, Agra)</div>
+                <p style="color:var(--text-body);">UP is the <strong>largest wheat producer in India</strong>, contributing approximately 32% of the national output. The western districts, particularly in the Doab region (land between the Ganga and Yamuna), benefited immensely from the Green Revolution of the 1960s‑70s, which introduced high‑yielding varieties, chemical fertilisers, and extensive canal irrigation. Wheat is a <strong>Rabi (winter) crop</strong>, sown in November‑December and harvested in April‑May. The government's Minimum Support Price (MSP) system makes wheat procurement a major economic intervention — the Food Corporation of India (FCI) procures millions of tonnes from UP annually, sustaining both farmers and the Public Distribution System (PDS).</p>
+            </div>
+
+            <div class="crop-card">
+                <h3>🎋 Sugarcane — The Cash Crop Powerhouse</h3>
+                <div class="belt">Belt: Western UP (Muzaffarnagar, Meerut, Saharanpur, Bijnor)</div>
+                <p style="color:var(--text-body);">UP is the <strong>largest sugarcane producer in India</strong>, contributing around 45% of the national output. Sugarcane is a <strong>Kharif crop</strong> (monsoon‑dependent) with a long growing cycle of 10‑12 months. It is one of the most <strong>politically significant crops</strong> in the state — sugar mills are major employers, and the cane price (State Advised Price, or SAP) is often a political flashpoint. The central government's <strong>Ethanol Blended Petrol (EBP) Programme</strong>, targeting E20 blending by 2025‑26, has given sugarcane a new strategic dimension: excess sugar is now diverted to ethanol production, reducing crude oil imports and providing an additional revenue stream for mills and farmers. This is a classic example of the <strong>circular economy</strong> in agriculture.</p>
+            </div>
+
+            <div class="crop-card">
+                <h3>🥔 Potatoes — The Cold Storage Capital</h3>
+                <div class="belt">Belt: Central & Western UP (Kannauj, Farrukhabad, Agra, Hathras)</div>
+                <p style="color:var(--text-body);">UP is the <strong>largest potato producer in India</strong>, contributing about 30% of the national output. The Kannauj‑Farrukhabad‑Agra belt is famous for potato cultivation, supported by a vast network of <strong>cold storage facilities</strong>. Potatoes are a <strong>Rabi crop</strong>, planted in October‑November and harvested in February‑March. The cold storage infrastructure is a critical part of the value chain — it allows farmers to store produce and sell throughout the year, reducing distress sales at harvest time. However, the high cost of cold storage and the dominance of a few large operators create a <strong>principal‑agent problem</strong>: small farmers often have limited bargaining power over storage fees and market access.</p>
+            </div>
+
+            <div class="crop-card">
+                <h3>🍚 Rice — Eastern UP's Staple</h3>
+                <div class="belt">Belt: Eastern UP / Purvanchal (Ghazipur, Varanasi, Gorakhpur, Ballia)</div>
+                <p style="color:var(--text-body);">UP is the <strong>second‑largest rice producer</strong> in India (after West Bengal). Rice is primarily a <strong>Kharif crop</strong>, heavily dependent on the monsoon and cultivated on the alluvial soils of the Ganga basin. Eastern UP, including Ghazipur, is the heart of rice cultivation. Unlike wheat, rice in this region is more subsistence‑oriented and less commercially integrated than in Punjab or Haryana. The monsoon dependency makes rice farmers vulnerable to climate variability, and the crop is often at the centre of discussions about agricultural insurance (PM Fasal Bima Yojana) and irrigation infrastructure.</p>
+            </div>
+
+            <div class="crop-card">
+                <h3>🌼 Mustard — The Oilseed Economy</h3>
+                <div class="belt">Belt: Western & Central UP, often intercropped with wheat</div>
+                <p style="color:var(--text-body);">UP is a major producer of mustard, an important <strong>oilseed crop</strong>. It is part of the <strong>Yellow Revolution</strong> (oilseed production increase) and is crucial for India's edible oil security. Mustard is a Rabi crop, often grown in rotation with wheat or potatoes. The oil is a staple in North Indian kitchens, and the mustard cake is used as animal feed. The government has been promoting mustard through MSP and the <strong>National Mission on Edible Oils</strong> to reduce India's heavy dependence on imported palm and soybean oil.</p>
+            </div>
+        </div>
+
+        <!-- Why UP is So Productive -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌱 Why Is UP So Agriculturally Productive?</h2>
+            <p style="color:var(--text-body);">UP's agricultural dominance rests on three structural advantages:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.4rem;"><strong>Fertile Alluvial Soil:</strong> The Gangetic plains are among the most fertile agricultural regions in the world, replenished annually by river silt.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Extensive Irrigation Network:</strong> The Upper Ganga Canal, the Lower Ganga Canal, and the Sarda Canal system provide water to millions of hectares. Tube wells supplement canal irrigation, making UP one of the most irrigated states in India.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Green Revolution Impact:</strong> Western UP was an early adopter of high‑yielding varieties, fertilisers, and mechanisation in the 1960s‑70s, creating a productivity culture that persists.</li>
+            </ul>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>But productivity does not equal prosperity:</strong> Despite this output, UP remains one of India's lower per‑capita income states. Fragmented landholdings, limited non‑farm employment, and the disconnect between agricultural production and local industrial processing contribute to the migration patterns seen in Purvanchal.</p>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What are the major agricultural crops of Uttar Pradesh?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">UP is India's largest producer of <strong>wheat, sugarcane, and potatoes</strong>. It is also a major producer of <strong>rice</strong> (second in India) and <strong>mustard</strong>. These crops span different regions: wheat in western and central UP, sugarcane in western UP, potatoes in the Kannauj‑Agra belt, and rice predominantly in eastern UP (Purvanchal).</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Why is sugarcane such a politically significant crop in UP?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Sugarcane involves millions of farmers and a large sugar mill industry that provides rural employment. The State Advised Price (SAP) — which the state government sets above the central Fair and Remunerative Price (FRP) — is a major political issue. The mill owners' ability to pay, farmer protests when payments are delayed, and the growing ethanol blending programme (which creates additional demand) all make sugarcane a crop with enormous political and economic weight in western UP.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: How does UP's agriculture connect to the issue of migration from Purvanchal?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Despite high agricultural output, particularly in rice and wheat, much of Purvanchal's farming is subsistence‑oriented with small, fragmented landholdings. Agriculture alone cannot provide stable or sufficient income for many families. This, combined with limited industrialisation, drives large‑scale migration to cities like Mumbai, Delhi, and Surat. So the paradox is: UP feeds India, but its own farmers often struggle to sustain their families on farm income alone.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is the Ethanol Blended Petrol (EBP) Programme, and how does it affect UP?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The EBP Programme aims to blend ethanol — produced from sugarcane molasses — with petrol, targeting 20% blending (E20) by 2025‑26. For UP, this is significant because many sugar mills have set up ethanol distilleries, creating a new revenue stream. It reduces the sugar surplus, helps mills pay farmers on time, and supports India's goal of reducing crude oil imports. It is a direct policy link between UP's agriculture and national energy security.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What structural challenges does UP's agriculture face?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Despite high production, UP faces challenges including <strong>fragmented landholdings</strong> (average farm size is very small), <strong>dependence on monsoon</strong> for rice cultivation, <strong>price volatility</strong> in crops like potatoes, <strong>debt</strong> among small farmers, and <strong>limited agro‑processing industries</strong> within the state. These factors mean that high agricultural output does not automatically translate into broad‑based rural prosperity.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Uttar Pradesh is India's agricultural powerhouse — the largest producer of wheat, sugarcane, and potatoes, and a major producer of rice and mustard. The fertile Gangetic alluvial soil and extensive canal irrigation underpin this productivity, particularly in western UP, which benefited from the Green Revolution. Sugarcane has deep political and economic significance, now amplified by the ethanol blending programme that links agriculture to energy policy. Yet, despite feeding the nation, UP's agriculture faces structural challenges: fragmented landholdings, monsoon dependency in eastern UP, and limited local processing. This paradox — high output coexisting with rural economic stress — is central to understanding migration from Purvanchal and the broader development challenges of the state."</em></p>
+        </div>
+    </main>
+</body>
+</html>

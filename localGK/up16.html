@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-16 · Kanpur & Noida — Industry & IT Hub — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .city-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.5rem; margin-bottom: 1.2rem;
+        }
+        .city-card h2 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 0.8rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-16] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Kanpur & Noida — Industry & IT Hub</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The twin engines of Uttar Pradesh's economy — Kanpur, the historic industrial powerhouse, and Noida, the modern IT and corporate corridor driving the state into the future.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Dual Economy Dashboard</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Kanpur's Identity</span><div class="value">"Manchester of the North" — Leather, Textiles, IIT</div></div>
+                <div class="fact-box"><span class="label">Noida's Identity</span><div class="value">IT & Corporate Hub; NCR satellite city</div></div>
+                <div class="fact-box"><span class="label">Kanpur Location</span><div class="value">Central UP, on the Ganga</div></div>
+                <div class="fact-box"><span class="label">Noida Location</span><div class="value">Western UP, part of Delhi‑NCR</div></div>
+                <div class="fact-box"><span class="label">Kanpur's Institutions</span><div class="value">IIT Kanpur, HBTU, GSVM Medical College</div></div>
+                <div class="fact-box"><span class="label">Noida's Institutions</span><div class="value">MNCs, Startups, Media & Entertainment</div></div>
+                <div class="fact-box"><span class="label">Kanpur's GDP Contribution</span><div class="value">~5% of UP's GSDP (industrial output)</div></div>
+                <div class="fact-box"><span class="label">Noida's GDP Contribution</span><div class="value">~7-8% of UP's GSDP (services & IT)</div></div>
+            </div>
+        </div>
+
+        <!-- Kanpur Deep Dive -->
+        <div class="city-card">
+            <h2>🏭 Kanpur — The Industrial Heart of North India</h2>
+            <p style="color:var(--text-body);">Kanpur has been the primary industrial centre of Uttar Pradesh for over a century. Its rise began in the late 19th century when the British established leather tanneries and textile mills along the Ganga. The city's strategic location — on the Grand Trunk Road and the railway network, with abundant water supply — made it ideal for large‑scale manufacturing.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Leather Industry:</strong> Kanpur is India's largest leather processing and export hub. The city produces finished leather, shoes, bags, and accessories for global brands. The industry is concentrated in the <strong>Jajmau</strong> area, which has faced severe environmental challenges due to chromium‑laced effluent discharged into the Ganga. The <strong>Common Effluent Treatment Plant (CETP)</strong> and stricter pollution norms under Namami Gange have begun to address this, though the problem is far from solved.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Textile Industry:</strong> Kanpur has a large textile sector — cotton mills, woollen mills, and garment manufacturing. The city was historically known as the <strong>"Manchester of the East"</strong> for its textile prowess, a title that reflects its colonial‑era industrial heritage. Today, the sector employs thousands and contributes significantly to exports.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>IIT Kanpur:</strong> Established in <strong>1959</strong>, IIT Kanpur is one of India's premier engineering institutions. It is renowned for its computer science, aerospace, and engineering departments, and has produced some of the country's finest technologists and entrepreneurs. Its presence connects Kanpur's industrial past to its technological future.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Challenges:</strong> Kanpur faces the classic challenges of a legacy industrial city — ageing infrastructure, pollution, traffic congestion, and the need to diversify beyond traditional manufacturing. However, its skilled workforce and institutional strengths give it resilience.</p>
+        </div>
+
+        <!-- Noida Deep Dive -->
+        <div class="city-card">
+            <h2>💻 Noida — The IT & Corporate Corridor</h2>
+            <p style="color:var(--text-body);">Noida (New Okhla Industrial Development Authority) is a planned city established in <strong>1976</strong> as part of Uttar Pradesh's industrialisation drive. Its location — adjacent to Delhi, across the Yamuna — made it the natural recipient of the capital's spill‑over growth. Today, it is one of India's most important IT, business process outsourcing (BPO), and corporate destinations.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>IT & BPO Hub:</strong> Noida houses offices of virtually every major Indian IT company — <strong>TCS, Infosys, HCL, Wipro, Tech Mahindra</strong> — and global giants like <strong>Microsoft, Adobe, and Samsung</strong>. The city has multiple Special Economic Zones (SEZs) that offer tax incentives to IT and export‑oriented businesses. The BPO sector employs hundreds of thousands of young professionals, many of whom migrate from eastern UP and Purvanchal — including districts like Ghazipur.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Startup Ecosystem:</strong> Noida has emerged as a significant startup hub, second only to Bengaluru and Delhi‑NCR in some rankings. Affordable office space compared to Delhi, good connectivity via the <strong>Delhi Metro</strong> and the <strong>Yamuna Expressway</strong>, and a growing pool of technical talent have attracted founders across sectors — fintech, edtech, healthtech, and SaaS.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Media & Entertainment:</strong> Noida is also a hub for India's television and digital media industry. <strong>Film City</strong> in Sector 16A houses studios of major news channels and production houses. The city's media sector adds a creative economy dimension to its predominantly tech‑driven identity.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Infrastructure:</strong> Noida is connected to Delhi by the Delhi Metro's Blue Line, the DND Flyway, and the Noida‑Greater Noida Expressway. The upcoming <strong>Jewar International Airport</strong> (Noida International Airport) in Greater Noida, expected to be operational soon, will further transform the region's connectivity and economic potential.</p>
+        </div>
+
+        <!-- Contrast & Complementarity -->
+        <div class="glass-panel" style="border-left: 4px solid var(--violet);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚖️ Kanpur & Noida — Two Visions of UP's Economy</h2>
+            <p style="color:var(--text-body);">Kanpur and Noida represent two different eras and models of economic development in Uttar Pradesh. Kanpur is the <strong>legacy industrial city</strong> — built on manufacturing, challenged by environmental degradation, but sustained by deep‑rooted industrial expertise and premier educational institutions. Noida is the <strong>post‑liberalisation city</strong> — planned, technology‑driven, globally connected, and a magnet for young professionals from across the state.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Together, they embody the economic duality of UP: the old and the new, the manufacturing and the services, the challenged and the aspirational. For an interview, being able to discuss both cities with this analytical frame demonstrates that you see the state not as a monolith but as a complex, evolving economic landscape.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Why is Kanpur known as an industrial city, and what are its main industries?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Kanpur is historically called the <strong>"Manchester of the East"</strong> for its textile mills, and it is India's largest leather processing and export hub. The city's industries were established along the Ganga under British rule and have persisted through the post‑Independence era. It is also home to <strong>IIT Kanpur</strong>, a premier engineering institution.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What makes Noida a significant economic centre for Uttar Pradesh?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Noida is a planned city in the Delhi‑NCR region, established in 1976. It is one of India's largest <strong>IT and BPO hubs</strong>, hosting major companies like TCS, Infosys, HCL, Microsoft, and Samsung. It has a thriving <strong>startup ecosystem</strong>, a growing <strong>media and entertainment</strong> sector, and is connected to Delhi via metro and expressways. The upcoming <strong>Jewar International Airport</strong> will further boost its economic significance.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What are the environmental challenges associated with Kanpur's leather industry?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Leather tanning uses chromium salts, and untreated effluent from Kanpur's tanneries — concentrated in the Jajmau area — has historically been discharged into the Ganga, causing severe pollution. The <strong>Common Effluent Treatment Plant (CETP)</strong> and the <strong>Namami Gange</strong> programme have mandated stricter treatment, but enforcement remains a challenge. This is a classic case of balancing industrial employment with environmental sustainability.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: How do Kanpur and Noida represent different economic models in UP?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Kanpur is a <strong>legacy industrial city</strong> — built on manufacturing, textiles, and leather, with established institutions like IIT Kanpur. Noida is a <strong>post‑liberalisation, services‑driven city</strong> — planned, globally connected, and fuelled by IT, startups, and corporate investment. Together, they show the state's economic range: from traditional manufacturing to modern services.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Kanpur and Noida are the two faces of Uttar Pradesh's economy. Kanpur — the historic industrial heartland — is India's largest leather hub and a major textile centre, home to IIT Kanpur, though it grapples with environmental challenges from its manufacturing legacy. Noida, by contrast, is a planned IT and corporate corridor in the NCR, housing major global tech firms, a vibrant startup ecosystem, and media industry. Together, they illustrate the state's economic evolution — from colonial‑era industry to 21st‑century services — and demonstrate how UP is not a single economic story but a landscape of contrasting models and opportunities."</em></p>
+        </div>
+    </main>
+</body>
+</html>

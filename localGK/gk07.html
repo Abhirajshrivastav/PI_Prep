@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>India's Constitutional Leadership & Prime Ministers | IPMAT PI Prep</title>
+  <!-- Tailwind via CDN + Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'display': ['"Playfair Display"', 'Georgia', 'serif'],
+            'body': ['Inter', 'Arial', 'sans-serif'],
+          },
+          colors: {
+            'regal': {
+              50: '#f5f3f0',
+              100: '#e8e3db',
+              200: '#d3c9b8',
+              300: '#b9a78b',
+              400: '#a48b66',
+              500: '#8e714c',
+              600: '#73593a',
+              700: '#5c4630',
+              800: '#4a3828',
+              900: '#3b2d21',
+            },
+            'ink': {
+              50: '#f4f4f7',
+              100: '#e4e4ec',
+              200: '#c9c8d6',
+              300: '#a2a1b8',
+              400: '#7c7a99',
+              500: '#615f7f',
+              600: '#4c4a66',
+              700: '#3e3c53',
+              800: '#323045',
+              900: '#2a2839',
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: #f5f3f0;
+      background-image: radial-gradient(ellipse at 30% 20%, rgba(58, 45, 33, 0.03) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(142, 113, 76, 0.04) 0%, transparent 50%);
+      color: #2a2839;
+      line-height: 1.7;
+    }
+    h1, h2, h3, .font-display {
+      font-family: '"Playfair Display"', Georgia, serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .card-shadow {
+      box-shadow: 0 4px 14px rgba(58, 45, 33, 0.06), 0 1px 4px rgba(58, 45, 33, 0.04);
+      transition: all 0.3s ease;
+    }
+    .card-shadow:hover {
+      box-shadow: 0 10px 24px rgba(58, 45, 33, 0.1), 0 2px 6px rgba(58, 45, 33, 0.05);
+      transform: translateY(-2px);
+    }
+    details.recall-toggle {
+      border: 1px solid #d3c9b8;
+      border-radius: 14px;
+      background: #ffffff;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    details.recall-toggle[open] {
+      border-color: #8e714c;
+      box-shadow: 0 6px 20px rgba(142, 113, 76, 0.15);
+      background: #fdfcf9;
+    }
+    details.recall-toggle > summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 22px;
+      font-weight: 600;
+      color: #3b2d21;
+      user-select: none;
+    }
+    details.recall-toggle > summary::-webkit-details-marker { display: none; }
+    details.recall-toggle > summary .icon {
+      transition: transform 0.3s ease;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #8e714c;
+    }
+    details.recall-toggle[open] > summary .icon {
+      transform: rotate(45deg);
+      color: #3b2d21;
+    }
+    .highlight-badge {
+      background: rgba(142, 113, 76, 0.1);
+      color: #4a3828;
+      border-left: 3px solid #8e714c;
+    }
+    .alert-badge {
+      background: rgba(220, 38, 38, 0.05);
+      border-left: 3px solid #b91c1c;
+      color: #7f1d1d;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Header -->
+  <header class="relative bg-gradient-to-br from-ink-900 via-regal-900 to-ink-900 text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 200%22><path d=%22M0 140 Q180 80 360 140 Q540 200 720 140 Q900 80 1080 140 L1200 140 L1200 200 L0 200 Z%22 fill=%22%23d3c9b8%22 opacity=%220.3%22/><path d=%22M0 170 Q240 120 480 170 Q720 220 960 170 L1200 170 L1200 200 L0 200 Z%22 fill=%22%23d3c9b8%22 opacity=%220.15%22/></svg>'); background-size: cover; background-position: center bottom;"></div>
+    <div class="relative max-w-5xl mx-auto px-6 sm:px-8 py-14 sm:py-16">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div>
+          <p class="text-regal-300 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase mb-2 opacity-80">IPMAT PI · Governance & History</p>
+          <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight">
+            India's Constitutional Leadership
+          </h1>
+          <p class="text-xl sm:text-2xl font-display italic text-regal-200 mt-2 font-medium">
+            & the Chronicle of Prime Ministers
+          </p>
+        </div>
+        <div class="flex-shrink-0 flex items-center gap-2 self-start sm:self-end bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-regal-400"></span>
+          <span class="text-regal-200 text-xs tracking-wider font-medium uppercase">Authoritative Recall</span>
+        </div>
+      </div>
+      <p class="mt-6 text-regal-100/80 text-sm sm:text-base max-w-2xl leading-relaxed">
+        Master the <strong class="text-regal-300">apex constitutional posts</strong> and the <strong class="text-regal-300">chronological sweep of Indian prime ministers</strong>. This guide injects institutional context and era-based analysis, transforming memorization into genuine political awareness for your interview.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-5xl mx-auto px-5 sm:px-8 py-12 space-y-16">
+
+    <!-- Section 1: Current Constitutional Pillars -->
+    <section>
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-12 h-12 rounded-full bg-regal-100 flex items-center justify-center flex-shrink-0">
+          <span class="text-regal-700 font-bold text-xl">🏛️</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink-800">Current Constitutional Pillars</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- President -->
+        <div class="bg-white card-shadow rounded-2xl p-6 border-t-4 border-regal-600 flex flex-col">
+          <span class="text-xs font-semibold text-regal-500 uppercase tracking-widest mb-2">Article 52</span>
+          <h3 class="font-display text-2xl font-bold text-ink-800">President</h3>
+          <p class="text-2xl font-bold text-ink-700 mt-2">Droupadi Murmu</p>
+          <p class="text-sm text-ink-500 mt-1">Since 2022</p>
+          <div class="mt-4 pt-4 border-t border-regal-100">
+            <p class="text-xs text-ink-600 leading-relaxed"><strong class="text-ink-700">First tribal President</strong> of India. Hails from Odisha. Serves as the Supreme Commander of the Armed Forces.</p>
+          </div>
+        </div>
+
+        <!-- Vice President -->
+        <div class="bg-white card-shadow rounded-2xl p-6 border-t-4 border-ink-500 flex flex-col">
+          <span class="text-xs font-semibold text-ink-500 uppercase tracking-widest mb-2">Article 63</span>
+          <h3 class="font-display text-2xl font-bold text-ink-800">Vice President</h3>
+          <p class="text-2xl font-bold text-ink-700 mt-2">Jagdeep Dhankhar</p>
+          <p class="text-sm text-ink-500 mt-1">Since 2022</p>
+          <div class="mt-4 pt-4 border-t border-ink-100">
+            <p class="text-xs text-ink-600 leading-relaxed"><strong class="text-ink-700">Ex-officio Chairman of Rajya Sabha</strong>. Hails from Rajasthan. Plays a crucial role in parliamentary conduct.</p>
+          </div>
+        </div>
+
+        <!-- Chief Justice of India -->
+        <div class="bg-white card-shadow rounded-2xl p-6 border-t-4 border-red-700 flex flex-col relative">
+          <span class="absolute top-3 right-3 bg-red-50 text-red-800 text-xs font-bold px-2.5 py-1 rounded-full border border-red-200">⚠️ Verify before PI</span>
+          <span class="text-xs font-semibold text-red-600 uppercase tracking-widest mb-2">Article 124</span>
+          <h3 class="font-display text-2xl font-bold text-ink-800">Chief Justice</h3>
+          <p class="text-2xl font-bold text-ink-700 mt-2">Justice Surya Kant</p>
+          <p class="text-sm text-ink-500 mt-1">(Likely as of 2026)</p>
+          <div class="mt-4 pt-4 border-t border-red-100">
+            <p class="text-xs text-ink-600 leading-relaxed"><strong class="text-red-700">Succession is rapid.</strong> Recent: D.Y. Chandrachud → Sanjiv Khanna → B.R. Gavai. <strong>Recheck 2-3 days before PI.</strong></p>
+          </div>
+        </div>
+
+        <!-- RBI Governor -->
+        <div class="bg-white card-shadow rounded-2xl p-6 border-t-4 border-emerald-700 flex flex-col">
+          <span class="text-xs font-semibold text-emerald-600 uppercase tracking-widest mb-2">RBI Act, 1934</span>
+          <h3 class="font-display text-2xl font-bold text-ink-800">RBI Governor</h3>
+          <p class="text-2xl font-bold text-ink-700 mt-2">Sanjay Malhotra</p>
+          <p class="text-sm text-ink-500 mt-1">Since Dec 2024</p>
+          <div class="mt-4 pt-4 border-t border-emerald-100">
+            <p class="text-xs text-ink-600 leading-relaxed">Succeeded Shaktikanta Das. Focuses on <strong class="text-ink-700">monetary policy, inflation control, and banking regulation</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contextual Expansion for CJI & RBI -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
+        <div class="alert-badge p-4 rounded-lg text-sm leading-relaxed">
+          <p class="font-semibold text-red-800 mb-1">⚖️ Why CJI Tenures Are Short</p>
+          <p class="text-ink-600">The Supreme Court follows a seniority convention with a fixed retirement age of 65. This ensures a predictable, apolitical transition but also means you <strong>must verify the current CJI</strong> right before your interview to avoid an embarrassing error.</p>
+        </div>
+        <div class="highlight-badge p-4 rounded-lg text-sm leading-relaxed">
+          <p class="font-semibold text-ink-800 mb-1">📊 The RBI Governor's Mandate</p>
+          <p class="text-ink-600">The Governor chairs the <strong>Monetary Policy Committee (MPC)</strong>, which targets inflation at 4% (+/- 2%). This role is critical for rupee stability and foreign investment, linking directly to macroeconomics you'll study in management.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Prime Ministers Chronology -->
+    <section>
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-12 h-12 rounded-full bg-ink-100 flex items-center justify-center flex-shrink-0">
+          <span class="text-ink-700 font-bold text-xl">📜</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink-800">Prime Ministers of India</h2>
+      </div>
+
+      <!-- PM Table -->
+      <div class="overflow-hidden rounded-2xl border border-regal-200 bg-white shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-ink-800 text-white">
+              <tr>
+                <th class="px-5 py-4 text-left font-semibold uppercase tracking-wider text-xs">#</th>
+                <th class="px-5 py-4 text-left font-semibold uppercase tracking-wider text-xs">Prime Minister</th>
+                <th class="px-5 py-4 text-left font-semibold uppercase tracking-wider text-xs">Tenure</th>
+                <th class="px-5 py-4 text-left font-semibold uppercase tracking-wider text-xs hidden sm:table-cell">Key Points</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-regal-100">
+              <tr class="hover:bg-regal-50/50 transition-colors"><td class="px-5 py-4 font-medium">1</td><td class="px-5 py-4 font-bold text-ink-800">Jawaharlal Nehru</td><td class="px-5 py-4">1947–1964</td><td class="px-5 py-4 text-ink-600 hidden sm:table-cell">First PM, architect of modern India</td></tr>
+              <tr class="hover:bg-regal-50/50 transition-colors"><td class="px-5 py-4 font-medium">2</td><td class="px-5 py-4 font-bold text-ink-800">Lal Bahadur Shastri</td><td class="px-5 py-4">1964–1966</td><td class="px-5 py-4 text-ink-600 hidden sm:table-cell">"Jai Jawan Jai Kisan"</td></tr>
+              <tr class="hover:bg-regal-50/50 transition-colors"><td class="px-5 py-4 font-medium">3</td><td class="px-5 py-4 font-bold text-ink-800">Indira Gandhi</td><td class="px-5 py-4">1966–1977, 1980–1984</td><td class="px-5 py-4 text-ink-600 hidden sm:table-cell">Emergency (1975–77), strong centralization</td></tr>
+              <tr class="hover:bg-regal-50/50 transition-colors"><td class="px-5 py-4 font-medium">4</td><td class="px-5 py-4 font-bold text-ink-800">Morarji Desai</td><td class="px-5 py-4">1977–1979</td><td class="px-5 py-4 text-ink-600 hidden sm:table-cell">First non-Congress PM</td></tr>
+              <tr class="hover:bg-regal-50/50 transition-colors"><td class="px-5 py-4 font-medium">5</td><td class="px-5 py-4 font-bold text-ink-800">Charan Singh</td><td class="px-5 py-4">1979–1980</td><td class="px-5 py-4 text-ink-600 hidden sm:table-cell">Short tenure</td></tr>
+              <tr class="hover:bg-regal-50/50 transition-colors"><td class="px-5 py-4 font-medium">6</td><td class="px-5 py-4 font-bold text-ink-800">Rajiv Gandhi</td><td class="px-5 py-4">1984–1989</td><td class="px-5 py-4 text-ink-600 hidden sm:table-cell">Telecom and modernization push</td></tr>
+              <tr class="hover:bg-regal-50/50 transition-colors"><td class="px-5 py-4 font-medium">7</td><td class="px-5 py-4 font-bold text-ink-800">V.P. Singh</td><td class="px-5 py-4">1989–1990</td><td class="px-5 py-4 text-ink-600 hidden sm:table-cell">Mandal Commission implementation era</td></tr>
+              <tr class="hover:bg-regal-50/50 transition-colors"><td class="px-5 py-4 font-medium">8</td><td class="px-5 py-4 font-bold text-ink-800">Chandra Shekhar</td><td class="px-5 py-4">1990–1991</td><td class="px-5 py-4 text-ink-600 hidden sm:table-cell">Short coalition government</td></tr>
+              <tr class="hover:bg-regal-50/50 transition-colors bg-regal-50/30"><td class="px-5 py-4 font-medium">9</td><td class="px-5 py-4 font-bold text-ink-800">P.V. Narasimha Rao</td><td class="px-5 py-4">1991–1996</td><td class="px-5 py-4 text-ink-600 font-semibold hidden sm:table-cell">🌟 Economic liberalisation (LPG reforms)</td></tr>
+              <tr class="hover:bg-regal-50/50 transition-colors"><td class="px-5 py-4 font-medium">10</td><td class="px-5 py-4 font-bold text-ink-800">Atal Bihari Vajpayee</td><td class="px-5 py-4">1996, 1998–2004</td><td class="px-5 py-4 text-ink-600 hidden sm:table-cell">Stable NDA government, nuclear tests</td></tr>
+              <tr class="hover:bg-regal-50/50 transition-colors"><td class="px-5 py-4 font-medium">11</td><td class="px-5 py-4 font-bold text-ink-800">Manmohan Singh</td><td class="px-5 py-4">2004–2014</td><td class="px-5 py-4 text-ink-600 hidden sm:table-cell">High growth phase, UPA era</td></tr>
+              <tr class="hover:bg-regal-50/50 transition-colors"><td class="px-5 py-4 font-medium">12</td><td class="px-5 py-4 font-bold text-ink-800">Narendra Modi</td><td class="px-5 py-4">2014–present</td><td class="px-5 py-4 text-ink-600 hidden sm:table-cell">Infrastructure, welfare schemes, global diplomacy</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Era Shifts Analysis Grid -->
+      <div class="mt-8">
+        <h3 class="font-display text-2xl font-bold text-ink-800 mb-5">🧠 Analytical Insight: The Era Shifts</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="bg-white p-5 rounded-xl card-shadow border-l-4 border-regal-400">
+            <p class="font-bold text-ink-700">1947–64: Nation Building</p>
+            <p class="text-sm text-ink-500 mt-1">Nehruvian socialism, institutional foundations, non-alignment.</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl card-shadow border-l-4 border-ink-400">
+            <p class="font-bold text-ink-700">1960s–80s: Dominance & Instability</p>
+            <p class="text-sm text-ink-500 mt-1">Congress dominance, Emergency, fragmented mandates.</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl card-shadow border-l-4 border-emerald-600">
+            <p class="font-bold text-ink-700">1990s: Coalitions & Reforms</p>
+            <p class="text-sm text-ink-500 mt-1">Economic liberalisation, rise of regional parties, Mandal politics.</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl card-shadow border-l-4 border-regal-500">
+            <p class="font-bold text-ink-700">2000s: Stable Coalitions</p>
+            <p class="text-sm text-ink-500 mt-1">Managed alliances, high GDP growth, welfare expansion (MGNREGA).</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl card-shadow border-l-4 border-ink-600">
+            <p class="font-bold text-ink-700">2014–Present: Centralized Mandate</p>
+            <p class="text-sm text-ink-500 mt-1">Strong executive, welfare-tech convergence, infrastructure thrust.</p>
+          </div>
+          <div class="bg-ink-50 p-5 rounded-xl card-shadow border border-ink-100 flex items-center">
+            <p class="text-sm text-ink-600 italic">"Understanding these shifts demonstrates pattern recognition in Indian political economy, a valuable skill for any management aspirant analyzing governance and business environments."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Active Recall Engine -->
+    <section>
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-12 h-12 rounded-full bg-regal-200 flex items-center justify-center flex-shrink-0">
+          <span class="text-regal-700 font-bold text-xl">❓</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-ink-800">Active Recall Practice</h2>
+      </div>
+      <p class="text-sm text-ink-600 mb-6 max-w-2xl">Click each question to reveal the model answer. <strong>Speak your response aloud</strong> before expanding — this embeds the facts for your interview.</p>
+
+      <div class="space-y-4">
+        <details class="recall-toggle">
+          <summary>
+            <span>Q1: Name the current President, Vice President, and RBI Governor of India.</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="px-6 pb-5 pt-1 text-ink-700 leading-relaxed">
+            <p><strong>Model Answer:</strong> "The current President is <strong>Droupadi Murmu</strong>, the first tribal President of India. The Vice President is <strong>Jagdeep Dhankhar</strong>, who also serves as the Chairman of the Rajya Sabha. The RBI Governor is <strong>Sanjay Malhotra</strong>, who took over in December 2024."</p>
+          </div>
+        </details>
+        <details class="recall-toggle">
+          <summary>
+            <span>Q2: Why is the Chief Justice of India post tricky, and how should you answer it?</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="px-6 pb-5 pt-1 text-ink-700 leading-relaxed">
+            <p><strong>Model Answer:</strong> "The CJI has a short tenure due to the retirement age of 65. As of the latest cycle in 2026, <strong>Justice Surya Kant</strong> is the likely incumbent. However, I must always preface with 'As per the latest known information...' and verify the exact name 2–3 days before my interview."</p>
+          </div>
+        </details>
+        <details class="recall-toggle">
+          <summary>
+            <span>Q3: Who are the PMs associated with economic liberalization in India?</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="px-6 pb-5 pt-1 text-ink-700 leading-relaxed">
+            <p><strong>Model Answer:</strong> "<strong>P.V. Narasimha Rao</strong> (1991–1996) is the architect of India's economic liberalisation, supported by his Finance Minister Dr. Manmohan Singh. Later, <strong>Dr. Manmohan Singh</strong> himself became PM (2004–2014) and oversaw a period of high economic growth."</p>
+          </div>
+        </details>
+        <details class="recall-toggle">
+          <summary>
+            <span>Q4: How do you describe the different political eras of India's Prime Ministers?</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="px-6 pb-5 pt-1 text-ink-700 leading-relaxed">
+            <p><strong>Model Answer:</strong> "India's political journey can be seen in phases: the <strong>Nation Building</strong> era under Nehru; a period of <strong>Congress dominance and instability</strong>; the <strong>coalition politics and economic reforms</strong> of the 1990s; <strong>stable coalition governance</strong> in the 2000s; and the current phase of <strong>strong central leadership</strong> with a focus on infrastructure and welfare since 2014."</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer: 30-Second Interview Summary Engine -->
+  <footer class="max-w-5xl mx-auto px-5 sm:px-8 pb-14 pt-4">
+    <div class="relative overflow-hidden rounded-2xl border-2 border-regal-300 bg-gradient-to-br from-white via-regal-50/40 to-white p-6 sm:p-8 shadow-xl">
+      <div class="absolute top-0 right-0 w-40 h-40 bg-regal-200 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+      <div class="absolute bottom-0 left-0 w-32 h-32 bg-ink-200 rounded-full blur-2xl opacity-15 translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+      <div class="relative">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="text-2xl">⚡</span>
+          <h3 class="font-display text-2xl sm:text-3xl font-bold text-ink-800">30-Second Interview Summary Engine</h3>
+        </div>
+        <div class="bg-white/80 backdrop-blur-sm rounded-xl p-5 sm:p-6 border border-regal-200 shadow-inner">
+          <p class="text-ink-800 leading-relaxed text-sm sm:text-base italic">
+            "The President is <strong>Droupadi Murmu</strong>, the Vice President is <strong>Jagdeep Dhankhar</strong>, the RBI Governor is <strong>Sanjay Malhotra</strong>, and the current Chief Justice of India (as per latest cycle) is <strong>Justice Surya Kant</strong>, though judicial posts should always be verified close to the interview date. Looking at our Prime Ministers, we see a fascinating arc: from <strong>Nehru's nation-building</strong> through the coalition era sparked by <strong>V.P. Singh</strong> and the landmark <strong>1991 liberalisation under P.V. Narasimha Rao</strong>, to the current phase of centralized governance under <strong>Narendra Modi</strong>. Understanding these transitions, and the constitutional roles that sit above them, demonstrates a comprehensive grasp of India's political and economic evolution."
+          </p>
+        </div>
+        <p class="mt-4 text-xs text-ink-500 italic text-center sm:text-left">
+          🎯 Deliver in <strong>25–30 seconds</strong> with calm confidence. This answer weaves current facts with historical context, projecting both awareness and analytical depth.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

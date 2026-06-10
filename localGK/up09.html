@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-09 · Major Rivers of UP — Ganga to Ken — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .river-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem;
+        }
+        .river-card h3 { color: var(--accent); font-size: 1.2rem; margin-bottom: 0.3rem; }
+        .river-card .meta { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+
+        .canvas-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+        canvas { max-width: 100%; height: auto; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-09] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Major Rivers of UP — Ganga to Ken</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The eight river systems that define Uttar Pradesh's geography, agriculture, spiritual life, and economy — from the life‑giving Ganga to the drought‑prone Bundelkhand streams.</p>
+        </div>
+
+        <!-- Schematic Canvas Map of UP Rivers -->
+        <div class="canvas-container">
+            <canvas id="riverMap" width="600" height="400"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">Schematic map of major rivers flowing through Uttar Pradesh</p>
+
+        <!-- River Cards -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌊 The Eight Major Rivers</h2>
+
+            <div class="river-card">
+                <h3>1. Ganga — The Lifeline</h3>
+                <div class="meta">Origin: Gangotri Glacier, Uttarakhand · Cities: Haridwar, Kanpur, Prayagraj, Varanasi, Ghazipur</div>
+                <p style="color:var(--text-body);">The most important river of UP — and of India. It enters UP near Bijnor, flows through the heart of the state, and exits into Bihar. It is the primary source of irrigation, drinking water, and spiritual identity for millions. Designated as <strong>National Waterway‑1 (NW‑1)</strong> from Prayagraj to Haldia, enabling cargo transport. The <strong>Namami Gange</strong> programme targets its rejuvenation.</p>
+            </div>
+
+            <div class="river-card">
+                <h3>2. Yamuna — The Major Tributary</h3>
+                <div class="meta">Origin: Yamunotri Glacier, Uttarakhand · Cities: Delhi, Mathura, Agra · Joins Ganga at Prayagraj</div>
+                <p style="color:var(--text-body);">The largest tributary of the Ganga. It flows through Delhi, Mathura, and Agra before meeting the Ganga at the <strong>Triveni Sangam</strong> in Prayagraj. The Yamuna is heavily polluted in its urban stretches, particularly around Delhi, but remains central to the region's water supply and religious practices.</p>
+            </div>
+
+            <div class="river-card">
+                <h3>3. Gomti — The Capital's River</h3>
+                <div class="meta">Origin: Pilibhit district, UP · Cities: Lucknow, Sultanpur, Jaunpur · Joins Ganga near Ghazipur</div>
+                <p style="color:var(--text-body);">A river entirely within Uttar Pradesh, most associated with the state capital, <strong>Lucknow</strong>. The Gomti Riverfront Development project has transformed its banks. It also flows through Jaunpur before joining the Ganga near Ghazipur.</p>
+            </div>
+
+            <div class="river-card">
+                <h3>4. Ghaghara / Saryu — The Himalayan Tributary</h3>
+                <div class="meta">Origin: Tibetan Plateau (Nepal) · Cities: Ayodhya · Joins Ganga near Chhapra (Bihar)</div>
+                <p style="color:var(--text-body);">A large, snow‑fed left‑bank tributary of the Ganga. It is known as <strong>Saryu</strong> in the Ayodhya region, carrying immense religious significance linked to the Ramayana. It is prone to flooding in eastern UP and Bihar.</p>
+            </div>
+
+            <div class="river-card">
+                <h3>5. Betwa — Bundelkhand's Artery</h3>
+                <div class="meta">Origin: Vindhya Range, MP · Cities: Orchha, near Jhansi · Tributary of the Yamuna</div>
+                <p style="color:var(--text-body);">Flows through the drought‑prone Bundelkhand region. It is part of the <strong>Ken–Betwa Link Project</strong>, India's first inter‑basin river transfer, designed to address water scarcity in Bundelkhand.</p>
+            </div>
+
+            <div class="river-card">
+                <h3>6. Rapti — The Flood‑Prone River</h3>
+                <div class="meta">Origin: Nepal · Cities: Gorakhpur · Joins Ghaghara</div>
+                <p style="color:var(--text-body);">Known for severe flooding in eastern UP, particularly around Gorakhpur. Flood management along the Rapti is a recurring challenge for disaster planning in the region.</p>
+            </div>
+
+            <div class="river-card">
+                <h3>7. Gandak — The Eastern Border River</h3>
+                <div class="meta">Origin: Nepal (called Narayani) · Cities: near Kushinagar · Forms UP–Bihar border</div>
+                <p style="color:var(--text-body);">Flows along the eastern boundary of UP with Bihar. It is a trans‑boundary river, governed under bilateral water‑sharing understandings between India and Nepal. It merges with the Ganga near Patna.</p>
+            </div>
+
+            <div class="river-card">
+                <h3>8. Ken — Bundelkhand's Second Hope</h3>
+                <div class="meta">Origin: Vindhya Range, MP · Flows through Panna (MP) and Banda (UP) · Tributary of the Yamuna</div>
+                <p style="color:var(--text-body);">The other half of the <strong>Ken–Betwa Link Project</strong>. It passes through the <strong>Panna National Park</strong> (tiger reserve) in Madhya Pradesh and enters UP in the Banda district. The project has raised ecological concerns regarding its impact on the tiger habitat.</p>
+            </div>
+        </div>
+
+        <!-- Significance & Synthesis -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧠 Why UP's Rivers Matter — A Synthesis</h2>
+            <p style="color:var(--text-body);">UP's river systems explain much of its historical importance: they supported the rise of ancient cities (Varanasi, Prayagraj, Ayodhya), enabled agriculture across the Gangetic plains, and continue to underpin India's food security — UP is the largest producer of wheat, sugarcane, and potatoes. They also present critical governance challenges: <strong>inter‑state water disputes</strong> (the Ken–Betwa link involves both MP and UP), <strong>flood management</strong> (Rapti, Ghaghara), and <strong>pollution control</strong> (Yamuna in its urban stretches).</p>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview synthesis:</strong> "UP's rivers are not just geographic features — they are the hydrological backbone of India's agricultural output, the spiritual anchors of its civilisation, and the source of complex governance challenges that require cooperation across states and with neighbouring countries."</p>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Name the major rivers of Uttar Pradesh.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The major rivers of UP are the <strong>Ganga, Yamuna, Gomti, Ghaghara (Saryu), Betwa, Rapti, Gandak, and Ken</strong>. The Ganga and Yamuna are the most significant, forming the core of the state's river system.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Which river flows through Lucknow?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The <strong>Gomti River</strong>. It is a river entirely within Uttar Pradesh, originating near Pilibhit and flowing through Lucknow, Sultanpur, and Jaunpur before meeting the Ganga near Ghazipur.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is the religious significance of the Ghaghara River in Ayodhya?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Ghaghara is called the <strong>Saryu</strong> in the Ayodhya region. It is deeply associated with the Ramayana — Lord Rama is believed to have entered the Saryu at the end of his earthly life. The river holds immense pilgrimage significance, especially with the construction of the Ram Mandir.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is the Ken–Betwa Link Project, and why is it important?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">It is India's <strong>first inter‑basin river transfer project</strong>, designed to transfer surplus water from the Ken River (MP) to the Betwa River (flowing through Bundelkhand in UP and MP). The goal is to address chronic water scarcity in the drought‑prone Bundelkhand region. It involves a dam, a tunnel, and canal systems, but has raised ecological concerns regarding the Panna Tiger Reserve.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: Which river forms the boundary between UP and Bihar near Ghazipur?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The <strong>Ganga</strong> and its tributary the <strong>Karmanasa</strong> form the natural boundary between Uttar Pradesh and Bihar in the Ghazipur region. The Gandak also marks part of the eastern boundary further north.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Uttar Pradesh is drained by eight major rivers: the Ganga and its tributaries Yamuna, Gomti, Ghaghara (Saryu), Gandak, and Rapti, along with the Betwa and Ken in Bundelkhand. The Ganga forms the state's hydrological spine, supporting agriculture, pilgrimage networks, and the National Waterway‑1. The Gomti is Lucknow's river, the Saryu flows through Ayodhya, and the Ken–Betwa Link Project targets water scarcity in Bundelkhand. Understanding these rivers means understanding the geography of food security, flood management, and inter‑state water cooperation in India's most populous state."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('riverMap');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Draw UP outline (schematic)
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.08)';
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(100, 80);
+            ctx.lineTo(500, 80);
+            ctx.lineTo(540, 200);
+            ctx.lineTo(500, 320);
+            ctx.lineTo(400, 340);
+            ctx.lineTo(250, 320);
+            ctx.lineTo(180, 340);
+            ctx.lineTo(120, 300);
+            ctx.lineTo(80, 200);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = 'bold 14px "JetBrains Mono", monospace';
+            ctx.fillText('UTTAR PRADESH', 220, 210);
+
+            // Rivers as lines with labels
+            const rivers = [
+                { name: 'Ganga', points: [{x:140,y:150},{x:300,y:180},{x:450,y:190},{x:520,y:220}], color: '#3b82f6' },
+                { name: 'Yamuna', points: [{x:120,y:100},{x:220,y:160},{x:300,y:180}], color: '#8b5cf6' },
+                { name: 'Gomti', points: [{x:280,y:100},{x:330,y:160},{x:400,y:200}], color: '#f59e0b' },
+                { name: 'Ghaghara/Saryu', points: [{x:340,y:80},{x:380,y:140},{x:460,y:180},{x:510,y:230}], color: '#f43f5e' },
+                { name: 'Rapti', points: [{x:420,y:90},{x:460,y:160},{x:490,y:190}], color: '#10b981' },
+                { name: 'Gandak', points: [{x:480,y:100},{x:510,y:160},{x:530,y:210}], color: '#a78bfa' },
+                { name: 'Betwa', points: [{x:180,y:280},{x:260,y:240},{x:300,y:200}], color: '#f97316' },
+                { name: 'Ken', points: [{x:160,y:300},{x:220,y:260},{x:280,y:220}], color: '#ec4899' }
+            ];
+
+            rivers.forEach(r => {
+                ctx.beginPath();
+                ctx.strokeStyle = r.color;
+                ctx.lineWidth = 2;
+                ctx.moveTo(r.points[0].x, r.points[0].y);
+                for (let i = 1; i < r.points.length; i++) {
+                    ctx.lineTo(r.points[i].x, r.points[i].y);
+                }
+                ctx.stroke();
+                // Label
+                const last = r.points[r.points.length-1];
+                ctx.fillStyle = r.color;
+                ctx.font = '9px "JetBrains Mono", monospace';
+                ctx.fillText(r.name, last.x+4, last.y-4);
+            });
+
+            // Sangam at Prayagraj
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath();
+            ctx.arc(300, 180, 6, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.fillText('Triveni Sangam (Prayagraj)', 310, 175);
+
+            // Lucknow marker
+            ctx.fillStyle = '#10b981';
+            ctx.beginPath();
+            ctx.arc(330, 160, 4, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.fillText('Lucknow', 336, 163);
+
+            // Ayodhya marker
+            ctx.fillStyle = '#f43f5e';
+            ctx.beginPath();
+            ctx.arc(380, 140, 4, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.fillText('Ayodhya', 386, 143);
+
+            // Ghazipur marker
+            ctx.fillStyle = '#3b82f6';
+            ctx.beginPath();
+            ctx.arc(470, 195, 4, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.fillText('Ghazipur', 476, 198);
+        })();
+    </script>
+</body>
+</html>

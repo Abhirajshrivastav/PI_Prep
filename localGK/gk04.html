@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Rivers: Arabian Sea vs Bay of Bengal Drainage | IPMAT PI Prep</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['"Playfair Display"', 'Georgia', 'serif'],
+                        'body': ['Inter', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        'navy': {
+                            50: '#eef4f8',
+                            100: '#d4e0eb',
+                            200: '#aec6d9',
+                            300: '#7ca3bf',
+                            400: '#4e81a0',
+                            500: '#336b87',
+                            600: '#26536b',
+                            700: '#1e3a5f',
+                            800: '#182e4c',
+                            900: '#13243e',
+                        },
+                        'teal-river': {
+                            50: '#e5f7f6',
+                            100: '#c2ece9',
+                            200: '#92ddd7',
+                            300: '#58c7bd',
+                            400: '#2ead9f',
+                            500: '#0d8c7d',
+                            600: '#0a7266',
+                            700: '#095c54',
+                            800: '#084942',
+                            900: '#073b37',
+                        },
+                        'sand': {
+                            50: '#fdfaf5',
+                            100: '#f9f2e5',
+                            200: '#f2e2c6',
+                            300: '#e7cc9a',
+                            400: '#d9b06a',
+                            500: '#c99a42',
+                            600: '#b88530',
+                            700: '#956b27',
+                            800: '#795622',
+                            900: '#63461f',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --card-shadow: 0 3px 14px rgba(24, 46, 76, 0.05), 0 1px 4px rgba(24, 46, 76, 0.04);
+            --card-shadow-hover: 0 8px 26px rgba(24, 46, 76, 0.09), 0 2px 8px rgba(24, 46, 76, 0.05);
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: 'Inter', 'Arial', sans-serif;
+            background-color: #fdfaf5;
+            background-image:
+                radial-gradient(ellipse at 30% 20%, rgba(13, 140, 125, 0.02) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(201, 154, 66, 0.03) 0%, transparent 55%);
+            color: #1e293b;
+            line-height: 1.65;
+            letter-spacing: 0.01em;
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.3, 1);
+            box-shadow: var(--card-shadow);
+            background: #ffffff;
+            border: 1px solid #f2e2c6;
+            border-radius: 1rem;
+        }
+        .card-hover:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-2px);
+            border-color: #c99a42;
+        }
+
+        details.recall-toggle {
+            border: 1px solid #d4e0eb;
+            border-radius: 14px;
+            background: #ffffff;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+        }
+        details.recall-toggle[open] {
+            border-color: #0d8c7d;
+            box-shadow: 0 8px 28px rgba(13, 140, 125, 0.12), 0 2px 6px rgba(0,0,0,0.03);
+            background: #f9fdfc;
+        }
+        details.recall-toggle>summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 22px;
+            font-weight: 600;
+            font-size: 1.02rem;
+            color: #1e3a5f;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary:hover { background: #eef4f8; }
+        details.recall-toggle>summary .toggle-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #d4e0eb;
+            color: #26536b;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+        details.recall-toggle[open]>summary .toggle-icon {
+            background: #0d8c7d;
+            color: white;
+            transform: rotate(45deg);
+        }
+        details.recall-toggle .details-content {
+            padding: 0 22px 20px 22px;
+            animation: fadeSlide 0.35s ease-out;
+        }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .insight-callout {
+            border-left: 4px solid #c99a42;
+            background: linear-gradient(135deg, #fdfaf5 0%, #fef3e3 100%);
+            border-radius: 0 10px 10px 0;
+        }
+        .directive-callout {
+            border-left: 4px solid #1e3a5f;
+            background: linear-gradient(135deg, #eef4f8 0%, #f5f9fc 100%);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .direction-badge-west {
+            background: #e5f7f6;
+            color: #0d8c7d;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+        }
+        .direction-badge-east {
+            background: #eef4f8;
+            color: #1e3a5f;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 640px) {
+            details.recall-toggle>summary { padding: 14px 16px; font-size: 0.95rem; }
+            details.recall-toggle .details-content { padding: 0 16px 16px 16px; }
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+
+    <!-- Header -->
+    <header class="relative overflow-hidden bg-gradient-to-br from-navy-900 via-navy-800 to-teal-river-900 text-white">
+        <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 200%22><path d=%22M0 120 Q150 70 300 120 Q450 170 600 120 Q750 70 900 120 Q1050 170 1200 120 L1200 200 L0 200 Z%22 fill=%22%23f9f2e5%22 opacity=%220.25%22/><path d=%22M0 150 Q200 110 400 150 Q600 190 800 150 Q1000 110 1200 150 L1200 200 L0 200 Z%22 fill=%22%23f9f2e5%22 opacity=%220.12%22/></svg>'); background-size: cover; background-position: center bottom;"></div>
+        <div class="relative max-w-5xl mx-auto px-5 sm:px-8 py-12 sm:py-14">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                <div>
+                    <p class="text-sand-300 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-2 opacity-80">IPMAT PI · Indian Geography & Geopolitics</p>
+                    <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+                        Indian Rivers
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-2xl font-display italic text-sand-200 mt-1 font-medium">
+                        Arabian Sea vs Bay of Bengal Drainage & The Indus Waters Treaty
+                    </p>
+                </div>
+                <div class="flex-shrink-0 flex items-center gap-2 self-start sm:self-end bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-sand-400"></span>
+                    <span class="text-sand-200 text-xs tracking-wider font-medium uppercase">Strategic Recall</span>
+                </div>
+            </div>
+            <p class="mt-5 text-sand-100 text-sm sm:text-base max-w-2xl leading-relaxed opacity-90">
+                Master the <strong class="text-sand-300">east-west drainage divide</strong>, the geological significance of rift valleys, and the <strong class="text-sand-300">Indus Waters Treaty</strong> — a landmark transboundary water-sharing framework.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-5 sm:px-8 py-10 sm:py-14 space-y-14">
+
+        <!-- ===== SECTION: WEST-FLOWING RIVERS (ARABIAN SEA) ===== -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-teal-river-100 flex items-center justify-center flex-shrink-0">
+                    <span class="text-teal-river-700 font-bold text-lg">W</span>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-navy-700">
+                    Arabian Sea Drainage — West-Flowing Rivers
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Narmada -->
+                <div class="card-hover p-5 border-t-4 border-teal-river-600">
+                    <span class="direction-badge-west">West → Arabian Sea</span>
+                    <h3 class="font-display text-xl font-bold text-navy-800 mt-2">Narmada</h3>
+                    <p class="text-sm text-slate-600 mt-1"><strong>Origin:</strong> Amarkantak Plateau (MP)</p>
+                    <p class="text-sm text-slate-600"><strong>Mouth:</strong> Near Bharuch, Gujarat</p>
+                    <p class="text-sm text-slate-600"><strong>Key Fact:</strong> Flows through a <strong>rift valley</strong> between Vindhya (north) & Satpura (south).</p>
+                </div>
+                <!-- Tapti -->
+                <div class="card-hover p-5 border-t-4 border-teal-river-500">
+                    <span class="direction-badge-west">West → Arabian Sea</span>
+                    <h3 class="font-display text-xl font-bold text-navy-800 mt-2">Tapti / Tapi</h3>
+                    <p class="text-sm text-slate-600 mt-1"><strong>Origin:</strong> Near Multai, Betul (MP)</p>
+                    <p class="text-sm text-slate-600"><strong>Mouth:</strong> Near Surat, Gujarat</p>
+                    <p class="text-sm text-slate-600"><strong>Key Fact:</strong> Flows roughly <strong>parallel to Narmada</strong>, also through a rift valley.</p>
+                </div>
+                <!-- Mahi -->
+                <div class="card-hover p-5 border-t-4 border-sand-500">
+                    <span class="direction-badge-west">West → Arabian Sea</span>
+                    <h3 class="font-display text-xl font-bold text-navy-800 mt-2">Mahi</h3>
+                    <p class="text-sm text-slate-600 mt-1"><strong>Origin:</strong> Vindhya region (MP)</p>
+                    <p class="text-sm text-slate-600"><strong>Mouth:</strong> Arabian Sea (Gujarat)</p>
+                    <p class="text-sm text-slate-600"><strong>Key Fact:</strong> <strong>Crosses the Tropic of Cancer twice</strong> — rare geographical quirk.</p>
+                </div>
+                <!-- Luni -->
+                <div class="card-hover p-5 border-t-4 border-sand-600">
+                    <span class="direction-badge-west">West → Arabian Sea</span>
+                    <h3 class="font-display text-xl font-bold text-navy-800 mt-2">Luni</h3>
+                    <p class="text-sm text-slate-600 mt-1"><strong>Origin:</strong> Aravalli Hills (near Ajmer)</p>
+                    <p class="text-sm text-slate-600"><strong>Key Fact:</strong> Mostly seasonal; becomes <strong>saline downstream</strong>; does not strongly reach open sea.</p>
+                </div>
+                <!-- Periyar (Kerala) -->
+                <div class="card-hover p-5 border-t-4 border-teal-river-400">
+                    <span class="direction-badge-west">West → Arabian Sea</span>
+                    <h3 class="font-display text-xl font-bold text-navy-800 mt-2">Periyar</h3>
+                    <p class="text-sm text-slate-600 mt-1"><strong>Origin:</strong> Western Ghats (Kerala)</p>
+                    <p class="text-sm text-slate-600"><strong>Key Fact:</strong> Largest river of Kerala; vital for <strong>hydroelectricity & irrigation</strong>.</p>
+                </div>
+                <!-- Kerala Rivers note -->
+                <div class="card-hover p-5 border-t-4 border-teal-river-300 bg-teal-river-50/30">
+                    <p class="text-sm text-teal-river-800 font-semibold">🏞️ Kerala Rivers</p>
+                    <p class="text-xs text-slate-600 mt-1">Short, west-flowing, originate in Western Ghats. Examples: <strong>Bharathapuzha, Pamba.</strong></p>
+                </div>
+            </div>
+
+            <!-- Insight: Why Narmada/Tapti are special -->
+            <div class="insight-callout p-5 rounded-lg mt-6 text-sm leading-relaxed">
+                <p class="font-semibold text-navy-700 mb-1">💡 Geological Significance</p>
+                <p class="text-slate-600">"The Narmada and Tapti are the only major peninsular rivers that flow <strong>westward through rift valleys</strong>. Unlike most Indian rivers that follow the eastward slope, these rivers occupy ancient fault lines, giving them distinct hydrological and ecological characteristics." This is a frequently asked interview point.</p>
+            </div>
+        </section>
+
+        <!-- ===== SECTION: EAST-FLOWING RIVERS (BAY OF BENGAL) ===== -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-navy-100 flex items-center justify-center flex-shrink-0">
+                    <span class="text-navy-700 font-bold text-lg">E</span>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-navy-700">
+                    Bay of Bengal Drainage — East-Flowing River Systems
+                </h2>
+            </div>
+
+            <!-- East-flowing rivers grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Ganga -->
+                <div class="card-hover p-5 border-t-4 border-navy-600">
+                    <span class="direction-badge-east">East → Bay of Bengal</span>
+                    <h3 class="font-display text-xl font-bold text-navy-800 mt-2">Ganga</h3>
+                    <p class="text-sm text-slate-600"><strong>Origin:</strong> Gangotri Glacier, Uttarakhand</p>
+                    <p class="text-sm text-slate-600"><strong>Mouth:</strong> Sundarbans Delta (Bay of Bengal)</p>
+                    <p class="text-sm text-slate-600"><strong>Fact:</strong> Forms world's largest delta with Brahmaputra.</p>
+                </div>
+                <!-- Brahmaputra -->
+                <div class="card-hover p-5 border-t-4 border-navy-500">
+                    <span class="direction-badge-east">East → Bay of Bengal</span>
+                    <h3 class="font-display text-xl font-bold text-navy-800 mt-2">Brahmaputra</h3>
+                    <p class="text-sm text-slate-600"><strong>Origin:</strong> Tibet (Yarlung Tsangpo)</p>
+                    <p class="text-sm text-slate-600"><strong>Mouth:</strong> Merges with Ganga in Bangladesh</p>
+                    <p class="text-sm text-slate-600"><strong>Fact:</strong> Enormous water volume; major flooding significance.</p>
+                </div>
+                <!-- Mahanadi -->
+                <div class="card-hover p-5 border-t-4 border-teal-river-700">
+                    <span class="direction-badge-east">East → Bay of Bengal</span>
+                    <h3 class="font-display text-xl font-bold text-navy-800 mt-2">Mahanadi</h3>
+                    <p class="text-sm text-slate-600"><strong>Origin:</strong> Chhattisgarh</p>
+                    <p class="text-sm text-slate-600"><strong>Mouth:</strong> Near Paradip, Odisha</p>
+                    <p class="text-sm text-slate-600"><strong>Fact:</strong> Associated with <strong>Hirakud Dam</strong>.</p>
+                </div>
+                <!-- Godavari -->
+                <div class="card-hover p-5 border-t-4 border-navy-400">
+                    <span class="direction-badge-east">East → Bay of Bengal</span>
+                    <h3 class="font-display text-xl font-bold text-navy-800 mt-2">Godavari <span class="text-sm font-normal text-slate-500">(Dakshin Ganga)</span></h3>
+                    <p class="text-sm text-slate-600"><strong>Origin:</strong> Nashik, Maharashtra</p>
+                    <p class="text-sm text-slate-600"><strong>Mouth:</strong> Andhra Pradesh</p>
+                    <p class="text-sm text-slate-600"><strong>Fact:</strong> <strong>Longest peninsular river</strong>.</p>
+                </div>
+                <!-- Krishna -->
+                <div class="card-hover p-5 border-t-4 border-sand-500">
+                    <span class="direction-badge-east">East → Bay of Bengal</span>
+                    <h3 class="font-display text-xl font-bold text-navy-800 mt-2">Krishna</h3>
+                    <p class="text-sm text-slate-600"><strong>Origin:</strong> Mahabaleshwar, Maharashtra</p>
+                    <p class="text-sm text-slate-600"><strong>Mouth:</strong> Andhra Pradesh</p>
+                </div>
+                <!-- Kaveri -->
+                <div class="card-hover p-5 border-t-4 border-sand-400">
+                    <span class="direction-badge-east">East → Bay of Bengal</span>
+                    <h3 class="font-display text-xl font-bold text-navy-800 mt-2">Kaveri</h3>
+                    <p class="text-sm text-slate-600"><strong>Origin:</strong> Talakaveri, Karnataka</p>
+                    <p class="text-sm text-slate-600"><strong>Mouth:</strong> Tamil Nadu</p>
+                    <p class="text-sm text-slate-600"><strong>Fact:</strong> <strong>Cauvery water dispute</strong>; fertile delta.</p>
+                </div>
+            </div>
+
+            <!-- Key comparative facts -->
+            <div class="mt-7 grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="bg-white rounded-xl p-5 border border-navy-100 shadow-sm">
+                    <p class="text-xs uppercase tracking-widest font-semibold text-navy-500 mb-3">📌 Most Important Facts</p>
+                    <ul class="text-sm text-slate-700 space-y-2">
+                        <li><span class="font-bold text-navy-700">Longest peninsular river:</span> Godavari</li>
+                        <li><span class="font-bold text-navy-700">Rift valley west-flowing:</span> Narmada & Tapti</li>
+                        <li><span class="font-bold text-navy-700">Largest delta:</span> Ganga-Brahmaputra</li>
+                        <li><span class="font-bold text-navy-700">Dakshin Ganga:</span> Godavari</li>
+                        <li><span class="font-bold text-navy-700">Major South Indian water dispute:</span> Kaveri</li>
+                    </ul>
+                </div>
+                <div class="directive-callout p-5 rounded-lg text-sm leading-relaxed">
+                    <p class="font-semibold text-navy-700 mb-1">🗣️ Why do most Indian rivers flow east?</p>
+                    <p class="text-slate-600">"Because much of the Indian peninsula <strong>slopes eastward</strong> toward the Bay of Bengal." This is a fundamental geographic concept that explains the drainage pattern.</p>
+                </div>
+            </div>
+
+            <!-- East-West comparison table visual -->
+            <div class="mt-6 bg-white rounded-xl border border-navy-100 overflow-hidden shadow-sm">
+                <div class="px-5 py-4 bg-navy-50">
+                    <p class="font-semibold text-navy-700 text-sm">Critical East vs West Flow Comparison</p>
+                </div>
+                <div class="grid grid-cols-2 divide-x divide-navy-100">
+                    <div class="p-5">
+                        <p class="text-xs font-semibold text-teal-river-700 uppercase tracking-wide mb-3">→ West to Arabian Sea</p>
+                        <ul class="text-sm text-slate-700 space-y-2">
+                            <li><span class="font-medium">Narmada</span></li>
+                            <li><span class="font-medium">Tapti</span></li>
+                            <li>Mahi, Luni, Periyar</li>
+                        </ul>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-xs font-semibold text-navy-700 uppercase tracking-wide mb-3">→ East to Bay of Bengal</p>
+                        <ul class="text-sm text-slate-700 space-y-2">
+                            <li><span class="font-medium">Ganga, Brahmaputra</span></li>
+                            <li><span class="font-medium">Godavari, Krishna, Kaveri</span></li>
+                            <li>Mahanadi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION: SUTLEJ & INDUS WATERS TREATY ===== -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-sand-200 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l7 7-7 7-7-7 7-7z"/></svg>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-navy-700">
+                    Sutlej River & The Indus Waters Treaty
+                </h2>
+            </div>
+
+            <!-- Sutlej facts -->
+            <div class="bg-white rounded-2xl border border-sand-200 p-6 mb-6 shadow-sm">
+                <h3 class="font-display text-xl font-bold text-navy-800 mb-3">🏔️ Sutlej River — Key Facts</h3>
+                <div class="grid sm:grid-cols-2 gap-4 text-sm">
+                    <div><strong>River System:</strong> Easternmost major tributary of the Indus</div>
+                    <div><strong>Origin:</strong> Near Rakshastal Lake / Mount Kailash, Tibet (China)</div>
+                    <div><strong>Flow:</strong> Himachal Pradesh → Punjab → Pakistan</div>
+                    <div><strong>Dam:</strong> Bhakra Nangal Dam (on Sutlej)</div>
+                </div>
+            </div>
+
+            <!-- Indus Waters Treaty classification -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="card-hover p-5 border-l-4 border-navy-600">
+                    <p class="text-xs uppercase font-bold text-navy-500 tracking-wide mb-2">Eastern Rivers (India)</p>
+                    <ul class="text-sm text-slate-700 space-y-1 font-medium">
+                        <li>• Ravi</li>
+                        <li>• Beas</li>
+                        <li>• Sutlej</li>
+                    </ul>
+                </div>
+                <div class="card-hover p-5 border-l-4 border-teal-river-600">
+                    <p class="text-xs uppercase font-bold text-teal-river-700 tracking-wide mb-2">Western Rivers (Pakistan)</p>
+                    <ul class="text-sm text-slate-700 space-y-1 font-medium">
+                        <li>• Indus</li>
+                        <li>• Jhelum</li>
+                        <li>• Chenab</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Treaty Context -->
+            <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="directive-callout p-5 rounded-lg text-sm">
+                    <p class="font-semibold text-navy-700 mb-1">📜 Treaty Essentials</p>
+                    <p class="text-slate-600">Signed in <strong>1960</strong> between India & Pakistan, brokered by the <strong>World Bank</strong>. It allocates the three eastern rivers to India for unrestricted use, while Pakistan receives the three western rivers (with limited Indian usage for non-consumptive needs).</p>
+                </div>
+                <div class="insight-callout p-5 rounded-lg text-sm">
+                    <p class="font-semibold text-navy-700 mb-1">🌍 Strategic Significance</p>
+                    <p class="text-slate-600">"The Indus Waters Treaty is often considered one of the most <strong>durable international water-sharing agreements</strong> because it has survived multiple wars and political tensions between India and Pakistan."</p>
+                </div>
+            </div>
+
+            <!-- Rivers NOT covered by treaty -->
+            <div class="mt-5 bg-navy-50 rounded-xl p-5 border border-navy-100">
+                <p class="font-semibold text-navy-700 text-sm mb-2">🚫 Rivers <strong>NOT</strong> covered by the Indus Waters Treaty:</p>
+                <p class="text-xs text-slate-600">Ganga, Yamuna, Brahmaputra, Narmada, Godavari, Krishna, Kaveri, Mahanadi, and all other non-Indus basin rivers. The treaty is <strong>exclusively for the Indus system</strong>.</p>
+            </div>
+        </section>
+
+        <!-- ===== SECTION: ACTIVE RECALL ENGINE ===== -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-sand-200 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-navy-700">
+                    Active Recall Practice
+                </h2>
+            </div>
+            <p class="text-sm text-slate-500 mb-5">Click each question to reveal the model answer. <strong>Speak aloud</strong> before expanding — perfect for interview fluency.</p>
+
+            <div class="space-y-4">
+                <details class="recall-toggle">
+                    <summary>
+                        <span>Q1: Name the major west-flowing rivers of India that drain into the Arabian Sea.</span>
+                        <span class="toggle-icon">+</span>
+                    </summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "The major rivers flowing into the Arabian Sea include the <strong>Narmada, Tapti, Mahi, Luni</strong>, and several Kerala rivers such as the <strong>Periyar</strong>. Among them, Narmada and Tapti are the most important west-flowing rivers of peninsular India."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary>
+                        <span>Q2: Why do most Indian rivers flow eastward?</span>
+                        <span class="toggle-icon">+</span>
+                    </summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "Because much of the Indian peninsula slopes eastward toward the Bay of Bengal. This fundamental topographic orientation directs the majority of river systems, such as the Ganga, Godavari, Krishna, and Kaveri, to drain into the Bay of Bengal."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary>
+                        <span>Q3: Which river is known as the 'Dakshin Ganga' and why?</span>
+                        <span class="toggle-icon">+</span>
+                    </summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "The <strong>Godavari</strong> is called the 'Dakshin Ganga' (Ganga of the South) because it is the <strong>longest river of Peninsular India</strong> and holds immense cultural and agricultural significance, much like the Ganga in the north."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary>
+                        <span>Q4: What is the geological significance of the Narmada River?</span>
+                        <span class="toggle-icon">+</span>
+                    </summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "The Narmada flows westward through a <strong>rift valley</strong> between the Vindhya Range to the north and the Satpura Range to the south. This rift valley origin is geologically unique among Indian rivers and is a very common interview question."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary>
+                        <span>Q5: Which rivers are covered under the Indus Waters Treaty, and how are they divided?</span>
+                        <span class="toggle-icon">+</span>
+                    </summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "The treaty covers the six rivers of the Indus system: <strong>Ravi, Beas, and Sutlej</strong> are the Eastern Rivers allocated to India; <strong>Indus, Jhelum, and Chenab</strong> are the Western Rivers allocated primarily to Pakistan. The treaty does not apply to rivers like the Ganga, Brahmaputra, or Godavari."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary>
+                        <span>Q6: Why is the Indus Waters Treaty considered durable?</span>
+                        <span class="toggle-icon">+</span>
+                    </summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "It is considered one of the most durable international water-sharing agreements because it has <strong>survived multiple India–Pakistan conflicts and political tensions</strong>, providing a stable framework for water resource management in a geopolitically volatile region."</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== 30-SECOND INTERVIEW SUMMARY ENGINE ========== -->
+    <footer class="max-w-5xl mx-auto px-5 sm:px-8 pb-14 pt-4">
+        <div class="relative overflow-hidden rounded-2xl border-2 border-sand-300 bg-gradient-to-br from-white via-sand-50 to-white p-6 sm:p-8 shadow-xl">
+            <div class="absolute top-0 right-0 w-40 h-40 bg-sand-200 rounded-full blur-3xl opacity-25 -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-32 h-32 bg-teal-river-100 rounded-full blur-2xl opacity-20 translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+            <div class="relative">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-2xl">⚡</span>
+                    <h3 class="font-display text-xl sm:text-2xl font-bold text-navy-800">
+                        30-Second Interview Summary Engine
+                    </h3>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm rounded-xl p-5 sm:p-6 border border-sand-200 shadow-inner">
+                    <p class="text-slate-800 leading-relaxed text-sm sm:text-base">
+                        <em>"India's river systems are fundamentally shaped by the peninsula's <strong>eastward slope</strong>. Most major rivers — the Ganga, Brahmaputra, Godavari, Krishna, and Kaveri — drain into the <strong>Bay of Bengal</strong>, forming fertile deltas and sustaining vast populations. In contrast, the <strong>Narmada and Tapti</strong> flow west into the Arabian Sea through ancient rift valleys, a geological anomaly that is frequently tested. Beyond physical geography, the <strong>Indus Waters Treaty</strong> of 1960 governs the sharing of the Indus system's six rivers between India and Pakistan, allocating the Sutlej, Beas, and Ravi to India — a rare example of a durable transboundary water accord. Understanding this east-west drainage divide and the treaty framework demonstrates a command of both <strong>physical and political geography</strong> essential for any informed discussion on India's water resources."</em>
+                    </p>
+                </div>
+                <p class="mt-4 text-xs text-slate-500 italic text-center sm:text-left">
+                    🎯 Deliver in <strong>25–30 seconds</strong> with clear articulation. This response weaves topography, river systems, and geopolitics — a standout answer.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

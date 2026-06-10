@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-13 · Agra — Taj Mahal & Mughal Heritage — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-warn {
+            border-left: 4px solid var(--rose); background: rgba(244,63,94,0.05);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-13] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Agra — Taj Mahal & Mughal Heritage</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The city of the world's greatest monument to love, the red sandstone seat of Mughal power, and a global tourism and leather economy — all on the banks of the Yamuna.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Location</span><div class="value">Western UP, on the banks of the Yamuna River</div></div>
+                <div class="fact-box"><span class="label">Historical Status</span><div class="value">Capital of the Mughal Empire (1556–1658)</div></div>
+                <div class="fact-box"><span class="label">UNESCO Sites</span><div class="value">3 (Taj Mahal, Agra Fort, Fatehpur Sikri)</div></div>
+                <div class="fact-box"><span class="label">Key Monuments</span><div class="value">Taj Mahal, Agra Fort, Itimad‑ud‑Daulah, Mehtab Bagh</div></div>
+                <div class="fact-box"><span class="label">Famous Crafts</span><div class="value">Marble inlay work, leather goods, carpets</div></div>
+                <div class="fact-box"><span class="label">Famous Food</span><div class="value">Petha (GI‑tagged sweet), Mughlai cuisine</div></div>
+                <div class="fact-box"><span class="label">Tourism Circuit</span><div class="value">Part of India's "Golden Triangle" (Delhi–Agra–Jaipur)</div></div>
+                <div class="fact-box"><span class="label">Distance from Delhi</span><div class="value">~230 km (connected via Yamuna Expressway)</div></div>
+            </div>
+        </div>
+
+        <!-- The Taj Mahal -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🕌 The Taj Mahal — The Monument to Love</h2>
+            <p style="color:var(--text-body);">Built by the Mughal Emperor <strong>Shah Jahan</strong> between 1632 and 1653, the Taj Mahal is a mausoleum for his favourite wife, <strong>Arjumand Banu Begum</strong>, better known as <strong>Mumtaz Mahal</strong>. It is universally recognised as the pinnacle of <strong>Mughal architecture</strong> — a blend of Indian, Persian, and Islamic styles.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Architectural Brilliance:</strong> The chief architect was <strong>Ustad Ahmad Lahori</strong>. The central dome rises to 73 metres. The structure is built from <strong>white Makrana marble</strong> from Rajasthan, which appears to change colour with the light — pinkish in the morning, milky white in the evening, golden under moonlight. The intricate floral patterns are created using <strong>pietra dura</strong> — inlaid semi‑precious stones like lapis lazuli, turquoise, jade, and coral.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>The Complex:</strong> It includes a mosque, a guest house, and formal gardens (charbagh) divided by water channels. The four minarets flanking the dome lean slightly outward — an architectural safeguard to prevent them from crashing into the tomb during an earthquake. The calligraphy on the great gate is by <strong>Amanat Khan</strong>.</p>
+            <div class="callout-warn" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Environmental Threats:</strong> The Taj faces significant environmental threats. <strong>Acid rain</strong> from the Mathura oil refinery has been turning the marble yellow. The Supreme Court has repeatedly intervened, ordering industries to switch to cleaner fuels. <strong>Insect droppings</strong> from the Yamuna's polluted waters have also stained parts of the monument. The Archaeological Survey of India (ASI) regularly applies "mud pack" therapy to clean the marble.</p>
+            </div>
+        </div>
+
+        <!-- Agra Fort & Fatehpur Sikri -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏰 Agra Fort & Fatehpur Sikri — The Mughal Power Seats</h2>
+            <p style="color:var(--text-body);"><strong>Agra Fort:</strong> A red sandstone fortress renovated by <strong>Akbar</strong> in 1565. It was the primary residence of the Mughal emperors until the capital shifted to Delhi. Inside its 2.5‑km‑long walls are the Diwan‑i‑Am (Hall of Public Audience), the Diwan‑i‑Khas (Hall of Private Audience), and the <strong>Mussaman Burj</strong> — the octagonal tower where <strong>Shah Jahan</strong> was imprisoned by his son Aurangzeb. From this tower, Shah Jahan spent his final years gazing at the Taj Mahal across the river.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Fatehpur Sikri:</strong> Located 40 km from Agra, this was the short‑lived capital built by Akbar to honour <strong>Salim Chishti</strong>, the Sufi saint who foretold the birth of his heir. The city includes the magnificent <strong>Buland Darwaza</strong> (Gate of Victory), the dargah of Salim Chishti, and the Ibadat Khana (debate hall) where Akbar held discussions with scholars of different religions. It was abandoned within a few years, likely due to <strong>acute water scarcity</strong>.</p>
+        </div>
+
+        <!-- Economy -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 The Dual Economy — Tourism & Leather</h2>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">GLOBAL TOURISM</p>
+                    <p style="color:var(--text-body);">The Taj Mahal attracts 7–8 million visitors annually, making Agra a cornerstone of India's tourism economy. It is part of the <strong>"Golden Triangle"</strong> (Delhi–Agra–Jaipur), India's most popular tourist circuit.</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">LEATHER & EXPORTS</p>
+                    <p style="color:var(--text-body);">Agra is one of India's largest leather‑manufacturing hubs, producing shoes, bags, and jackets for global brands. The industry provides employment to thousands but faces challenges related to environmental regulation and competition from other manufacturing centres.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Who built the Taj Mahal, and for whom?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Mughal Emperor <strong>Shah Jahan</strong> built the Taj Mahal between 1632 and 1653 in memory of his wife, <strong>Mumtaz Mahal</strong> (Arjumand Banu Begum). It is considered the greatest example of Mughal architecture, blending Indian, Persian, and Islamic styles.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What are the main environmental threats to the Taj Mahal?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);"><strong>Acid rain</strong> from the Mathura refinery, industrial emissions, and vehicle exhaust has been yellowing the white Makrana marble. <strong>Insect droppings</strong> from the polluted Yamuna River have also stained the structure. The Supreme Court has mandated strict emission controls and the ASI regularly applies "mud pack" therapy to clean the marble.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is the significance of Fatehpur Sikri?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Fatehpur Sikri was built by Akbar as his new capital to honour the Sufi saint Salim Chishti. It contains the Buland Darwaza and the debate hall where Akbar discussed religious ideas with scholars. The city was abandoned due to severe <strong>water scarcity</strong> shortly after its construction.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What are Agra's main industries beyond tourism?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);"><strong>Leather manufacturing</strong> is the most significant — Agra produces shoes, bags, and jackets for export. The city also has a notable <strong>marble inlay craft</strong> (pietra dura replicas) and a thriving <strong>Petha</strong> (candied ash gourd) sweet industry, which is GI‑tagged.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Agra, located on the banks of the Yamuna, is defined by its Mughal heritage — most famously the Taj Mahal, built by Shah Jahan for Mumtaz Mahal using Makrana marble and intricate pietra dura inlay. The city also houses the Agra Fort, the seat of Mughal power where Shah Jahan was later imprisoned, and Fatehpur Sikri, Akbar's short‑lived capital abandoned due to water scarcity. Today, Agra is a linchpin of India's Golden Triangle tourism circuit, while simultaneously being a major leather manufacturing hub. It is a city that lives simultaneously in its magnificent past and its industrious present."</em></p>
+        </div>
+    </main>
+</body>
+</html>

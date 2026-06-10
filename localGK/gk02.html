@@ -3,359 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEC-03 // INDIA: GEOPOLITICAL MATRIX</title>
+    <title>IPMAT PI Prep: Internal Cartography & Reorganization Strategy</title>
+    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-primary: #050a08;
-            --bg-secondary: #070d0b;
-            --border-color: #142822;
-            --accent: #10b981;
-            --accent-glow: rgba(16, 185, 129, 0.15);
-            --text-muted: #889590;
-            --text-bright: #f0f5f3;
-        }
-
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-bright);
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-image: 
-                linear-gradient(rgba(20, 40, 34, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(20, 40, 34, 0.05) 1px, transparent 1px);
-            background-size: 100px 100px;
+            line-height: 1.75;
         }
-
-        .serif-font { font-family: 'Playfair Display', serif; }
-        .mono-font { font-family: 'JetBrains Mono', monospace; }
-
-        .cyber-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            position: relative;
-            transition: all 0.3s ease;
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
         }
-
-        .cyber-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px var(--accent-glow);
+        /* Custom scrollbar for an academic, premium dashboard experience */
+        ::-webkit-scrollbar {
+            width: 6px;
         }
-
-        .scanlines {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
-            background-size: 100% 4px;
-            z-index: 9999; pointer-events: none; opacity: 0.3;
+        ::-webkit-scrollbar-track {
+            background: #110d0c;
         }
-
-        input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
-        
-        /* Custom Scrollbar for Matrix */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-primary); }
-        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+        ::-webkit-scrollbar-thumb {
+            background: #3e2d26;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5c4339;
+        }
+        /* Hide native details marker */
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details summary {
+            list-style: none;
+        }
     </style>
 </head>
-<body class="min-h-screen relative antialiased selection:bg-[#10b981] selection:text-black pb-16">
-    <div class="scanlines"></div>
+<body class="bg-[#161210] text-[#e3deda] min-h-screen selection:bg-[#964b00] selection:text-white antialiased">
 
-    <!-- Status Bar -->
-    <div class="w-full border-b border-[#142822] bg-[#070d0b]/80 backdrop-blur-md px-6 py-3 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs mono-font tracking-wider text-[#889590]">
-            <div class="flex items-center space-x-4">
-                <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
-                <span class="text-[#f0f5f3]">NODE: INDIA_STATES_CAPITALS</span>
-                <span class="text-[#142822]">|</span>
-                <span>SEC-03: REGIONAL GK</span>
+    <!-- Top Accent Line -->
+    <div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#b37d4e] to-transparent"></div>
+    
+    <div class="max-w-5xl mx-auto px-6 py-12 lg:py-20">
+        
+        <!-- Academic Header -->
+        <header class="mb-14 border-b border-[#382f2a] pb-8">
+            <div class="flex items-center space-x-3 text-xs font-semibold tracking-widest text-[#c48d5f] uppercase mb-3">
+                <span>Political Geography & State Reorganization</span>
+                <span class="text-[#4e413a]">•</span>
+                <span>Module 02</span>
             </div>
-            <div class="mt-2 sm:mt-0 flex items-center space-x-4">
-                <span>TOTAL_NODES: <span class="text-[#10b981]">36</span> (28 STATES, 8 UT)</span>
-            </div>
-        </div>
-    </div>
-
-    <main class="max-w-7xl mx-auto px-6 pt-12">
-        <!-- Header & Search Interface -->
-        <header class="mb-12 border-b border-[#142822] pb-8 flex flex-col md:flex-row justify-between items-end gap-6">
-            <div>
-                <h1 class="text-4xl md:text-5xl font-bold text-[#f0f5f3] tracking-tight serif-font mb-2">
-                    Republic of India: Sub-National Matrix
-                </h1>
-                <p class="text-[#889590] text-sm max-w-2xl leading-relaxed">
-                    A high-density structural breakdown of Indian states and union territories. Optimized for macroeconomic awareness, technological corridors, and demographic distribution analysis.
-                </p>
-            </div>
-            
-            <!-- Terminal Search Engine -->
-            <div class="w-full md:w-96 relative">
-                <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#10b981] mono-font text-sm">></div>
-                <input type="text" id="searchInput" placeholder="QUERY NODE (e.g., 'Tech', 'Hyderabad', 'UP')..." 
-                       class="w-full bg-[#030706] border border-[#142822] text-[#f0f5f3] mono-font text-xs py-3 pl-8 pr-4 rounded-md transition-all placeholder-[#51635d]">
-            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-[#faf8f5] tracking-tight leading-[1.15] mb-4">
+                Internal Cartography of the Indian Union: <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-[#faf8f5] via-[#dfba9d] to-[#c48d5f]">Sovereignty, Reorganization & Administrative Capitals</span>
+            </h1>
+            <p class="text-[#b5aaa0] text-lg max-w-3xl">
+                A structured executive framework map covering India's **28 States** and **8 Union Territories**. Optimized for active recall and grounded in constitutional and socio-economic rationale.
+            </p>
         </header>
 
-        <!-- Dynamic Data Grid -->
-        <div id="matrixGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            <!-- Rendered via JS -->
-        </div>
-    </main>
+        <main class="space-y-12">
+            
+            <!-- Section 1: Structural Reorganization Context -->
+            <section class="bg-[#1e1814] p-6 rounded-xl border border-[#382f2a] mb-8">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-[#c48d5f] mb-3">Constitutional Baseline & Executive Rationale</h3>
+                <p class="text-sm text-[#c7bcae] leading-relaxed">
+                    Under **Article 3 of the Constitution of India**, Parliament holds unilateral authority to alter state boundaries, form new states, or change names. Modern administrative realignments are driven primarily by a shift away from purely linguistic boundaries toward optimization matrices: **governance efficiency**, **eliminating regional development disparities**, and solving the **principal-agent dilemma** in vast, historically mismanaged geographical territories.
+                </p>
+            </section>
 
-    <script>
-        // High-Density Knowledge Database
-        const indiaData = [
-            // === THE SOUTHERN TECH & ECONOMIC ENGINE ===
-            {
-                name: "Telangana",
-                capital: "Hyderabad",
-                type: "State",
-                zone: "Southern Economic Engine",
-                founded: "June 2, 2014",
-                context: "A premier node for AI, Machine Learning, and Computer Science research. Hyderabad houses leading institutes like IIIT-H and acts as a massive global capability center (GCC) for multinational tech and pharma corps.",
-                tags: ["tech", "ai", "pharma"]
-            },
-            {
-                name: "Karnataka",
-                capital: "Bengaluru",
-                type: "State",
-                zone: "Southern Economic Engine",
-                founded: "Nov 1, 1956",
-                context: "The undisputed 'Silicon Valley of India'. A powerhouse of aerospace, defense, biotechnology, and Web3/software development startups. Commands massive venture capital inflow.",
-                tags: ["startup", "software", "aerospace"]
-            },
-            {
-                name: "Tamil Nadu",
-                capital: "Chennai",
-                type: "State",
-                zone: "Southern Economic Engine",
-                founded: "Jan 26, 1950",
-                context: "The Detroit of Asia. India's top manufacturing and automotive hub. Boasts the highest number of factories and a highly industrialized, globally integrated coastal economy.",
-                tags: ["manufacturing", "automotive", "coastal"]
-            },
-            {
-                name: "Kerala",
-                capital: "Thiruvananthapuram",
-                type: "State",
-                zone: "Southern Economic Engine",
-                founded: "Nov 1, 1956",
-                context: "Leading state in Human Development Index (HDI), literacy, and healthcare. Economy heavily driven by remittances, tourism, and a growing presence in digital infrastructure.",
-                tags: ["hdi", "literacy", "tourism"]
-            },
-            {
-                name: "Andhra Pradesh",
-                capital: "Amaravati",
-                type: "State",
-                zone: "Southern Economic Engine",
-                founded: "Nov 1, 1956",
-                context: "A major agrarian base rapidly pivoting toward IT and coastal trade. Possesses India's second-longest coastline, heavily anchoring the Eastern maritime logistics corridor.",
-                tags: ["agriculture", "maritime", "trade"]
-            },
-
-            // === THE NORTHERN DEMOGRAPHIC CORE ===
-            {
-                name: "Uttar Pradesh",
-                capital: "Lucknow",
-                type: "State",
-                zone: "Northern Demographic Core",
-                founded: "Jan 24, 1950",
-                context: "India's demographic heavyweight. A massive agricultural breadbasket now aggressively deploying defense corridors and expressways. Contains critical spiritual/cultural anchor nodes like Varanasi and Ayodhya.",
-                tags: ["population", "agriculture", "infrastructure", "varanasi"]
-            },
-            {
-                name: "Delhi",
-                capital: "New Delhi",
-                type: "Union Territory",
-                zone: "Federal Capital Region",
-                founded: "Nov 1, 1956",
-                context: "The geopolitical heart of the Republic. A massive urban agglomeration (NCR) driving high-end services, sovereign decision-making, and significant startup incubation.",
-                tags: ["capital", "ncr", "services"]
-            },
-            {
-                name: "Haryana",
-                capital: "Chandigarh",
-                type: "State",
-                zone: "Northern Demographic Core",
-                founded: "Nov 1, 1966",
-                context: "High per-capita income state flanking the capital. Gurugram acts as a mega-hub for Fortune 500 corporate offices, business process management, and automotive manufacturing.",
-                tags: ["gurugram", "corporate", "automotive"]
-            },
-            {
-                name: "Punjab",
-                capital: "Chandigarh",
-                type: "State",
-                zone: "Northern Demographic Core",
-                founded: "Nov 1, 1966",
-                context: "The traditional breadbasket of India. Highly dependent on agriculture and heavily integrated into the armed forces, though facing modern economic diversification challenges.",
-                tags: ["agriculture", "farming", "military"]
-            },
-            {
-                name: "Madhya Pradesh",
-                capital: "Bhopal",
-                type: "State",
-                zone: "Central Core",
-                founded: "Nov 1, 1956",
-                context: "The geographical center of India. Extremely resource-rich with vast forest cover, immense agricultural output (especially soybeans), and rising logistics hubs like Indore.",
-                tags: ["resources", "logistics", "indore"]
-            },
-
-            // === THE WESTERN FINANCIAL & INDUSTRIAL HUB ===
-            {
-                name: "Maharashtra",
-                capital: "Mumbai",
-                type: "State",
-                zone: "Western Financial Hub",
-                founded: "May 1, 1960",
-                context: "India's highest GDP contributor. Mumbai acts as the undisputed financial and entertainment sovereign, while Pune serves as a massive IT and automotive engineering counter-weight.",
-                tags: ["finance", "gdp", "pune"]
-            },
-            {
-                name: "Gujarat",
-                capital: "Gandhinagar",
-                type: "State",
-                zone: "Western Financial Hub",
-                founded: "May 1, 1960",
-                context: "India's premier trading, petrochemical, and manufacturing powerhouse. Houses massive ports (Kandla/Mundra) and the upcoming GIFT City (global financial and tech gateway).",
-                tags: ["trade", "petrochemical", "ports"]
-            },
-            {
-                name: "Rajasthan",
-                capital: "Jaipur",
-                type: "State",
-                zone: "Western Frontier",
-                founded: "Mar 30, 1949",
-                context: "India's largest state by landmass. A dominant force in renewable energy (solar), tourism, and mineral extraction, sharing a highly sensitive international border.",
-                tags: ["solar", "tourism", "minerals"]
-            },
-
-            // === EASTERN & NORTHEASTERN STRATEGIC FRONTIER ===
-            {
-                name: "West Bengal",
-                capital: "Kolkata",
-                type: "State",
-                zone: "Eastern Strategic Gateway",
-                founded: "Jan 26, 1950",
-                context: "The historical economic capital of British India. It serves as the critical geopolitical bridge between the Indian mainland and the Northeastern states (Siliguri Corridor/Chicken's Neck).",
-                tags: ["gateway", "historical", "trade"]
-            },
-            {
-                name: "Odisha",
-                capital: "Bhubaneswar",
-                type: "State",
-                zone: "Eastern Strategic Gateway",
-                founded: "April 1, 1936",
-                context: "India's mineral and metallurgical anchor. Houses massive reserves of iron ore and coal, making it the epicenter of the nation's steel and aluminum production networks.",
-                tags: ["minerals", "steel", "mining"]
-            },
-            {
-                name: "Bihar",
-                capital: "Patna",
-                type: "State",
-                zone: "Eastern Strategic Gateway",
-                founded: "Mar 22, 1912",
-                context: "A region of immense historical antiquity and deep demographic density. A major source of labor mobility across the subcontinent, currently focused on infrastructural catching-up.",
-                tags: ["history", "demographics", "labor"]
-            },
-            {
-                name: "Assam",
-                capital: "Dispur",
-                type: "State",
-                zone: "Northeastern Frontier",
-                founded: "Jan 26, 1950",
-                context: "The anchor of the Northeast. Globally renowned for its tea estates and biodiversity, while strategically sitting atop significant petroleum reserves and border infrastructure.",
-                tags: ["tea", "biodiversity", "petroleum"]
-            },
-            {
-                name: "Arunachal Pradesh",
-                capital: "Itanagar",
-                type: "State",
-                zone: "Northeastern Frontier",
-                founded: "Feb 20, 1987",
-                context: "A highly sensitive, militarized strategic node bordering China. Immense untapped hydroelectric potential, though restricted by geopolitical realities.",
-                tags: ["border", "hydroelectric", "military"]
-            },
-
-            // === OTHER STATES (COMPACT DATA) ===
-            { name: "Chhattisgarh", capital: "Raipur", type: "State", zone: "Central Core", founded: "Nov 1, 2000", context: "A heavily forested, power-generating state holding massive coal and steel infrastructure.", tags: ["coal", "power", "forest"] },
-            { name: "Jharkhand", capital: "Ranchi", type: "State", zone: "Eastern Strategic Gateway", founded: "Nov 15, 2000", context: "Houses ~40% of India's mineral wealth. The industrial city of Jamshedpur is a legendary node of private industrialization.", tags: ["minerals", "jamshedpur", "industry"] },
-            { name: "Goa", capital: "Panaji", type: "State", zone: "Western Financial Hub", founded: "May 30, 1987", context: "Highest per-capita GDP in India. A global tourism magnet with a burgeoning secondary ecosystem for remote tech talent.", tags: ["tourism", "per-capita", "coast"] },
-            { name: "Himachal Pradesh", capital: "Shimla", type: "State", zone: "Northern Demographic Core", founded: "Jan 25, 1971", context: "A mountainous pharmaceutical manufacturing hub and critical source of glacial freshwater for the Northern plains.", tags: ["pharma", "mountains", "water"] },
-            { name: "Uttarakhand", capital: "Dehradun", type: "State", zone: "Northern Demographic Core", founded: "Nov 9, 2000", context: "The 'Land of Gods'. Ecologically sensitive border state with high military deployment and massive spiritual tourism economies.", tags: ["military", "tourism", "ecology"] },
-            { name: "Sikkim", capital: "Gangtok", type: "State", zone: "Northeastern Frontier", founded: "May 16, 1975", context: "India's first fully organic state. A highly strategic, heavily fortified wedge between Nepal, China, and Bhutan.", tags: ["organic", "border", "strategic"] },
-            { name: "Meghalaya", capital: "Shillong", type: "State", zone: "Northeastern Frontier", founded: "Jan 21, 1972", context: "The 'Abode of Clouds'. Known for extreme rainfall and unique ecological engineering (living root bridges).", tags: ["ecology", "rain"] },
-            { name: "Manipur", capital: "Imphal", type: "State", zone: "Northeastern Frontier", founded: "Jan 21, 1972", context: "A critical node in India's 'Act East' policy, aiming to connect by land to Southeast Asian markets via Myanmar.", tags: ["act-east", "border"] },
-            { name: "Mizoram", capital: "Aizawl", type: "State", zone: "Northeastern Frontier", founded: "Feb 20, 1987", context: "Highly literate state with a tight-knit tribal society. Economy relies heavily on agriculture and border trade.", tags: ["literacy", "tribal"] },
-            { name: "Nagaland", capital: "Kohima", type: "State", zone: "Northeastern Frontier", founded: "Dec 1, 1963", context: "Fiercely independent cultural heritage. Known for the Hornbill Festival and complex internal socio-political dynamics.", tags: ["culture", "tribal"] },
-            { name: "Tripura", capital: "Agartala", type: "State", zone: "Northeastern Frontier", founded: "Jan 21, 1972", context: "Surrounded on three sides by Bangladesh, making it a critical logistical hub for cross-border transit and trade.", tags: ["transit", "bangladesh"] },
-
-            // === UNION TERRITORIES ===
-            { name: "Jammu & Kashmir", capital: "Srinagar (S) / Jammu (W)", type: "Union Territory", zone: "Federal Northern Node", founded: "Oct 31, 2019", context: "Highly sensitive geopolitical flashpoint. Moving toward economic integration through tourism and new rail infrastructure.", tags: ["border", "tourism", "conflict"] },
-            { name: "Ladakh", capital: "Leh / Kargil", type: "Union Territory", zone: "Federal Northern Node", founded: "Oct 31, 2019", context: "A high-altitude cold desert of extreme strategic value, militarized to counter external geopolitical threats.", tags: ["military", "altitude"] },
-            { name: "Andaman & Nicobar", capital: "Sri Vijaya Puram", type: "Union Territory", zone: "Federal Maritime Command", founded: "Nov 1, 1956", context: "India's unsinkable aircraft carrier. Provides command over the Malacca Strait, one of global trade's most critical chokepoints.", tags: ["military", "navy", "trade-route"] },
-            { name: "Chandigarh", capital: "Chandigarh", type: "Union Territory", zone: "Federal Node", founded: "Nov 1, 1966", context: "A meticulously master-planned city serving as the shared capital for Punjab and Haryana.", tags: ["planned-city", "capital"] },
-            { name: "Puducherry", capital: "Puducherry", type: "Union Territory", zone: "Federal Node", founded: "Nov 1, 1954", context: "Former French enclave. Characterized by high administrative autonomy, tourism, and unique cultural blending.", tags: ["french", "tourism"] },
-            { name: "Lakshadweep", capital: "Kavaratti", type: "Union Territory", zone: "Federal Maritime Command", founded: "Nov 1, 1956", context: "A strategic coral archipelago in the Arabian Sea. Increasing in importance for naval outposting and luxury tourism.", tags: ["archipelago", "navy"] },
-            { name: "Dadra & Nagar Haveli and Daman & Diu", capital: "Daman", type: "Union Territory", zone: "Federal Node", founded: "Jan 26, 2020", context: "Coastal enclaves acting as manufacturing and industrial tax havens wedged into Gujarat's geography.", tags: ["manufacturing", "industry"] }
-        ];
-
-        const grid = document.getElementById('matrixGrid');
-        const searchInput = document.getElementById('searchInput');
-
-        function renderMatrix(data) {
-            grid.innerHTML = '';
-            data.forEach(node => {
-                const isState = node.type === "State";
-                const typeColor = isState ? "text-[#10b981]" : "text-[#fbbf24]";
-                const typeBg = isState ? "bg-[#10b981]/10" : "bg-[#fbbf24]/10";
+            <!-- Section 2: The Northeast Frontier Architecture -->
+            <section>
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-[#faf8f5] tracking-tight">
+                        I. The Northeast Frontier & Sub-Regional Dynamics
+                    </h2>
+                    <span class="text-xs bg-[#241d19] text-[#b5aaa0] px-3 py-1 rounded-full border border-[#382f2a] font-mono">
+                        Asymmetric Federalism
+                    </span>
+                </div>
                 
-                const card = document.createElement('div');
-                card.className = "cyber-card rounded-xl p-6 flex flex-col justify-between h-full";
-                
-                card.innerHTML = `
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="mono-font text-[10px] font-bold ${typeColor} ${typeBg} px-2 py-1 rounded tracking-wider uppercase">
-                                ${node.type}
-                            </span>
-                            <span class="mono-font text-[10px] text-[#51635d]">EST: ${node.founded}</span>
-                        </div>
-                        <h3 class="serif-font text-2xl font-bold text-[#f0f5f3] mb-1">
-                            ${node.name}
-                        </h3>
-                        <div class="mono-font text-xs text-[#889590] mb-4 flex items-center space-x-2">
-                            <span>CAPITAL:</span>
-                            <span class="text-[#f0f5f3] font-bold">${node.capital}</span>
-                        </div>
-                        <div class="inline-block border border-[#142822] bg-[#030706] px-2 py-1 rounded text-[10px] mono-font text-[#51635d] mb-4">
-                            ZONE // ${node.zone}
-                        </div>
-                        <p class="text-sm text-[#889590] leading-relaxed mb-6">
-                            ${node.context}
+                <p class="text-[#b5aaa0] text-sm mb-6">
+                    The strategic alignment of the Northeastern frontier requires absolute clarity. While the **"Seven Sisters"** share deep ethno-tribal and economic vectors, **Sikkim** functions as the distinct structural anchor—often designated as the "Brother State."
+                </p>
+
+                <!-- Northeast Matrix Grid Table -->
+                <div class="overflow-hidden rounded-xl border border-[#382f2a] bg-[#1a1411] mb-6">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-[#241d19] border-b border-[#382f2a] text-[#b5aaa0] text-xs tracking-wider uppercase font-semibold">
+                                <th class="py-4 px-6">Sovereign State Tier</th>
+                                <th class="py-4 px-6">Administrative Capital</th>
+                                <th class="py-4 px-6">Socio-Economic & Logistics Rationale</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#2d241f] text-sm text-[#c7bcae]">
+                            <tr class="hover:bg-[#211a16] transition-colors">
+                                <td class="py-4 px-6 font-semibold text-[#faf8f5]">Assam</td>
+                                <td class="py-4 px-6 font-medium text-[#dfba9d]">Dispur</td>
+                                <td class="py-4 px-6 text-[#a6998c]">Hydrocarbon reserves and tea production anchor; often confused with its primary economic hub, Guwahati.</td>
+                            </tr>
+                            <tr class="hover:bg-[#211a16] transition-colors">
+                                <td class="py-4 px-6 font-semibold text-[#faf8f5]">Arunachal Pradesh</td>
+                                <td class="py-4 px-6 font-medium text-[#dfba9d]">Itanagar</td>
+                                <td class="py-4 px-6 text-[#a6998c]">Vital frontline state sharing a critical international boundary; major focus of border infrastructure investments.</td>
+                            </tr>
+                            <tr class="hover:bg-[#211a16] transition-colors">
+                                <td class="py-4 px-6 font-semibold text-[#faf8f5]">Meghalaya</td>
+                                <td class="py-4 px-6 font-medium text-[#dfba9d]">Shillong</td>
+                                <td class="py-4 px-6 text-[#a6998c]">A highly strategic biodiversity zone; acts as a core logistical hub for sub-Himalayan tourism and horticulture.</td>
+                            </tr>
+                            <tr class="hover:bg-[#211a16] transition-colors">
+                                <td class="py-4 px-6 font-semibold text-[#faf8f5]">Manipur</td>
+                                <td class="py-4 px-6 font-medium text-[#dfba9d]">Imphal</td>
+                                <td class="py-4 px-6 text-[#a6998c]">Key anchor point along the Trilateral Highway; highly critical for India's cross-border trade pipelines into Southeast Asia.</td>
+                            </tr>
+                            <tr class="hover:bg-[#211a16] transition-colors">
+                                <td class="py-4 px-6 font-semibold text-[#faf8f5]">Mizoram</td>
+                                <td class="py-4 px-6 font-medium text-[#dfba9d]">Aizawl</td>
+                                <td class="py-4 px-6 text-[#a6998c]">Strategic terminus for the Kaladan Multi-Modal Transit Transport project, bypassing traditional chokepoints.</td>
+                            </tr>
+                            <tr class="hover:bg-[#211a16] transition-colors">
+                                <td class="py-4 px-6 font-semibold text-[#faf8f5]">Nagaland</td>
+                                <td class="py-4 px-6 font-medium text-[#dfba9d]">Kohima</td>
+                                <td class="py-4 px-6 text-[#a6998c]">Governed under special constitutional provisions (Article 371A) to safeguard tribal jurisprudence and resource ownership.</td>
+                            </tr>
+                            <tr class="hover:bg-[#211a16] transition-colors">
+                                <td class="py-4 px-6 font-semibold text-[#faf8f5]">Tripura</td>
+                                <td class="py-4 px-6 font-medium text-[#dfba9d]">Agartala</td>
+                                <td class="py-4 px-6 text-[#a6998c]">Flanked on three sides by Bangladesh; acts as a premier inland dry port ecosystem for international logistics.</td>
+                            </tr>
+                            <tr class="bg-[#1f1814]/70 border-t border-[#382f2a]">
+                                <td class="py-4 px-6 font-semibold text-[#c48d5f]">Sikkim <span class="text-xs font-normal text-[#a6998c]">(The Anchor)</span></td>
+                                <td class="py-4 px-6 font-medium text-[#dfba9d]">Gangtok</td>
+                                <td class="py-4 px-6 text-[#a6998c]">Integrated via the 36th Constitutional Amendment (1975). India's first 100% organic state; guards the vital Nathu La Pass trading route.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 3: The Macro Framework (All States & UTs) -->
+            <section class="border-t border-[#382f2a] pt-10">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-[#faf8f5] tracking-tight">
+                        II. Administrative Master Registry
+                    </h2>
+                    <span class="text-xs bg-[#241d19] text-[#b5aaa0] px-3 py-1 rounded-full border border-[#382f2a] font-mono">
+                        28 States / 8 UTs
+                    </span>
+                </div>
+
+                <!-- Three Column Grid Layout for States Memorization -->
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                    <!-- North & West Clustered Core -->
+                    <div class="bg-[#1a1411] p-4 rounded-xl border border-[#382f2a]">
+                        <h4 class="text-xs font-bold text-[#c48d5f] uppercase tracking-wider mb-3 pb-2 border-b border-[#2d241f]">North & West Core</h4>
+                        <ul class="text-xs space-y-2 text-[#c7bcae]">
+                            <li><strong>Uttar Pradesh:</strong> Lucknow</li>
+                            <li><strong>Uttarakhand:</strong> Dehradun <span class="text-[10px] text-[#8c7e72]">(Gairsain - Summer)</span></li>
+                            <li><strong>Punjab:</strong> Chandigarh</li>
+                            <li><strong>Haryana:</strong> Chandigarh</li>
+                            <li><strong>Himachal Pradesh:</strong> Shimla <span class="text-[10px] text-[#8c7e72]">(Dharamshala - Winter)</span></li>
+                            <li><strong>Rajasthan:</strong> Jaipur</li>
+                            <li><strong>Gujarat:</strong> Gandhinagar</li>
+                            <li><strong>Maharashtra:</strong> Mumbai</li>
+                            <li><strong>Goa:</strong> Panaji</li>
+                        </ul>
+                    </div>
+                    <!-- Central & East Core -->
+                    <div class="bg-[#1a1411] p-4 rounded-xl border border-[#382f2a]">
+                        <h4 class="text-xs font-bold text-[#c48d5f] uppercase tracking-wider mb-3 pb-2 border-b border-[#2d241f]">Central & East Core</h4>
+                        <ul class="text-xs space-y-2 text-[#c7bcae]">
+                            <li><strong>Madhya Pradesh:</strong> Bhopal</li>
+                            <li><strong>Chhattisgarh:</strong> Raipur</li>
+                            <li><strong>Bihar:</strong> Patna</li>
+                            <li><strong>Jharkhand:</strong> Ranchi</li>
+                            <li><strong>Odisha:</strong> Bhubaneswar</li>
+                            <li><strong>West Bengal:</strong> Kolkata</li>
+                        </ul>
+                    </div>
+                    <!-- Peninsular South Core -->
+                    <div class="bg-[#1a1411] p-4 rounded-xl border border-[#382f2a]">
+                        <h4 class="text-xs font-bold text-[#c48d5f] uppercase tracking-wider mb-3 pb-2 border-b border-[#2d241f]">Peninsular South Core</h4>
+                        <ul class="text-xs space-y-2 text-[#c7bcae]">
+                            <li><strong>Andhra Pradesh:</strong> Amaravati</li>
+                            <li><strong>Telangana:</strong> Hyderabad</li>
+                            <li><strong>Karnataka:</strong> Bengaluru</li>
+                            <li><strong>Kerala:</strong> Thiruvananthapuram</li>
+                            <li><strong>Tamil Nadu:</strong> Chennai</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Union Territories Sub-Table -->
+                <h3 class="text-sm font-semibold text-[#faf8f5] mb-4">Centrally Administered Territories (Union Territories)</h3>
+                <div class="overflow-hidden rounded-xl border border-[#382f2a] bg-[#1a1411]">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-[#241d19] border-b border-[#382f2a] text-[#b5aaa0] text-xs tracking-wider uppercase font-semibold">
+                                <th class="py-3 px-6">Union Territory</th>
+                                <th class="py-3 px-6">Administrative Capital</th>
+                                <th class="py-3 px-6">Geopolitical / Strategic Rationale</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#2d241f] text-xs text-[#c7bcae]">
+                            <tr>
+                                <td class="py-3 px-6 font-semibold">Jammu & Kashmir</td>
+                                <td class="py-3 px-6">Srinagar <span class="text-[10px] text-[#8c7e72]">(Summer)</span> / Jammu <span class="text-[10px] text-[#8c7e72]">(Winter)</span></td>
+                                <td class="py-3 px-6 text-[#a6998c]">Reorganized under the J&K Reorganization Act, 2019; critical for national defense integration.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-6 font-semibold">Ladakh</td>
+                                <td class="py-3 px-6">Leh</td>
+                                <td class="py-3 px-6 text-[#a6998c]">Direct federal oversight over high-altitude operational theaters facing multiple external frontiers.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-6 font-semibold">NCT of Delhi</td>
+                                <td class="py-3 px-6">New Delhi</td>
+                                <td class="py-3 px-6 text-[#a6998c]">The sovereign legislative and diplomatic nucleus of the nation; operates under asymmetric joint jurisdiction.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-6 font-semibold">Dadra & Nagar Haveli and Daman & Diu</td>
+                                <td class="py-3 px-6">Daman</td>
+                                <td class="py-3 px-6 text-[#a6998c]">Merged in 2020 via federal statute to systematically reduce duplicate bureaucratic overhead.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-6 font-semibold">Lakshadweep</td>
+                                <td class="py-3 px-6">Kavaratti</td>
+                                <td class="py-3 px-6 text-[#a6998c]">Crucial Exclusive Economic Zone (EEZ) perimeter anchor point in the central Arabian Sea lanes.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-6 font-semibold">Andaman & Nicobar Islands</td>
+                                <td class="py-3 px-6">Port Blair</td>
+                                <td class="py-3 px-6 text-[#a6998c]">Hosts India's singular tri-service command structure, overlooking the critical Malacca Strait chokepoint.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-6 font-semibold">Chandigarh</td>
+                                <td class="py-3 px-6">Chandigarh</td>
+                                <td class="py-3 px-6 text-[#a6998c]">A highly planned, shared interstate capital; serves as a strategic administrative stabilizer in the North.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-6 font-semibold">Puducherry</td>
+                                <td class="py-3 px-6">Puducherry</td>
+                                <td class="py-3 px-6 text-[#a6998c]">A multi-enclave territory structured around distinct legacy parameters across southern coastlines.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Interview Directive Callout -->
+                <div class="bg-amber-950/20 border-l-2 border-[#b37d4e] rounded-r-xl p-5 my-6 bg-[#1f1814]">
+                    <div class="flex items-center space-x-2 text-[#dfba9d] font-semibold text-xs tracking-wider uppercase mb-1">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                        <span>Interview Directive — Operational Crisis Control</span>
+                    </div>
+                    <p class="text-sm text-[#c7bcae] leading-relaxed">
+                        If an interviewer probes you on a highly localized or lesser-known capital and your memory slips, **do not execute a guess or construct a bluff**. A mature corporate response is: <span class="text-[#faf8f5] italic">“I am unable to recall that specific administrative seat with precision at this moment, sir/ma'am.”</span> This confirms structural integrity over desperate speculation.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 4: Case Study - The Reorganization of Telangana -->
+            <section class="border-t border-[#382f2a] pt-10">
+                <h2 class="text-2xl font-bold text-[#faf8f5] tracking-tight mb-4">
+                    III. Case Analysis: Reorganization & The Telangana Statehood Paradigm
+                </h2>
+                <p class="text-[#b5aaa0] mb-6">
+                    The bifurcation of Andhra Pradesh to carve out Telangana on **2 June 2014** remains a fundamental case study in Indian federalism. It marks the evolution of state creation beyond linguistic patterns toward addressing localized development metrics.
+                </p>
+
+                <!-- Comparative Structural Insight Grid -->
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-[#1a1411] p-5 rounded-xl border border-[#382f2a]">
+                        <h4 class="text-sm font-semibold uppercase text-[#c48d5f] tracking-wider mb-2">Historical Regional Imbalances</h4>
+                        <p class="text-xs text-[#a6998c] leading-relaxed">
+                            The core driver behind separate statehood movements was the intense economic and resource skew among the three legacy zones: **Telangana**, **Coastal Andhra**, and **Rayalaseema**. Grievances were heavily centered on the systematic misallocation of irrigation water allocations, state budgetary funds, and bureaucratic public employment opportunities.
+                    </div>
+                    <div class="bg-[#1a1411] p-5 rounded-xl border border-[#382f2a]">
+                        <h4 class="text-sm font-semibold uppercase text-[#c48d5f] tracking-wider mb-2">The Capital Transition Matrix</h4>
+                        <p class="text-xs text-[#a6998c] leading-relaxed">
+                            **Hyderabad** was designated as a shared, joint capital for a maximum transition period of ten years under the AP Reorganisation Act. It has now fully transitioned into the exclusive capital of Telangana, while Andhra Pradesh focuses on establishing its primary institutional nerve center in **Amaravati**.
                         </p>
                     </div>
-                    <div class="pt-4 border-t border-[#142822] flex flex-wrap gap-2">
-                        ${node.tags.map(tag => `<span class="mono-font text-[9px] text-[#51635d] bg-[#050a08] border border-[#142822] px-1.5 py-0.5 rounded">#${tag}</span>`).join('')}
+                </div>
+            </section>
+
+            <!-- Section 5: Active Recall Interactive Engines -->
+            <section class="border-t border-[#382f2a] pt-10">
+                <h2 class="text-2xl font-bold text-[#faf8f5] tracking-tight mb-2">
+                    IV. Active Recall Intelligence Engine
+                </h2>
+                <p class="text-[#b5aaa0] text-sm mb-6">
+                    Review these classic corporate interview pressure traps. Formulate your line of reasoning out loud before revealing the calibrated framework answer.
+                </p>
+
+                <div class="space-y-4">
+                    
+                    <!-- Recall Block 1 -->
+                    <details class="group border border-[#382f2a] rounded-xl bg-[#1a1411] overflow-hidden transition-all duration-200">
+                        <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-[#241d19] transition-colors">
+                            <div class="flex items-start space-x-4 pr-4">
+                                <span class="text-[#c48d5f] font-mono text-sm font-bold mt-0.5">Q1.</span>
+                                <div>
+                                    <h3 class="text-base font-semibold text-[#faf8f5] group-hover:text-[#dfba9d] transition-colors">
+                                        "Why should India continue to bifurcate large states like Uttar Pradesh or Maharashtra?"
+                                    </h3>
+                                    <p class="text-xs text-[#8c7e72] mt-1">Tests ability to separate cultural identity from structural management metrics.</p>
+                                </div>
+                            </div>
+                            <div class="text-[#8c7e72] group-open:rotate-180 transition-transform duration-200 shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </summary>
+                        <div class="p-6 border-t border-[#382f2a] bg-[#140f0d] text-sm text-[#c7bcae] space-y-3">
+                            <p>
+                                <strong class="text-[#dfba9d]">Strategic Response Framework:</strong><br>
+                                "The argument for state division should rest on **administrative scale and public good delivery parameters**, rather than emotional lines. In massive demographic units, the physical distance between outlying districts and the centralized capital creates a severe delivery lag. Bifurcation can sharply lower transaction costs, optimize law enforcement deployment, and ensure tailored public investment policies. However, this must be systematically weighed against the massive economic overhead of setting up a new legislature, high court, and apex bureaucratic infrastructure."
+                            </p>
+                        </div>
+                    </details>
+
+                    <!-- Recall Block 2 -->
+                    <details class="group border border-[#382f2a] rounded-xl bg-[#1a1411] overflow-hidden transition-all duration-200">
+                        <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-[#241d19] transition-colors">
+                            <div class="flex items-start space-x-4 pr-4">
+                                <span class="text-[#c48d5f] font-mono text-sm font-bold mt-0.5">Q2.</span>
+                                <div>
+                                    <h3 class="text-base font-semibold text-[#faf8f5] group-hover:text-[#dfba9d] transition-colors">
+                                        "Explain the administrative concept of dual or seasonal capitals seen in states like Himachal Pradesh."
+                                    </h3>
+                                    <p class="text-xs text-[#8c7e72] mt-1">Evaluates understanding of winter bottlenecks and demographic inclusion.</p>
+                                </div>
+                            </div>
+                            <div class="text-[#8c7e72] group-open:rotate-180 transition-transform duration-200 shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </summary>
+                        <div class="p-6 border-t border-[#382f2a] bg-[#140f0d] text-sm text-[#c7bcae] space-y-3">
+                            <p>
+                                <strong class="text-[#dfba9d]">Strategic Response Framework:</strong><br>
+                                "Seasonal capitals—such as Shimla and Dharamshala in Himachal Pradesh, or Dehradun and Gairsain in Uttarakhand—are tactical responses to **harsh weather realities and complex topography**. Moving legislative functions ensures governance continues uninterrupted when extreme winters freeze northern infrastructure. Concurrently, it has a powerful psychological and economic benefit: it brings the apex state machinery directly to remote, mountainous populations, preventing the concentration of development within a singular urban pocket."
+                            </p>
+                        </div>
+                    </details>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer Module: 30-Second Interview Summary Engine -->
+        <footer class="mt-16">
+            <div class="relative bg-gradient-to-br from-[#241b16] to-[#140f0d] rounded-2xl p-6 md:p-8 border border-[#382f2a] shadow-2xl shadow-black/60">
+                <!-- Branding Card Tab -->
+                <div class="absolute -top-3 left-6 bg-[#b37d4e] text-white font-mono text-xs font-bold px-3 py-1 rounded-md tracking-wider uppercase">
+                    ⚡ 30-Second Interview Summary Engine
+                </div>
+                
+                <div class="mt-2 space-y-4">
+                    <p class="serif-font text-lg md:text-xl text-[#faf8f5] italic leading-relaxed">
+                        “The internal map of the Indian Union comprises twenty-eight sovereign states and eight centrally administered Union Territories, managed under a flexible federal structure. While historical realignments under Article 3—such as the creation of linguistic states—focused on cultural identity, modern shifts are defined strictly by economic efficiency and localized governance. This is highlighted by the 2014 carve-out of Telangana from Andhra Pradesh to fix historic regional development imbalances, and the strategic consolidation of Union Territories like Dadra, Nagar Haveli, Daman, and Diu to eliminate duplicate administrative overhead. For an management aspirant, navigating this complex space requires recognizing that administrative boundaries, seasonal legislative seats, and infrastructure choices are deliberate strategies designed to lower public transaction costs, secure volatile borders, and optimize resource allocation across diverse economies.”
+                    </p>
+                    
+                    <div class="flex items-center justify-between text-xs text-[#8c7e72] border-t border-[#2d241f] pt-4 font-mono">
+                        <span>Delivery Strategy: Authoritative, Balanced, Analytically Grounded</span>
+                        <span>Tempo: 125 WPM</span>
                     </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
+                </div>
+            </div>
+        </footer>
 
-        // Search/Filter Engine
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            const filtered = indiaData.filter(node => 
-                node.name.toLowerCase().includes(query) ||
-                node.capital.toLowerCase().includes(query) ||
-                node.context.toLowerCase().includes(query) ||
-                node.zone.toLowerCase().includes(query) ||
-                node.tags.some(tag => tag.toLowerCase().includes(query))
-            );
-            renderMatrix(filtered);
-        });
-
-        // Initialize Matrix
-        renderMatrix(indiaData);
-    </script>
+    </div>
 </body>
 </html>

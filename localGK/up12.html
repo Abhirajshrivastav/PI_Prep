@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-12 · Varanasi — Oldest Living City — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-12] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Varanasi — Oldest Living City</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Kashi, Banaras, Varanasi — one of the world's oldest continuously inhabited cities, where the Ganga witnesses the cycle of life and death, and where Hindu civilisation has thrived for over three millennia.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Ancient Names</span><div class="value">Kashi, Banaras, Avimukta</div></div>
+                <div class="fact-box"><span class="label">Location</span><div class="value">Western bank of the Ganga, Eastern UP</div></div>
+                <div class="fact-box"><span class="label">Age</span><div class="value">~3,000+ years (among world's oldest continuously inhabited cities)</div></div>
+                <div class="fact-box"><span class="label">Major Religion</span><div class="value">Hinduism (also sacred to Buddhism & Jainism)</div></div>
+                <div class="fact-box"><span class="label">Famous Ghats</span><div class="value">Dashashwamedh, Manikarnika, Assi, Tulsi</div></div>
+                <div class="fact-box"><span class="label">Key Temple</span><div class="value">Kashi Vishwanath (Jyotirlinga)</div></div>
+                <div class="fact-box"><span class="label">University</span><div class="value">Banaras Hindu University (BHU), founded 1916</div></div>
+                <div class="fact-box"><span class="label">Famous Craft</span><div class="value">Banarasi Silk Sarees (GI‑tagged)</div></div>
+            </div>
+        </div>
+
+        <!-- Historical Significance -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏛️ The Oldest Living City — A 3,000‑Year Continuum</h2>
+            <p style="color:var(--text-body);">Varanasi, also known as <strong>Kashi</strong> (the Luminous One) and <strong>Banaras</strong>, is widely regarded as one of the oldest continuously inhabited cities on earth. Archaeological evidence suggests human settlement dating back to at least <strong>1800 BCE</strong>. It is mentioned in the <strong>Rigveda</strong>, the oldest of the Hindu scriptures, and was already a thriving centre of learning, trade, and religion during the time of the Buddha (6th century BCE).</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Unlike many ancient cities that declined or were abandoned, Varanasi has been <strong>continuously inhabited and culturally active</strong> for over three millennia. It has survived invasions, imperial transitions, and modernisation while retaining its essential identity as the spiritual capital of India. Mark Twain famously wrote: <em>"Banaras is older than history, older than tradition, older even than legend, and looks twice as old as all of them put together."</em></p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Interview line:</strong> "Varanasi — or Kashi — is considered one of the oldest continuously inhabited cities in the world, with a history stretching back over 3,000 years. It is the spiritual heart of Hindu civilisation and a centre of learning, music, and crafts."</p>
+            </div>
+        </div>
+
+        <!-- Religious and Spiritual Importance -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🕉️ The Spiritual Capital of India</h2>
+            <p style="color:var(--text-body);"><strong>Hinduism:</strong> Varanasi is the holiest of the seven sacred cities (Sapta Puri) in Hinduism. The <strong>Kashi Vishwanath Temple</strong>, dedicated to Lord Shiva, is one of the 12 Jyotirlingas — the most sacred abodes of Shiva. Hindus believe that dying in Varanasi and being cremated on the ghats of the Ganga liberates the soul from the cycle of rebirth (moksha). The <strong>Manikarnika Ghat</strong> is the most famous cremation ghat, where funeral pyres burn continuously, embodying the city's profound relationship with death and liberation.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Buddhism:</strong> Just 10 km from Varanasi lies <strong>Sarnath</strong>, where Gautama Buddha delivered his first sermon after attaining enlightenment — setting in motion the Wheel of Dharma (Dhammachakra Pravartana). This makes Varanasi one of the most important pilgrimage sites for Buddhists worldwide.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Jainism:</strong> Varanasi is also sacred to Jains, as it is the birthplace of <strong>Parshvanatha</strong>, the 23rd Tirthankara.</p>
+        </div>
+
+        <!-- The Ghats and the Ganga -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌊 The Ghats — The Soul of Varanasi</h2>
+            <p style="color:var(--text-body);">The <strong>88 ghats</strong> along the western bank of the Ganga are the most iconic feature of Varanasi. They are the stages on which the city's daily life, ritual, and commerce unfold. The <strong>Dashashwamedh Ghat</strong> — where Lord Brahma is believed to have performed the ten‑horse sacrifice — is the main ghat and the site of the famous <strong>Ganga Aarti</strong>, a spectacular evening ritual of fire, incense, and chanting that draws thousands of visitors every night.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The <strong>Assi Ghat</strong> — at the confluence of the Assi River and the Ganga — is associated with the poet‑saint Tulsidas and is a centre for morning rituals, yoga, and cultural gatherings. The <strong>Tulsi Ghat</strong> is named after Tulsidas, who composed the Ramcharitmanas here. Each ghat has its own history, its own community, and its own unique place in the intricate tapestry of the city.</p>
+        </div>
+
+        <!-- Banaras Hindu University -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🎓 Banaras Hindu University — The Knowledge Tradition</h2>
+            <p style="color:var(--text-body);">Founded in <strong>1916</strong> by Pandit Madan Mohan Malaviya, <strong>Banaras Hindu University (BHU)</strong> is one of Asia's largest residential universities. It embodies Varanasi's ancient identity as a centre of learning, updated for the modern era. BHU has produced generations of scholars, scientists, artists, and public figures. Its campus — spread over 1,300 acres — is an architectural and cultural landmark, with the <strong>Bharat Kala Bhavan</strong> museum housing one of India's finest collections of miniature paintings and sculptures.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The <strong>Institute of Medical Sciences (IMS‑BHU)</strong> is among India's premier medical colleges, and the university's arts and music faculties continue the city's classical traditions.</p>
+        </div>
+
+        <!-- Culture and Crafts -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🎭 Culture, Music, and Crafts</h2>
+            <p style="color:var(--text-body);"><strong>Banarasi Silk:</strong> The city is world‑famous for its <strong>Banarasi silk sarees</strong>, which are GI‑tagged (Geographical Indication). Woven with gold and silver zari work, they are an essential part of Indian weddings and have been produced here for centuries by skilled craftsmen.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Music:</strong> Varanasi is a major centre of Hindustani classical music, particularly the <strong>Banaras Gharana</strong>. It has produced legendary musicians like <strong>Bismillah Khan</strong> (shehnai maestro), <strong>Pandit Ravi Shankar</strong> (sitar), and <strong>Girija Devi</strong> (Thumri). The city's streets and ghats have always resonated with music — from temple bells to classical performances.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Literature:</strong> Varanasi has nurtured writers and poets in Sanskrit, Hindi, Urdu, and English, including <strong>Munshi Premchand</strong>, who lived and wrote here, and <strong>Bhartendu Harishchandra</strong>, the father of modern Hindi literature.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Why is Varanasi known as the "oldest living city"?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Varanasi — also called Kashi — has been continuously inhabited for over 3,000 years, making it one of the world's oldest cities. It is mentioned in the Rigveda and was already a thriving centre of civilisation during the Buddha's time. Its culture, rituals, and traditions have persisted through millennia, giving it a unique status as a living city that is both ancient and vibrantly contemporary.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What is the religious significance of Varanasi in Hinduism?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">It is the holiest of the Sapta Puri (seven sacred cities). The Kashi Vishwanath Temple is one of the 12 Jyotirlingas. Hindus believe that dying in Varanasi and being cremated on the ghats — especially Manikarnika Ghat — grants moksha, or liberation from the cycle of rebirth. The city is also central to the Ganga's spiritual identity.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is the connection between Varanasi and Buddhism?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Sarnath, located just 10 km from Varanasi, is where Gautama Buddha delivered his first sermon after attaining enlightenment — the Dhammachakra Pravartana (Turning of the Wheel of Dharma). This makes Varanasi one of the four most important Buddhist pilgrimage sites in the world.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is Banaras Hindu University (BHU), and why is it significant?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">BHU, founded in 1916 by Pandit Madan Mohan Malaviya, is one of Asia's largest residential universities. It represents Varanasi's deep identity as a centre of learning, encompassing fields from classical arts to modern medicine. Its vast campus, the Bharat Kala Bhavan museum, and institutions like IMS‑BHU make it a premier academic institution in India.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What are the famous crafts and cultural traditions of Varanasi?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The most famous craft is the <strong>Banarasi silk saree</strong>, woven with gold and silver zari — a GI‑tagged product. Musically, the <strong>Banaras Gharana</strong> is a major school of Hindustani classical music, producing legends like Bismillah Khan, Ravi Shankar, and Girija Devi. The Ganga Aarti at Dashashwamedh Ghat is a globally recognised cultural spectacle.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Varanasi — also known as Kashi or Banaras — is one of the world's oldest continuously inhabited cities, with a history spanning over three millennia. Situated on the western bank of the Ganga, it is the spiritual heart of Hinduism: home to the Kashi Vishwanath Jyotirlinga, the sacred ghats including Manikarnika where cremations promise moksha, and the site where the Buddha delivered his first sermon at nearby Sarnath. It is also a living centre of learning — with Banaras Hindu University — and of art, from Banarasi silk weaving to the classical music of the Banaras Gharana. Varanasi is not a museum of the past; it is a living, breathing testimony to the endurance of Indian civilisation."</em></p>
+        </div>
+    </main>
+</body>
+</html>

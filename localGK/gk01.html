@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEC-03 // GEOPOLITICAL FRONTIERS: NEIGHBOURS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght=400;500;600;700&family=JetBrains+Mono:wght=400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #050a08;
+            --bg-secondary: #070d0b;
+            --border-color: #142822;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.15);
+            --text-muted: #889590;
+            --text-bright: #f0f5f3;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: 
+                linear-gradient(rgba(20, 40, 34, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(20, 40, 34, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px;
+        }
+
+        .serif-font { font-family: 'Playfair Display', serif; }
+        .mono-font { font-family: 'JetBrains Mono', monospace; }
+
+        .cyber-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cyber-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 12px 35px var(--accent-glow);
+        }
+
+        .scanlines {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+            background-size: 100% 4px;
+            z-index: 9999; pointer-events: none; opacity: 0.25;
+        }
+
+        input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    </style>
+</head>
+<body class="min-h-screen relative antialiased selection:bg-[#10b981] selection:text-black pb-16">
+    <div class="scanlines"></div>
+
+    <!-- Top Telemetry Status Bar -->
+    <div class="w-full border-b border-[#142822] bg-[#070d0b]/80 backdrop-blur-md px-6 py-3 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs mono-font tracking-wider text-[#889590]">
+            <div class="flex items-center space-x-4">
+                <span class="w-2 h-2 rounded-full bg-[#10b981] animate-pulse"></span>
+                <span class="text-[#f0f5f3]">NODE: GEOPOLITICAL_FRONTIERS</span>
+                <span class="text-[#142822]">|</span>
+                <span>SEC-03: BLOCK 4 // REGIONAL & GLOBAL INTERFACES</span>
+            </div>
+            <div class="mt-2 sm:mt-0 flex items-center space-x-6">
+                <span>LAND_BORDERS: <span class="text-[#10b981]">7</span></span>
+                <span>MARITIME_BORDERS: <span class="text-[#10b981]">2</span></span>
+                <span>TOTAL: <span class="text-[#10b981]">9 NATIONS</span></span>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-6 pt-12">
+        
+        <!-- Section Header -->
+        <header class="mb-12 border-b border-[#142822] pb-8 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6">
+            <div>
+                <div class="text-xs font-bold tracking-[0.3em] text-[#10b981] uppercase mb-3 mono-font">// GEOGRAPHY & BORDER ANALYSIS</div>
+                <h1 class="text-4xl md:text-5xl font-bold text-[#f0f5f3] tracking-tight serif-font mb-3">
+                    India's Trans-Border Matrix
+                </h1>
+                <p class="text-[#889590] text-sm max-w-3xl leading-relaxed">
+                    Sovereign territorial frontiers mapped by perimeter length, naming conventions, guardian security assets, and macro-strategic risk indicators.
+                </p>
+            </div>
+            
+            <!-- Filter Hub Input -->
+            <div class="w-full lg:w-96 relative">
+                <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#10b981] mono-font text-sm">></div>
+                <input type="text" id="frontierSearch" placeholder="SEARCH FRONTIER (e.g., 'Radcliffe', 'BSF', 'Maritime')..." 
+                       class="w-full bg-[#030706] border border-[#142822] text-[#f0f5f3] mono-font text-xs py-3 pl-8 pr-4 rounded-md transition-all placeholder-[#51635d]">
+            </div>
+        </header>
+
+        <!-- Global Summary Grid Metrics -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
+            <div class="bg-[#070d0b] border border-[#142822] p-4 rounded-lg">
+                <div class="text-[10px] mono-font text-[#51635d] uppercase mb-1">Total Land Frontier Length</div>
+                <div class="text-xl font-bold mono-font text-[#f0f5f3]">15,106.7 km</div>
+            </div>
+            <div class="bg-[#070d0b] border border-[#142822] p-4 rounded-lg">
+                <div class="text-[10px] mono-font text-[#51635d] uppercase mb-1">Total Coastline Footprint</div>
+                <div class="text-xl font-bold mono-font text-[#f0f5f3]">7,516.6 km</div>
+            </div>
+            <div class="bg-[#070d0b] border border-[#142822] p-4 rounded-lg">
+                <div class="text-[10px] mono-font text-[#51635d] uppercase mb-1">Longest Single Contiguity</div>
+                <div class="text-xl font-bold mono-font text-[#10b981]">Bangladesh (4,096.7 km)</div>
+            </div>
+            <div class="bg-[#070d0b] border border-[#142822] p-4 rounded-lg">
+                <div class="text-[10px] mono-font text-[#51635d] uppercase mb-1">Shortest Land Gateway</div>
+                <div class="text-xl font-bold mono-font text-[#fbbf24]">Afghanistan (106 km)</div>
+            </div>
+        </section>
+
+        <!-- Dynamic Border Card Grid Layout -->
+        <div id="frontierGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <!-- Dynamically populated via data engine script -->
+        </div>
+
+    </main>
+
+    <script>
+        const frontierData = [
+            // --- LAND BORDERS ---
+            {
+                country: "Bangladesh",
+                capital: "Dhaka",
+                type: "Land Frontier",
+                length: "4,096.7 km",
+                lineName: "Radcliffe Line",
+                guard: "Border Security Force (BSF)",
+                statesInvolved: "West Bengal, Assam, Meghalaya, Tripura, Mizoram",
+                strategicContext: "India's longest border. The enclave swapping via the 100th Constitutional Amendment Act settled major boundary anomalies. Highly complex policing terrain comprising riverine tracts, illegal migration routes, and growing economic transit corridors via the 'Act East' trade policy.",
+                riskLevel: "Moderate-High (Logistics & Trans-border Migration)",
+                tags: ["longest", "radcliffe", "bsf", "east", "riverine"]
+            },
+            {
+                country: "China",
+                capital: "Beijing",
+                type: "Land Frontier",
+                length: "3,488 km",
+                lineName: "McMahon Line (Eastern Sector) / LAC",
+                guard: "Indo-Tibetan Border Police (ITBP)",
+                statesInvolved: "Ladakh, Himachal Pradesh, Uttarakhand, Sikkim, Arunachal Pradesh",
+                strategicContext: "A highly volatile frontier split into Western (Aksai Chin), Central, and Eastern sectors. Strategic friction nodes include the Galwan Valley, Doklam, and the Siliguri Corridor ('Chicken's Neck') vulnerability. Characterized by aggressive rapid military infrastructure building by both nuclear states.",
+                riskLevel: "Critical Geopolitical Flashpoint",
+                tags: ["mcmahon", "lac", "itbp", "north", "military"]
+            },
+            {
+                country: "Pakistan",
+                capital: "Islamabad",
+                type: "Land Frontier",
+                length: "3,323 km",
+                lineName: "Radcliffe Line / LoC / Working Boundary",
+                guard: "Border Security Force (BSF)",
+                statesInvolved: "Ladakh, Jammu & Kashmir, Punjab, Rajasthan, Gujarat",
+                strategicContext: "Extends from the disputed Line of Control (LoC) down to the saltwater marshlands of Sir Creek in Gujarat. A highly fortified, hyper-militarized perimeter. Key economic/geopolitical factor includes China's footprint through the China-Pakistan Economic Corridor (CPEC) passing through PoK.",
+                riskLevel: "Critical Security Threat",
+                tags: ["radcliffe", "loc", "bsf", "west", "cpec"]
+            },
+            {
+                country: "Nepal",
+                capital: "Kathmandu",
+                type: "Land Frontier",
+                length: "1,751 km",
+                lineName: "Open Border Protocol (Treaty of Sugauli Framework)",
+                guard: "Sashastra Seema Bal (SSB)",
+                statesInvolved: "Uttarakhand, Uttar Pradesh, Bihar, West Bengal, Sikkim",
+                strategicContext: "A unique open border allowing visa-free movement, deeply weaving together cultural and socioeconomic ties. Strategic flashpoints involve cartographic disputes over the Kalapani, Limpiyadhura, and Lipulekh passes. Highly vulnerable to third-party geopolitical leverage.",
+                riskLevel: "Low-Moderate (Smuggling & Strategic Leverage)",
+                tags: ["open-border", "ssb", "central", "sugauli"]
+            },
+            {
+                country: "Myanmar",
+                capital: "Naypyidaw",
+                type: "Land Frontier",
+                length: "1,643 km",
+                lineName: "Treaty of 1967 Demarcation",
+                guard: "Assam Rifles (Under Operational Army Control)",
+                statesInvolved: "Arunachal Pradesh, Nagaland, Manipur, Mizoram",
+                strategicContext: "Traverses dense, rugged rainforests and mountainous terrain. The suspension of the Free Movement Regime (FMR) marks a major shift to curb insurgent cross-border sanctuaries. Vital for India's Kaladan Multi-Modal Transit Transport project.",
+                riskLevel: "Moderate (Insurgency & Civil Disruption)",
+                tags: ["insurgency", "assam-rifles", "east", "kaladan"]
+            },
+            {
+                country: "Bhutan",
+                capital: "Thimphu",
+                type: "Land Frontier",
+                length: "699 km",
+                lineName: "Treaty of Peace and Friendship",
+                guard: "Sashastra Seema Bal (SSB)",
+                statesInvolved: "Sikkim, West Bengal, Assam, Arunachal Pradesh",
+                strategicContext: "An exceptionally stable, symbiotic relationship based on clean hydro-electric power trade agreements. India provides comprehensive military umbrella protection to Bhutan, particularly vital during Chinese assertions near the Doklam plateau tri-junction.",
+                riskLevel: "Stable / Strategic Buffer Zone",
+                tags: ["buffer", "ssb", "hydroelectric", "doklam"]
+            },
+            {
+                country: "Afghanistan",
+                capital: "Kabul",
+                type: "Land Frontier",
+                length: "106 km",
+                lineName: "Durand Line",
+                guard: "N/A (Border currently sits in Pakistan-occupied Kashmir)",
+                statesInvolved: "Ladakh (PoK sector)",
+                strategicContext: "India's shortest international border connection. While it offers immense physical transit potential to resource-rich Central Asian economies, it is currently blocked from direct access by Pakistan's illegal occupation of Gilgit-Baltistan.",
+                riskLevel: "Inaccessible (Geopolitically Frozen)",
+                tags: ["shortest", "durand", "pok", "central-asia"]
+            },
+
+            // --- MARITIME BORDERS ---
+            {
+                country: "Sri Lanka",
+                capital: "Sri Jayawardenepura Kotte",
+                type: "Maritime Frontier",
+                length: "Separated by Palk Strait",
+                lineName: "Maritime Boundary Agreements (1974-1976)",
+                guard: "Indian Navy & Indian Coast Guard",
+                statesInvolved: "Tamil Nadu (Nearest Coastal Proximity)",
+                strategicContext: "Separated by the narrow Palk Strait and Adam's Bridge. Ongoing structural friction points involve deep-sea fishing rights, the disputed status of Katchatheevu island, and major national security concerns surrounding deep-water Chinese port investments at Hambantota.",
+                riskLevel: "Strategic Maritime Vigilance",
+                tags: ["maritime", "navy", "palk-strait", "hambantota"]
+            },
+            {
+                country: "Maldives",
+                capital: "Malé",
+                type: "Maritime Frontier",
+                length: "Separated by 8 Degree Channel",
+                lineName: "Exclusive Economic Zone Demarcation",
+                guard: "Indian Navy & Indian Coast Guard",
+                statesInvolved: "Lakshadweep (Nearest Archipelago Proximity)",
+                strategicContext: "Strategically located along key sea lines of communication (SLOCs) in the Indian Ocean. Geopolitical balance fluctuates based on internal political leadership alignments toward New Delhi versus Beijing, impacting maritime security coordination.",
+                riskLevel: "High Geopolitical Volatility",
+                tags: ["maritime", "navy", "sloc", "lakshadweep"]
+            }
+        ];
+
+        const container = document.getElementById('frontierGrid');
+        const searchInput = document.getElementById('frontierSearch');
+
+        function renderFrontiers(data) {
+            container.innerHTML = '';
+            data.forEach(item => {
+                const isLand = item.type === "Land Frontier";
+                const badgeColor = isLand ? "text-[#10b981] bg-[#10b981]/10 border-[#10b981]/20" : "text-[#38bdf8] bg-[#38bdf8]/10 border-[#38bdf8]/20";
+                
+                const card = document.createElement('div');
+                card.className = "cyber-card rounded-xl p-6 flex flex-col justify-between h-full";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="mono-font text-[9px] font-bold border px-2 py-0.5 rounded uppercase tracking-wider ${badgeColor}">
+                                ${item.type}
+                            </span>
+                            <span class="mono-font text-[10px] text-[#51635d]">SPAN: ${item.length}</span>
+                        </div>
+                        
+                        <h2 class="serif-font text-3xl font-bold text-[#f0f5f3] mb-1 group-hover:text-[#10b981] transition-colors">
+                            ${item.country}
+                        </h2>
+                        
+                        <div class="mono-font text-xs text-[#889590] mb-4">
+                            CAPITAL: <span class="text-[#f0f5f3] font-semibold">${item.capital}</span>
+                        </div>
+
+                        <div class="space-y-2 border-y border-[#142822] py-3 my-4 text-xs font-mono">
+                            <div>
+                                <span class="text-[#51635d]">BOUNDARY :</span> 
+                                <span class="text-[#cbd5e1] font-medium">${item.lineName}</span>
+                            </div>
+                            <div>
+                                <span class="text-[#51635d]">GUARDIAN :</span> 
+                                <span class="text-[#10b981] font-medium">${item.guard}</span>
+                            </div>
+                            <div>
+                                <span class="text-[#51635d]">PROXIMITY:</span> 
+                                <span class="text-[#889590] text-[11px]">${item.statesInvolved}</span>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-[#889590] leading-relaxed mb-6">
+                            ${item.strategicContext}
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="bg-[#030706] border border-[#142822] p-2.5 rounded text-[11px] mono-font mb-4">
+                            <span class="text-[#ef4444] font-bold">CRITICAL VECTOR //</span> 
+                            <span class="text-[#d2dad7]">${item.riskLevel}</span>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            ${item.tags.map(tag => `<span class="mono-font text-[9px] text-[#51635d] bg-[#050a08] border border-[#142822] px-1.5 py-0.5 rounded">#${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Live Real-Time Filtering Engine
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = frontierData.filter(item => 
+                item.country.toLowerCase().includes(query) ||
+                item.capital.toLowerCase().includes(query) ||
+                item.lineName.toLowerCase().includes(query) ||
+                item.guard.toLowerCase().includes(query) ||
+                item.statesInvolved.toLowerCase().includes(query) ||
+                item.strategicContext.toLowerCase().includes(query) ||
+                item.tags.some(tag => tag.toLowerCase().includes(query))
+            );
+            renderFrontiers(filtered);
+        });
+
+        // Initial Data Boot
+        renderFrontiers(frontierData);
+    </script>
+</body>
+</html>

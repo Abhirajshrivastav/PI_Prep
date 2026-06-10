@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Sector 06 · HR & Motivational Questions — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.1);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.1);
+            --amber: #f59e0b;
+            --amber-dim: rgba(245, 158, 11, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        #starfield { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .star {
+            position: absolute; background: white; border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite; animation-delay: var(--delay); opacity: 0;
+        }
+        @keyframes twinkle {
+            0%,100% { opacity: 0.08; } 30% { opacity: 0.6; } 60% { opacity: 0.15; } 85% { opacity: 0.8; }
+        }
+
+        .ambient-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(120px); opacity: 0.07; }
+        .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #f43f5e 0%, transparent 70%); top: -100px; right: -100px; }
+        .orb-2 { width: 350px; height: 350px; background: radial-gradient(circle, #f59e0b 0%, transparent 70%); bottom: -50px; left: -50px; }
+
+        .content-layer { position: relative; z-index: 1; }
+
+        .glass-panel {
+            background: rgba(8, 15, 12, 0.7); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--border-subtle); border-radius: 20px; transition: all 0.4s ease;
+        }
+
+        .glass-card {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;
+        }
+        .glass-card:hover {
+            border-color: var(--accent); transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(16,185,129,0.2), 0 0 60px rgba(16,185,129,0.06);
+            background: rgba(12,22,17,0.8);
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .search-input {
+            background: rgba(10,18,14,0.6); border: 1px solid var(--border-subtle); border-radius: 14px;
+            padding: 0.85rem 1.2rem; color: var(--text-bright); font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem; width: 100%; transition: all 0.35s ease; backdrop-filter: blur(10px);
+        }
+        .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 30px rgba(16,185,129,0.2), 0 0 0 4px var(--accent-dim); background: rgba(14,24,18,0.75); }
+        .search-input::placeholder { color: var(--text-dim); }
+
+        .module-tag {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; padding: 4px 10px; border-radius: 20px;
+            background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(16,185,129,0.2);
+            text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap;
+        }
+        .block-tag {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; padding: 3px 8px; border-radius: 4px;
+            background: var(--bg-deep); border: 1px solid var(--border-subtle); color: var(--text-muted); text-transform: uppercase;
+        }
+        .block-tag.gold { border-color: rgba(245,158,11,0.3); color: var(--gold); background: var(--gold-dim); }
+        .block-tag.info { border-color: rgba(59,130,246,0.3); color: var(--info); background: var(--info-dim); }
+        .block-tag.violet { border-color: rgba(139,92,246,0.3); color: var(--violet); background: var(--violet-dim); }
+        .block-tag.rose { border-color: rgba(244,63,94,0.3); color: var(--rose); background: var(--rose-dim); }
+        .block-tag.amber { border-color: rgba(245,158,11,0.3); color: var(--amber); background: var(--amber-dim); }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .block-header {
+            display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .block-header h2 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.4rem; color: var(--text-bright); }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--border-active); border-radius: 10px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+
+        .block-section { margin-bottom: 2.5rem; }
+    </style>
+</head>
+<body>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div id="starfield"></div>
+
+    <div class="content-layer">
+        <!-- Navigation Bar -->
+        <nav style="position:sticky;top:0;z-index:100;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.9rem 2rem;">
+            <div style="max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+                <a href="../index.html" class="back-link"><span style="font-size:1.2rem;">←</span> RETURN TO CENTRAL COMMAND</a>
+                <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">SECTOR 06 · HR & MOTIVATIONAL QUESTIONS</span>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header style="max-width:1400px;margin:0 auto;padding:2.5rem 2rem 1.5rem;">
+            <div style="display:flex;flex-direction:column;gap:1rem;">
+                <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+                    <span class="font-mono" style="font-size:0.7rem;color:var(--gold);letter-spacing:0.1em;">MODULE HUB</span>
+                    <span class="font-mono" style="font-size:0.65rem;color:var(--text-dim);">5% INTERVIEW PRIORITY — HIGH FINAL‑IMPRESSION WEIGHT</span>
+                    <span class="module-tag">15 BLOCKS · 54 MODULES</span>
+                </div>
+                <h1 class="font-display" style="font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;">HR & Motivational Questions</h1>
+                <p style="color:var(--text-muted);font-size:1rem;max-width:750px;">The questions that shape the final impression — your introduction, your JEE‑to‑IPMAT pivot, your goals, your self‑awareness, and the quiet composure that holds when the panel pushes hardest.</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main style="max-width:1400px;margin:0 auto;padding:1.5rem 2rem 2rem;">
+            <!-- Search & Counter -->
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;">
+                <input type="text" class="search-input" id="searchInput" placeholder="Filter by title, tag, block, or module ID..." style="max-width:500px;">
+                <div class="glass-panel" style="padding:0.8rem 1.5rem;display:flex;align-items:center;gap:0.5rem;">
+                    <span class="font-mono" style="font-size:0.65rem;color:var(--text-dim);">ACTIVE MODULES</span>
+                    <span class="font-display" style="font-size:1.8rem;font-weight:900;color:var(--accent);" id="activeCount">0</span>
+                </div>
+            </div>
+
+            <!-- Blocks injected by JS -->
+            <div id="blocksContainer"></div>
+            <p id="noResults" style="text-align:center;color:var(--text-muted);margin-top:2rem;display:none;">No modules match your filter.</p>
+        </main>
+    </div>
+
+    <script>
+        (function() {
+            const sf = document.getElementById('starfield');
+            for (let i = 0; i < 80; i++) {
+                const s = document.createElement('div');
+                s.classList.add('star');
+                s.style.width = (Math.random() * 2 + 0.7) + 'px';
+                s.style.height = s.style.width;
+                s.style.left = Math.random() * 100 + '%';
+                s.style.top = Math.random() * 100 + '%';
+                s.style.setProperty('--duration', (Math.random() * 4 + 3) + 's');
+                s.style.setProperty('--delay', (Math.random() * 6) + 's');
+                s.style.opacity = Math.random() * 0.4 + 0.1;
+                sf.appendChild(s);
+            }
+        })();
+
+        // Module data — organized by 15 blocks
+        const blockData = {
+            block1: {
+                title: "BLOCK 1 · The Introduction — The Answer That Drives Everything",
+                icon: "🎙️",
+                accent: "rose",
+                modules: [
+                    { id: "HR-01", title: "Draft Your 45‑60 Second Introduction", tags: ["intro", "pitch", "strategy"], block: "BLOCK 1", url: "#" },
+                    { id: "HR-02", title: "Know What Every Introduction Element Opens Up", tags: ["hooks", "follow‑up", "preparation"], block: "BLOCK 1", url: "#" },
+                    { id: "HR-03", title: "Practice Being Interrupted & Recovering", tags: ["composure", "adaptability", "drill"], block: "BLOCK 1", url: "#" },
+                    { id: "HR-04", title: "Strategic Hooks: Self‑Taught Dev, Reading, Ghazipur", tags: ["narrative", "unique", "positioning"], block: "BLOCK 1", url: "#" },
+                ]
+            },
+            block2: {
+                title: "BLOCK 2 · Why IPM & Why Not Engineering — Your Most Important Answer",
+                icon: "🔁",
+                accent: "gold",
+                modules: [
+                    { id: "HR-05", title: "The Honest JEE‑to‑IPMAT Pivot Narrative", tags: ["JEE", "pivot", "self‑awareness"], block: "BLOCK 2", url: "#" },
+                    { id: "HR-06", title: "Answering 'Isn't This Your Second Choice?'", tags: ["fit", "aptitude", "data"], block: "BLOCK 2", url: "#" },
+                    { id: "HR-07", title: "Why Not Just a BBA or Wait for CAT?", tags: ["IPM", "integrated", "foundation"], block: "BLOCK 2", url: "#" },
+                ]
+            },
+            block3: {
+                title: "BLOCK 3 · Why IIM Indore Specifically",
+                icon: "🏛️",
+                accent: "info",
+                modules: [
+                    { id: "HR-08", title: "Crafting a Non‑Generic 'Why IIM Indore' Answer", tags: ["specific", "research", "fit"], block: "BLOCK 3", url: "#" },
+                    { id: "HR-09", title: "Connecting IPM's Structure to Your Story", tags: ["curriculum", "liberal arts", "management"], block: "BLOCK 3", url: "#" },
+                    { id: "HR-10", title: "How You Will Use the Program Specifically", tags: ["goals", "application", "vision"], block: "BLOCK 3", url: "#" },
+                ]
+            },
+            block4: {
+                title: "BLOCK 4 · The JEE Failure Arc — The Question Beneath Every Question",
+                icon: "🪞",
+                accent: "violet",
+                modules: [
+                    { id: "HR-11", title: "The Four‑Part Framework for Discussing Failure", tags: ["attempt", "effort", "learning", "action"], block: "BLOCK 4", url: "#" },
+                    { id: "HR-12", title: "Using Stoic & Gita Frameworks Genuinely", tags: ["Obstacle Is the Way", "Nishkama Karma", "resilience"], block: "BLOCK 4", url: "#" },
+                    { id: "HR-13", title: "Answering the Hostile Version: 'You Wasted Three Years'", tags: ["fit", "diminishing returns", "defense"], block: "BLOCK 4", url: "#" },
+                ]
+            },
+            block5: {
+                title: "BLOCK 5 · Goals and Future Vision",
+                icon: "🎯",
+                accent: "amber",
+                modules: [
+                    { id: "HR-14", title: "Goals vs Dreams — Specific Direction, Not False Precision", tags: ["direction", "rationale", "capabilities"], block: "BLOCK 5", url: "#" },
+                    { id: "HR-15", title: "Building Businesses in Tier‑2 & Tier‑3 India", tags: ["hinterland", "800 million", "opportunity"], block: "BLOCK 5", url: "#" },
+                    { id: "HR-16", title: "Five‑Year, Ten‑Year, Fifteen‑Year Vision Arcs", tags: ["progression", "internship", "long‑term"], block: "BLOCK 5", url: "#" },
+                ]
+            },
+            block6: {
+                title: "BLOCK 6 · What If Not Selected",
+                icon: "❓",
+                accent: "rose",
+                modules: [
+                    { id: "HR-17", title: "Honest Alternatives Without Defensiveness", tags: ["JIPMAT", "CUET", "next attempt"], block: "BLOCK 6", url: "#" },
+                    { id: "HR-18", title: "Genuine Clarity vs. Rehearsed Calm", tags: ["equanimity", "preference", "plan"], block: "BLOCK 6", url: "#" },
+                ]
+            },
+            block7: {
+                title: "BLOCK 7 · Strengths and Weaknesses",
+                icon: "⚖️",
+                accent: "info",
+                modules: [
+                    { id: "HR-19", title: "Evidenced Strengths — Not Adjectives, Proof", tags: ["self‑taught", "web dev", "specific"], block: "BLOCK 7", url: "#" },
+                    { id: "HR-20", title: "Real Weaknesses With Genuine Mitigation Plans", tags: ["English fluency", "self‑direction", "honest"], block: "BLOCK 7", url: "#" },
+                    { id: "HR-21", title: "Avoiding the 'Fake Weakness' Trap", tags: ["perfectionist", "authenticity", "self‑awareness"], block: "BLOCK 7", url: "#" },
+                ]
+            },
+            block8: {
+                title: "BLOCK 8 · Hobbies and Personal Life",
+                icon: "📚",
+                accent: "violet",
+                modules: [
+                    { id: "HR-22", title: "Framing Reading as Intellectual Engagement", tags: ["Poor Economics", "Banerjee", "RCT"], block: "BLOCK 8", url: "#" },
+                    { id: "HR-23", title: "Connecting Stoic Reading to Your Life Arc", tags: ["Ryan Holiday", "preferred indifferents", "application"], block: "BLOCK 8", url: "#" },
+                    { id: "HR-24", title: "The Framework‑Attachment Principle for Hobbies", tags: ["creative", "learning", "health"], block: "BLOCK 8", url: "#" },
+                ]
+            },
+            block9: {
+                title: "BLOCK 9 · Family and Background Questions",
+                icon: "🏠",
+                accent: "gold",
+                modules: [
+                    { id: "HR-25", title: "Describing Your Father's General Store With Insight", tags: ["retail", "credit", "observation"], block: "BLOCK 9", url: "#" },
+                    { id: "HR-26", title: "Financial Background: Honesty With Dignity", tags: ["humble", "strength", "perspective"], block: "BLOCK 9", url: "#" },
+                    { id: "HR-27", title: "Answering 'Prepared for the IIM Indore Environment?'", tags: ["contribution", "diversity", "difference"], block: "BLOCK 9", url: "#" },
+                ]
+            },
+            block10: {
+                title: "BLOCK 10 · Leadership and Teamwork Questions",
+                icon: "🤝",
+                accent: "amber",
+                modules: [
+                    { id: "HR-28", title: "Finding Genuine Leadership Examples Without Formal Titles", tags: ["initiative", "mentorship", "community"], block: "BLOCK 10", url: "#" },
+                    { id: "HR-29", title: "Answering 'What Do Your Friends Not Like About You?'", tags: ["self‑sufficient", "collaboration", "honest"], block: "BLOCK 10", url: "#" },
+                    { id: "HR-30", title: "The STAR Method for Behavioral Questions", tags: ["situation", "task", "action", "result"], block: "BLOCK 10", url: "#" },
+                ]
+            },
+            block11: {
+                title: "BLOCK 11 · Contribution and Fit Questions",
+                icon: "🧩",
+                accent: "info",
+                modules: [
+                    { id: "HR-31", title: "Why Should We Select You? — Perspective, Not Credentials", tags: ["value", "cohort", "unique"], block: "BLOCK 11", url: "#" },
+                    { id: "HR-32", title: "What You Bring to the IIM Indore Classroom", tags: ["informal economy", "tier‑3", "real India"], block: "BLOCK 11", url: "#" },
+                    { id: "HR-33", title: "Handling Being in a Room With Stronger Academic Backgrounds", tags: ["contribution", "learning", "reciprocal"], block: "BLOCK 11", url: "#" },
+                ]
+            },
+            block12: {
+                title: "BLOCK 12 · Pressure Questions Designed to Rattle",
+                icon: "🔥",
+                accent: "rose",
+                modules: [
+                    { id: "HR-34", title: "Deciding Your Response Before Entering the Room", tags: ["composure", "internal state", "choice"], block: "BLOCK 12", url: "#" },
+                    { id: "HR-35", title: "Acknowledging Mistakes Without Crumbling", tags: ["steady voice", "engagement", "recovery"], block: "BLOCK 12", url: "#" },
+                    { id: "HR-36", title: "Understanding Pressure as a Test, Not Rejection", tags: ["management", "stress", "composure"], block: "BLOCK 12", url: "#" },
+                ]
+            },
+            block13: {
+                title: "BLOCK 13 · Deep Self‑Awareness Questions",
+                icon: "🔍",
+                accent: "violet",
+                modules: [
+                    { id: "HR-37", title: "If All Records Were Erased, How Would You Prove Your Worth?", tags: ["stripped", "essence", "value"], block: "BLOCK 13", url: "#" },
+                    { id: "HR-38", title: "What Have You Completely Unlearned in the Past Year?", tags: ["persistence", "discipline", "reassessment"], block: "BLOCK 13", url: "#" },
+                    { id: "HR-39", title: "Are You Not Too Young to Know What You Want?", tags: ["experience", "clarity", "certainty"], block: "BLOCK 13", url: "#" },
+                    { id: "HR-40", title: "What Is the Biggest Mistake You Have Made?", tags: ["JEE", "signals", "redirection"], block: "BLOCK 13", url: "#" },
+                    { id: "HR-41", title: "What Has Your Background Taught You Uniquely?", tags: ["informal economy", "father", "management"], block: "BLOCK 13", url: "#" },
+                ]
+            },
+            block14: {
+                title: "BLOCK 14 · Questions Specific to Your Profile",
+                icon: "🎭",
+                accent: "gold",
+                modules: [
+                    { id: "HR-42", title: "Two Months Prep — Doesn't That Mean It Wasn't Your First Choice?", tags: ["rapid learning", "aptitude", "efficiency"], block: "BLOCK 14", url: "#" },
+                    { id: "HR-43", title: "No Traditional ECAs — What Have You Been Doing?", tags: ["reading", "web dev", "substance"], block: "BLOCK 14", url: "#" },
+                    { id: "HR-44", title: "Gaps From Your School Background — Honest Assessment", tags: ["English fluency", "structured frameworks", "curiosity"], block: "BLOCK 14", url: "#" },
+                    { id: "HR-45", title: "Why Management and Not Technology?", tags: ["business acumen", "real world", "impact"], block: "BLOCK 14", url: "#" },
+                ]
+            },
+            block15: {
+                title: "BLOCK 15 · Practice Protocol",
+                icon: "🏋️",
+                accent: "amber",
+                modules: [
+                    { id: "HR-46", title: "Write Genuine Answers by Hand First", tags: ["writing", "specificity", "gap discovery"], block: "BLOCK 15", url: "#" },
+                    { id: "HR-47", title: "Practice Standing, Out Loud, Without Notes Daily", tags: ["speaking", "hearing", "fluency"], block: "BLOCK 15", url: "#" },
+                    { id: "HR-48", title: "Have Someone Push Back on Your Answers", tags: ["argument", "defense", "discomfort"], block: "BLOCK 15", url: "#" },
+                    { id: "HR-49", title: "The Night Before: Rest, Don't Review", tags: ["calm", "grounded", "trust"], block: "BLOCK 15", url: "#" },
+                    { id: "HR-50", title: "Recording & Self‑Review of Spoken Answers", tags: ["listen back", "silence", "articulation"], block: "BLOCK 15", url: "#" },
+                    { id: "HR-51", title: "Mock Interview Simulation Protocol", tags: ["realistic", "pressure", "feedback"], block: "BLOCK 15", url: "#" },
+                    { id: "HR-52", title: "Building Composure Under Interruption", tags: ["mid‑sentence", "recovery", "unflappable"], block: "BLOCK 15", url: "#" },
+                    { id: "HR-53", title: "Daily Reflection Journal for Clarity", tags: ["thoughts", "beliefs", "articulation"], block: "BLOCK 15", url: "#" },
+                    { id: "HR-54", title: "30‑Day Preparation Tracker & Milestones", tags: ["schedule", "progress", "accountability"], block: "BLOCK 15", url: "#" },
+                ]
+            },
+        };
+
+        const allModules = Object.values(blockData).flatMap(b => b.modules);
+
+        function createCard(mod, blockColor) {
+            const card = document.createElement('a');
+            card.href = mod.url;
+            card.classList.add('glass-card');
+            card.style.padding = '1.3rem';
+            card.innerHTML = `
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.6rem;">
+                    <span class="font-mono" style="font-size:0.65rem;color:var(--accent);">[${mod.id}]</span>
+                    <span class="block-tag ${blockColor}">${mod.block}</span>
+                </div>
+                <h3 class="font-display" style="font-size:1.15rem;font-weight:700;margin-bottom:0.5rem;flex-grow:1;line-height:1.35;">${mod.title}</h3>
+                <div style="display:flex;gap:0.35rem;flex-wrap:wrap;">
+                    ${mod.tags.map(t => `<span class="block-tag">${t}</span>`).join('')}
+                </div>
+            `;
+            return card;
+        }
+
+        function renderAllBlocks(filteredModules) {
+            const container = document.getElementById('blocksContainer');
+            container.innerHTML = '';
+            Object.entries(blockData).forEach(([blockKey, block]) => {
+                const blockNum = blockKey.match(/\d+/)[0];
+                const blockModules = block.modules.filter(m => filteredModules.includes(m));
+                if (blockModules.length === 0 && filteredModules.length > 0) return;
+                const blockDiv = document.createElement('div');
+                blockDiv.className = 'block-section';
+                blockDiv.innerHTML = `
+                    <div class="block-header"><span style="font-size:1.8rem;">${block.icon}</span><div><h2>${block.title}</h2><span class="font-mono" style="font-size:0.6rem;color:var(--text-dim);">${blockModules.length} modules</span></div></div>
+                    <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;" id="grid-block${blockNum}"></div>
+                `;
+                container.appendChild(blockDiv);
+                const grid = blockDiv.querySelector(`#grid-block${blockNum}`);
+                blockModules.forEach(m => {
+                    const accentClass = block.accent || '';
+                    grid.appendChild(createCard(m, accentClass));
+                });
+            });
+
+            document.getElementById('activeCount').textContent = filteredModules.length;
+            document.getElementById('noResults').style.display = filteredModules.length === 0 ? 'block' : 'none';
+        }
+
+        function filterModules(query) {
+            const q = query.toLowerCase().trim();
+            if (!q) return allModules;
+            return allModules.filter(m =>
+                m.title.toLowerCase().includes(q) || m.id.toLowerCase().includes(q) ||
+                m.tags.some(t => t.toLowerCase().includes(q)) ||
+                (m.block && m.block.toString().includes(q))
+            );
+        }
+
+        document.getElementById('searchInput').addEventListener('input', function() {
+            renderAllBlocks(filterModules(this.value));
+        });
+
+        renderAllBlocks(allModules);
+    </script>
+</body>
+</html>

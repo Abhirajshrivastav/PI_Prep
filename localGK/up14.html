@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-14 · Ayodhya — Ram Mandir & Pilgrimage — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .timeline-node {
+            display: flex; gap: 1rem; align-items: baseline;
+            border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0;
+        }
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.85rem; min-width: 5rem;
+        }
+        .timeline-desc { color: var(--text-body); font-size: 0.9rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-14] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Ayodhya — Ram Mandir & Pilgrimage</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The birthplace of Lord Rama, the culmination of a centuries‑old movement, and the site of one of the largest pilgrimage and infrastructure transformations in contemporary India.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">Religious Significance</span><div class="value">Birthplace of Lord Rama (Ram Janmabhoomi)</div></div>
+                <div class="fact-box"><span class="label">Major River</span><div class="value">Saryu (Ghaghara)</div></div>
+                <div class="fact-box"><span class="label">Key Monument</span><div class="value">Shri Ram Janmabhoomi Temple (Ram Mandir)</div></div>
+                <div class="fact-box"><span class="label">Architectural Style</span><div class="value">Nagara (North Indian temple architecture)</div></div>
+                <div class="fact-box"><span class="label">Consecration</span><div class="value">22 January 2024 (Pran Pratishtha by PM Modi)</div></div>
+                <div class="fact-box"><span class="label">Landmark Judgment</span><div class="value">Supreme Court verdict, 9 November 2019</div></div>
+                <div class="fact-box"><span class="label">Annual Festival</span><div class="value">Deepotsav (Diwali celebration with millions of diyas)</div></div>
+                <div class="fact-box"><span class="label">Economic Impact</span><div class="value">Massive tourism growth; new airport, railway station, hotels</div></div>
+            </div>
+        </div>
+
+        <!-- Religious and Historical Significance -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🕉️ The Sacred City — Ram Janmabhoomi</h2>
+            <p style="color:var(--text-body);">Ayodhya, situated on the banks of the <strong>Saryu River (Ghaghara)</strong>, is one of the seven most sacred cities (Sapta Puri) in Hinduism. It is revered as the <strong>birthplace of Lord Rama</strong>, the seventh avatar of Vishnu and the central figure of the epic <strong>Ramayana</strong>. The city is described in the Ramayana as the capital of the Kosala Kingdom, ruled by Rama's father, King Dasharatha.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The <strong>Ram Janmabhoomi</strong> site — the exact spot believed to be Rama's birthplace — has been the most emotionally and politically charged religious site in modern Indian history. A mosque, the <strong>Babri Masjid</strong>, was built on the site in 1528 by Mir Baqi, a general of the Mughal emperor Babur. The dispute over whether the mosque was constructed after demolishing a pre‑existing Hindu temple formed the core of the legal and political conflict that spanned centuries.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Interview line:</strong> "Ayodhya is the birthplace of Lord Rama, one of Hinduism's most revered deities. The city's identity is inseparable from the Ramayana, and the Saryu River that flows beside it is central to its spiritual geography."</p>
+            </div>
+        </div>
+
+        <!-- The Legal & Political Journey Timeline -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📜 The Journey — From Dispute to Temple</h2>
+            <div>
+                <div class="timeline-node"><span class="timeline-year">1528</span><span class="timeline-desc">Babri Masjid built by Mir Baqi under Babur. The site already had deep religious significance for Hindus.</span></div>
+                <div class="timeline-node"><span class="timeline-year">1949</span><span class="timeline-desc">Idols of Lord Rama placed inside the mosque. The site is locked, and the dispute enters the legal arena.</span></div>
+                <div class="timeline-node"><span class="timeline-year">6 Dec 1992</span><span class="timeline-desc"><strong>Babri Masjid demolished</strong> by a large gathering of kar sevaks. The event triggers widespread communal riots across India.</span></div>
+                <div class="timeline-node"><span class="timeline-year">30 Sep 2010</span><span class="timeline-desc">Allahabad High Court divides the 2.77‑acre disputed land into three parts among the Hindu and Muslim parties.</span></div>
+                <div class="timeline-node"><span class="timeline-year">9 Nov 2019</span><span class="timeline-desc"><strong>Supreme Court of India</strong> delivers a unanimous verdict: the entire 2.77 acres awarded to the Hindu side for temple construction; a separate 5‑acre plot allotted to the Sunni Waqf Board for a mosque in Ayodhya.</span></div>
+                <div class="timeline-node"><span class="timeline-year">5 Aug 2020</span><span class="timeline-desc"><strong>Bhoomi Pujan</strong> (foundation‑laying ceremony) performed by PM Narendra Modi. Construction begins under the Shri Ram Janmabhoomi Teerth Kshetra Trust.</span></div>
+                <div class="timeline-node"><span class="timeline-year">22 Jan 2024</span><span class="timeline-desc"><strong>Pran Pratishtha</strong> (consecration) of the new Ram Lalla idol in the sanctum sanctorum. PM Modi presides over the grand ceremony witnessed by millions globally.</span></div>
+            </div>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview nuance:</strong> When discussing Ayodhya, focus on the legal, historical, and architectural facts. The Supreme Court verdict is a landmark in Indian jurisprudence because it relied on both historical evidence and legal principles, resolving a centuries‑old dispute through constitutional means.</p>
+            </div>
+        </div>
+
+        <!-- Temple Architecture -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏗️ The Ram Mandir — Architecture & Construction</h2>
+            <p style="color:var(--text-body);">The Shri Ram Janmabhoomi Temple is built in the <strong>Nagara style</strong> of North Indian temple architecture, designed by the Sompura family, who have been temple architects for generations. Key architectural features include:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.4rem;"><strong>Dimensions:</strong> The temple is 380 feet long, 250 feet wide, and 161 feet high — making it one of the largest temples in India.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Structure:</strong> Three‑storeyed, with each floor designed to represent a different era of Rama's life. It has 392 pillars and 44 doors.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Material:</strong> Built entirely from <strong>pink sandstone</strong> from the Bansi Paharpur mines in Rajasthan. No steel or iron has been used — a deliberate architectural choice to make the structure last for over a thousand years, following ancient temple‑building traditions.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Foundation:</strong> A 14‑metre‑thick layer of roller‑compacted concrete, engineered to withstand earthquakes and the passage of time.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Complex:</strong> The temple complex includes a prayer hall, a kund (sacred pond), a museum, a research centre, and facilities for pilgrims, spread over 70 acres.</li>
+            </ul>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>Architectural significance:</strong> The decision to avoid steel and iron and rely entirely on stone craftsmanship connects the temple to India's ancient building traditions while incorporating modern seismic engineering. This blend of tradition and technology is itself a talking point.</p>
+            </div>
+        </div>
+
+        <!-- Economic & Infrastructural Transformation -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📈 Economic & Infrastructural Transformation</h2>
+            <p style="color:var(--text-body);">The construction of the Ram Mandir has triggered a massive economic and infrastructural transformation of Ayodhya. The government has invested over <strong>₹30,000 crore</strong> in projects including:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.4rem;"><strong>Maharishi Valmiki International Airport:</strong> A newly constructed airport capable of handling large passenger volumes, directly connecting Ayodhya to major Indian cities.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Ayodhya Dham Railway Station:</strong> A world‑class railway station built to handle the massive influx of pilgrims.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Road Network:</strong> Widened highways and new roads, including a ring road, to manage traffic and improve connectivity.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Hotel & Hospitality Boom:</strong> Major hotel chains and hundreds of smaller accommodations are being built. The city expects an estimated <strong>10+ million</strong> pilgrims and tourists annually in the coming years.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Deepotsav:</strong> The annual Diwali celebration now sets Guinness World Records — in 2023, <strong>22.23 lakh diyas</strong> were lit along the Saryu River, making it a global tourism event.</li>
+            </ul>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Why is Ayodhya significant in Hinduism?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Ayodhya is the <strong>birthplace of Lord Rama</strong>, one of the most revered deities in Hinduism. It is one of the Sapta Puri (seven sacred cities) and is central to the Ramayana epic. The Saryu River, which flows beside the city, is deeply intertwined with its spiritual identity.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What was the Supreme Court's verdict on the Ayodhya dispute?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">On <strong>9 November 2019</strong>, a five‑judge Constitution Bench delivered a unanimous verdict: the 2.77‑acre disputed land was awarded to the Hindu side for the construction of a Ram temple, while the Sunni Waqf Board was given a separate 5‑acre plot in Ayodhya to build a mosque. The judgment resolved a centuries‑old dispute through a meticulous examination of historical evidence and legal principles.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Describe the architecture of the Ram Mandir.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The temple is built in the <strong>Nagara style</strong> of North Indian architecture. It measures 380 ft × 250 ft × 161 ft, has three storeys, 392 pillars, and 44 doors. It is constructed entirely from <strong>pink sandstone</strong> sourced from Rajasthan, using <strong>no steel or iron</strong> — a deliberate choice rooted in ancient building traditions, reinforced with modern seismic engineering for longevity.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is the economic impact of the Ram Mandir on Ayodhya?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The temple has triggered a massive economic transformation. Over ₹30,000 crore has been invested in infrastructure — a new international airport, a world‑class railway station, widened roads, and a booming hospitality sector. Tourist and pilgrim arrivals are projected to exceed 10 million annually, creating thousands of jobs and reshaping the city's economy from a quiet pilgrimage town to a major global religious destination.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Ayodhya is the birthplace of Lord Rama and one of the most significant pilgrimage sites in Hinduism, located on the banks of the Saryu River. The Ram Janmabhoomi dispute — spanning centuries — was resolved by a landmark Supreme Court verdict in November 2019, paving the way for the construction of a grand Nagara‑style temple, entirely from pink sandstone and without steel. The Pran Pratishtha (consecration) took place on 22 January 2024. The temple has catalysed a massive infrastructure and economic transformation, with a new airport, railway station, and investments exceeding ₹30,000 crore. Ayodhya today is both a spiritual anchor and an emerging economic hub — a powerful example of how faith, law, and development intersect in modern India."</em></p>
+        </div>
+    </main>
+</body>
+</html>

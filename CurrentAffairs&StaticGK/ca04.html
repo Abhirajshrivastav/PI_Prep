@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA‑RUSSIA · Russia–Ukraine War — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['"Playfair Display"', 'Georgia', 'serif'],
+                        'body': ['Inter', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        'void': '#050b0f',
+                        'panel': '#0a1217',
+                        'border-dim': '#1a2a33',
+                        'ukraine-blue': '#0ea5e9',
+                        'ukraine-gold': '#f59e0b',
+                        'crimson': '#e84533',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+            background-color: #050b0f;
+            background-image: radial-gradient(ellipse at 30% 20%, rgba(14, 165, 233, 0.02) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(245, 158, 11, 0.02) 0%, transparent 50%);
+            color: #e2e8f0;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(10, 18, 23, 0.65);
+            backdrop-filter: blur(14px);
+            border: 1px solid #1a2a33;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .glass-panel:hover {
+            border-color: #2a4a53;
+        }
+        details.recall-toggle {
+            background: rgba(10, 18, 23, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid #1a2a33;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] {
+            border-color: #f59e0b;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.1);
+            background: rgba(15, 25, 30, 0.8);
+        }
+        details.recall-toggle>summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.4rem;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #f59e0b;
+            transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.35s ease-out; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .pulse-dot {
+            width: 8px; height: 8px; border-radius: 50%; background: #0ea5e9; display: inline-block;
+            box-shadow: 0 0 8px #0ea5e9; animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.6); }
+            70% { box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-void/90 backdrop-blur-md border-b border-border-dim px-4 py-3">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <a href="hub.html" class="text-ukraine-blue text-sm font-medium flex items-center gap-2 hover:text-ukraine-gold transition-colors">
+                <span>←</span> RETURN TO SECTOR HUB
+            </a>
+            <div class="flex items-center gap-4 font-mono text-xs text-slate-400">
+                <span>[ID: CA‑RUSSIA]</span>
+                <span class="flex items-center gap-2"><span class="pulse-dot"></span> VERIFIED</span>
+                <span>[SECTOR: INTERNATIONAL RELATIONS]</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-12">
+
+        <!-- Hero Header -->
+        <header class="text-center sm:text-left">
+            <div class="flex items-center gap-3 mb-2 text-ukraine-blue font-mono text-xs tracking-widest">
+                <span>HIGH‑PROBABILITY PI TOPIC</span>
+                <span class="w-8 h-px bg-ukraine-blue/40"></span>
+                <span>GEOPOLITICS · ENERGY · STRATEGIC AUTONOMY</span>
+            </div>
+            <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight">
+                Russia–Ukraine War
+            </h1>
+            <p class="mt-3 text-lg text-slate-400 max-w-2xl">
+                The largest conflict in Europe since World War II — a test of NATO, energy security, and India's commitment to strategic autonomy.
+            </p>
+        </header>
+
+        <!-- Key Facts Dashboard -->
+        <section>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass-panel p-5 text-center border-t-2 border-ukraine-blue">
+                    <span class="block font-mono text-xs text-ukraine-blue mb-1">CRIMEA ANNEXED</span>
+                    <span class="block text-2xl font-bold text-white">2014</span>
+                </div>
+                <div class="glass-panel p-5 text-center border-t-2 border-crimson">
+                    <span class="block font-mono text-xs text-crimson mb-1">FULL INVASION</span>
+                    <span class="block text-2xl font-bold text-white">24 FEB 2022</span>
+                </div>
+                <div class="glass-panel p-5 text-center border-t-2 border-ukraine-gold">
+                    <span class="block font-mono text-xs text-ukraine-gold mb-1">UKRAINE PRESIDENT</span>
+                    <span class="block text-xl font-bold text-white">Volodymyr Zelenskyy</span>
+                </div>
+                <div class="glass-panel p-5 text-center border-t-2 border-ukraine-blue">
+                    <span class="block font-mono text-xs text-ukraine-blue mb-1">INDIA'S STANCE</span>
+                    <span class="block text-xl font-bold text-white">Strategic Autonomy</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline & Root Causes -->
+        <section class="grid md:grid-cols-2 gap-6">
+            <div class="glass-panel p-6 border-l-4 border-crimson">
+                <h2 class="font-display text-2xl font-bold text-white mb-4">📅 The Timeline</h2>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li><strong class="text-crimson">2014:</strong> Russia annexes Crimea after Ukraine's political upheaval. Conflict begins in Donetsk & Luhansk.</li>
+                    <li><strong class="text-crimson">24 Feb 2022:</strong> Full‑scale invasion launched — largest war in Europe since WWII.</li>
+                    <li><strong class="text-crimson">2022‑2026:</strong> Protracted war. Russia claims four regions; fighting continues along a 1,000‑km front.</li>
+                </ul>
+            </div>
+            <div class="glass-panel p-6 border-l-4 border-ukraine-blue">
+                <h2 class="font-display text-2xl font-bold text-white mb-4">🔍 Why Did It Happen?</h2>
+                <p class="text-sm text-slate-300 mb-3"><strong class="text-ukraine-blue">Russia's View:</strong> NATO expansion threatened its security. Potential Ukrainian membership was unacceptable. Protection of Russian‑speakers.</p>
+                <p class="text-sm text-slate-300"><strong class="text-ukraine-gold">Ukraine/Western View:</strong> Every sovereign state has the right to choose its alliances. Russia violated Ukraine's territorial integrity and international law.</p>
+            </div>
+        </section>
+
+        <!-- NATO & Zelenskyy -->
+        <section class="grid md:grid-cols-5 gap-6">
+            <div class="md:col-span-2 glass-panel p-6 border-t-4 border-ukraine-blue">
+                <h3 class="font-display text-xl font-bold text-white mb-3">🛡️ NATO Dimension</h3>
+                <p class="text-sm text-slate-300">NATO is a military alliance led by the US and European allies. The question of whether Ukraine could eventually join NATO became the central geopolitical fault line. Russia views NATO's eastward expansion as an existential threat.</p>
+            </div>
+            <div class="md:col-span-3 glass-panel p-6 border-t-4 border-ukraine-gold">
+                <h3 class="font-display text-xl font-bold text-white mb-3">👤 Volodymyr Zelenskyy</h3>
+                <p class="text-sm text-slate-300">Before politics, he was an actor, comedian, and TV producer who played a president on screen. Elected in 2019, he became a wartime leader after the invasion, gaining international recognition for staying in Kyiv during the early stages of the war. His transformation from entertainer to statesman is a remarkable political story.</p>
+            </div>
+        </section>
+
+        <!-- Regions Claimed by Russia -->
+        <section>
+            <div class="glass-panel p-6">
+                <h2 class="font-display text-2xl font-bold text-white mb-6">🗺️ Regions Claimed by Russia (Annexed 2022)</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-crimson font-mono text-xs uppercase bg-panel">
+                            <tr>
+                                <th class="px-4 py-3">Region</th>
+                                <th class="px-4 py-3">Status</th>
+                                <th class="px-4 py-3 hidden md:table-cell">International Recognition</th>
+                                <th class="px-4 py-3 hidden md:table-cell">Key Significance</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-border-dim">
+                            <tr class="hover:bg-crimson/5 transition-colors"><td class="px-4 py-3 font-medium text-white">Donetsk</td><td class="px-4 py-3 text-slate-400">Annexed 2022</td><td class="px-4 py-3 text-crimson hidden md:table-cell">Not recognized</td><td class="px-4 py-3 text-slate-500 hidden md:table-cell">Industrial heartland; part of Donbas</td></tr>
+                            <tr class="hover:bg-crimson/5 transition-colors"><td class="px-4 py-3 font-medium text-white">Luhansk</td><td class="px-4 py-3 text-slate-400">Annexed 2022</td><td class="px-4 py-3 text-crimson hidden md:table-cell">Not recognized</td><td class="px-4 py-3 text-slate-500 hidden md:table-cell">Eastern industrial region</td></tr>
+                            <tr class="hover:bg-crimson/5 transition-colors"><td class="px-4 py-3 font-medium text-white">Zaporizhzhia</td><td class="px-4 py-3 text-slate-400">Annexed 2022</td><td class="px-4 py-3 text-crimson hidden md:table-cell">Not recognized</td><td class="px-4 py-3 text-slate-500 hidden md:table-cell">Home to Europe's largest nuclear plant</td></tr>
+                            <tr class="hover:bg-crimson/5 transition-colors"><td class="px-4 py-3 font-medium text-white">Kherson</td><td class="px-4 py-3 text-slate-400">Annexed 2022</td><td class="px-4 py-3 text-crimson hidden md:table-cell">Not recognized</td><td class="px-4 py-3 text-slate-500 hidden md:table-cell">Controls access to Crimea's water supply</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-xs text-slate-500">Most countries and the UN do not recognise these annexations. Russia also continues to claim Crimea (annexed 2014).</p>
+            </div>
+        </section>
+
+        <!-- India's Position: Strategic Autonomy -->
+        <section class="grid md:grid-cols-3 gap-6">
+            <div class="md:col-span-1 glass-panel p-6 border-l-4 border-ukraine-gold">
+                <h3 class="font-display text-xl font-bold text-white mb-4">🇮🇳 India's Position</h3>
+                <p class="text-sm text-slate-300">India has not condemned Russia. It calls for peace and dialogue, continues to purchase Russian oil at discounted rates, and abstains on many UN resolutions critical of Russia.</p>
+            </div>
+            <div class="md:col-span-2 glass-panel p-6">
+                <h3 class="font-display text-xl font-bold text-white mb-4">🧭 Why This Stance? — Strategic Autonomy</h3>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div class="bg-panel rounded-lg p-3 border border-border-dim">
+                        <span class="font-mono text-ukraine-gold text-xs">HISTORICAL TIES</span>
+                        <p class="text-slate-300 mt-1">Deep Soviet-era partnership; Russia remains a trusted defence partner.</p>
+                    </div>
+                    <div class="bg-panel rounded-lg p-3 border border-border-dim">
+                        <span class="font-mono text-ukraine-gold text-xs">DEFENCE DEPENDENCY</span>
+                        <p class="text-slate-300 mt-1">~45‑50% of Indian military hardware is Russian‑origin (fighters, subs, missiles).</p>
+                    </div>
+                    <div class="bg-panel rounded-lg p-3 border border-border-dim">
+                        <span class="font-mono text-ukraine-gold text-xs">ENERGY SECURITY</span>
+                        <p class="text-slate-300 mt-1">Discounted Russian crude helps control inflation and supports economic growth.</p>
+                    </div>
+                    <div class="bg-panel rounded-lg p-3 border border-border-dim">
+                        <span class="font-mono text-ukraine-gold text-xs">CORE CONCEPT</span>
+                        <p class="text-slate-300 mt-1"><strong>Strategic Autonomy:</strong> India makes decisions based on national interests, not bloc alignment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Effects & Current Situation -->
+        <section class="grid md:grid-cols-2 gap-6">
+            <div class="glass-panel p-6 border-t-4 border-crimson">
+                <h3 class="font-display text-xl font-bold text-white mb-4">🌍 Global Ripple Effects</h3>
+                <ul class="space-y-2 text-sm text-slate-300 list-disc list-inside">
+                    <li><strong>Energy:</strong> Oil & gas markets disrupted; Europe reduced Russian gas imports by 80%.</li>
+                    <li><strong>Food Security:</strong> Russia & Ukraine account for ~28% of global wheat exports; grain prices surged.</li>
+                    <li><strong>Defence Spending:</strong> Many European countries increased military expenditure after 2022.</li>
+                </ul>
+            </div>
+            <div class="glass-panel p-6 border-t-4 border-ukraine-blue">
+                <h3 class="font-display text-xl font-bold text-white mb-4">⏳ Current Situation (2026)</h3>
+                <p class="text-sm text-slate-300">The war is ongoing. Front lines have shifted gradually; neither side has achieved a decisive victory. Territorial disputes remain unresolved. Diplomatic initiatives and ceasefire discussions have occurred, but the status changes frequently — <strong>always verify 2‑3 days before your interview.</strong></p>
+            </div>
+        </section>
+
+        <!-- Active Recall Engine -->
+        <section>
+            <h2 class="font-display text-3xl font-bold text-white mb-6 flex items-center gap-3">
+                <span>❓</span> Active Recall Practice
+            </h2>
+            <div class="space-y-4">
+                <details class="recall-toggle">
+                    <summary><span>Q1: What triggered the full‑scale Russian invasion in 2022?</span><span class="icon">+</span></summary>
+                    <div class="details-content text-slate-300">
+                        <p>On <strong>24 February 2022</strong>, Russia invaded Ukraine, citing NATO expansion as a security threat and claiming to protect Russian‑speaking populations. Ukraine and the West see it as an unprovoked violation of sovereignty and international law.</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary><span>Q2: Who is Volodymyr Zelenskyy, and why is his background notable?</span><span class="icon">+</span></summary>
+                    <div class="details-content text-slate-300">
+                        <p>Zelenskyy is the <strong>President of Ukraine</strong>, elected in 2019. Before politics, he was an actor and comedian who played a president on television. His wartime leadership and communication skills have made him an internationally recognised figure.</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary><span>Q3: What is India's stance on the Russia–Ukraine war?</span><span class="icon">+</span></summary>
+                    <div class="details-content text-slate-300">
+                        <p>India maintains a policy of <strong>strategic autonomy</strong>. It calls for dialogue and respect for sovereignty, but has not openly condemned Russia. It balances historical defence ties, energy imports, and its broader strategic interests, abstaining on many UN resolutions critical of Russia.</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary><span>Q4: What does 'strategic autonomy' mean in India's foreign policy?</span><span class="icon">+</span></summary>
+                    <div class="details-content text-slate-300">
+                        <p>It means India makes foreign‑policy decisions based on its own <strong>national interests</strong>, rather than automatically aligning with any major power bloc. It's not neutrality — it's interest‑driven multi‑alignment.</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary><span>Q5: What are the biggest global consequences of the war?</span><span class="icon">+</span></summary>
+                    <div class="details-content text-slate-300">
+                        <p>Energy market volatility, food insecurity (especially grain exports), accelerated NATO expansion, higher defence spending in Europe, and a renewed focus on supply‑chain resilience and energy diversification worldwide.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- 30-Second Interview Summary Engine -->
+        <footer class="mt-12">
+            <div class="relative overflow-hidden rounded-2xl border-2 border-ukraine-blue/40 bg-gradient-to-br from-panel to-void p-8 shadow-2xl">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-ukraine-blue/10 rounded-full blur-3xl"></div>
+                <div class="relative flex items-start gap-4">
+                    <span class="text-3xl">⚡</span>
+                    <div>
+                        <h3 class="font-display text-2xl font-bold text-white mb-4">30-Second Interview Summary Engine</h3>
+                        <div class="bg-black/30 rounded-xl p-5 border border-border-dim">
+                            <p class="text-slate-200 leading-relaxed italic">
+                                "Russia invaded Ukraine in February 2022. One major underlying issue was Russia's opposition to possible Ukrainian membership in NATO, although the causes are broader and debated. Ukraine is led by President Volodymyr Zelenskyy, a former actor and comedian who became a wartime leader. Russia claims Donetsk, Luhansk, Zaporizhzhia, and Kherson, but these annexations are not widely recognized internationally. India has maintained a policy of strategic autonomy, calling for dialogue while continuing important defence and energy ties with Russia. The war has reshaped global energy markets, food security, and alliance politics, making it a defining geopolitical event of our time."
+                            </p>
+                        </div>
+                        <p class="mt-4 text-xs text-slate-500 text-center sm:text-left">
+                            🎯 Deliver in <strong>25–30 seconds</strong> with composure. It demonstrates command of causes, actors, territorial facts, and India's nuanced policy — exactly the depth a top B‑school panel values.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

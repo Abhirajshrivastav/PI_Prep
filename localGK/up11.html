@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>UP-11 · Purvanchal Expressway — 340 km Corridor — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --rose: #f43f5e;
+            --info: #3b82f6;
+            --violet: #8b5cf6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--accent); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--accent); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: rgba(245,158,11,0.06);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .canvas-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+        canvas { max-width: 100%; height: auto; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">[ID: UP-11] · [STATUS: VERIFIED] · [BLOCK 2: UTTAR PRADESH]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · UTTAR PRADESH — YOUR STATE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Purvanchal Expressway — 340 km Corridor</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The highway that is reshaping eastern Uttar Pradesh — from Lucknow to Ghazipur, this corridor slashes travel time, boosts logistics, and signals a new era for Purvanchal.</p>
+        </div>
+
+        <!-- Schematic Canvas Map -->
+        <div class="canvas-container">
+            <canvas id="expresswayMap" width="600" height="160"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">Lucknow → Barabanki → Sultanpur → Azamgarh → Mau → Ghazipur</p>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">LENGTH</span><div class="value">340.8 km</div></div>
+                <div class="fact-box"><span class="label">LANES</span><div class="value">6 (expandable to 8)</div></div>
+                <div class="fact-box"><span class="label">ROUTE</span><div class="value">Chand Saray (Lucknow) → Haidaria (Ghazipur)</div></div>
+                <div class="fact-box"><span class="label">DISTRICTS COVERED</span><div class="value">6 (Lucknow, Barabanki, Sultanpur, Azamgarh, Mau, Ghazipur)</div></div>
+                <div class="fact-box"><span class="label">PROJECT COST</span><div class="value">~₹22,500 Crore</div></div>
+                <div class="fact-box"><span class="label">INAUGURATED</span><div class="value">November 2021 (PM Narendra Modi)</div></div>
+                <div class="fact-box"><span class="label">TRAVEL TIME (LKO–GZP)</span><div class="value">~3.5 – 4 hours (from 6‑7 hours)</div></div>
+                <div class="fact-box"><span class="label">SPECIAL FEATURE</span><div class="value">3.5 km emergency airstrip for IAF</div></div>
+            </div>
+        </div>
+
+        <!-- Route & Significance -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🗺️ Route & Strategic Significance</h2>
+            <p style="color:var(--text-body);">The Purvanchal Expressway begins at <strong>Chand Saray village</strong> on the Lucknow–Sultanpur road and terminates at <strong>Haidaria village</strong> in Ghazipur district, near the UP–Bihar border. It is a fully access‑controlled, 6‑lane expressway, designed to handle speeds up to 120 km/h.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">It connects directly to the <strong>Lucknow–Agra Expressway</strong> and, through it, to the <strong>Yamuna Expressway</strong> and the <strong>Delhi–NCR region</strong>. This integration places Ghazipur and the entire Purvanchal region within a single high‑speed corridor reaching all the way to Delhi, bypassing the congested older highways like NH‑731.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>What this means for Ghazipur:</strong> "My hometown is the eastern terminus of one of India's most significant expressway projects. What was once a 6‑to‑7‑hour drive to Lucknow is now under 4 hours. The expressway physically integrates Purvanchal into the wider economic geography of Uttar Pradesh."</p>
+            </div>
+        </div>
+
+        <!-- Economic, Strategic, and Social Impact -->
+        <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-bottom:1.5rem;">
+            <div class="glass-panel">
+                <h3 style="color:var(--accent);font-size:1.2rem;margin-bottom:0.5rem;">📈 Economic Development</h3>
+                <p style="color:var(--text-body);">The expressway dramatically improves logistics for agricultural produce from Purvanchal — rice, bananas, mangoes, and vegetables — allowing faster access to markets in Lucknow and Delhi. It lowers transport costs, reduces spoilage, and makes the region more attractive for food processing and manufacturing investment. The UP government has proposed industrial corridors along the expressway to catalyse local employment.</p>
+            </div>
+            <div class="glass-panel" style="border-left: 4px solid var(--rose);">
+                <h3 style="color:var(--rose);font-size:1.2rem;margin-bottom:0.5rem;">🛩️ Defence Utility</h3>
+                <p style="color:var(--text-body);">A <strong>3.5‑kilometre stretch</strong> of the expressway has been constructed as an <strong>emergency airstrip</strong> capable of handling Indian Air Force fighter jets, including the Sukhoi‑30 and Mirage‑2000. This is part of India's strategy to create a distributed network of highway airstrips that can be activated during conflict or disaster. It adds a significant dimension of national security to a civilian infrastructure project.</p>
+            </div>
+            <div class="glass-panel">
+                <h3 style="color:var(--accent);font-size:1.2rem;margin-bottom:0.5rem;">🤝 Social Integration</h3>
+                <p style="color:var(--text-body);">By cutting travel time, the expressway also connects families, students, and workers. A student from Ghazipur studying at Lucknow University can now make the trip home far more easily. A migrant worker returning from Delhi can reach Ghazipur in a single day rather than an exhausting multi‑day journey. These social dimensions are often overlooked but deeply felt.</p>
+            </div>
+        </div>
+
+        <!-- Addressing Regional Imbalance -->
+        <div class="glass-panel" style="border-left: 4px solid var(--violet);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚖️ Addressing the Regional Imbalance</h2>
+            <p style="color:var(--text-body);">Western Uttar Pradesh — with its proximity to Delhi, the Green Revolution, and earlier industrialisation — has historically been more prosperous than eastern UP. The Purvanchal Expressway is a deliberate policy intervention to bridge this gap. By creating a high‑quality transport backbone, the state hopes to attract investment, encourage local entrepreneurship, and, over time, reduce the distress migration that defines Purvanchal's economy.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">It aligns with the central government's <strong>PM Gati Shakti National Master Plan</strong>, which seeks to integrate road, rail, air, and waterway infrastructure for seamless logistics. The expressway is not just a road — it is a statement that eastern UP will not be left behind.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is the Purvanchal Expressway, and what is its route?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">It is a 340‑kilometre, 6‑lane access‑controlled expressway connecting <strong>Chand Saray village (Lucknow)</strong> to <strong>Haidaria village (Ghazipur)</strong>, passing through Barabanki, Sultanpur, Azamgarh, and Mau. It was inaugurated in November 2021 and has significantly reduced travel time between Lucknow and Ghazipur from 6‑7 hours to under 4 hours.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: How does the Purvanchal Expressway benefit Ghazipur specifically?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Ghazipur is the eastern terminus of the expressway. This means the district is now directly connected to Lucknow and, through it, to Delhi‑NCR via a high‑speed corridor. It improves market access for local agricultural produce — rice, bananas, and vegetables — reduces travel time for residents, and opens the possibility of industrial and logistics investment in the area. For a district that has historically been at the periphery of UP's economic development, this is a significant infrastructure intervention.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is the strategic or military significance of the expressway?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">A 3.5‑kilometre stretch has been designed as an <strong>emergency airstrip</strong> capable of handling IAF fighter aircraft. This is part of India's broader strategy of dispersing air assets and creating alternative landing facilities across the country. In peacetime, it is a road; during emergencies, it transforms into a military runway.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: How does the expressway address the regional imbalance between western and eastern UP?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Western UP benefited from early industrialisation, the Green Revolution, and proximity to Delhi. Purvanchal lagged behind. The expressway is a policy tool to close this gap — it creates a high‑quality transport backbone that lowers logistics costs, attracts investment, and connects the region to larger markets. It aligns with the PM Gati Shakti framework, which views infrastructure as the foundation for inclusive economic growth.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The Purvanchal Expressway is a 340‑kilometre, 6‑lane access‑controlled highway connecting Lucknow to Ghazipur, my hometown. It passes through six districts and has reduced travel time across eastern UP from over six hours to under four. Beyond connectivity, it carries strategic significance — a stretch doubles as an emergency airstrip for the Indian Air Force. Economically, it aims to bridge the historical development gap between western and eastern Uttar Pradesh by improving logistics, attracting investment, and integrating Purvanchal into national supply chains. It is, quite literally, a road to opportunity for millions of people in the region."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('expresswayMap');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Background line (old road)
+            ctx.strokeStyle = '#4a5a52';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            ctx.moveTo(30, h/2+15);
+            ctx.lineTo(w-30, h/2+15);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Expressway line (green)
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(30, h/2-15);
+            ctx.lineTo(w-30, h/2-15);
+            ctx.stroke();
+
+            // Cities
+            const cities = [
+                { name: 'LUCKNOW', x: 50, y: h/2-30, dist: 'Start' },
+                { name: 'BARABANKI', x: 130, y: h/2-30 },
+                { name: 'SULTANPUR', x: 220, y: h/2-30 },
+                { name: 'AZAMGARH', x: 330, y: h/2-30 },
+                { name: 'MAU', x: 420, y: h/2-30 },
+                { name: 'GHAZIPUR', x: 540, y: h/2-30, dist: 'End (Haidaria)' }
+            ];
+
+            cities.forEach(city => {
+                // Dot
+                ctx.fillStyle = '#f59e0b';
+                ctx.beginPath();
+                ctx.arc(city.x, city.y, 6, 0, 2*Math.PI);
+                ctx.fill();
+                // Label
+                ctx.fillStyle = '#f0f5f3';
+                ctx.font = 'bold 10px "JetBrains Mono", monospace';
+                ctx.fillText(city.name, city.x-10, city.y-14);
+                if (city.dist) {
+                    ctx.fillStyle = '#6b7d74';
+                    ctx.font = '8px "JetBrains Mono", monospace';
+                    ctx.fillText(city.dist, city.x-10, city.y-26);
+                }
+            });
+
+            // Direction arrow
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath();
+            ctx.moveTo(w-30, h/2-15);
+            ctx.lineTo(w-50, h/2-25);
+            ctx.lineTo(w-50, h/2-5);
+            ctx.fill();
+            ctx.font = '9px "JetBrains Mono", monospace';
+            ctx.fillText('Bihar', w-45, h/2-40);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Chief Ministers of Major Indian States — 2026 Update | IPMAT PI Prep</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['"Playfair Display"', 'Georgia', 'serif'],
+                        'body': ['Inter', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        'navy': {
+                            50: '#eef2f8',
+                            100: '#d4ddec',
+                            200: '#aec1db',
+                            300: '#7d9bc3',
+                            400: '#5377a8',
+                            500: '#385d8e',
+                            600: '#264773',
+                            700: '#1a3661',
+                            800: '#132b50',
+                            900: '#0e2040',
+                        },
+                        'crimson': {
+                            50: '#fdf2f4',
+                            100: '#fadde1',
+                            200: '#f5bcc6',
+                            300: '#ed8a9a',
+                            400: '#e15169',
+                            500: '#cc2e48',
+                            600: '#b22039',
+                            700: '#941a30',
+                            800: '#7a182b',
+                            900: '#641729',
+                        },
+                        'slate': {
+                            50: '#f6f7f9',
+                            100: '#ebeef3',
+                            200: '#d5dae2',
+                            300: '#b1b9c8',
+                            400: '#8792a6',
+                            500: '#677489',
+                            600: '#515d6f',
+                            700: '#414b5a',
+                            800: '#37404b',
+                            900: '#2f3640',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --card-shadow: 0 3px 14px rgba(14, 32, 64, 0.05), 0 1px 4px rgba(14, 32, 64, 0.04);
+            --card-shadow-hover: 0 8px 26px rgba(14, 32, 64, 0.08), 0 2px 8px rgba(14, 32, 64, 0.05);
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: 'Inter', 'Arial', sans-serif;
+            background-color: #fafbfc;
+            background-image:
+                radial-gradient(ellipse at 30% 10%, rgba(26, 54, 97, 0.02) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(204, 46, 72, 0.03) 0%, transparent 50%);
+            color: #1e293b;
+            line-height: 1.65;
+            letter-spacing: 0.01em;
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.3, 1);
+            box-shadow: var(--card-shadow);
+            background: #ffffff;
+            border: 1px solid #d5dae2;
+        }
+        .card-hover:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-2px);
+            border-color: #b1b9c8;
+        }
+
+        /* Details toggle for recall */
+        details.recall-toggle {
+            border: 1px solid #d5dae2;
+            border-radius: 14px;
+            background: #ffffff;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+        }
+        details.recall-toggle[open] {
+            border-color: #cc2e48;
+            box-shadow: 0 8px 28px rgba(204, 46, 72, 0.1), 0 2px 6px rgba(0,0,0,0.03);
+            background: #fdfbfc;
+        }
+        details.recall-toggle>summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 22px;
+            font-weight: 600;
+            font-size: 1.02rem;
+            color: #1a3661;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary:hover { background: #eef2f8; }
+        details.recall-toggle>summary .toggle-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #d4ddec;
+            color: #264773;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+        details.recall-toggle[open]>summary .toggle-icon {
+            background: #cc2e48;
+            color: white;
+            transform: rotate(45deg);
+        }
+        details.recall-toggle .details-content {
+            padding: 0 22px 20px 22px;
+            animation: fadeSlide 0.35s ease-out;
+        }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .insight-callout {
+            border-left: 4px solid #b22039;
+            background: linear-gradient(135deg, #fdf2f4 0%, #f8eef0 100%);
+        }
+        .directive-callout {
+            border-left: 4px solid #1a3661;
+            background: linear-gradient(135deg, #eef2f8 0%, #f5f7fa 100%);
+        }
+
+        .new-badge {
+            background: #cc2e48;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 2px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            background: #cc2e48;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 6px;
+            top: 22px;
+            bottom: 0;
+            width: 2px;
+            background: #d5dae2;
+            z-index: 1;
+        }
+
+        @media (max-width: 640px) {
+            details.recall-toggle>summary { padding: 14px 16px; font-size: 0.95rem; }
+            details.recall-toggle .details-content { padding: 0 16px 16px 16px; }
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+
+    <!-- Header -->
+    <header class="relative overflow-hidden bg-gradient-to-br from-navy-900 via-navy-800 to-slate-800 text-white">
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 200%22><path d=%22M0 130 Q200 80 400 130 Q600 180 800 130 Q1000 80 1200 130 L1200 200 L0 200 Z%22 fill=%22%23f5bcc6%22 opacity=%220.2%22/><path d=%22M0 160 Q250 120 500 160 Q750 200 1000 160 L1200 160 L1200 200 L0 200 Z%22 fill=%22%23f5bcc6%22 opacity=%220.1%22/></svg>'); background-size: cover; background-position: center bottom;"></div>
+        <div class="relative max-w-5xl mx-auto px-5 sm:px-8 py-12 sm:py-14">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                <div>
+                    <p class="text-crimson-200 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-2 opacity-80">IPMAT PI · Political GK 2026</p>
+                    <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+                        Current Chief Ministers
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-2xl font-display italic text-slate-200 mt-1 font-medium">
+                        Major Indian States — 2026 Update
+                    </p>
+                </div>
+                <div class="flex-shrink-0 flex items-center gap-2 self-start sm:self-end bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-crimson-400"></span>
+                    <span class="text-slate-200 text-xs tracking-wider font-medium uppercase">High-Yield Recall</span>
+                </div>
+            </div>
+            <p class="mt-5 text-slate-200 text-sm sm:text-base max-w-2xl leading-relaxed opacity-90">
+                Essential political awareness for your personal interview. Master the <strong class="text-crimson-300">2026 transitions</strong>, the top 10 CMs, and the analytical context that shows you understand India's federal governance.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-5 sm:px-8 py-10 sm:py-14 space-y-14">
+
+        <!-- Full CM Table -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-navy-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-navy-800">
+                    Complete CM Directory — 2026
+                </h2>
+            </div>
+            <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-navy-50 text-navy-700 uppercase tracking-wider text-xs">
+                            <tr>
+                                <th class="px-5 py-4 text-left font-semibold">State</th>
+                                <th class="px-5 py-4 text-left font-semibold">Chief Minister</th>
+                                <th class="px-5 py-4 text-left font-semibold hidden sm:table-cell">2026 Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Uttar Pradesh</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">Yogi Adityanath</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Maharashtra</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">Devendra Fadnavis</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Delhi</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">Rekha Gupta</td>
+                                <td class="px-5 py-4 hidden sm:table-cell"><span class="text-crimson-600 font-medium">Recent change</span></td>
+                            </tr>
+                            <tr class="hover:bg-crimson-50/30 transition-colors border-l-4 border-crimson-500">
+                                <td class="px-5 py-4 font-medium">Tamil Nadu</td>
+                                <td class="px-5 py-4 font-semibold text-crimson-700">C. Joseph Vijay <span class="new-badge ml-2">New in 2026</span></td>
+                                <td class="px-5 py-4 text-crimson-600 font-medium hidden sm:table-cell">🔴 After 2026 elections</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Kerala</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">Pinarayi Vijayan</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                            <tr class="hover:bg-crimson-50/30 transition-colors border-l-4 border-crimson-500">
+                                <td class="px-5 py-4 font-medium">West Bengal</td>
+                                <td class="px-5 py-4 font-semibold text-crimson-700">Suvendu Adhikari <span class="new-badge ml-2">New in 2026</span></td>
+                                <td class="px-5 py-4 text-crimson-600 font-medium hidden sm:table-cell">🔴 After 2026 elections</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Karnataka</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">Siddaramaiah</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Bihar</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">Nitish Kumar</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Rajasthan</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">Bhajan Lal Sharma</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Madhya Pradesh</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">Mohan Yadav</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Gujarat</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">Bhupendra Patel</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Telangana</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">A. Revanth Reddy</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Andhra Pradesh</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">N. Chandrababu Naidu</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Punjab</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">Bhagwant Mann</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Odisha</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">Mohan Charan Majhi</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50 transition-colors">
+                                <td class="px-5 py-4 font-medium">Assam</td>
+                                <td class="px-5 py-4 font-semibold text-navy-800">Himanta Biswa Sarma</td>
+                                <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Continuing</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-3 italic">🔴 Rows highlighted in crimson indicate newly elected Chief Ministers following 2026 assembly elections.</p>
+        </section>
+
+        <!-- 2026 Political Transitions -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-crimson-100 flex items-center justify-center flex-shrink-0">
+                    <span class="text-crimson-600 font-bold text-lg">⚡</span>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-navy-800">
+                    Critical 2026 Political Transitions
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <!-- Tamil Nadu -->
+                <div class="card-hover rounded-2xl p-6 border-t-4 border-crimson-500 bg-white">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-display text-xl font-bold text-crimson-700">Tamil Nadu</h3>
+                        <span class="new-badge">New CM</span>
+                    </div>
+                    <p class="text-sm text-slate-600"><strong>C. Joseph Vijay</strong> succeeded M.K. Stalin after the 2026 assembly election.</p>
+                    <p class="text-xs text-slate-500 mt-2">Actor-turned-politician, founder of Tamilaga Vettri Kazhagam — a significant realignment in state politics.</p>
+                </div>
+                <!-- West Bengal -->
+                <div class="card-hover rounded-2xl p-6 border-t-4 border-crimson-500 bg-white">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-display text-xl font-bold text-crimson-700">West Bengal</h3>
+                        <span class="new-badge">New CM</span>
+                    </div>
+                    <p class="text-sm text-slate-600"><strong>Suvendu Adhikari</strong> succeeded Mamata Banerjee after the 2026 election.</p>
+                    <p class="text-xs text-slate-500 mt-2">Former Leader of Opposition, now Chief Minister — marks a political shift in the state.</p>
+                </div>
+            </div>
+            <div class="directive-callout p-5 rounded-lg mt-5 text-sm leading-relaxed">
+                <p class="font-semibold text-navy-800 mb-1">🎯 Interview Directive</p>
+                <p class="text-slate-600">Naming these new CMs accurately signals sharp awareness of recent political developments. If asked about state politics, volunteering these transitions sets you apart from candidates still quoting outdated information.</p>
+            </div>
+        </section>
+
+        <!-- Delhi Political Sequence -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center flex-shrink-0">
+                    <span class="text-navy-700 font-bold text-lg">🏛️</span>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-navy-800">
+                    Delhi Leadership Timeline
+                </h2>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <p class="text-sm text-slate-500 mb-4">The recent sequence of Chief Ministers in Delhi is a compact interview nugget demonstrating political awareness.</p>
+                <div class="relative pl-8">
+                    <div class="timeline-line absolute left-[12px] top-0 h-full"></div>
+                    <div class="flex items-start gap-4 mb-5 relative">
+                        <div class="timeline-dot absolute left-0 top-1"></div>
+                        <div>
+                            <p class="font-semibold text-navy-800">Arvind Kejriwal</p>
+                            <p class="text-xs text-slate-500">Resigned in 2024</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 mb-5 relative">
+                        <div class="timeline-dot absolute left-0 top-1"></div>
+                        <div>
+                            <p class="font-semibold text-navy-800">Atishi</p>
+                            <p class="text-xs text-slate-500">Interim CM (2024–2025)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 relative">
+                        <div class="timeline-dot absolute left-0 top-1"></div>
+                        <div>
+                            <p class="font-semibold text-crimson-700">Rekha Gupta</p>
+                            <p class="text-xs text-slate-500">Current CM (since 2025)</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sm text-navy-700 font-medium mt-4 bg-navy-50 p-3 rounded-lg">🔹 <strong>Sequence to remember:</strong> Arvind Kejriwal → Atishi → Rekha Gupta</p>
+            </div>
+        </section>
+
+        <!-- Top 10 Priority CMs -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-navy-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-navy-800">
+                    Top 10 Must-Know CMs
+                </h2>
+            </div>
+            <p class="text-sm text-slate-500 mb-5">If you're short on time, lock in these ten — they cover India's largest and most politically significant states.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div class="card-hover p-4 rounded-xl flex items-center gap-3"><span class="text-navy-600 font-bold text-lg">1.</span><span><strong>UP</strong> – Yogi Adityanath</span></div>
+                <div class="card-hover p-4 rounded-xl flex items-center gap-3"><span class="text-navy-600 font-bold text-lg">2.</span><span><strong>Maharashtra</strong> – Devendra Fadnavis</span></div>
+                <div class="card-hover p-4 rounded-xl flex items-center gap-3"><span class="text-navy-600 font-bold text-lg">3.</span><span><strong>Delhi</strong> – Rekha Gupta</span></div>
+                <div class="card-hover p-4 rounded-xl flex items-center gap-3"><span class="text-navy-600 font-bold text-lg">4.</span><span><strong>Bihar</strong> – Nitish Kumar</span></div>
+                <div class="card-hover p-4 rounded-xl flex items-center gap-3"><span class="text-navy-600 font-bold text-lg">5.</span><span><strong>Karnataka</strong> – Siddaramaiah</span></div>
+                <div class="card-hover p-4 rounded-xl flex items-center gap-3"><span class="text-navy-600 font-bold text-lg">6.</span><span><strong>Kerala</strong> – Pinarayi Vijayan</span></div>
+                <div class="card-hover p-4 rounded-xl flex items-center gap-3"><span class="text-navy-600 font-bold text-lg">7.</span><span><strong>Gujarat</strong> – Bhupendra Patel</span></div>
+                <div class="card-hover p-4 rounded-xl flex items-center gap-3"><span class="text-navy-600 font-bold text-lg">8.</span><span><strong>MP</strong> – Mohan Yadav</span></div>
+                <div class="card-hover p-4 rounded-xl flex items-center gap-3"><span class="text-navy-600 font-bold text-lg">9.</span><span><strong>Assam</strong> – Himanta Biswa Sarma</span></div>
+                <div class="card-hover p-4 rounded-xl flex items-center gap-3"><span class="text-navy-600 font-bold text-lg">10.</span><span><strong>Andhra Pradesh</strong> – N. Chandrababu Naidu</span></div>
+            </div>
+        </section>
+
+        <!-- Analytical Context -->
+        <section>
+            <div class="insight-callout p-6 rounded-xl text-sm leading-relaxed">
+                <p class="font-semibold text-crimson-800 mb-2 text-base">📊 Why State Leadership Matters for a Management Student</p>
+                <p class="text-slate-700 mb-3">Under India's federal structure (Article 164), Chief Ministers wield immense influence over <strong>land, labor, infrastructure, and local taxation</strong> — factors that directly impact ease of doing business, investment climate, and regional economic growth. Many of India's most celebrated policy innovations (e.g., Gujarat's industrial corridors, Tamil Nadu's electronics manufacturing, Delhi's education model) originated at the state level.</p>
+                <p class="text-slate-700">Moreover, tracking political transitions helps anticipate <strong>regulatory shifts, sectoral opportunities, and supply chain relocations</strong> — a critical skill for future business leaders operating in India's diverse market.</p>
+            </div>
+            <div class="directive-callout p-5 rounded-lg mt-5 text-sm">
+                <p class="font-semibold text-navy-800 mb-1">💡 Strong Analytical Observation</p>
+                <p class="text-slate-600">"Indian state politics is increasingly important because many major policy experiments and governance models now emerge at the state level before influencing national politics." This demonstrates you understand federal dynamics beyond mere name recall.</p>
+            </div>
+        </section>
+
+        <!-- Active Recall Engine -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-crimson-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-crimson-700" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-navy-800">
+                    Active Recall Practice
+                </h2>
+            </div>
+            <p class="text-sm text-slate-500 mb-5">Click each question to reveal the model answer. <strong>Speak your response aloud</strong> before expanding.</p>
+
+            <div class="space-y-4">
+                <details class="recall-toggle">
+                    <summary>
+                        <span>Q1: Who are the two newly elected Chief Ministers in 2026, and which states do they represent?</span>
+                        <span class="toggle-icon">+</span>
+                    </summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "In the 2026 assembly elections, <strong>C. Joseph Vijay</strong> became the Chief Minister of Tamil Nadu, succeeding M.K. Stalin, and <strong>Suvendu Adhikari</strong> became the Chief Minister of West Bengal, succeeding Mamata Banerjee. These are the major leadership changes this year."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary>
+                        <span>Q2: What is the recent Delhi leadership sequence?</span>
+                        <span class="toggle-icon">+</span>
+                    </summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "The recent sequence is <strong>Arvind Kejriwal → Atishi → Rekha Gupta</strong>. Rekha Gupta is the current Chief Minister of Delhi."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary>
+                        <span>Q3: Name the Chief Minister of Uttar Pradesh and one fact about their tenure.</span>
+                        <span class="toggle-icon">+</span>
+                    </summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "The Chief Minister of Uttar Pradesh is <strong>Yogi Adityanath</strong>. He is currently serving his second consecutive term and is known for emphasizing law and order and infrastructure development in the state."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary>
+                        <span>Q4: Why is it important for a management aspirant to follow state-level political leadership?</span>
+                        <span class="toggle-icon">+</span>
+                    </summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "Because state governments control crucial subjects like land, labor, infrastructure, and local taxation, directly impacting the business environment. Major policy innovations often emerge at the state level before scaling nationally, so understanding who governs key states helps anticipate regulatory and economic trends."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary>
+                        <span>Q5: Which top 5 states should you definitely know the CMs for?</span>
+                        <span class="toggle-icon">+</span>
+                    </summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "At a minimum, know <strong>Uttar Pradesh (Yogi Adityanath), Maharashtra (Devendra Fadnavis), Delhi (Rekha Gupta), Bihar (Nitish Kumar), and Karnataka (Siddaramaiah)</strong> — these are among the most politically and economically significant."</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 30-Second Interview Summary Engine -->
+    <footer class="max-w-5xl mx-auto px-5 sm:px-8 pb-14 pt-4">
+        <div class="relative overflow-hidden rounded-2xl border-2 border-crimson-200 bg-gradient-to-br from-white via-crimson-50/30 to-white p-6 sm:p-8 shadow-xl">
+            <div class="absolute top-0 right-0 w-40 h-40 bg-crimson-100 rounded-full blur-3xl opacity-25 -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-32 h-32 bg-navy-100 rounded-full blur-2xl opacity-20 translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+            <div class="relative">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-2xl">⚡</span>
+                    <h3 class="font-display text-xl sm:text-2xl font-bold text-navy-800">
+                        30-Second Interview Summary Engine
+                    </h3>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm rounded-xl p-5 sm:p-6 border border-crimson-100 shadow-inner">
+                    <p class="text-slate-800 leading-relaxed text-sm sm:text-base">
+                        <em>"India's political landscape in 2026 features two notable transitions: <strong>C. Joseph Vijay</strong> in Tamil Nadu and <strong>Suvendu Adhikari</strong> in West Bengal, both assuming office after assembly elections. Meanwhile, <strong>Rekha Gupta</strong> leads Delhi, completing the sequence Kejriwal–Atishi–Gupta. Among the largest states, <strong>Yogi Adityanath (UP), Devendra Fadnavis (Maharashtra), Nitish Kumar (Bihar), and Siddaramaiah (Karnataka)</strong> continue to shape regional policy. These leaders matter because India's federal structure empowers states to drive <strong>economic reforms, infrastructure, and social programs</strong> — making state-level political awareness essential for understanding the country's business climate and developmental trajectory."</em>
+                    </p>
+                </div>
+                <p class="mt-4 text-xs text-slate-500 italic text-center sm:text-left">
+                    🎯 Deliver in <strong>25–30 seconds</strong>. This answer shows you've updated your GK, recognize transitions, and grasp why CMs matter beyond the headline.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

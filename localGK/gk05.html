@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union Cabinet Ministers — High-Yield PI Knowledge | IPMAT PI Prep</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['"Playfair Display"', 'Georgia', 'serif'],
+                        'body': ['Inter', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        'ink': {
+                            50: '#f0f1f7',
+                            100: '#d9ddf0',
+                            200: '#bcc3e3',
+                            300: '#929dd1',
+                            400: '#6b78bc',
+                            500: '#4e5ba6',
+                            600: '#3d488a',
+                            700: '#323b70',
+                            800: '#2b325a',
+                            900: '#1f2444',
+                        },
+                        'gold': {
+                            50: '#fef9e7',
+                            100: '#fcf0c6',
+                            200: '#f9e090',
+                            300: '#f5cb50',
+                            400: '#f0b724',
+                            500: '#dca00f',
+                            600: '#b8800a',
+                            700: '#93600b',
+                            800: '#7a4c10',
+                            900: '#683f14',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --card-shadow: 0 3px 12px rgba(31, 36, 68, 0.05), 0 1px 4px rgba(31, 36, 68, 0.04);
+            --card-shadow-hover: 0 8px 24px rgba(31, 36, 68, 0.08), 0 2px 6px rgba(31, 36, 68, 0.05);
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: 'Inter', 'Arial', sans-serif;
+            background-color: #fafbfd;
+            background-image:
+                radial-gradient(ellipse at 20% 30%, rgba(50, 59, 112, 0.02) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 70%, rgba(240, 183, 36, 0.04) 0%, transparent 55%);
+            color: #1e293b;
+            line-height: 1.65;
+            letter-spacing: 0.01em;
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.3, 1);
+            box-shadow: var(--card-shadow);
+            background: #ffffff;
+            border: 1px solid #d9ddf0;
+        }
+        .card-hover:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-2px);
+            border-color: #bcc3e3;
+        }
+
+        /* Details toggle for active recall */
+        details.recall-toggle {
+            border: 1px solid #d9ddf0;
+            border-radius: 14px;
+            background: #ffffff;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+        }
+        details.recall-toggle[open] {
+            border-color: #f0b724;
+            box-shadow: 0 8px 28px rgba(240, 183, 36, 0.12), 0 2px 6px rgba(0,0,0,0.03);
+            background: #fffefa;
+        }
+        details.recall-toggle>summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 22px;
+            font-weight: 600;
+            font-size: 1.02rem;
+            color: #323b70;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary:hover { background: #f0f1f7; }
+        details.recall-toggle>summary .toggle-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #d9ddf0;
+            color: #323b70;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+        details.recall-toggle[open]>summary .toggle-icon {
+            background: #f0b724;
+            color: #1f2444;
+            transform: rotate(45deg);
+        }
+        details.recall-toggle .details-content {
+            padding: 0 22px 20px 22px;
+            animation: fadeSlide 0.35s ease-out;
+        }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .insight-callout {
+            border-left: 4px solid #f0b724;
+            background: linear-gradient(135deg, #fef9e7 0%, #fffcf2 100%);
+        }
+        .directive-callout {
+            border-left: 4px solid #323b70;
+            background: linear-gradient(135deg, #f0f1f7 0%, #f8f9fd 100%);
+        }
+
+        .priority-badge {
+            background: #f0b724;
+            color: #1f2444;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 2px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        @media (max-width: 640px) {
+            details.recall-toggle>summary { padding: 14px 16px; font-size: 0.95rem; }
+            details.recall-toggle .details-content { padding: 0 16px 16px 16px; }
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+
+    <!-- Header -->
+    <header class="relative overflow-hidden bg-gradient-to-br from-ink-900 via-ink-800 to-slate-800 text-white">
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 200%22><path d=%22M0 120 Q180 70 360 120 Q540 170 720 120 Q900 70 1080 120 L1200 120 L1200 200 L0 200 Z%22 fill=%22%23f9e090%22 opacity=%220.2%22/><path d=%22M0 150 Q240 100 480 150 Q720 200 960 150 L1200 150 L1200 200 L0 200 Z%22 fill=%22%23f9e090%22 opacity=%220.1%22/></svg>'); background-size: cover; background-position: center bottom;"></div>
+        <div class="relative max-w-5xl mx-auto px-5 sm:px-8 py-12 sm:py-14">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                <div>
+                    <p class="text-gold-300 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-2 opacity-80">IPMAT PI · Governance & Current Affairs</p>
+                    <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+                        Union Cabinet Ministers
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-2xl font-display italic text-ink-200 mt-1 font-medium">
+                        High-Yield Portfolio Recall
+                    </p>
+                </div>
+                <div class="flex-shrink-0 flex items-center gap-2 self-start sm:self-end bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-gold-400"></span>
+                    <span class="text-ink-200 text-xs tracking-wider font-medium uppercase">Must‑Know Ministers</span>
+                </div>
+            </div>
+            <p class="mt-5 text-ink-100 text-sm sm:text-base max-w-2xl leading-relaxed opacity-90">
+                A focused dossier on the <strong class="text-gold-300">key cabinet portfolios</strong>, their current incumbents, and the quick associations that help you answer confidently — plus the vital rule to <strong class="text-gold-300">recheck before your interview</strong>.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-5 sm:px-8 py-10 sm:py-14 space-y-14">
+
+        <!-- Full Cabinet Table -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-ink-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-ink-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-ink-800">
+                    Current Cabinet at a Glance
+                </h2>
+            </div>
+            <div class="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-ink-50 text-ink-700 uppercase tracking-wider text-xs">
+                            <tr>
+                                <th class="px-5 py-4 text-left font-semibold">Ministry</th>
+                                <th class="px-5 py-4 text-left font-semibold">Minister</th>
+                                <th class="px-5 py-4 text-left font-semibold hidden sm:table-cell">Core Priority</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-ink-100">
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">Finance</td><td class="px-5 py-4 font-semibold text-ink-900">Nirmala Sitharaman</td><td class="px-5 py-4 hidden sm:table-cell"><span class="priority-badge">Core 1</span></td></tr>
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">Home Affairs</td><td class="px-5 py-4 font-semibold text-ink-900">Amit Shah</td><td class="px-5 py-4 hidden sm:table-cell"><span class="priority-badge">Core 2</span></td></tr>
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">Defence</td><td class="px-5 py-4 font-semibold text-ink-900">Rajnath Singh</td><td class="px-5 py-4 hidden sm:table-cell"><span class="priority-badge">Core 3</span></td></tr>
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">External Affairs</td><td class="px-5 py-4 font-semibold text-ink-900">S. Jaishankar</td><td class="px-5 py-4 hidden sm:table-cell"><span class="priority-badge">Core 4</span></td></tr>
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">Railways</td><td class="px-5 py-4 font-semibold text-ink-900">Ashwini Vaishnaw</td><td class="px-5 py-4 hidden sm:table-cell"><span class="priority-badge">Core 5</span></td></tr>
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">Education</td><td class="px-5 py-4 font-semibold text-ink-900">Dharmendra Pradhan</td><td class="px-5 py-4 hidden sm:table-cell"><span class="priority-badge">Core 6</span></td></tr>
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">Civil Aviation</td><td class="px-5 py-4 font-semibold text-ink-900">Kinjarapu Ram Mohan Naidu</td><td class="px-5 py-4 hidden sm:table-cell">—</td></tr>
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">Health & Family Welfare</td><td class="px-5 py-4 font-semibold text-ink-900">Jagat Prakash Nadda</td><td class="px-5 py-4 hidden sm:table-cell"><span class="priority-badge">Core 7</span></td></tr>
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">Road Transport & Highways</td><td class="px-5 py-4 font-semibold text-ink-900">Nitin Gadkari</td><td class="px-5 py-4 hidden sm:table-cell"><span class="priority-badge">Core 8</span></td></tr>
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">Commerce & Industry</td><td class="px-5 py-4 font-semibold text-ink-900">Piyush Goyal</td><td class="px-5 py-4 hidden sm:table-cell">—</td></tr>
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">Agriculture</td><td class="px-5 py-4 font-semibold text-ink-900">Shivraj Singh Chouhan</td><td class="px-5 py-4 hidden sm:table-cell">—</td></tr>
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">Electronics & IT</td><td class="px-5 py-4 font-semibold text-ink-900">Ashwini Vaishnaw</td><td class="px-5 py-4 hidden sm:table-cell">—</td></tr>
+                            <tr class="hover:bg-ink-50/50 transition-colors"><td class="px-5 py-4 font-medium">Parliamentary Affairs</td><td class="px-5 py-4 font-semibold text-ink-900">Kiren Rijiju</td><td class="px-5 py-4 hidden sm:table-cell">—</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-3 italic">⚠️ Portfolios correct as of the current term. Always verify 2–3 days before your interview.</p>
+        </section>
+
+        <!-- Core 8 Priority Grid -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-gold-200 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-ink-700" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-ink-800">
+                    Top 8 — Know These Cold
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="card-hover p-4 rounded-xl border-t-4 border-ink-600"><p class="text-xs text-ink-500 uppercase font-semibold">Finance</p><p class="font-bold text-ink-900 text-lg">Nirmala Sitharaman</p><p class="text-xs text-slate-500 mt-1">Budget & economy</p></div>
+                <div class="card-hover p-4 rounded-xl border-t-4 border-ink-500"><p class="text-xs text-ink-500 uppercase font-semibold">Home Affairs</p><p class="font-bold text-ink-900 text-lg">Amit Shah</p><p class="text-xs text-slate-500 mt-1">Internal security</p></div>
+                <div class="card-hover p-4 rounded-xl border-t-4 border-ink-400"><p class="text-xs text-ink-500 uppercase font-semibold">Defence</p><p class="font-bold text-ink-900 text-lg">Rajnath Singh</p><p class="text-xs text-slate-500 mt-1">National defence</p></div>
+                <div class="card-hover p-4 rounded-xl border-t-4 border-gold-500"><p class="text-xs text-ink-500 uppercase font-semibold">External Affairs</p><p class="font-bold text-ink-900 text-lg">S. Jaishankar</p><p class="text-xs text-slate-500 mt-1">Diplomacy & foreign policy</p></div>
+                <div class="card-hover p-4 rounded-xl border-t-4 border-ink-700"><p class="text-xs text-ink-500 uppercase font-semibold">Railways</p><p class="font-bold text-ink-900 text-lg">Ashwini Vaishnaw</p><p class="text-xs text-slate-500 mt-1">Also Electronics & IT</p></div>
+                <div class="card-hover p-4 rounded-xl border-t-4 border-ink-600"><p class="text-xs text-ink-500 uppercase font-semibold">Education</p><p class="font-bold text-ink-900 text-lg">Dharmendra Pradhan</p><p class="text-xs text-slate-500 mt-1">NEP implementation</p></div>
+                <div class="card-hover p-4 rounded-xl border-t-4 border-ink-500"><p class="text-xs text-ink-500 uppercase font-semibold">Road Transport</p><p class="font-bold text-ink-900 text-lg">Nitin Gadkari</p><p class="text-xs text-slate-500 mt-1">Infrastructure & highways</p></div>
+                <div class="card-hover p-4 rounded-xl border-t-4 border-ink-400"><p class="text-xs text-ink-500 uppercase font-semibold">Health</p><p class="font-bold text-ink-900 text-lg">J. P. Nadda</p><p class="text-xs text-slate-500 mt-1">Health administration</p></div>
+            </div>
+        </section>
+
+        <!-- Personality Associations -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-gold-100 flex items-center justify-center flex-shrink-0">
+                    <span class="text-ink-700 font-bold text-lg">🧠</span>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-ink-800">
+                    Quick Associations for Memorisation
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-ink-100 shadow-sm"><span class="font-semibold text-ink-700 w-32">Nirmala Sitharaman</span><span class="text-slate-600 text-sm">Budget, economy</span></div>
+                <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-ink-100 shadow-sm"><span class="font-semibold text-ink-700 w-32">Amit Shah</span><span class="text-slate-600 text-sm">Internal security, BJP strategy</span></div>
+                <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-ink-100 shadow-sm"><span class="font-semibold text-ink-700 w-32">Rajnath Singh</span><span class="text-slate-600 text-sm">Defence</span></div>
+                <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-ink-100 shadow-sm"><span class="font-semibold text-ink-700 w-32">S. Jaishankar</span><span class="text-slate-600 text-sm">Foreign policy, diplomacy</span></div>
+                <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-ink-100 shadow-sm"><span class="font-semibold text-ink-700 w-32">Nitin Gadkari</span><span class="text-slate-600 text-sm">Highways, infrastructure</span></div>
+                <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-ink-100 shadow-sm"><span class="font-semibold text-ink-700 w-32">Ashwini Vaishnaw</span><span class="text-slate-600 text-sm">Railways + technology</span></div>
+                <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-ink-100 shadow-sm"><span class="font-semibold text-ink-700 w-32">Dharmendra Pradhan</span><span class="text-slate-600 text-sm">NEP / education</span></div>
+                <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-ink-100 shadow-sm"><span class="font-semibold text-ink-700 w-32">J. P. Nadda</span><span class="text-slate-600 text-sm">Health administration</span></div>
+            </div>
+        </section>
+
+        <!-- Common PI Question + Safe Choices -->
+        <section>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="md:col-span-2 directive-callout p-5 rounded-xl text-sm leading-relaxed">
+                    <p class="font-semibold text-ink-800 text-base mb-2">🗣️ Very Common PI Question</p>
+                    <p class="text-ink-700 italic font-medium">“Who is your favourite cabinet minister and why?”</p>
+                    <p class="text-slate-600 mt-2">Keep the tone <strong>professional</strong>, not fan-like. Choose a minister whose work you can genuinely appreciate with a specific, measurable reason.</p>
+                </div>
+                <div class="insight-callout p-5 rounded-xl text-sm">
+                    <p class="font-semibold text-ink-800 mb-2">✅ Safe, Strong Choices</p>
+                    <ul class="space-y-2 text-slate-700">
+                        <li><strong>S. Jaishankar</strong> — diplomacy, articulation</li>
+                        <li><strong>Nitin Gadkari</strong> — infrastructure delivery</li>
+                        <li><strong>Ashwini Vaishnaw</strong> — tech & rail modernisation</li>
+                    </ul>
+                    <p class="text-xs text-slate-500 mt-2">Always link back to a concrete achievement or policy direction.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Critical Rule: Recheck Before Interview -->
+        <section>
+            <div class="bg-ink-50 border border-ink-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🔴</span>
+                    <div>
+                        <h3 class="font-display text-xl font-bold text-ink-800 mb-2">Extremely Important Rule</h3>
+                        <p class="text-slate-700 text-sm">Ministers can change after reshuffles, elections, or resignations. <strong>Recheck the cabinet 2–3 days before your interview</strong>, especially these volatile portfolios:</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="bg-white px-3 py-1 rounded-full text-xs font-medium text-ink-700 border border-ink-200">Health</span>
+                            <span class="bg-white px-3 py-1 rounded-full text-xs font-medium text-ink-700 border border-ink-200">Education</span>
+                            <span class="bg-white px-3 py-1 rounded-full text-xs font-medium text-ink-700 border border-ink-200">Railways</span>
+                            <span class="bg-white px-3 py-1 rounded-full text-xs font-medium text-ink-700 border border-ink-200">IT</span>
+                            <span class="bg-white px-3 py-1 rounded-full text-xs font-medium text-ink-700 border border-ink-200">Parliamentary Affairs</span>
+                            <span class="bg-white px-3 py-1 rounded-full text-xs font-medium text-ink-700 border border-ink-200">Civil Aviation</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-3">Being up‑to‑date signals thoroughness and genuine interest in governance — a mark of a serious candidate.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Recall Engine -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-gold-200 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-ink-700" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-ink-800">
+                    Active Recall Practice
+                </h2>
+            </div>
+            <p class="text-sm text-slate-500 mb-5">Click each question to reveal the model answer. <strong>Speak aloud</strong> before expanding.</p>
+
+            <div class="space-y-4">
+                <details class="recall-toggle">
+                    <summary><span>Q1: Who is the current Finance Minister and what is her primary responsibility?</span><span class="toggle-icon">+</span></summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "<strong>Nirmala Sitharaman</strong> is the Finance Minister. She is responsible for the Union Budget, fiscal policy, and overall economic management of the country."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary><span>Q2: Which minister holds both Railways and Electronics & IT portfolios?</span><span class="toggle-icon">+</span></summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "<strong>Ashwini Vaishnaw</strong> holds the Railways portfolio as well as the Electronics and Information Technology portfolio, making him a key figure in infrastructure and digital governance."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary><span>Q3: Suggest three professional "favourite minister" choices and justify each briefly.</span><span class="toggle-icon">+</span></summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> 
+                            <br>• <strong>S. Jaishankar</strong> — for his articulate foreign policy and strategic diplomacy.
+                            <br>• <strong>Nitin Gadkari</strong> — for his record of highway and infrastructure project execution.
+                            <br>• <strong>Ashwini Vaishnaw</strong> — for modernising railways and advancing India's digital infrastructure.
+                            <br>Keep reasoning factual, not political."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary><span>Q4: Why is it critical to recheck the cabinet list just before your interview?</span><span class="toggle-icon">+</span></summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "Cabinet reshuffles, resignations, or new appointments can happen at any time. Quoting an outdated minister signals poor preparation, while current knowledge shows that you are thorough, attentive to governance, and genuinely up‑to‑date."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary><span>Q5: What is a safe approach if you forget a minister's name during the interview?</span><span class="toggle-icon">+</span></summary>
+                    <div class="details-content">
+                        <p class="text-slate-700"><strong>Model Answer:</strong> "Admit you don't recall the current name with honesty: 'I'm afraid I might not have the latest update on that portfolio right now.' Then pivot to what you do know about the ministry's recent work. It's better to show integrity than guess incorrectly."</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 30-Second Interview Summary Engine -->
+    <footer class="max-w-5xl mx-auto px-5 sm:px-8 pb-14 pt-4">
+        <div class="relative overflow-hidden rounded-2xl border-2 border-gold-300 bg-gradient-to-br from-white via-gold-50/40 to-white p-6 sm:p-8 shadow-xl">
+            <div class="absolute top-0 right-0 w-40 h-40 bg-gold-200 rounded-full blur-3xl opacity-25 -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-32 h-32 bg-ink-100 rounded-full blur-2xl opacity-20 translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+            <div class="relative">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-2xl">⚡</span>
+                    <h3 class="font-display text-xl sm:text-2xl font-bold text-ink-800">
+                        30-Second Interview Summary Engine
+                    </h3>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm rounded-xl p-5 sm:p-6 border border-gold-200 shadow-inner">
+                    <p class="text-ink-800 leading-relaxed text-sm sm:text-base">
+                        <em>"India's Union Cabinet is anchored by <strong>Nirmala Sitharaman (Finance), Amit Shah (Home), Rajnath Singh (Defence), and S. Jaishankar (External Affairs)</strong>. The infrastructure and reform drive is spearheaded by <strong>Nitin Gadkari (Road Transport)</strong> and <strong>Ashwini Vaishnaw (Railways & IT)</strong>, while <strong>Dharmendra Pradhan</strong> leads education and <strong>J. P. Nadda</strong> oversees health. If asked about a favourite minister, choose a professional reason — Jaishankar for diplomacy, Gadkari for delivery, Vaishnaw for modernisation. Most importantly, I make it a point to <strong>recheck the cabinet composition two days before any interview</strong> because reshuffles are common and updated knowledge reflects genuine preparation."</em>
+                    </p>
+                </div>
+                <p class="mt-4 text-xs text-slate-500 italic text-center sm:text-left">
+                    🎯 Deliver in <strong>25–30 seconds</strong> with measured pace. You'll demonstrate command of the core portfolios, reasoned preference, and a habit of staying current — a triple win.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

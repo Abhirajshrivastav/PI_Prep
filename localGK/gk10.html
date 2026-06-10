@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>International Date Line (IDL) — Quick PI Guide | IPMAT PI Prep</title>
+    <!-- Tailwind + Google Fonts -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['"Playfair Display"', 'Georgia', 'serif'],
+                        'body': ['Inter', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        'navy': {
+                            50: '#edf0f7',
+                            100: '#cfd6e8',
+                            200: '#a5b3d2',
+                            300: '#7388b5',
+                            400: '#4b6297',
+                            500: '#31467d',
+                            600: '#243363',
+                            700: '#1c2751',
+                            800: '#162042',
+                            900: '#0f1835',
+                        },
+                        'crimson': {
+                            50: '#fef3f2',
+                            100: '#fde5e3',
+                            200: '#fbcac6',
+                            300: '#f79e96',
+                            400: '#f0655c',
+                            500: '#e63b2e',
+                            600: '#d1201a',
+                            700: '#b01815',
+                            800: '#921818',
+                            900: '#7a191a',
+                        },
+                        'slate': {
+                            50: '#f7f8fa',
+                            100: '#eef1f5',
+                            200: '#dce2eb',
+                            300: '#c0c9d6',
+                            400: '#9ba6b7',
+                            500: '#7c889c',
+                            600: '#636e81',
+                            700: '#515a69',
+                            800: '#434a57',
+                            900: '#383e49',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: #f7f8fa;
+            background-image:
+                radial-gradient(ellipse at 20% 10%, rgba(15, 24, 53, 0.025) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(230, 59, 46, 0.03) 0%, transparent 50%);
+            color: #1e293b;
+            line-height: 1.7;
+            letter-spacing: 0.01em;
+        }
+        h1, h2, h3, .font-display {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 12px rgba(15, 24, 53, 0.05), 0 1px 4px rgba(15, 24, 53, 0.04);
+            transition: all 0.3s ease;
+            background: #ffffff;
+            border: 1px solid #dce2eb;
+        }
+        .card-shadow:hover {
+            box-shadow: 0 8px 22px rgba(15, 24, 53, 0.08), 0 2px 6px rgba(15, 24, 53, 0.05);
+            transform: translateY(-2px);
+        }
+        details.recall-toggle {
+            border: 1px solid #cfd6e8;
+            border-radius: 14px;
+            background: #ffffff;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(15, 24, 53, 0.04);
+        }
+        details.recall-toggle[open] {
+            border-color: #e63b2e;
+            box-shadow: 0 6px 20px rgba(230, 59, 46, 0.12);
+            background: #fefdfd;
+        }
+        details.recall-toggle>summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 22px;
+            font-weight: 600;
+            color: #1c2751;
+            user-select: none;
+        }
+        details.recall-toggle>summary::-webkit-details-marker {
+            display: none;
+        }
+        details.recall-toggle>summary .icon {
+            transition: transform 0.3s ease;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #e63b2e;
+            margin-left: 12px;
+        }
+        details.recall-toggle[open]>summary .icon {
+            transform: rotate(45deg);
+            color: #7a191a;
+        }
+        .insight-box {
+            border-left: 4px solid #e63b2e;
+            background: linear-gradient(135deg, #fef3f2 0%, #fff8f7 100%);
+        }
+        .directive-box {
+            border-left: 4px solid #1c2751;
+            background: linear-gradient(135deg, #edf0f7 0%, #f7f8fa 100%);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="relative overflow-hidden bg-gradient-to-br from-navy-900 via-navy-800 to-slate-800 text-white">
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 200%22%3E%3Cpath d=%22M0 130 Q200 90 400 130 T800 130 T1200 130%22 fill=%22none%22 stroke=%22%23f0655c%22 stroke-width=%222%22 opacity=%220.4%22/%3E%3Cpath d=%22M0 160 Q200 120 400 160 T800 160 T1200 160%22 fill=%22none%22 stroke=%22%23f0655c%22 stroke-width=%221%22 opacity=%220.2%22/%3E%3C/svg%3E'); background-size: cover; background-position: center;"></div>
+        <div class="relative max-w-4xl mx-auto px-6 sm:px-8 py-12 sm:py-14">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                <div>
+                    <p class="text-crimson-200 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase mb-2 opacity-80">IPMAT PI · Global Timekeeping & Geography</p>
+                    <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+                        International Date Line
+                    </h1>
+                    <p class="text-xl sm:text-2xl font-display italic text-slate-200 mt-2 font-medium">
+                        The Calendar's 180° Frontier
+                    </p>
+                </div>
+                <div class="flex-shrink-0 flex items-center gap-2 self-start sm:self-end bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10">
+                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-crimson-400"></span>
+                    <span class="text-slate-200 text-xs tracking-wider font-medium uppercase">Authoritative Recall</span>
+                </div>
+            </div>
+            <div class="mt-6 bg-navy-800/60 backdrop-blur-sm rounded-xl p-4 border border-navy-700/50 max-w-lg">
+                <p class="text-crimson-100 text-sm font-medium italic">🧠 Memory Hook</p>
+                <p class="text-white text-base font-semibold mt-1"><strong class="text-crimson-300">0° = time line, 180° = date line.</strong></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-5 sm:px-8 py-12 space-y-14">
+
+        <!-- What It Is -->
+        <section>
+            <div class="card-shadow rounded-2xl p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-navy-100 flex items-center justify-center flex-shrink-0">
+                        <span class="text-navy-700 font-bold text-lg">🌐</span>
+                    </div>
+                    <h2 class="font-display text-2xl sm:text-3xl font-bold text-navy-800">What the IDL Is</h2>
+                </div>
+                <p class="text-slate-700 leading-relaxed text-sm sm:text-base">The International Date Line is an <strong>imaginary line</strong> on Earth's surface running roughly along the <strong>180° meridian</strong> in the Pacific Ocean. When you cross it, the calendar date changes by exactly <strong>one day</strong>.</p>
+                <div class="grid sm:grid-cols-2 gap-5 mt-6">
+                    <div class="bg-navy-50 p-5 rounded-xl text-center">
+                        <p class="text-2xl font-bold text-navy-700">← Westward</p>
+                        <p class="text-sm text-navy-600 mt-1">You <strong class="text-crimson-600">gain a day</strong> (skip ahead)</p>
+                        <p class="text-xs text-slate-500 mt-1">e.g., Monday → Tuesday</p>
+                    </div>
+                    <div class="bg-crimson-50 p-5 rounded-xl text-center">
+                        <p class="text-2xl font-bold text-crimson-700">Eastward →</p>
+                        <p class="text-sm text-crimson-600 mt-1">You <strong class="text-crimson-700">lose a day</strong> (go back)</p>
+                        <p class="text-xs text-slate-500 mt-1">e.g., Tuesday → Monday</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Where & Why It Bends -->
+        <section>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card-shadow rounded-2xl p-6">
+                    <h3 class="font-display text-xl font-bold text-navy-800 mb-3">📍 Location & Bends</h3>
+                    <p class="text-sm text-slate-700">The IDL is <strong>not a straight line</strong>. It zigzags to avoid splitting countries and island groups into two different calendar days. For example, it bends eastward around <strong>Kiribati</strong> and <strong>Samoa</strong>, allowing them to align their trading week with Asia‑Pacific partners.</p>
+                    <div class="mt-4 bg-slate-50 p-3 rounded-lg">
+                        <p class="text-xs text-slate-600"><strong class="text-navy-700">Real-world adjustment:</strong> In <strong>1995</strong>, Kiribati shifted the IDL eastward to unify its islands under one date. <strong>Samoa</strong> skipped a full day in <strong>2011</strong> (Dec 29 → Dec 31) to switch from the American side to the Asian side of the date line, boosting trade with Australia and New Zealand.</p>
+                    </div>
+                </div>
+                <div class="card-shadow rounded-2xl p-6">
+                    <h3 class="font-display text-xl font-bold text-navy-800 mb-3">🕰️ Why It Exists</h3>
+                    <p class="text-sm text-slate-700">Because Earth rotates 360° in 24 hours, different longitudes experience noon at different moments. The <strong>Prime Meridian (0°)</strong> at Greenwich sets the world's time zones (UTC). The <strong>180° meridian</strong> is the natural opposite — the place where the date must increment or decrement to keep global calendars synchronized.</p>
+                    <div class="mt-4 p-4 bg-navy-50 rounded-lg">
+                        <p class="text-xs font-semibold text-navy-700 uppercase mb-1">1884 International Meridian Conference</p>
+                        <p class="text-xs text-slate-600">Established Greenwich as the universal prime meridian and implicitly defined the 180° line as the date boundary. This conference laid the foundation for modern global timekeeping.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Relationship Table -->
+        <section>
+            <div class="card-shadow rounded-2xl p-6 sm:p-8">
+                <h3 class="font-display text-xl font-bold text-navy-800 mb-4">⚡ Prime Meridian vs. International Date Line</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-navy-800 text-white">
+                            <tr>
+                                <th class="px-5 py-3 text-left font-semibold uppercase tracking-wider text-xs">Feature</th>
+                                <th class="px-5 py-3 text-left font-semibold uppercase tracking-wider text-xs">Prime Meridian (0°)</th>
+                                <th class="px-5 py-3 text-left font-semibold uppercase tracking-wider text-xs">International Date Line (180°)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-navy-100">
+                            <tr class="hover:bg-navy-50/50">
+                                <td class="px-5 py-4 font-medium">Function</td>
+                                <td class="px-5 py-4">Sets <strong>time zones</strong> (UTC)</td>
+                                <td class="px-5 py-4">Changes the <strong>calendar date</strong></td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50">
+                                <td class="px-5 py-4 font-medium">Crossing effect</td>
+                                <td class="px-5 py-4">Time shifts by ±1 hour per 15°</td>
+                                <td class="px-5 py-4">Date jumps by ±1 full day</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50">
+                                <td class="px-5 py-4 font-medium">Straight line?</td>
+                                <td class="px-5 py-4">Yes, runs through Greenwich</td>
+                                <td class="px-5 py-4"><strong>No</strong>, bends around political borders</td>
+                            </tr>
+                            <tr class="hover:bg-navy-50/50">
+                                <td class="px-5 py-4 font-medium">Established</td>
+                                <td class="px-5 py-4">1884 (International Meridian Conference)</td>
+                                <td class="px-5 py-4">De facto recognized at the same conference</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interview-Safe Answer & Directive -->
+        <section>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card-shadow rounded-2xl p-6 border-l-4 border-crimson-500">
+                    <p class="text-xs font-semibold text-crimson-600 uppercase tracking-widest mb-2">✅ Interview‑Safe Answer</p>
+                    <blockquote class="font-display text-base italic text-navy-800 leading-relaxed">
+                        "The International Date Line is an imaginary line located roughly along 180° longitude in the Pacific Ocean. When you cross it, the calendar date changes by one day. It is not a straight line and bends to avoid dividing countries into two different dates."
+                    </blockquote>
+                </div>
+                <div class="directive-box p-5 rounded-lg text-sm leading-relaxed">
+                    <p class="font-semibold text-navy-800 mb-2">🎯 Interview Directive</p>
+                    <p class="text-slate-600">If asked "Why does the IDL bend?", answer: <em>"To prevent countries and island groups from being split across two different calendar days, which would create logistical and economic chaos. Nations like Kiribati and Samoa have even requested adjustments to align their trading week with key partners."</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Rationale -->
+        <section>
+            <div class="insight-box p-5 sm:p-6 rounded-lg text-sm leading-relaxed">
+                <p class="font-semibold text-slate-800 mb-2 text-base">📊 Strategic & Logistical Rationale</p>
+                <p class="text-slate-700">The IDL is not just a geographical curiosity — it's a <strong>business and governance tool</strong>. When Samoa skipped December 30, 2011, it shifted from being 21 hours behind Sydney to 3 hours ahead, aligning its workweek with Australia and New Zealand. This reduced trade friction, simplified travel schedules, and boosted economic integration. Similarly, Kiribati's 1995 shift unified its vast island territory under a single date, streamlining administration and international communication. These adjustments demonstrate how a simple imaginary line can have real <strong>supply‑chain and diplomatic consequences</strong>.</p>
+            </div>
+        </section>
+
+        <!-- Active Recall Practice -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-crimson-100 flex items-center justify-center flex-shrink-0">
+                    <span class="text-crimson-700 font-bold text-lg">❓</span>
+                </div>
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-navy-800">Active Recall Practice</h2>
+            </div>
+            <div class="space-y-4">
+                <details class="recall-toggle">
+                    <summary><span>Q1: What happens to the date when you cross the IDL westward?</span><span class="icon">+</span></summary>
+                    <div class="px-6 pb-5 pt-1 text-slate-700 text-sm">
+                        <p><strong>Model Answer:</strong> "When you cross the International Date Line going <strong>westward</strong>, you <strong>gain a day</strong> — the calendar moves forward by one full day (e.g., Monday becomes Tuesday). This compensates for the time you've accumulated traveling west."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary><span>Q2: Why isn't the IDL a straight line along 180° longitude?</span><span class="icon">+</span></summary>
+                    <div class="px-6 pb-5 pt-1 text-slate-700 text-sm">
+                        <p><strong>Model Answer:</strong> "The IDL zigzags to <strong>avoid splitting countries, territories, or island groups</strong> into two different calendar days. This prevents confusion in daily life, business, and governance. For instance, it loops around Kiribati and Samoa to keep them unified."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary><span>Q3: How are the Prime Meridian and the IDL connected?</span><span class="icon">+</span></summary>
+                    <div class="px-6 pb-5 pt-1 text-slate-700 text-sm">
+                        <p><strong>Model Answer:</strong> "The <strong>Prime Meridian (0° longitude)</strong> is the reference for time zones and UTC. The <strong>IDL (180°)</strong> is its direct opposite — it's where the date changes. Together, they form the global timekeeping framework established by the 1884 International Meridian Conference."</p>
+                    </div>
+                </details>
+                <details class="recall-toggle">
+                    <summary><span>Q4: Can you give a real-world example of the IDL being adjusted?</span><span class="icon">+</span></summary>
+                    <div class="px-6 pb-5 pt-1 text-slate-700 text-sm">
+                        <p><strong>Model Answer:</strong> "In <strong>2011, Samoa skipped December 30th</strong> entirely — moving from UTC‑11 to UTC+13 — to align its workweek with Australia and New Zealand. This boosted trade and made business communication much smoother. Kiribati made a similar shift in 1995."</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 30-Second Interview Summary Engine -->
+    <footer class="max-w-4xl mx-auto px-5 sm:px-8 pb-14 pt-4">
+        <div class="relative overflow-hidden rounded-2xl border-2 border-crimson-300 bg-gradient-to-br from-white via-crimson-50/20 to-white p-6 sm:p-8 shadow-xl">
+            <div class="absolute top-0 right-0 w-40 h-40 bg-crimson-200 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-32 h-32 bg-navy-200 rounded-full blur-2xl opacity-15 translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+            <div class="relative">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-2xl">⚡</span>
+                    <h3 class="font-display text-2xl sm:text-3xl font-bold text-navy-800">30-Second Interview Summary Engine</h3>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm rounded-xl p-5 sm:p-6 border border-crimson-100 shadow-inner">
+                    <p class="text-navy-800 leading-relaxed text-sm sm:text-base italic">
+                        "The <strong>International Date Line</strong> is an imaginary line near the 180° meridian in the Pacific where the calendar date changes by one day. Crossing <strong>westward gains a day</strong>; <strong>eastward loses a day</strong>. It's deliberately bent to keep countries unified — Samoa even skipped a day in 2011 to align its trading week with Australia. While the <strong>Prime Meridian (0°)</strong> governs time zones, the IDL governs the date, a distinction formalized by the <strong>1884 International Meridian Conference</strong>. Understanding this line demonstrates not just geographic literacy, but an appreciation for how a simple convention can shape global trade, communication, and daily life."
+                    </p>
+                </div>
+                <p class="mt-4 text-xs text-slate-500 italic text-center sm:text-left">
+                    🎯 Deliver this in <strong>25–30 seconds</strong> with clarity and precision. It conveys conceptual understanding, historical context, and real‑world application — exactly the depth a PI panel values.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
