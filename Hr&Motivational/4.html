@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>HR-05/06/07 · The Honest JEE‑to‑IPMAT Pivot — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--gold); box-shadow: 0 0 20px rgba(245,158,11,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--gold); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #d97706; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-rose {
+            border-left: 4px solid var(--rose); background: var(--rose-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .section-header {
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .section-header h2 { color: var(--gold); font-size: 1.6rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--gold);">[ID: HR-05/06/07] · [STATUS: CRAFTED] · [BLOCK 2: WHY IPM]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 2 · WHY IPM & WHY NOT ENGINEERING — YOUR MOST IMPORTANT ANSWER</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">The Honest JEE‑to‑IPMAT Pivot Narrative</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Answering the hardest questions with clarity and conviction — why JEE didn't work, why IPM is not a backup, and why this is the right path for you.</p>
+        </div>
+
+        <!-- HR-05: The Pivot Narrative -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🔁 HR‑05 · The Honest JEE‑to‑IPMAT Pivot Narrative</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;"><strong>The core story in one line:</strong> <em>"I didn't fail JEE and then look for a backup. I re‑evaluated my entire direction and discovered a path I should have been on all along."</em></p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: Walk me through your JEE journey. Why didn't it work out?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I prepared for JEE for three years, including a drop year. I scored 34 percentile. Those are the numbers. But the real story is that I chose JEE mostly out of herd mentality — it was the path every capable student around me was told to take. I never truly connected with Physics and Chemistry. They felt abstract and disconnected from anything I cared about. So I was grinding, but I wasn't growing. The effort was there, but the alignment was not. That mismatch has a ceiling. I hit it hard."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Do you think you gave up too soon? Some people take multiple drops.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Respectfully, I don't think it was a question of time. It was a question of direction. I could have taken another year, but I believe I would have been investing more effort into a path that had already proven it didn't fit me. There's a difference between perseverance and stubbornness. I chose to apply my persistence to something I had a genuine aptitude for, rather than keep forcing something that my own experience was telling me wasn't mine. That felt like wisdom, not giving up."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: So when exactly did the pivot happen?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"In February 2026, after my JEE Session 1 result came out. That was the moment I stopped asking 'how do I improve my score?' and started asking 'why am I even on this path?' I revisited IPM — I had heard about it earlier. I tried a few practice tests and performed surprisingly well, especially on the reading section. I began intensive preparation in March. By May, I had cleared the exam. Two months of aligned effort did what three years of misaligned effort could not. That timeline is the proof."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What did you learn about yourself through this process?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I learned that my natural strengths are not in the natural sciences. They are in reading, comprehension, reasoning, and understanding people and systems. That's what the IPMAT tested, and that's where I performed. I also learned that I have a strong bias for action when I'm genuinely interested — I taught myself coding and got an offer, I ran a store independently, and I cleared IPMAT in two months. The throughline is that I don't drift when I'm aligned. I build."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: Was your family supportive of this shift?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Initially, there was disappointment — understandably. But when they saw that I had a clear, reasoned plan and not just a reaction, they became supportive. And when the IPMAT result came, that was the moment they fully understood that this wasn't a downgrade. It was a different upgrade."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-06: Answering "Second Choice?" -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>❓ HR‑06 · Answering "Isn't This Your Second Choice?"</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;"><strong>The core argument:</strong> <em>"IPM is not my second choice. It's the choice I would have made first, had I known myself better at age fifteen."</em></p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: Isn't IPM just a backup plan because JEE didn't work out?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"No. A backup is something you settle for reluctantly. IPM is a program I actively discovered and chose because it fits my demonstrated strengths. If it were a backup, I wouldn't have prepared for it with the intensity I did. I cleared a competitive national exam in two months of focused work. That's not a backup — that's finding your lane and accelerating. The honest truth is that I should have been preparing for IPM three years ago. I just didn't know myself well enough then."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: If you had gotten a good JEE rank, would you even be sitting here?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Probably not. And that would have been a mistake I would have discovered later. If I had scraped into some engineering college, I think I would have continued to feel the same disconnection I felt during JEE prep, just with more sunk cost. Failing JEE didn't cause me to look at IPM; it gave me the permission to. The interest was latent. The failure just removed the noise. So yes, I'm here because of how things unfolded — but I'm here with full conviction, not as a consolation."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: How do we know you're genuinely interested in management and not just running away from PCM?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Because the evidence predates the pivot. My interest in business and strategy was there even when I was studying for JEE — I was reading business books and biographies, helping run a real store, managing inventory and customers. These weren't new behaviours I invented after failing. They were constant, just ignored. I'm not running away from PCM. I'm running towards a field where my natural curiosities and experiences finally line up. The IPMAT result just confirmed what was already underneath."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What if you find IPM difficult or lose interest? It's a five‑year commitment.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I don't lose interest in things that genuinely engage me. I started reading years ago — I still read. I started coding in 2022 — I still code, even if the medium shifted. These are not passing phases. IPM engages the things I already care about: strategy, people, systems, communication. That's not a bet I'm making on a new unknown. It's a bet on something I've already been doing in different forms. Five years feels not like a risk, but like time I get to compound."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-07: Why Not BBA or CAT? -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🎓 HR‑07 · Why Not Just a BBA or Wait for CAT?</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;"><strong>The core argument:</strong> <em>"IPM is not just an early start. It's the right structure for someone like me — someone who thrives on integration, not fragmentation."</em></p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: Why not just do a regular BBA and then give CAT?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Because that path would fragment my learning. A typical BBA would give me some business exposure, but not with the same rigour, peer group, or institutional brand that an IIM provides from day one. Then I'd spend another year preparing for CAT — another competitive exam with no guarantee. IPM is a direct, integrated path. I get five years inside an IIM ecosystem, building analytical depth, soft skills, and a network, without the break‑and‑restart cycle. For someone who has already lost time on a misaligned path, that continuity matters enormously."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Couldn't you do a technical degree and then an MBA? Many people do that.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"They do. And for many, it works. But for me, the risk is repeating the same mistake. If I spend three or four years in a technical degree I'm not naturally drawn to, I'll be back in the same grind I experienced with JEE. And I've learned that I don't perform well when I'm not interested. IPM lets me develop technical literacy — through my own data science studies — while immersing in management from the start. It's not either‑or. It's both, in parallel, on my terms."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: The IIT Madras degree you're doing — if you complete it, you could get an MBA later. Why not that?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"The IIT Madras degree is valuable, and I'm committed to learning from it. But it's primarily an online program. It won't give me the in‑person, high‑touch, five‑year immersion that IPM offers — the case discussions, the group work, the faculty mentorship, the peer learning. That environment shapes you in ways a degree alone cannot. I want that shaping. And I don't want to wait three more years to start learning the things I know I want to learn now. IPM is the most direct, honest route to where I'm going."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What does IPM give you that other paths don't?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Three things. First, time: five years of uninterrupted skill‑building instead of a rushed post‑CAT two‑year sprint. Second, foundation: I get to study management as a discipline, not just as a career accelerator — I'll understand the 'why' behind business, not just the 'how'. Third, context: I'll be surrounded by peers who chose this path deliberately, taught by faculty who see us as a long‑term cohort. That's very different from an MBA where everyone is racing to placements from day one. I want the foundation. The career will follow."</p></div>
+            </details>
+        </div>
+
+        <!-- The Closing Convincing Answer -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);margin-bottom:0.5rem;">💡 IF A PANELIST SAYS "CONVINCE ME. WHY SHOULD WE TAKE YOU FOR IPM?"</p>
+            <p style="color:var(--text-body);font-style:italic;">"Because I've done the hard work of honest self‑assessment, and IPM is the result of that, not an escape. I know what I'm not good at and why. I know what I am good at and I've proven it — through my store, my self‑taught coding, my IPMAT result, and my ability to rebuild after failure. I'm not here because I couldn't do engineering. I'm here because I'm finally on the path I should have been on all along. And I'll bring the same self‑directed intensity to this program that I've brought to every genuine interest I've ever had."</p>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);margin-top:1.5rem;">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"I prepared for JEE for three years, scored 34 percentile, but the real failure was pursuing a path I never genuinely connected with. After my final attempt, I re‑evaluated everything and discovered IPM — a program that tests exactly the skills I naturally possess: reading, comprehension, and reasoning. I cleared the exam in two months of focused work, proving that alignment matters more than sheer effort. IPM is not my backup; it's the path I should have been on from the start. Given a choice between a fragmented BBA‑and‑CAT route and a direct, integrated five‑year immersion, I choose the foundation. That's why I'm here."</em></p>
+        </div>
+    </main>
+</body>
+</html>
