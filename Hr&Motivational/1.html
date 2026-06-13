@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>HR-01 · Draft Your 45‑60 Second Introduction — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--gold); box-shadow: 0 0 20px rgba(245,158,11,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--gold); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #d97706; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-rose {
+            border-left: 4px solid var(--rose); background: var(--rose-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .hook-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem;
+        }
+        .hook-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.3rem; }
+        .hook-card .opens { color: var(--gold); font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; }
+
+        .intro-quote {
+            background: rgba(16,185,129,0.05); border: 1px solid var(--accent);
+            border-radius: 14px; padding: 1.8rem; margin: 1.5rem 0;
+            font-style: italic; color: var(--text-body); line-height: 1.9; font-size: 1.05rem;
+            position: relative;
+        }
+        .intro-quote::before { content: '"'; position: absolute; top: 0.5rem; left: 1rem; font-size: 4rem; color: var(--accent); opacity: 0.2; font-family: 'Playfair Display', serif; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--gold);">[ID: HR-01] · [STATUS: CRAFTED] · [BLOCK 1: THE INTRODUCTION]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 1 · THE INTRODUCTION — THE ANSWER THAT DRIVES EVERYTHING</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Draft Your 45‑60 Second Introduction</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Your introduction is not a biography — it is a strategic act. Every word is a door you are opening. Every door, the panel can walk through.</p>
+        </div>
+
+        <!-- The Introduction Script -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🎙️ Your Crafted Introduction Script</h2>
+            <div class="intro-quote">
+                <p>Good afternoon, sir.</p>
+                <p style="margin-top:0.8rem;">My name is <strong style="color:var(--accent);">Abhiraj Shrivastav</strong>, and I come from <strong style="color:var(--gold);">Ghazipur</strong> in eastern Uttar Pradesh. I completed most of my schooling in a <strong style="color:var(--gold);">government Hindi‑medium school</strong>.</p>
+                <p style="margin-top:0.8rem;">Along with my studies, I have been <strong style="color:var(--accent);">helping in my father's general store</strong> since I was around fourteen. Over the years, I have handled customers, managed inventory, and at times run the shop independently when my father was away. That experience taught me responsibility, discipline, and how to interact with different kinds of people.</p>
+                <p style="margin-top:0.8rem;">I have also been interested in technology and self‑learning. In Class 10, I <strong style="color:var(--gold);">taught myself web development</strong> and even received an offer letter from a startup. Later, I focused on <strong style="color:var(--gold);">JEE preparation</strong> for several years. Although I was not successful in achieving my target, the experience helped me understand my strengths and interests more clearly.</p>
+                <p style="margin-top:0.8rem;">I enjoy reading books on business, psychology, and philosophy. Recently, I read <strong style="color:var(--accent);"><em>Outliers</em> by Malcolm Gladwell</strong> and <strong style="color:var(--accent);"><em>Man's Search for Meaning</em> by Viktor Frankl</strong>.</p>
+                <p style="margin-top:0.8rem;">I have also joined the <strong style="color:var(--gold);">IIT Madras BS in Data Science</strong> program, and going forward I want to build a combination of technical understanding and management skills. That is one of the key reasons I am interested in the IPM program.</p>
+                <p style="margin-top:0.8rem;">Thank you.</p>
+            </div>
+            <p class="font-mono" style="font-size:0.7rem;color:var(--text-dim);text-align:right;">~55‑60 seconds when spoken at a calm, measured pace</p>
+        </div>
+
+        <!-- Strategic Breakdown: What Each Hook Opens Up -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧭 Strategic Map — What Every Sentence Opens Up</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">Each element of your introduction is both an opportunity and a responsibility. You must be prepared to speak at depth about every single one.</p>
+
+            <div class="hook-card">
+                <h3>📍 "I come from Ghazipur in eastern Uttar Pradesh"</h3>
+                <div class="opens">OPENS: What is Ghazipur known for? Tell me about your region. What was it like growing up there?</div>
+                <p style="color:var(--text-body);font-size:0.9rem;">Be ready with: the Government Opium and Alkaloid Works (Asia's largest legal opium factory), Cornwallis's tomb, the Ganga River, Purvanchal identity, and migration as a lived reality.</p>
+            </div>
+
+            <div class="hook-card">
+                <h3>🏫 "Government Hindi‑medium school"</h3>
+                <div class="opens">OPENS: How did that shape you? What was missing? What did it give you that others might not have?</div>
+                <p style="color:var(--text-body);font-size:0.9rem;">Frame honestly: acknowledge gaps (English fluency, institutional resources) but emphasise what it built — resourcefulness, self‑reliance, exposure to the real India, and the habit of learning without hand‑holding.</p>
+            </div>
+
+            <div class="hook-card">
+                <h3>🏪 "Helping in my father's general store since age fourteen"</h3>
+                <div class="opens">OPENS: What did you actually do? What did you learn about business? How does a small store operate?</div>
+                <p style="color:var(--text-body);font-size:0.9rem;">Prepare specifics: customer relationships, credit management, inventory decisions, competition from organised retail, profit margins on daily essentials. This is your most unique asset — no coaching class can teach it.</p>
+            </div>
+
+            <div class="hook-card">
+                <h3>💻 "Taught myself web development; received an offer letter from a startup"</h3>
+                <div class="opens">OPENS: What did you build? What technologies? How did you get the offer? Why didn't you pursue it further?</div>
+                <p style="color:var(--text-body);font-size:0.9rem;">Be specific: mention HTML, CSS, JavaScript. Describe one concrete project. Explain the offer letter context — it validates your self‑learning ability. The pivot away from it toward JEE is a legitimate arc; don't be defensive.</p>
+            </div>
+
+            <div class="hook-card">
+                <h3>📚 "JEE preparation for several years... not successful... helped me understand my strengths"</h3>
+                <div class="opens">OPENS: Tell me about your JEE journey. What went wrong? Wasn't IPMAT a second choice? What did you learn?</div>
+                <p style="color:var(--text-body);font-size:0.9rem;">This is the most sensitive hook. Frame it as honest self‑assessment: you worked hard, the specific mathematical problem‑solving wasn't your strongest suit, you recognised this, and you pivoted to a path where your verbal reasoning, quantitative aptitude, and intellectual breadth are genuinely valued.</p>
+            </div>
+
+            <div class="hook-card">
+                <h3>📖 "Reading Outliers and Man's Search for Meaning"</h3>
+                <div class="opens">OPENS: What is the core argument of each book? What surprised you? How do you connect them to your life?</div>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Outliers:</strong> Success is not purely individual merit — it's opportunity, timing, culture, and 10,000 hours of practice. <strong>Man's Search for Meaning:</strong> Even in the worst circumstances, humans retain the freedom to choose their attitude. Connect this to your JEE‑to‑IPMAT arc.</p>
+            </div>
+
+            <div class="hook-card">
+                <h3>🎓 "IIT Madras BS in Data Science"</h3>
+                <div class="opens">OPENS: Why data science? How does it connect to management? What have you learned so far?</div>
+                <p style="color:var(--text-body);font-size:0.9rem;">This is your "bridge" hook — it connects your technical interest to your management aspiration. Frame it: data‑driven decision‑making is the future of business, and understanding both the technical and the strategic side is a powerful combination.</p>
+            </div>
+        </div>
+
+        <!-- Active Recall: Follow-Up Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Practice These Follow‑Up Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: "You mentioned Ghazipur — what is your city known for?"</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Ghazipur is known for the <strong>Government Opium and Alkaloid Works</strong> — Asia's largest government‑run opium processing factory, established by the British East India Company in 1820. Today it legally produces morphine and codeine for pharmaceutical use. The city also sits on the southern bank of the Ganga, and Lord Cornwallis — the British Governor‑General — died and is buried here. On a more personal level, Ghazipur is part of the Purvanchal region, which is predominantly agricultural and experiences significant out‑migration to cities like Mumbai and Delhi."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: "How did studying in a government Hindi‑medium school shape you?"</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"It had clear gaps — limited exposure to English, fewer resources, and less institutional support compared to private CBSE schools. But it also taught me things that a more privileged environment might not have. I learned to be <strong>resourceful</strong> — when you don't have a tuition teacher, you learn to find answers yourself. I learned <strong>self‑direction</strong> — my web development skills came entirely from YouTube and practice, not from a classroom. And I saw a version of India that many of my future classmates will only read about in case studies. That perspective, I think, is genuinely valuable."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: "Tell me more about helping in your father's store. What did you actually learn?"</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I started helping around age fourteen — initially just stocking shelves and handling small cash transactions. Over time, I took on more: <strong>managing inventory</strong> — knowing which products move fast and which sit on the shelf, <strong>handling customers</strong> — some of whom are regulars with informal credit arrangements that need careful relationship management, and <strong>running the shop independently</strong> when my father was away. What struck me most is the challenge of <strong>competition from larger retailers and online platforms</strong>. A small store cannot compete on price, so it competes on relationship, convenience, and credit. That is a business insight no textbook gave me — I lived it."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: "You mentioned you taught yourself web development. What did you actually build?"</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I learned HTML, CSS, and JavaScript through YouTube tutorials and online resources in Class 10. I built a few small projects — including a personal portfolio website and a simple e‑commerce front‑end. The startup that offered me a letter was looking for someone who could handle basic front‑end work. I didn't pursue it because at that point JEE preparation had taken over. Looking back, the more important outcome wasn't the technical skill itself — it was proving to myself that I could learn something complex <strong>without a teacher, without a syllabus, and without external accountability</strong>. That self‑directed learning ability is something I carry into everything I do."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: "You attempted JEE for several years and didn't succeed. Isn't IPMAT your second choice?"</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I understand why it might look that way. But I would frame it differently. Three years of JEE preparation taught me something important: my aptitude profile — strong verbal reasoning, reading comprehension, and quantitative aptitude — was better suited to a different path. I scored well on the IPMAT with two months of preparation, which is a data point about where my actual strengths lie. That's not settling. That's <strong>reading the evidence honestly and acting on it</strong>. The pivot wasn't a fallback — it was a course correction based on genuine self‑assessment."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q6: "What did you learn from Outliers and Man's Search for Meaning?"</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);"><strong>Outliers:</strong> "Gladwell's argument is that extraordinary success is rarely about individual genius alone — it's about opportunity, cultural legacy, timing, and accumulated practice. The '10,000‑hour rule' gets quoted a lot, but what struck me more was the idea that <strong>hidden advantages</strong> — like birth month in sports or access to a computer in 1975 for Bill Gates — compound over time. It made me reflect on my own advantages and disadvantages more honestly."<br><br><strong>Man's Search for Meaning:</strong> "Frankl's core insight — that even in the most dehumanising conditions, humans retain <strong>the freedom to choose their attitude</strong> — is profoundly relevant. He wrote that 'between stimulus and response there is a space, and in that space is our power to choose our response.' I found that idea useful during the JEE years — focusing on what I could control each day rather than the outcome I couldn't."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q7: "Why are you doing the IIT Madras BS in Data Science alongside IPM preparation?"</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I believe that <strong>data‑driven decision‑making</strong> is not going to be a niche skill — it's going to be fundamental to how businesses operate. The IIT Madras program gives me a structured foundation in statistics, programming, and machine learning. Combined with the management framework from IPM, I want to be able to <strong>bridge the gap between technical teams and business strategy</strong> — someone who understands both the data and the decision it should inform."</p></div>
+            </details>
+        </div>
+
+        <!-- Practice Protocol -->
+        <div class="glass-panel" style="border-left: 4px solid var(--rose);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏋️ Practice Protocol for This Introduction</h2>
+            <ul style="color:var(--text-body);margin-left:1.5rem;list-style-type:disc;font-size:0.95rem;">
+                <li style="margin-bottom:0.5rem;"><strong>Do not memorise word‑for‑word.</strong> Practice until the ideas are fixed but the words are flexible. If you can only deliver it one way, it will sound rehearsed.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Practice being interrupted.</strong> Have someone stop you mid‑sentence and ask a follow‑up. Can you recover and continue from where you left off?</li>
+                <li style="margin-bottom:0.5rem;"><strong>Time yourself.</strong> This script runs ~55‑60 seconds at a calm pace. Any shorter and it gives the panel nothing to work with. Any longer and you are listing, not engaging.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Record yourself.</strong> Listen for filler words, rushed sections, or places where your voice drops. The delivery should feel conversational, not performative.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Practice standing up, out loud, at least once a day.</strong> The version in your head is always smoother than the version that comes out of your mouth under pressure.</li>
+            </ul>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"My name is Abhiraj Shrivastav, and I come from Ghazipur in eastern Uttar Pradesh — a district known for Asia's largest government opium factory and as part of the Purvanchal region. I studied in a government Hindi‑medium school and have been helping in my father's general store since my teenage years, which taught me customer handling, inventory management, and the realities of small‑town retail. I taught myself web development in Class 10, attempted JEE for several years, and through that experience gained clarity about my strengths. I read widely — recently Outliers and Man's Search for Meaning — and I am currently pursuing the IIT Madras BS in Data Science. I want to build a career at the intersection of technology and management, which is why IPM appeals to me."</em></p>
+        </div>
+    </main>
+</body>
+</html>

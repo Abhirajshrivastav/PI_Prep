@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #111210;
+            --surface: #181917;
+            --surface-hover: #1e1f1c;
+            --text: #e8e4db;
+            --text-secondary: #b5b0a4;
+            --text-muted: #7a7670;
+            --amber: #c9a84c;
+            --amber-dim: #a88b3a;
+            --olive: #7d8a5e;
+            --slate: #6b7d8a;
+            --rust: #b8956a;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-light: rgba(255, 255, 255, 0.05);
+            --max-width: 680px;
+            --font-display: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+            --font-body: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', 'Monaco', monospace;
+            --radius: 3px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.65;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        ::selection {
+            background: rgba(201, 168, 76, 0.25);
+            color: var(--text);
+        }
+
+        .main-column {
+            width: 100%;
+            max-width: var(--max-width);
+            display: flex;
+            flex-direction: column;
+            gap: 2.25rem;
+        }
+
+        /* ── MASTHEAD ── */
+        .masthead {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .masthead-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .greeting {
+            font-family: var(--font-display);
+            font-size: 2.6rem;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: 0.01em;
+            line-height: 1.1;
+        }
+        .clock {
+            font-family: var(--font-mono);
+            font-size: 2.4rem;
+            font-weight: 400;
+            color: var(--amber);
+            letter-spacing: 0.04em;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+        .date-full {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 0.35rem;
+            letter-spacing: 0.01em;
+        }
+
+        /* ── SECTION LABELS ── */
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            padding-top: 0.6rem;
+            border-top: 1px solid var(--border-light);
+            margin-bottom: 0.85rem;
+        }
+
+        /* ── 2000-DAY TRACKER ── */
+        .macro-tracker {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .macro-tracker .tracker-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .macro-tracker .tracker-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+        .macro-tracker .tracker-count {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--amber);
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+        .progress-bar-outer {
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress-bar-inner {
+            height: 100%;
+            background: var(--amber);
+            border-radius: 2px;
+            transition: width 400ms ease;
+            min-width: 0;
+        }
+
+        /* ── TODAY'S FOCUS ── */
+        .focus-block {
+            position: relative;
+            border-left: 2px solid var(--amber);
+            padding: 0.65rem 0 0.65rem 1.1rem;
+            margin-left: 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            transition: border-color 200ms ease;
+        }
+        .focus-block:focus-within {
+            border-left-color: var(--amber-dim);
+        }
+        .focus-editable {
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text);
+            outline: none;
+            cursor: text;
+            line-height: 1.5;
+            min-height: 1.5em;
+            word-break: break-word;
+        }
+        .focus-editable:empty::before {
+            content: attr(data-placeholder);
+            color: var(--text-muted);
+            font-style: italic;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        /* ── CONTINUE FROM ── */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .project-card {
+            position: relative;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1rem 1.1rem 0.9rem;
+            transition: border-color 200ms ease, background 200ms ease;
+        }
+        .project-card:hover {
+            border-color: rgba(255, 255, 255, 0.14);
+            background: var(--surface-hover);
+        }
+        .project-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            gap: 0.5rem;
+        }
+        .project-card .project-name {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text);
+            outline: none;
+            cursor: text;
+            flex: 1;
+            min-width: 0;
+            border-bottom: 1px solid transparent;
+            transition: border-color 200ms ease;
+            padding-bottom: 1px;
+        }
+        .project-card .project-name:focus {
+            border-bottom: 1px solid var(--amber-dim);
+        }
+        .project-card .project-name:empty::before {
+            content: attr(data-placeholder);
+            color: var(--text-muted);
+            font-weight: 400;
+            pointer-events: none;
+        }
+        .project-card .delete-btn {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 150ms ease, color 150ms ease;
+            background: none;
+            border: none;
+            padding: 2px 6px;
+            border-radius: 3px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .project-card:hover .delete-btn {
+            opacity: 1;
+        }
+        .project-card .delete-btn:hover {
+            color: #c96b6b;
+            background: rgba(201, 107, 107, 0.1);
+        }
+        .project-card .delete-btn.hidden-delete {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .project-card .continue-field {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            outline: none;
+            cursor: text;
+            line-height: 1.55;
+            min-height: 3.8em;
+            border-left: 2px solid var(--amber);
+            padding: 0.4rem 0 0.4rem 0.9rem;
+            margin: 0.3rem 0 0.45rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            transition: border-color 200ms ease;
+            word-break: break-word;
+        }
+        .project-card .continue-field:focus {
+            border-left-color: var(--amber-dim);
+        }
+        .project-card .continue-field:empty::before {
+            content: attr(data-placeholder);
+            color: var(--text-muted);
+            pointer-events: none;
+            font-style: italic;
+        }
+        .project-card .card-footer {
+            display: flex;
+            justify-content: flex-end;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            margin-top: 0.15rem;
+        }
+        .add-project-btn {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            background: none;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 200ms ease;
+            text-align: center;
+            width: 100%;
+        }
+        .add-project-btn:hover {
+            color: var(--amber);
+            border-color: rgba(201, 168, 76, 0.4);
+            background: rgba(201, 168, 76, 0.04);
+        }
+        .add-project-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* ── READING LIST ── */
+        .reading-category {
+            margin-bottom: 1.3rem;
+        }
+        .reading-category .cat-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.45rem;
+        }
+        .reading-category .cat-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .cat-dot.cat-ai {
+            background: #7a8b9e;
+        }
+        .cat-dot.cat-finance {
+            background: #8a9a5b;
+        }
+        .cat-dot.cat-geo {
+            background: #b8956a;
+        }
+        .cat-dot.cat-india {
+            background: #c9a84c;
+        }
+        .reading-category .cat-name {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .reading-category .cat-budget {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            margin-left: auto;
+        }
+        .source-row {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.4rem 0.5rem 0.4rem 0.3rem;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 150ms ease, transform 150ms ease;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+        .source-row:hover {
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateX(4px);
+        }
+        .source-row .src-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+        .src-dot.sd-ai {
+            background: #7a8b9e;
+        }
+        .src-dot.sd-finance {
+            background: #8a9a5b;
+        }
+        .src-dot.sd-geo {
+            background: #b8956a;
+        }
+        .src-dot.sd-india {
+            background: #c9a84c;
+        }
+        .source-row .src-name {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--text);
+            flex: 1;
+            transition: color 150ms ease;
+        }
+        .source-row .src-arrow {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            opacity: 0;
+            transition: opacity 150ms ease;
+            flex-shrink: 0;
+        }
+        .source-row:hover .src-arrow {
+            opacity: 1;
+        }
+        .source-row .read-check {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            flex-shrink: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 150ms ease;
+            background: transparent;
+            font-size: 9px;
+            color: transparent;
+        }
+        .source-row .read-check:hover {
+            border-color: var(--amber);
+            background: rgba(201, 168, 76, 0.08);
+        }
+        .source-row.read .read-check {
+            border-color: var(--amber);
+            background: rgba(201, 168, 76, 0.2);
+            color: var(--amber);
+        }
+        .source-row.read .src-name {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+        .source-row.read .src-dot {
+            opacity: 0.3;
+        }
+        .reading-summary {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            text-align: right;
+            padding-top: 0.3rem;
+            border-top: 1px solid var(--border-light);
+            margin-top: 0.2rem;
+        }
+
+        /* ── QUOTE ── */
+        .quote-section {
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .quote-text {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--text);
+            line-height: 1.55;
+            text-align: center;
+            padding: 0 0.5rem;
+        }
+        .quote-attribution {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-align: right;
+            letter-spacing: 0.05em;
+            margin-top: 0.6rem;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 500px) {
+            body {
+                padding: 1.25rem 0.9rem 3rem;
+            }
+            .greeting {
+                font-size: 1.9rem;
+            }
+            .clock {
+                font-size: 1.6rem;
+            }
+            .focus-editable {
+                font-size: 1.05rem;
+            }
+            .quote-text {
+                font-size: 1.15rem;
+            }
+            .project-card {
+                padding: 0.75rem 0.85rem 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-column">
+        <!-- MASTHEAD -->
+        <header class="masthead">
+            <div class="masthead-row">
+                <span class="greeting" id="greeting">Good morning.</span>
+                <span class="clock" id="clock">00:00:00</span>
+            </div>
+            <div class="date-full" id="dateFull">Sunday, 7 June 2026</div>
+        </header>
+
+        <!-- 2000-DAY MACRO TRACKER -->
+        <section class="macro-tracker" aria-label="2000-day macro tracker">
+            <div class="section-label">MACRO TRACKER</div>
+            <div class="tracker-info">
+                <span class="tracker-label">2000-Day Chain</span>
+                <span class="tracker-count" id="trackerCount">Day 0 / 2000</span>
+            </div>
+            <div class="progress-bar-outer">
+                <div class="progress-bar-inner" id="progressBar" style="width: 0%;"></div>
+            </div>
+        </section>
+
+        <!-- TODAY'S FOCUS -->
+        <section aria-label="Today's focus">
+            <div class="section-label">TODAY'S FOCUS</div>
+            <div class="focus-block">
+                <div class="focus-editable" id="focusEditable" contenteditable="true"
+                data-placeholder="Today's focus — what matters today?"></div>
+            </div>
+        </section>
+
+        <!-- CONTINUE FROM -->
+        <section aria-label="Continue from">
+            <div class="section-label">CONTINUE FROM</div>
+            <div class="projects-list" id="projectsList"></div>
+            <button class="add-project-btn" id="addProjectBtn" title="Add a new project (max 6)">+ Add Project</button>
+        </section>
+
+        <!-- READING LIST -->
+        <section aria-label="Reading list">
+            <div class="section-label">READING LIST</div>
+            <div id="readingListContainer"></div>
+            <div class="reading-summary">Total reading time: 90 min</div>
+        </section>
+
+        <!-- QUOTE -->
+        <footer class="quote-section" aria-label="Daily quote">
+            <p class="quote-text" id="quoteText"></p>
+            <p class="quote-attribution" id="quoteAttr"></p>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            // ──────────────────────────────────────
+            // CONFIGURATION — Edit START_DATE as needed
+            // ──────────────────────────────────────
+            const START_DATE = new Date(2026, 5, 7); // June 7, 2026 (Month is 0-indexed)
+            const TOTAL_DAYS = 2000;
+
+            // ──────────────────────────────────────
+            // DOM REFS
+            // ──────────────────────────────────────
+            const greetingEl = document.getElementById('greeting');
+            const clockEl = document.getElementById('clock');
+            const dateFullEl = document.getElementById('dateFull');
+            const trackerCountEl = document.getElementById('trackerCount');
+            const progressBar = document.getElementById('progressBar');
+            const focusEditable = document.getElementById('focusEditable');
+            const projectsListEl = document.getElementById('projectsList');
+            const addProjectBtn = document.getElementById('addProjectBtn');
+            const readingListContainer = document.getElementById('readingListContainer');
+            const quoteTextEl = document.getElementById('quoteText');
+            const quoteAttrEl = document.getElementById('quoteAttr');
+
+            // ──────────────────────────────────────
+            // UTILITY FUNCTIONS
+            // ──────────────────────────────────────
+            function getTodayDateStr() {
+                const now = new Date();
+                const y = now.getFullYear();
+                const m = String(now.getMonth() + 1).padStart(2, '0');
+                const d = String(now.getDate()).padStart(2, '0');
+                return `${y}-${m}-${d}`;
+            }
+
+            function getNowTimestamp() {
+                const now = new Date();
+                const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const h = now.getHours();
+                const mm = String(now.getMinutes()).padStart(2, '0');
+                const ampm = h >= 12 ? 'PM' : 'AM';
+                const h12 = h % 12 || 12;
+                const day = now.getDate();
+                const mon = months[now.getMonth()];
+                return `${h12}:${mm} ${ampm}, ${day} ${mon}`;
+            }
+
+            function getDaysElapsed() {
+                const today = new Date();
+                const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                const startStart = new Date(START_DATE.getFullYear(), START_DATE.getMonth(), START_DATE.getDate());
+                const diffMs = todayStart - startStart;
+                const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                return Math.max(0, days);
+            }
+
+            function formatFullDate() {
+                const now = new Date();
+                const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+                    'October', 'November', 'December'
+                ];
+                const dayName = dayNames[now.getDay()];
+                const day = now.getDate();
+                const monthName = monthNames[now.getMonth()];
+                const year = now.getFullYear();
+                return `${dayName}, ${day} ${monthName} ${year}`;
+            }
+
+            function getGreeting() {
+                const h = new Date().getHours();
+                if (h < 12) return 'Good morning.';
+                if (h < 17) return 'Good afternoon.';
+                return 'Good evening.';
+            }
+
+            function generateId() {
+                return 'proj_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+            }
+
+            // ──────────────────────────────────────
+            // CLOCK
+            // ──────────────────────────────────────
+            function updateClock() {
+                const now = new Date();
+                const h = String(now.getHours()).padStart(2, '0');
+                const m = String(now.getMinutes()).padStart(2, '0');
+                const s = String(now.getSeconds()).padStart(2, '0');
+                clockEl.textContent = `${h}:${m}:${s}`;
+            }
+
+            function updateMasthead() {
+                greetingEl.textContent = getGreeting();
+                dateFullEl.textContent = formatFullDate();
+                updateClock();
+            }
+
+            // ──────────────────────────────────────
+            // 2000-DAY TRACKER
+            // ──────────────────────────────────────
+            function updateTracker() {
+                const elapsed = getDaysElapsed();
+                const displayDay = elapsed + 1; // Day 1 on start date
+                const cappedDay = Math.min(displayDay, TOTAL_DAYS);
+                const pct = Math.min((cappedDay / TOTAL_DAYS) * 100, 100);
+                trackerCountEl.textContent = `Day ${cappedDay} / ${TOTAL_DAYS}`;
+                progressBar.style.width = pct.toFixed(4) + '%';
+            }
+
+            // ──────────────────────────────────────
+            // TODAY'S FOCUS
+            // ──────────────────────────────────────
+            function getFocusKey() {
+                return 'focus_' + getTodayDateStr();
+            }
+
+            function loadFocus() {
+                const key = getFocusKey();
+                const saved = localStorage.getItem(key);
+                if (saved !== null) {
+                    focusEditable.textContent = saved;
+                } else {
+                    focusEditable.textContent = '';
+                }
+            }
+
+            function saveFocus() {
+                const key = getFocusKey();
+                const content = focusEditable.textContent.trim();
+                if (content === '') {
+                    localStorage.removeItem(key);
+                } else {
+                    localStorage.setItem(key, content);
+                }
+            }
+
+            focusEditable.addEventListener('blur', saveFocus);
+            focusEditable.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    focusEditable.blur();
+                }
+            });
+
+            // ──────────────────────────────────────
+            // CONTINUE FROM — PROJECTS
+            // ──────────────────────────────────────
+            const PROJECTS_KEY = 'continue_projects';
+            const MAX_PROJECTS = 6;
+            const MIN_PROJECTS = 1;
+
+            function getProjects() {
+                try {
+                    const raw = localStorage.getItem(PROJECTS_KEY);
+                    if (raw) {
+                        const arr = JSON.parse(raw);
+                        if (Array.isArray(arr) && arr.length >= MIN_PROJECTS) {
+                            return arr.filter(p => p && typeof p.id === 'string' && typeof p.name === 'string' &&
+                                typeof p.continueFrom === 'string');
+                        }
+                    }
+                } catch (e) { /* fall through */ }
+                // Default: one empty project
+                return [{
+                    id: generateId(),
+                    name: '',
+                    continueFrom: '',
+                    lastUpdated: ''
+                }];
+            }
+
+            function saveProjects(projects) {
+                // Ensure at least MIN_PROJECTS
+                let valid = projects.filter(p => p && typeof p.id === 'string');
+                if (valid.length < MIN_PROJECTS) {
+                    valid = [{
+                        id: generateId(),
+                        name: '',
+                        continueFrom: '',
+                        lastUpdated: ''
+                    }];
+                }
+                if (valid.length > MAX_PROJECTS) {
+                    valid = valid.slice(0, MAX_PROJECTS);
+                }
+                localStorage.setItem(PROJECTS_KEY, JSON.stringify(valid));
+                return valid;
+            }
+
+            function updateProjectTimestamp(projects, projectId) {
+                const ts = getNowTimestamp();
+                return projects.map(p => {
+                    if (p.id === projectId) {
+                        return { ...p, lastUpdated: ts };
+                    }
+                    return p;
+                });
+            }
+
+            function renderProjects(projects) {
+                projectsListEl.innerHTML = '';
+                projects.forEach((proj, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    card.dataset.projectId = proj.id;
+                    card.innerHTML = `
+                <div class="card-header">
+                  <div class="project-name" contenteditable="true"
+                       data-placeholder="Project name…">${escapeHTML(proj.name)}</div>
+                  <button class="delete-btn${projects.length <= MIN_PROJECTS ? ' hidden-delete' : ''}"
+                          title="Delete project">×</button>
+                </div>
+                <div class="continue-field" contenteditable="true"
+                     data-placeholder="Where you stopped and what to do next…">${escapeHTML(proj.continueFrom)}</div>
+                <div class="card-footer">${proj.lastUpdated ? 'Last updated: ' + escapeHTML(proj.lastUpdated) : ''}</div>
+              `;
+                    projectsListEl.appendChild(card);
+                });
+
+                // Wire up events
+                const cards = projectsListEl.querySelectorAll('.project-card');
+                cards.forEach(card => {
+                    const pid = card.dataset.projectId;
+                    const nameEl = card.querySelector('.project-name');
+                    const continueEl = card.querySelector('.continue-field');
+                    const deleteBtn = card.querySelector('.delete-btn');
+                    const footerEl = card.querySelector('.card-footer');
+
+                    const handleChange = () => {
+                        let allProjects = getProjects();
+                        const idx = allProjects.findIndex(p => p.id === pid);
+                        if (idx >= 0) {
+                            allProjects[idx].name = nameEl.textContent.trim();
+                            allProjects[idx].continueFrom = continueEl.textContent.trim();
+                            allProjects = updateProjectTimestamp(allProjects, pid);
+                            allProjects = saveProjects(allProjects);
+                            // Update footer without full re-render
+                            const updated = allProjects.find(p => p.id === pid);
+                            if (updated && footerEl) {
+                                footerEl.textContent = updated.lastUpdated ? 'Last updated: ' + updated
+                                    .lastUpdated : '';
+                            }
+                            // Update delete button visibility
+                            updateDeleteButtons(allProjects);
+                        }
+                    };
+
+                    nameEl.addEventListener('blur', handleChange);
+                    continueEl.addEventListener('blur', handleChange);
+                    // Also save on input for auto-timestamp update feel
+                    let inputTimeout;
+                    const debouncedHandle = () => {
+                        clearTimeout(inputTimeout);
+                        inputTimeout = setTimeout(handleChange, 600);
+                    };
+                    nameEl.addEventListener('input', debouncedHandle);
+                    continueEl.addEventListener('input', debouncedHandle);
+
+                    if (deleteBtn && !deleteBtn.classList.contains('hidden-delete')) {
+                        deleteBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            let allProjects = getProjects();
+                            if (allProjects.length <= MIN_PROJECTS) return;
+                            allProjects = allProjects.filter(p => p.id !== pid);
+                            allProjects = saveProjects(allProjects);
+                            renderProjects(allProjects);
+                            updateAddButtonState(allProjects);
+                        });
+                    }
+                });
+
+                updateAddButtonState(projects);
+            }
+
+            function updateDeleteButtons(projects) {
+                const cards = projectsListEl.querySelectorAll('.project-card');
+                cards.forEach(card => {
+                    const deleteBtn = card.querySelector('.delete-btn');
+                    if (deleteBtn) {
+                        if (projects.length <= MIN_PROJECTS) {
+                            deleteBtn.classList.add('hidden-delete');
+                        } else {
+                            deleteBtn.classList.remove('hidden-delete');
+                        }
+                    }
+                });
+            }
+
+            function updateAddButtonState(projects) {
+                if (projects.length >= MAX_PROJECTS) {
+                    addProjectBtn.disabled = true;
+                    addProjectBtn.textContent = 'Max 6 Projects';
+                } else {
+                    addProjectBtn.disabled = false;
+                    addProjectBtn.textContent = '+ Add Project';
+                }
+            }
+
+            addProjectBtn.addEventListener('click', () => {
+                let projects = getProjects();
+                if (projects.length >= MAX_PROJECTS) return;
+                const newProj = {
+                    id: generateId(),
+                    name: '',
+                    continueFrom: '',
+                    lastUpdated: ''
+                };
+                projects.push(newProj);
+                projects = saveProjects(projects);
+                renderProjects(projects);
+            });
+
+            function escapeHTML(str) {
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
+            // ──────────────────────────────────────
+            // READING LIST
+            // ──────────────────────────────────────
+            const READING_CATEGORIES = [{
+                id: 'ai-tech',
+                label: 'AI & Tech',
+                budget: '30 min',
+                dotClass: 'cat-ai',
+                sdClass: 'sd-ai',
+                color: '#7a8b9e',
+                sources: [
+                    { id: 'stratechery', name: 'Stratechery', url: 'https://stratechery.com' },
+                    { id: 'the-batch', name: 'The Batch', url: 'https://www.deeplearning.ai/the-batch/' },
+                    { id: 'import-ai', name: 'Import AI', url: 'https://importai.substack.com' },
+                    { id: 'openai-blog', name: 'OpenAI Blog', url: 'https://openai.com/news/' },
+                    { id: 'anthropic-blog', name: 'Anthropic Blog', url: 'https://www.anthropic.com/news' },
+                    { id: 'deepmind-blog', name: 'DeepMind Blog', url: 'https://deepmind.google/blog/' },
+                ]
+            }, {
+                id: 'finance',
+                label: 'Finance & Business',
+                budget: '30 min',
+                dotClass: 'cat-finance',
+                sdClass: 'sd-finance',
+                color: '#8a9a5b',
+                sources: [
+                    { id: 'morning-brew', name: 'Morning Brew', url: 'https://www.morningbrew.com/daily' },
+                    { id: 'zerodha-varsity', name: 'Zerodha Varsity', url: 'https://zerodha.com/varsity/' },
+                    { id: 'varsity-substack', name: 'Varsity Substack', url: 'https://zerodhavarsity.substack.com/' },
+                ]
+            }, {
+                id: 'geopolitics',
+                label: 'Geopolitics & Global Policy',
+                budget: '15 min',
+                dotClass: 'cat-geo',
+                sdClass: 'sd-geo',
+                color: '#b8956a',
+                sources: [
+                    { id: 'axios-world', name: 'Axios World', url: 'https://www.axios.com/world' },
+                    { id: 'cfr-world', name: 'CFR World This Week', url: 'https://www.cfr.org/podcasts/world-next-week' },
+                    { id: 'lowy-interpreter', name: 'Lowy Interpreter',
+                        url: 'https://www.lowyinstitute.org/the-interpreter' },
+                ]
+            }, {
+                id: 'india',
+                label: 'India',
+                budget: '15 min',
+                dotClass: 'cat-india',
+                sdClass: 'sd-india',
+                color: '#c9a84c',
+                sources: [
+                    { id: 'the-hindu', name: 'The Hindu', url: 'https://www.thehindu.com' },
+                ]
+            }];
+
+            function getReadKey() {
+                return 'reading_read_' + getTodayDateStr();
+            }
+
+            function getReadSet() {
+                const key = getReadKey();
+                try {
+                    const raw = localStorage.getItem(key);
+                    if (raw) {
+                        const arr = JSON.parse(raw);
+                        if (Array.isArray(arr)) return new Set(arr);
+                    }
+                } catch (e) { /* fall through */ }
+                return new Set();
+            }
+
+            function saveReadSet(readSet) {
+                const key = getReadKey();
+                localStorage.setItem(key, JSON.stringify([...readSet]));
+            }
+
+            function cleanOldReadKeys() {
+                const today = getTodayDateStr();
+                const prefix = 'reading_read_';
+                const keysToRemove = [];
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && key.startsWith(prefix) && key !== prefix + today) {
+                        keysToRemove.push(key);
+                    }
+                }
+                keysToRemove.forEach(k => localStorage.removeItem(k));
+            }
+
+            function renderReadingList() {
+                cleanOldReadKeys();
+                const readSet = getReadSet();
+                readingListContainer.innerHTML = '';
+
+                READING_CATEGORIES.forEach(cat => {
+                    const catDiv = document.createElement('div');
+                    catDiv.className = 'reading-category';
+                    catDiv.innerHTML = `
+                <div class="cat-header">
+                  <span class="cat-dot ${cat.dotClass}"></span>
+                  <span class="cat-name">${cat.label}</span>
+                  <span class="cat-budget">${cat.budget}</span>
+                </div>
+              `;
+
+                    cat.sources.forEach(src => {
+                        const isRead = readSet.has(src.id);
+                        const row = document.createElement('a');
+                        row.className = 'source-row' + (isRead ? ' read' : '');
+                        row.href = src.url;
+                        row.target = '_blank';
+                        row.rel = 'noopener noreferrer';
+                        row.dataset.sourceId = src.id;
+                        row.innerHTML = `
+                  <span class="src-dot ${cat.sdClass}"></span>
+                  <span class="src-name">${src.name}</span>
+                  <span class="read-check">✓</span>
+                  <span class="src-arrow">→</span>
+                `;
+
+                        // Checkbox click
+                        const checkEl = row.querySelector('.read-check');
+                        checkEl.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const currentReadSet = getReadSet();
+                            if (currentReadSet.has(src.id)) {
+                                currentReadSet.delete(src.id);
+                            } else {
+                                currentReadSet.add(src.id);
+                            }
+                            saveReadSet(currentReadSet);
+                            renderReadingList();
+                        });
+
+                        catDiv.appendChild(row);
+                    });
+
+                    readingListContainer.appendChild(catDiv);
+                });
+            }
+
+            // ──────────────────────────────────────
+            // QUOTES — 250+ diverse quotes
+            // ──────────────────────────────────────
+            const QUOTES = [
+                { text: 'The impediment to action advances action. What stands in the way becomes the way.',
+                    attr: 'Marcus Aurelius' },
+                { text: 'We suffer more often in imagination than in reality.', attr: 'Seneca' },
+                { text: 'It is not that we have a short time to live, but that we waste a lot of it.',
+                attr: 'Seneca' },
+                { text: 'Luck is what happens when preparation meets opportunity.', attr: 'Seneca' },
+                { text: 'First say to yourself what you would be; then do what you have to do.', attr: 'Epictetus' },
+                { text: 'No man is free who is not master of himself.', attr: 'Epictetus' },
+                { text: 'The key is to keep company only with people who uplift you.', attr: 'Epictetus' },
+                { text: 'You have power over your mind — not outside events. Realize this, and you will find strength.',
+                    attr: 'Marcus Aurelius' },
+                { text: 'Dwell on the beauty of life. Watch the stars, and see yourself running with them.',
+                    attr: 'Marcus Aurelius' },
+                { text: 'The best revenge is to be unlike him who performed the injury.', attr: 'Marcus Aurelius' },
+                { text: 'Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth.',
+                    attr: 'Marcus Aurelius' },
+                { text: 'Waste no more time arguing about what a good man should be. Be one.', attr: 'Marcus Aurelius' },
+                { text: 'If it is not right, do not do it; if it is not true, do not say it.', attr: 'Marcus Aurelius' },
+                { text: 'The soul becomes dyed with the color of its thoughts.', attr: 'Marcus Aurelius' },
+                { text: 'He who fears death will never do anything worth of a man who is alive.', attr: 'Seneca' },
+                { text: 'Difficulties strengthen the mind, as labor does the body.', attr: 'Seneca' },
+                { text: 'Begin at once to live, and count each separate day as a separate life.', attr: 'Seneca' },
+                { text: 'Life is very short and anxious for those who forget the past, neglect the present, and fear the future.',
+                    attr: 'Seneca' },
+                { text: 'Associate with people who are likely to improve you.', attr: 'Seneca' },
+                { text: 'How long are you going to wait before you demand the best for yourself?', attr: 'Epictetus' },
+                { text: 'The greater the difficulty, the more glory in surmounting it.', attr: 'Epictetus' },
+                { text: 'Freedom is the only worthy goal in life. It is won by disregarding things that lie beyond our control.',
+                    attr: 'Epictetus' },
+                { text: 'He who laughs at himself never runs out of things to laugh at.', attr: 'Epictetus' },
+                { text: 'Know, first, who you are, and then adorn yourself accordingly.', attr: 'Epictetus' },
+                { text: 'Any person capable of angering you becomes your master.', attr: 'Epictetus' },
+                { text: 'The unexamined life is not worth living.', attr: 'Socrates' },
+                { text: 'I am the wisest man alive, for I know one thing, and that is that I know nothing.',
+                attr: 'Socrates' },
+                { text: 'To find yourself, think for yourself.', attr: 'Socrates' },
+                { text: 'The only true wisdom is in knowing you know nothing.', attr: 'Socrates' },
+                { text: 'He who is not contented with what he has, would not be contented with what he would like to have.',
+                    attr: 'Socrates' },
+                { text: 'We are what we repeatedly do. Excellence, then, is not an act, but a habit.', attr: 'Aristotle' },
+                { text: 'It is the mark of an educated mind to be able to entertain a thought without accepting it.',
+                    attr: 'Aristotle' },
+                { text: 'Knowing yourself is the beginning of all wisdom.', attr: 'Aristotle' },
+                { text: 'Patience is bitter, but its fruit is sweet.', attr: 'Aristotle' },
+                { text: 'The whole is greater than the sum of its parts.', attr: 'Aristotle' },
+                { text: 'Happiness depends upon ourselves.', attr: 'Aristotle' },
+                { text: 'The energy of the mind is the essence of life.', attr: 'Aristotle' },
+                { text: 'He who has overcome his fears will truly be free.', attr: 'Aristotle' },
+                { text: 'I think, therefore I am.', attr: 'René Descartes' },
+                { text: 'The reading of all good books is like a conversation with the finest minds of past centuries.',
+                    attr: 'René Descartes' },
+                { text: 'It is not enough to have a good mind; the main thing is to use it well.', attr: 'René Descartes' },
+                { text: 'To live is to suffer; to survive is to find some meaning in the suffering.', attr: 'Friedrich Nietzsche' },
+                { text: 'That which does not kill us makes us stronger.', attr: 'Friedrich Nietzsche' },
+                { text: 'He who has a why to live can bear almost any how.', attr: 'Friedrich Nietzsche' },
+                { text: 'In the midst of winter, I found there was, within me, an invincible summer.', attr: 'Albert Camus' },
+                { text: 'The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion.',
+                    attr: 'Albert Camus' },
+                { text: 'In the depth of winter, I finally learned that within me there lay an invincible summer.',
+                    attr: 'Albert Camus' },
+                { text: 'Man is condemned to be free.', attr: 'Jean-Paul Sartre' },
+                { text: 'We are our choices.', attr: 'Jean-Paul Sartre' },
+                { text: 'Existence precedes essence.', attr: 'Jean-Paul Sartre' },
+                { text: 'The mystery of human existence lies not in staying alive, but in finding something to live for.',
+                    attr: 'Fyodor Dostoevsky' },
+                { text: 'The soul is healed by being with children.', attr: 'Fyodor Dostoevsky' },
+                { text: 'To go wrong in one\'s own way is better than to go right in someone else\'s.',
+                    attr: 'Fyodor Dostoevsky' },
+                { text: 'The best way to keep a prisoner from escaping is to make sure he never knows he\'s in prison.',
+                    attr: 'Fyodor Dostoevsky' },
+                { text: 'Talking nonsense is the sole privilege mankind possesses over the other organisms.',
+                    attr: 'Fyodor Dostoevsky' },
+                { text: 'The two most powerful warriors are patience and time.', attr: 'Leo Tolstoy' },
+                { text: 'Everyone thinks of changing the world, but no one thinks of changing himself.',
+                attr: 'Leo Tolstoy' },
+                { text: 'All happy families are alike; each unhappy family is unhappy in its own way.',
+                attr: 'Leo Tolstoy' },
+                { text: 'If you want to be happy, be.', attr: 'Leo Tolstoy' },
+                { text: 'There is no greatness where there is no simplicity, goodness, and truth.', attr: 'Leo Tolstoy' },
+                { text: 'It is better to be hated for what you are than to be loved for what you are not.',
+                attr: 'André Gide' },
+                { text: 'Man cannot discover new oceans unless he has the courage to lose sight of the shore.',
+                attr: 'André Gide' },
+                { text: 'Be yourself; everyone else is already taken.', attr: 'Oscar Wilde' },
+                { text: 'We are all in the gutter, but some of us are looking at the stars.', attr: 'Oscar Wilde' },
+                { text: 'The truth is rarely pure and never simple.', attr: 'Oscar Wilde' },
+                { text: 'To live is the rarest thing in the world. Most people exist, that is all.', attr: 'Oscar Wilde' },
+                { text: 'Experience is merely the name men gave to their mistakes.', attr: 'Oscar Wilde' },
+                { text: 'A man who dares to waste one hour of time has not discovered the value of life.',
+                attr: 'Charles Darwin' },
+                { text: 'It is not the strongest of the species that survives, nor the most intelligent, but the one most responsive to change.',
+                    attr: 'Charles Darwin' },
+                { text: 'The love for all living creatures is the most noble attribute of man.', attr: 'Charles Darwin' },
+                { text: 'Imagination is more important than knowledge.', attr: 'Albert Einstein' },
+                { text: 'Life is like riding a bicycle. To keep your balance, you must keep moving.',
+                attr: 'Albert Einstein' },
+                { text: 'The measure of intelligence is the ability to change.', attr: 'Albert Einstein' },
+                { text: 'Try not to become a man of success, but rather try to become a man of value.',
+                attr: 'Albert Einstein' },
+                { text: 'In the middle of difficulty lies opportunity.', attr: 'Albert Einstein' },
+                { text: 'Anyone who has never made a mistake has never tried anything new.', attr: 'Albert Einstein' },
+                { text: 'Logic will get you from A to B. Imagination will take you everywhere.', attr: 'Albert Einstein' },
+                { text: 'The only source of knowledge is experience.', attr: 'Albert Einstein' },
+                { text: 'Strive not to be a success, but rather to be of value.', attr: 'Albert Einstein' },
+                { text: 'The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.',
+                    attr: 'Albert Einstein' },
+                { text: 'I have no special talent. I am only passionately curious.', attr: 'Albert Einstein' },
+                { text: 'The important thing is not to stop questioning.', attr: 'Albert Einstein' },
+                { text: 'If you can\'t explain it simply, you don\'t understand it well enough.',
+                attr: 'Albert Einstein' },
+                { text: 'Science without religion is lame, religion without science is blind.', attr: 'Albert Einstein' },
+                { text: 'The only thing that interferes with my learning is my education.', attr: 'Albert Einstein' },
+                { text: 'Peace cannot be kept by force; it can only be achieved by understanding.', attr: 'Albert Einstein' },
+                { text: 'I would rather have questions that can\'t be answered than answers that can\'t be questioned.',
+                    attr: 'Richard Feynman' },
+                { text: 'The first principle is that you must not fool yourself — and you are the easiest person to fool.',
+                    attr: 'Richard Feynman' },
+                { text: 'What I cannot create, I do not understand.', attr: 'Richard Feynman' },
+                { text: 'Study hard what interests you the most in the most undisciplined, irreverent, and original manner possible.',
+                    attr: 'Richard Feynman' },
+                { text: 'You must not fool yourself, and you are the easiest person to fool.', attr: 'Richard Feynman' },
+                { text: 'Somewhere, something incredible is waiting to be known.', attr: 'Carl Sagan' },
+                { text: 'We are a way for the cosmos to know itself.', attr: 'Carl Sagan' },
+                { text: 'Extraordinary claims require extraordinary evidence.', attr: 'Carl Sagan' },
+                { text: 'The cosmos is within us. We are made of star-stuff.', attr: 'Carl Sagan' },
+                { text: 'Absence of evidence is not evidence of absence.', attr: 'Carl Sagan' },
+                { text: 'One glance at a book and you hear the voice of another person — perhaps someone dead for 1,000 years.',
+                    attr: 'Carl Sagan' },
+                { text: 'To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.',
+                    attr: 'Ralph Waldo Emerson' },
+                { text: 'What lies behind us and what lies before us are tiny matters compared to what lies within us.',
+                    attr: 'Ralph Waldo Emerson' },
+                { text: 'Do not go where the path may lead, go instead where there is no path and leave a trail.',
+                    attr: 'Ralph Waldo Emerson' },
+                { text: 'The only person you are destined to become is the person you decide to be.',
+                attr: 'Ralph Waldo Emerson' },
+                { text: 'It is not the length of life, but the depth.', attr: 'Ralph Waldo Emerson' },
+                { text: 'For every minute you are angry you lose sixty seconds of happiness.', attr: 'Ralph Waldo Emerson' },
+                { text: 'All I have seen teaches me to trust the Creator for all I have not seen.', attr: 'Ralph Waldo Emerson' },
+                { text: 'Our greatest glory is not in never failing, but in rising every time we fall.',
+                attr: 'Confucius' },
+                { text: 'It does not matter how slowly you go as long as you do not stop.', attr: 'Confucius' },
+                { text: 'Everything has beauty, but not everyone sees it.', attr: 'Confucius' },
+                { text: 'The man who moves a mountain begins by carrying away small stones.', attr: 'Confucius' },
+                { text: 'Real knowledge is to know the extent of one\'s ignorance.', attr: 'Confucius' },
+                { text: 'When it is obvious that the goals cannot be reached, don\'t adjust the goals, adjust the action steps.',
+                    attr: 'Confucius' },
+                { text: 'The journey of a thousand miles begins with one step.', attr: 'Lao Tzu' },
+                { text: 'Knowing others is intelligence; knowing yourself is true wisdom.', attr: 'Lao Tzu' },
+                { text: 'Mastering others is strength; mastering yourself is true power.', attr: 'Lao Tzu' },
+                { text: 'When I let go of what I am, I become what I might be.', attr: 'Lao Tzu' },
+                { text: 'Nature does not hurry, yet everything is accomplished.', attr: 'Lao Tzu' },
+                { text: 'A journey of a thousand miles must begin with a single step.', attr: 'Lao Tzu' },
+                { text: 'Silence is a source of great strength.', attr: 'Lao Tzu' },
+                { text: 'He who knows, does not speak. He who speaks, does not know.', attr: 'Lao Tzu' },
+                { text: 'Time you enjoy wasting is not wasted time.', attr: 'Bertrand Russell' },
+                { text: 'The whole problem with the world is that fools and fanatics are always so certain of themselves, and wiser people so full of doubts.',
+                    attr: 'Bertrand Russell' },
+                { text: 'To fear love is to fear life, and those who fear life are already three parts dead.',
+                    attr: 'Bertrand Russell' },
+                { text: 'I would never die for my beliefs because I might be wrong.', attr: 'Bertrand Russell' },
+                { text: 'The fundamental cause of trouble is that in the modern world the stupid are cocksure while the intelligent are full of doubt.',
+                    attr: 'Bertrand Russell' },
+                { text: 'There are two motives for reading a book: one, that you enjoy it; the other, that you can boast about it.',
+                    attr: 'Bertrand Russell' },
+                { text: 'The unexamined life is not worth living, but the over-examined life is paralyzing.',
+                    attr: 'Alain de Botton' },
+                { text: 'A healthy man wants a thousand things. A sick man only wants one.', attr: 'Naval Ravikant' },
+                { text: 'Play long-term games with long-term people.', attr: 'Naval Ravikant' },
+                { text: 'Desire is a contract you make with yourself to be unhappy until you get what you want.',
+                    attr: 'Naval Ravikant' },
+                { text: 'The best way to predict the future is to create it.', attr: 'Peter Drucker' },
+                { text: 'What gets measured gets managed.', attr: 'Peter Drucker' },
+                { text: 'The most important thing in communication is hearing what isn\'t said.', attr: 'Peter Drucker' },
+                { text: 'Efficiency is doing things right; effectiveness is doing the right things.', attr: 'Peter Drucker' },
+                { text: 'Knowledge has to be improved, challenged, and increased constantly, or it vanishes.',
+                    attr: 'Peter Drucker' },
+                { text: 'The best way to find yourself is to lose yourself in the service of others.',
+                attr: 'Mahatma Gandhi' },
+                { text: 'Be the change that you wish to see in the world.', attr: 'Mahatma Gandhi' },
+                { text: 'Live as if you were to die tomorrow. Learn as if you were to live forever.',
+                attr: 'Mahatma Gandhi' },
+                { text: 'An eye for an eye only ends up making the whole world blind.', attr: 'Mahatma Gandhi' },
+                { text: 'Strength does not come from physical capacity. It comes from an indomitable will.',
+                    attr: 'Mahatma Gandhi' },
+                { text: 'Happiness is when what you think, what you say, and what you do are in harmony.',
+                    attr: 'Mahatma Gandhi' },
+                { text: 'First they ignore you, then they laugh at you, then they fight you, then you win.',
+                    attr: 'Mahatma Gandhi' },
+                { text: 'The weak can never forgive. Forgiveness is the attribute of the strong.', attr: 'Mahatma Gandhi' },
+                { text: 'You must be the change you wish to see in the world.', attr: 'Mahatma Gandhi' },
+                { text: 'The future depends on what you do today.', attr: 'Mahatma Gandhi' },
+                { text: 'Action expresses priorities.', attr: 'Mahatma Gandhi' },
+                { text: 'Stay hungry, stay foolish.', attr: 'Steve Jobs' },
+                { text: 'The people who are crazy enough to think they can change the world are the ones who do.',
+                    attr: 'Steve Jobs' },
+                { text: 'Your time is limited, so don\'t waste it living someone else\'s life.', attr: 'Steve Jobs' },
+                { text: 'Innovation distinguishes between a leader and a follower.', attr: 'Steve Jobs' },
+                { text: 'Quality is more important than quantity. One home run is much better than two doubles.',
+                    attr: 'Steve Jobs' },
+                { text: 'Design is not just what it looks like and feels like. Design is how it works.',
+                attr: 'Steve Jobs' },
+                { text: 'The only way to do great work is to love what you do.', attr: 'Steve Jobs' },
+                { text: 'I\'m convinced that about half of what separates successful entrepreneurs from the non-successful ones is pure perseverance.',
+                    attr: 'Steve Jobs' },
+                { text: 'It is better to be roughly right than precisely wrong.', attr: 'Warren Buffett' },
+                { text: 'Price is what you pay. Value is what you get.', attr: 'Warren Buffett' },
+                { text: 'Risk comes from not knowing what you\'re doing.', attr: 'Warren Buffett' },
+                { text: 'The most important investment you can make is in yourself.', attr: 'Warren Buffett' },
+                { text: 'Someone\'s sitting in the shade today because someone planted a tree a long time ago.',
+                    attr: 'Warren Buffett' },
+                { text: 'It takes 20 years to build a reputation and five minutes to ruin it.', attr: 'Warren Buffett' },
+                { text: 'Chains of habit are too light to be felt until they are too heavy to be broken.',
+                    attr: 'Warren Buffett' },
+                { text: 'In the business world, the rearview mirror is always clearer than the windshield.',
+                    attr: 'Warren Buffett' },
+                { text: 'The difference between successful people and really successful people is that really successful people say no to almost everything.',
+                    attr: 'Warren Buffett' },
+                { text: 'Honesty is a very expensive gift. Don\'t expect it from cheap people.', attr: 'Warren Buffett' },
+                { text: 'When a management with a reputation for brilliance tackles a business with a reputation for bad economics, it is the reputation of the business that remains intact.',
+                    attr: 'Warren Buffett' },
+                { text: 'If you aren\'t thinking about owning a stock for 10 years, don\'t even think about owning it for 10 minutes.',
+                    attr: 'Warren Buffett' },
+                { text: 'The stock market is designed to transfer money from the Active to the Patient.',
+                    attr: 'Warren Buffett' },
+                { text: 'Great things are done by a series of small things brought together.', attr: 'Vincent van Gogh' },
+                { text: 'I dream my painting and I paint my dream.', attr: 'Vincent van Gogh' },
+                { text: 'If you hear a voice within you say "you cannot paint," then by all means paint, and that voice will be silenced.',
+                    attr: 'Vincent van Gogh' },
+                { text: 'What would life be if we had no courage to attempt anything?', attr: 'Vincent van Gogh' },
+                { text: 'I am seeking. I am striving. I am in it with all my heart.', attr: 'Vincent van Gogh' },
+                { text: 'The more I think about it, the more I realize there is nothing more artistic than to love others.',
+                    attr: 'Vincent van Gogh' },
+                { text: 'Normality is a paved road: It\'s comfortable to walk, but no flowers grow on it.',
+                    attr: 'Vincent van Gogh' },
+                { text: 'Do not wait for leaders; do it alone, person to person.', attr: 'Mother Teresa' },
+                { text: 'Not all of us can do great things. But we can do small things with great love.',
+                attr: 'Mother Teresa' },
+                { text: 'If you judge people, you have no time to love them.', attr: 'Mother Teresa' },
+                { text: 'Spread love everywhere you go. Let no one ever come to you without leaving happier.',
+                    attr: 'Mother Teresa' },
+                { text: 'Peace begins with a smile.', attr: 'Mother Teresa' },
+                { text: 'I alone cannot change the world, but I can cast a stone across the waters to create many ripples.',
+                    attr: 'Mother Teresa' },
+                { text: 'The greatest glory in living lies not in never falling, but in rising every time we fall.',
+                    attr: 'Nelson Mandela' },
+                { text: 'It always seems impossible until it\'s done.', attr: 'Nelson Mandela' },
+                { text: 'Education is the most powerful weapon which you can use to change the world.',
+                attr: 'Nelson Mandela' },
+                { text: 'I learned that courage was not the absence of fear, but the triumph over it.',
+                attr: 'Nelson Mandela' },
+                { text: 'A winner is a dreamer who never gives up.', attr: 'Nelson Mandela' },
+                { text: 'There is no passion to be found playing small — in settling for a life that is less than the one you are capable of living.',
+                    attr: 'Nelson Mandela' },
+                { text: 'For to be free is not merely to cast off one\'s chains, but to live in a way that respects and enhances the freedom of others.',
+                    attr: 'Nelson Mandela' },
+                { text: 'Resentment is like drinking poison and then hoping it will kill your enemies.',
+                attr: 'Nelson Mandela' },
+                { text: 'Courage is not the absence of fear, but the triumph over it.', attr: 'Nelson Mandela' },
+                { text: 'Darkness cannot drive out darkness; only light can do that. Hate cannot drive out hate; only love can do that.',
+                    attr: 'Martin Luther King Jr.' },
+                { text: 'The time is always right to do what is right.', attr: 'Martin Luther King Jr.' },
+                { text: 'Injustice anywhere is a threat to justice everywhere.', attr: 'Martin Luther King Jr.' },
+                { text: 'Faith is taking the first step even when you don\'t see the whole staircase.',
+                    attr: 'Martin Luther King Jr.' },
+                { text: 'I have decided to stick with love. Hate is too great a burden to bear.',
+                    attr: 'Martin Luther King Jr.' },
+                { text: 'Life\'s most persistent and urgent question is, "What are you doing for others?"',
+                    attr: 'Martin Luther King Jr.' },
+                { text: 'Our lives begin to end the day we become silent about things that matter.',
+                    attr: 'Martin Luther King Jr.' },
+                { text: 'The ultimate measure of a man is not where he stands in moments of comfort and convenience, but where he stands at times of challenge and controversy.',
+                    attr: 'Martin Luther King Jr.' },
+                { text: 'You cannot escape the responsibility of tomorrow by evading it today.', attr: 'Abraham Lincoln' },
+                { text: 'The best way to predict your future is to create it.', attr: 'Abraham Lincoln' },
+                { text: 'Give me six hours to chop down a tree and I will spend the first four sharpening the axe.',
+                    attr: 'Abraham Lincoln' },
+                { text: 'Whatever you are, be a good one.', attr: 'Abraham Lincoln' },
+                { text: 'Most folks are as happy as they make up their minds to be.', attr: 'Abraham Lincoln' },
+                { text: 'I am not bound to win, but I am bound to be true. I am not bound to succeed, but I am bound to live up to what light I have.',
+                    attr: 'Abraham Lincoln' },
+                { text: 'Things may come to those who wait, but only the things left by those who hustle.',
+                    attr: 'Abraham Lincoln' },
+                { text: 'The only limit to our realization of tomorrow will be our doubts of today.',
+                    attr: 'Franklin D. Roosevelt' },
+                { text: 'Happiness is not something ready-made. It comes from your own actions.',
+                attr: 'Dalai Lama' },
+                { text: 'The purpose of our lives is to be happy.', attr: 'Dalai Lama' },
+                { text: 'If you want others to be happy, practice compassion. If you want to be happy, practice compassion.',
+                    attr: 'Dalai Lama' },
+                { text: 'Remember that sometimes not getting what you want is a wonderful stroke of luck.',
+                attr: 'Dalai Lama' },
+                { text: 'When you talk, you are only repeating what you already know. But if you listen, you may learn something new.',
+                    attr: 'Dalai Lama' },
+                { text: 'The more you are motivated by love, the more fearless and free your action will be.',
+                    attr: 'Dalai Lama' },
+                { text: 'Be kind whenever possible. It is always possible.', attr: 'Dalai Lama' },
+                { text: 'Simplicity is the ultimate sophistication.', attr: 'Leonardo da Vinci' },
+                { text: 'Learning never exhausts the mind.', attr: 'Leonardo da Vinci' },
+                { text: 'Art is never finished, only abandoned.', attr: 'Leonardo da Vinci' },
+                { text: 'Iron rusts from disuse; water loses its purity from stagnation… even so does inaction sap the vigor of the mind.',
+                    attr: 'Leonardo da Vinci' },
+                { text: 'The noblest pleasure is the joy of understanding.', attr: 'Leonardo da Vinci' },
+                { text: 'He who thinks little, errs much.', attr: 'Leonardo da Vinci' },
+                { text: 'I love those who can smile in trouble.', attr: 'Leonardo da Vinci' },
+                { text: 'It had long since come to my attention that people of accomplishment rarely sat back and let things happen to them. They went out and happened to things.',
+                    attr: 'Leonardo da Vinci' },
+                { text: 'Painting is poetry that is seen rather than felt, and poetry is painting that is felt rather than seen.',
+                    attr: 'Leonardo da Vinci' },
+                { text: 'If you want to go fast, go alone. If you want to go far, go together.', attr: 'African Proverb' },
+                { text: 'When there is no enemy within, the enemies outside cannot hurt you.', attr: 'African Proverb' },
+                { text: 'The child who is not embraced by the village will burn it down to feel its warmth.',
+                    attr: 'African Proverb' },
+                { text: 'Smooth seas do not make skillful sailors.', attr: 'African Proverb' },
+                { text: 'However long the night, the dawn will break.', attr: 'African Proverb' },
+                { text: 'Wisdom is like a baobab tree; no one individual can embrace it.', attr: 'African Proverb' },
+                { text: 'A man who uses force is afraid of reasoning.', attr: 'African Proverb' },
+                { text: 'The fool speaks, the wise man listens.', attr: 'African Proverb' },
+                { text: 'Not everything that is faced can be changed, but nothing can be changed until it is faced.',
+                    attr: 'James Baldwin' },
+                { text: 'You think your pain and your heartbreak are unprecedented in the history of the world, but then you read.',
+                    attr: 'James Baldwin' },
+                { text: 'The most dangerous creation of any society is the man who has nothing to lose.',
+                attr: 'James Baldwin' },
+                { text: 'Love does not begin and end the way we seem to think it does. Love is a battle, love is a war; love is a growing up.',
+                    attr: 'James Baldwin' },
+                { text: 'People can cry much easier than they can change.', attr: 'James Baldwin' },
+                { text: 'The world is a book and those who do not travel read only one page.', attr: 'Saint Augustine' },
+                { text: 'Patience is the companion of wisdom.', attr: 'Saint Augustine' },
+                { text: 'Hope has two beautiful daughters; their names are Anger and Courage. Anger at the way things are, and Courage to see that they do not remain as they are.',
+                    attr: 'Saint Augustine' },
+                { text: 'Faith is to believe what you do not see; the reward of this faith is to see what you believe.',
+                    attr: 'Saint Augustine' },
+                { text: 'The mind commands the body and it obeys. The mind commands itself and meets resistance.',
+                    attr: 'Saint Augustine' },
+                { text: 'You have made us for yourself, O Lord, and our hearts are restless until they rest in you.',
+                    attr: 'Saint Augustine' },
+                { text: 'The truth is like a lion; you don\'t have to defend it. Let it loose; it will defend itself.',
+                    attr: 'Saint Augustine' },
+                { text: 'Fall seven times, stand up eight.', attr: 'Japanese Proverb' },
+                { text: 'The bamboo that bends is stronger than the oak that resists.', attr: 'Japanese Proverb' },
+                { text: 'Vision without action is a daydream. Action without vision is a nightmare.',
+                attr: 'Japanese Proverb' },
+                { text: 'A single arrow is easily broken, but not ten in a bundle.', attr: 'Japanese Proverb' },
+                { text: 'Even a thousand-mile journey starts with a single step.', attr: 'Japanese Proverb' },
+                { text: 'The nail that sticks out gets hammered down.', attr: 'Japanese Proverb' },
+                { text: 'One kind word can warm three winter months.', attr: 'Japanese Proverb' },
+                { text: 'Better than a thousand days of diligent study is one day with a great teacher.',
+                attr: 'Japanese Proverb' },
+                { text: 'Yesterday is history. Tomorrow is a mystery. Today is a gift. That\'s why it\'s called the present.',
+                    attr: 'Eleanor Roosevelt' },
+                { text: 'No one can make you feel inferior without your consent.', attr: 'Eleanor Roosevelt' },
+                { text: 'Great minds discuss ideas; average minds discuss events; small minds discuss people.',
+                    attr: 'Eleanor Roosevelt' },
+                { text: 'The future belongs to those who believe in the beauty of their dreams.',
+                attr: 'Eleanor Roosevelt' },
+                { text: 'You must do the things you think you cannot do.', attr: 'Eleanor Roosevelt' },
+                { text: 'With the new day comes new strength and new thoughts.', attr: 'Eleanor Roosevelt' },
+                { text: 'It is not fair to ask of others what you are not willing to do yourself.',
+                attr: 'Eleanor Roosevelt' },
+                { text: 'Do one thing every day that scares you.', attr: 'Eleanor Roosevelt' },
+                { text: 'People grow through experience if they meet life honestly and courageously.',
+                    attr: 'Eleanor Roosevelt' },
+                { text: 'The only thing we have to fear is fear itself.', attr: 'Franklin D. Roosevelt' },
+                { text: 'Happiness lies in the joy of achievement and the thrill of creative effort.',
+                    attr: 'Franklin D. Roosevelt' },
+                { text: 'When you reach the end of your rope, tie a knot in it and hang on.', attr: 'Franklin D. Roosevelt' },
+                { text: 'There are many ways of going forward, but only one way of standing still.',
+                    attr: 'Franklin D. Roosevelt' },
+                { text: 'Books are the quietest and most constant of friends.', attr: 'Franklin D. Roosevelt' },
+                { text: 'I am a slow walker, but I never walk back.', attr: 'Abraham Lincoln' },
+                { text: 'Whatever the mind of man can conceive and believe, it can achieve.', attr: 'Napoleon Hill' },
+                { text: 'Strength and growth come only through continuous effort and struggle.', attr: 'Napoleon Hill' },
+                { text: 'The starting point of all achievement is desire.', attr: 'Napoleon Hill' },
+                { text: 'Don\'t wait. The time will never be just right.', attr: 'Napoleon Hill' },
+                { text: 'If you cannot do great things, do small things in a great way.', attr: 'Napoleon Hill' },
+                { text: 'A goal is a dream with a deadline.', attr: 'Napoleon Hill' },
+                { text: 'Think twice before you speak, because your words and influence will plant the seed of either success or failure in the mind of another.',
+                    attr: 'Napoleon Hill' },
+                { text: 'Every adversity, every failure, every heartache carries with it the seed of an equal or greater benefit.',
+                    attr: 'Napoleon Hill' },
+                { text: 'Effort only fully releases its reward after a person refuses to quit.', attr: 'Napoleon Hill' },
+                { text: 'Set your course by the stars, not by the lights of every passing ship.', attr: 'Omar N. Bradley' },
+                { text: 'The best time to plant a tree was 20 years ago. The second best time is now.',
+                attr: 'Chinese Proverb' },
+                { text: 'A man who asks is a fool for five minutes. A man who never asks is a fool for life.',
+                    attr: 'Chinese Proverb' },
+                { text: 'Be not afraid of growing slowly; be afraid only of standing still.', attr: 'Chinese Proverb' },
+                { text: 'He who asks a question is a fool for a minute; he who does not remains a fool forever.',
+                    attr: 'Chinese Proverb' },
+                { text: 'Teachers open the door, but you must enter by yourself.', attr: 'Chinese Proverb' },
+                { text: 'To know the road ahead, ask those coming back.', attr: 'Chinese Proverb' },
+                { text: 'The gem cannot be polished without friction, nor man perfected without trials.',
+                    attr: 'Chinese Proverb' },
+                { text: 'A book holds a house of gold.', attr: 'Chinese Proverb' },
+                { text: 'If you are patient in one moment of anger, you will escape a hundred days of sorrow.',
+                    attr: 'Chinese Proverb' },
+                { text: 'An investment in knowledge pays the best interest.', attr: 'Benjamin Franklin' },
+                { text: 'Tell me and I forget. Teach me and I remember. Involve me and I learn.',
+                attr: 'Benjamin Franklin' },
+                { text: 'Well done is better than well said.', attr: 'Benjamin Franklin' },
+                { text: 'By failing to prepare, you are preparing to fail.', attr: 'Benjamin Franklin' },
+                { text: 'He that can have patience can have what he will.', attr: 'Benjamin Franklin' },
+                { text: 'Energy and persistence conquer all things.', attr: 'Benjamin Franklin' },
+                { text: 'Lost time is never found again.', attr: 'Benjamin Franklin' },
+                { text: 'There never was a good knife made of bad steel.', attr: 'Benjamin Franklin' },
+                { text: 'Three may keep a secret, if two of them are dead.', attr: 'Benjamin Franklin' },
+                { text: 'We must all hang together, or assuredly we shall all hang separately.', attr: 'Benjamin Franklin' },
+                { text: 'When you are finished changing, you\'re finished.', attr: 'Benjamin Franklin' },
+                { text: 'I didn\'t fail the test. I just found 100 ways to do it wrong.', attr: 'Benjamin Franklin' },
+                { text: 'Either write something worth reading or do something worth writing.', attr: 'Benjamin Franklin' },
+                { text: 'Beware of little expenses. A small leak will sink a great ship.', attr: 'Benjamin Franklin' },
+                { text: 'Never ruin an apology with an excuse.', attr: 'Benjamin Franklin' },
+                { text: 'Hide not your talents. They for use were made. What\'s a sundial in the shade?',
+                    attr: 'Benjamin Franklin' },
+                { text: 'The most difficult thing is the decision to act. The rest is merely tenacity.',
+                    attr: 'Amelia Earhart' },
+                { text: 'Adventure is worthwhile in itself.', attr: 'Amelia Earhart' },
+                { text: 'The most effective way to do it, is to do it.', attr: 'Amelia Earhart' },
+                { text: 'Worry is a misuse of the imagination.', attr: 'Dan Zadra' },
+                { text: 'If you think you are too small to make a difference, try sleeping with a mosquito.',
+                    attr: 'Dalai Lama' },
+                { text: 'What you do makes a difference, and you have to decide what kind of difference you want to make.',
+                    attr: 'Jane Goodall' },
+                { text: 'Every individual matters. Every individual has a role to play.', attr: 'Jane Goodall' },
+                { text: 'What you do speaks so loudly that I cannot hear what you say.', attr: 'Ralph Waldo Emerson' },
+                { text: 'It is during our darkest moments that we must focus to see the light.', attr: 'Aristotle' },
+                { text: 'The only journey is the one within.', attr: 'Rainer Maria Rilke' },
+                { text: 'Perhaps all the dragons in our lives are princesses who are only waiting to see us act, just once, with beauty and courage.',
+                    attr: 'Rainer Maria Rilke' },
+                { text: 'Live your questions now, and perhaps even without knowing it, you will live along some distant day into your answers.',
+                    attr: 'Rainer Maria Rilke' },
+                { text: 'Let everything happen to you: beauty and terror. Just keep going. No feeling is final.',
+                    attr: 'Rainer Maria Rilke' },
+                { text: 'The only lasting truth is Change.', attr: 'Octavia Butler' },
+                { text: 'All that you touch, you change. All that you change, changes you.', attr: 'Octavia Butler' },
+                { text: 'In order to rise from its own ashes, a Phoenix first must burn.', attr: 'Octavia Butler' },
+                { text: 'Kindness eases change.', attr: 'Octavia Butler' },
+                { text: 'The world is full of magic things, patiently waiting for our senses to grow sharper.',
+                    attr: 'W.B. Yeats' },
+                { text: 'Education is not the filling of a pail, but the lighting of a fire.', attr: 'W.B. Yeats' },
+                { text: 'There are no strangers here; only friends you haven\'t yet met.', attr: 'W.B. Yeats' },
+                { text: 'Do not wait to strike till the iron is hot; but make it hot by striking.', attr: 'W.B. Yeats' },
+                { text: 'Think like a man of action, act like a man of thought.', attr: 'Henri Bergson' },
+                { text: 'The eye sees only what the mind is prepared to comprehend.', attr: 'Henri Bergson' },
+                { text: 'To exist is to change, to change is to mature, to mature is to go on creating oneself endlessly.',
+                    attr: 'Henri Bergson' },
+                { text: 'Curiosity is one of the most permanent and certain characteristics of a vigorous intellect.',
+                    attr: 'Samuel Johnson' },
+                { text: 'The true measure of a man is how he treats someone who can do him absolutely no good.',
+                    attr: 'Samuel Johnson' },
+                { text: 'Great works are performed not by strength but by perseverance.', attr: 'Samuel Johnson' },
+                { text: 'Nothing will ever be attempted if all possible objections must first be overcome.',
+                    attr: 'Samuel Johnson' },
+                { text: 'He who makes a beast of himself gets rid of the pain of being a man.', attr: 'Samuel Johnson' },
+                { text: 'The future is already here — it\'s just not very evenly distributed.', attr: 'William Gibson' },
+                { text: 'The street finds its own uses for things.', attr: 'William Gibson' },
+                { text: 'Time is the substance from which I am made.', attr: 'Jorge Luis Borges' },
+                { text: 'I have always imagined that Paradise will be a kind of library.', attr: 'Jorge Luis Borges' },
+                { text: 'Don\'t talk unless you can improve the silence.', attr: 'Jorge Luis Borges' },
+                { text: 'You become what you give your attention to.', attr: 'Epictetus' },
+                { text: 'Circumstances don\'t make the man, they only reveal him to himself.', attr: 'Epictetus' },
+                { text: 'Small disciplines repeated with consistency every day lead to great achievements gained slowly over time.',
+                    attr: 'John C. Maxwell' },
+                { text: 'A leader is one who knows the way, goes the way, and shows the way.', attr: 'John C. Maxwell' },
+                { text: 'The pessimist complains about the wind. The optimist expects it to change. The leader adjusts the sails.',
+                    attr: 'John C. Maxwell' },
+                { text: 'Dreams don\'t work unless you do.', attr: 'John C. Maxwell' },
+                { text: 'Life is 10% what happens to us and 90% how we react to it.', attr: 'Charles R. Swindoll' },
+                { text: 'I am not a product of my circumstances. I am a product of my decisions.',
+                attr: 'Stephen Covey' },
+                { text: 'The main thing is to keep the main thing the main thing.', attr: 'Stephen Covey' },
+                { text: 'Begin with the end in mind.', attr: 'Stephen Covey' },
+                { text: 'Most people do not listen with the intent to understand; they listen with the intent to reply.',
+                    attr: 'Stephen Covey' },
+                { text: 'Seek first to understand, then to be understood.', attr: 'Stephen Covey' },
+                { text: 'The key is not to prioritize what\'s on your schedule, but to schedule your priorities.',
+                    attr: 'Stephen Covey' },
+                { text: 'Trust is the glue of life. It\'s the most essential ingredient in effective communication.',
+                    attr: 'Stephen Covey' },
+                { text: 'I am not what happened to me, I am what I choose to become.', attr: 'Carl Jung' },
+                { text: 'Who looks outside, dreams; who looks inside, awakes.', attr: 'Carl Jung' },
+                { text: 'Knowing your own darkness is the best method for dealing with the darknesses of other people.',
+                    attr: 'Carl Jung' },
+                { text: 'The privilege of a lifetime is to become who you truly are.', attr: 'Carl Jung' },
+                { text: 'Until you make the unconscious conscious, it will direct your life and you will call it fate.',
+                    attr: 'Carl Jung' },
+                { text: 'You are what you do, not what you say you\'ll do.', attr: 'Carl Jung' },
+                { text: 'Everything that irritates us about others can lead us to an understanding of ourselves.',
+                    attr: 'Carl Jung' },
+                { text: 'Perfection is not attainable, but if we chase perfection we can catch excellence.',
+                    attr: 'Vince Lombardi' },
+                { text: 'It\'s not whether you get knocked down; it\'s whether you get up.', attr: 'Vince Lombardi' },
+                { text: 'Winning isn\'t everything, but wanting to win is.', attr: 'Vince Lombardi' },
+                { text: 'The measure of who we are is what we do with what we have.', attr: 'Vince Lombardi' },
+                { text: 'The only place success comes before work is in the dictionary.', attr: 'Vince Lombardi' },
+                { text: 'We would accomplish many more things if we did not think of them as impossible.',
+                    attr: 'Vince Lombardi' },
+                { text: 'Fatigue makes cowards of us all.', attr: 'Vince Lombardi' },
+                { text: 'If you can believe it, the mind can achieve it.', attr: 'Ronnie Lott' },
+                { text: 'Do not let what you cannot do interfere with what you can do.', attr: 'John Wooden' },
+                { text: 'Make each day your masterpiece.', attr: 'John Wooden' },
+                { text: 'It\'s the little details that are vital. Little things make big things happen.',
+                attr: 'John Wooden' },
+                { text: 'Failure is not fatal, but failure to change might be.', attr: 'John Wooden' },
+                { text: 'Be more concerned with your character than your reputation, because your character is what you really are, while your reputation is merely what others think you are.',
+                    attr: 'John Wooden' },
+                { text: 'The true test of a man\'s character is what he does when no one is watching.',
+                attr: 'John Wooden' },
+                { text: 'Success is never final, failure is never fatal. It\'s courage that counts.', attr: 'John Wooden' },
+                { text: 'Ability is a poor man\'s wealth.', attr: 'John Wooden' },
+            ];
+
+            function pickRandomQuote() {
+                const idx = Math.floor(Math.random() * QUOTES.length);
+                return QUOTES[idx];
+            }
+
+            function renderQuote() {
+                const quote = pickRandomQuote();
+                quoteTextEl.textContent = '“' + quote.text + '”';
+                quoteAttrEl.textContent = '— ' + quote.attr;
+            }
+
+            // ──────────────────────────────────────
+            // INITIALIZATION
+            // ──────────────────────────────────────
+            function init() {
+                updateMasthead();
+                updateTracker();
+                loadFocus();
+                const projects = getProjects();
+                const saved = saveProjects(projects);
+                renderProjects(saved);
+                renderReadingList();
+                renderQuote();
+            }
+
+            // ──────────────────────────────────────
+            // PERIODIC UPDATES
+            // ──────────────────────────────────────
+            setInterval(() => {
+                updateClock();
+                // Check if date changed (midnight rollover)
+                const currentDateStr = getTodayDateStr();
+                if (currentDateStr !== lastKnownDate) {
+                    lastKnownDate = currentDateStr;
+                    updateMasthead();
+                    updateTracker();
+                    loadFocus();
+                    renderReadingList();
+                }
+            }, 1000);
+
+            let lastKnownDate = getTodayDateStr();
+
+            // ──────────────────────────────────────
+            // HANDLE STORAGE EVENTS (cross-tab sync)
+            // ──────────────────────────────────────
+            window.addEventListener('storage', function(e) {
+                if (e.key === PROJECTS_KEY) {
+                    const projects = getProjects();
+                    renderProjects(saveProjects(projects));
+                }
+                if (e.key && e.key.startsWith('focus_')) {
+                    loadFocus();
+                }
+                if (e.key && e.key.startsWith('reading_read_')) {
+                    renderReadingList();
+                }
+            });
+
+            // ──────────────────────────────────────
+            // START
+            // ──────────────────────────────────────
+            init();
+        })();
+    </script>
+</body>
+</html>
