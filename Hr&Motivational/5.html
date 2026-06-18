@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>HR-11/12/13 · The JEE Failure Arc — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--gold); box-shadow: 0 0 20px rgba(245,158,11,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--gold); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #d97706; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-rose {
+            border-left: 4px solid var(--rose); background: var(--rose-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .section-header {
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .section-header h2 { color: var(--gold); font-size: 1.6rem; }
+
+        .framework-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+        }
+        .framework-table th {
+            text-align: left;
+            padding: 0.7rem 0.8rem;
+            background: rgba(245,158,11,0.08);
+            color: var(--gold);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .framework-table td {
+            padding: 0.7rem 0.8rem;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-body);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--gold);">[ID: HR-11/12/13] · [STATUS: CRAFTED] · [BLOCK 4: THE JEE FAILURE ARC]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 4 · THE JEE FAILURE ARC — THE QUESTION BENEATH EVERY QUESTION</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Processing Failure With Honesty & Clarity</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The four‑part framework, Stoic & Gita frameworks applied genuinely, and answering the hostile "wasted three years" pressure test — without flinching.</p>
+        </div>
+
+        <!-- HR-11: The Four-Part Framework -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🔍 HR‑11 · The Four‑Part Framework for Discussing Failure</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">Every failure answer should follow this invisible structure. It transforms "I failed" into "I grew."</p>
+
+            <!-- Framework Table -->
+            <div style="overflow-x:auto;">
+                <table class="framework-table">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>What it does</th>
+                            <th>Your raw material</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:700; color:var(--gold);">ATTEMPT</td>
+                            <td>Shows you took a real shot, not a half‑hearted one.</td>
+                            <td>Three years including a drop year, daily study, coaching.</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--gold);">EFFORT</td>
+                            <td>Distinguishes failure from laziness.</td>
+                            <td>You worked hard. The effort was real.</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--gold);">LEARNING</td>
+                            <td>Proves you extracted insight, not just disappointment.</td>
+                            <td>Discovery of alignment, self‑awareness, the difference between grinding and growing.</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--gold);">ACTION</td>
+                            <td>Demonstrates the learning was applied, not just talked about.</td>
+                            <td>Pivoted to IPMAT, cleared in two months, joined IITM DS.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <details class="recall-toggle" style="margin-top:1.2rem;">
+                <summary><span>Q1: Tell us about a time you failed. What happened?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I spent three years preparing for JEE — including a drop year. That was the attempt. The effort was genuine: daily study, coaching, practice tests. I scored 34 percentile. That's a failure by any objective measure. But the learning was profound. I discovered that effort without alignment has a ceiling. I was trying to climb a mountain I was never drawn to. The action I took was immediate: I re‑evaluated my path, discovered IPMAT, prepared with intensity for two months, and cleared it. I also started the IIT Madras Data Science programme. So the failure didn't end me. It redirected me. And the framework I used to process it — attempt, effort, learning, action — is something I now apply to any setback."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What's the single most important lesson you took from the JEE experience?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"That hard work on the wrong thing is just burnout with a schedule. I used to believe that if I just worked hard enough, anything was possible. JEE broke that illusion — and I'm grateful. It taught me that self‑awareness is not a soft skill; it's the most practical asset you can have. Knowing where your natural curiosity and aptitude lie is the difference between three years of stagnation and two months of acceleration. I now vet every major decision through that lens."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: How do you apply what you learned from JEE to your current choices?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I now listen to signals early. When I prepared for IPMAT, I noticed I didn't dread the reading section — I enjoyed it. That wasn't a fluke; it was data. Similarly, when I started the IITM Data Science course, the programming and statistics felt like puzzles I wanted to solve, not burdens I had to endure. So I'm not just choosing paths based on prestige or herd opinion anymore. I'm choosing based on honest internal feedback. JEE taught me to trust that feedback. That's the action part — I don't just say I learned; I changed my decision‑making process."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-12: Stoic & Gita Frameworks -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🪞 HR‑12 · Using Stoic & Gita Frameworks Genuinely</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">You've already demonstrated philosophical depth through Frankl. These frameworks naturally extend your story — without sounding pretentious. Use them only if the conversation naturally invites them.</p>
+
+            <div class="callout" style="margin-bottom:1.2rem;">
+                <p style="color:var(--text-body);"><strong>Framework 1 — "The Obstacle Is the Way"</strong> (Stoic principle, via Ryan Holiday)<br>What blocks you becomes the path forward — if you use it correctly.</p>
+            </div>
+            <details class="recall-toggle">
+                <summary><span>Q (Stoic): "Did JEE break your confidence?" or "What gives you resilience?"</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"There's a Stoic idea I came across in my reading: 'The obstacle is the way.' It means that the thing blocking you is actually the thing you need to engage with, not avoid. My JEE failure felt like a wall. But when I stopped trying to break through it and started asking what it was telling me — that this path wasn't mine — the wall became a signpost. The obstacle didn't just block me; it redirected me. If I had succeeded in JEE by a narrow margin, I might have spent years in an engineering programme that didn't fit me. The failure saved me from a longer detour. I don't see it as a punishment. I see it as uncomfortable guidance."</p></div>
+            </details>
+
+            <div class="callout" style="margin:1.2rem 0;">
+                <p style="color:var(--text-body);"><strong>Framework 2 — "Nishkama Karma"</strong> (Bhagavad Gita — action without attachment to outcome)<br>Doing your duty with full effort while detaching from the results.</p>
+            </div>
+            <details class="recall-toggle">
+                <summary><span>Q (Gita): "How did you handle the pressure of a drop year?" or "Aren't you afraid of failing again?"</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I'm not religious in a ritual sense, but there's an idea from the Gita that I've found deeply practical: Nishkama Karma — doing your work with full effort without being attached to the outcome. In my drop year, I was extremely attached to a specific rank. That attachment made every low mock score feel like a personal crisis. Now, I'm learning to shift that. I prepared for IPMAT with full intensity, but I wasn't attached to the result in the same paralysing way. I told myself: do the work, let the result take care of itself. That's not complacency. It's focus without anxiety. I want to carry that into IPM — give my best, learn as much as I can, and not let outcome‑fear hijack the process."</p></div>
+            </details>
+
+            <div class="callout" style="margin:1.2rem 0;">
+                <p style="color:var(--text-body);"><strong>Framework 3 — Connecting Frankl to Stoicism to the Gita</strong> (synthesis, not name‑dropping)</p>
+            </div>
+            <details class="recall-toggle">
+                <summary><span>Q (Synthesis): "You read philosophy — how do these ideas connect?"</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I see a thread between Frankl, Stoicism, and the Gita. All three say the same thing in different languages: you cannot always control what happens to you, but you can always control your response. Frankl calls it the last of human freedoms. The Stoics call it the inner citadel. The Gita calls it equanimity in success and failure. I'm not a philosopher — I'm just someone who needed a framework to not fall apart. These ideas gave me one. And they worked."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-13: The Hostile Version -->
+        <div class="glass-panel" style="border-left: 4px solid var(--rose);">
+            <div class="section-header">
+                <h2>🔥 HR‑13 · Answering the Hostile Version: "You Wasted Three Years"</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">This is the pressure test. Your job is to not flinch, not apologise excessively, and turn the question into a statement of value.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: You spent three years preparing for JEE and got 34 percentile. That's three wasted years, isn't it?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I understand why it might look that way from the outside — three years invested, and a number that doesn't reflect any of them. But I respectfully disagree that they were wasted. Those three years were an expensive education — not in Physics and Chemistry, but in myself. I learned what I'm not built for. I learned to distinguish between societal expectation and personal fit. I learned to take a public failure and not collapse. I learned to pivot with conviction. If I had learned those things through a course, you would call it a valuable programme. I just learned them through experience. The years were costly, but I extracted every rupee of value from them. That's why I'm sitting here with clarity, not confusion."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: But you could have figured this out in one year. Why three?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Because I was stubborn — and that's both a flaw and a strength. The flaw is that I kept pushing on a path that wasn't working, longer than I should have. The strength is that when I finally did re‑evaluate, I did it thoroughly. I didn't make a reactive jump. I made a considered pivot. Some people figure out their path early. I figured it out late — but I figured it out for real. And the proof is that in two months after pivoting, I cleared IPMAT. So yes, the timeline wasn't ideal. But the depth of the learning might not have been possible without the full experience. I'm not glorifying failure. I'm just saying I didn't let it go to waste."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What would you say to someone who thinks you're just rationalising a failure?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I'd say: look at what happened next. If I were rationalising, I'd have no proof of change. I'd still be aimless, or I'd be making excuses. But within weeks of my JEE result, I identified IPMAT, prepared, and cleared it. I started a rigorous data science programme from IIT Madras. I'm not sitting at home explaining why JEE didn't work. I'm moving. Rationalising is talking. Action is evidence. I'm offering evidence."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Do you regret the drop year?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I don't regret the attempt. I regret not re‑evaluating earlier. But regret, if it doesn't become action, is just self‑punishment. I've converted that regret into a decision‑making principle: I will periodically ask myself 'is this still the right path?' rather than waiting for a crash to tell me. The drop year was painful, but it gave me that principle. I'll carry it for the rest of my life. That's a high price, but a good return."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: Why should we admit someone who has shown they can't handle pressure? JEE broke you.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"JEE didn't break me. JEE revealed me. It revealed that I was on the wrong track. If I were broken, I wouldn't be sitting here having cleared a national‑level entrance exam two months later. The pressure of an exam I'm aligned with didn't break me — it brought out my best. IPMAT was high‑pressure. I performed. IITM's qualifier phase is high‑pressure. I'm engaged. The question isn't whether I can handle pressure. The question is whether the pressure is on something I'm built for. I've now learned to match the challenge to the person. That's not weakness. That's wisdom."</p></div>
+            </details>
+        </div>
+
+        <!-- Block 4 Closing Thought -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);margin-bottom:0.5rem;">💡 BLOCK 4 CLOSING THOUGHT</p>
+            <p style="color:var(--text-body);font-style:italic;">You are not walking into that room as a JEE failure. You are walking in as someone who turned a dead end into a launchpad. The panel doesn't want a candidate who has never failed; they want one who has failed and is still standing, still thinking, still moving. The hostile questions are not traps. They are invitations to show the depth of your processing. Every answer in this block says the same thing in different words: <strong>"Yes, I failed. And then I did something about it. That's the part that matters."</strong></p>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);margin-top:1.5rem;">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"When I talk about my JEE experience, I use a simple four‑part framework: attempt, effort, learning, and action. I attempted JEE for three years with genuine effort. I learned that effort without alignment has a ceiling — I was grinding on a path I never connected with. The action was immediate: I pivoted to IPMAT and cleared it in two months, and I started the IIT Madras Data Science programme. I also found frameworks — Stoicism's 'the obstacle is the way,' the Gita's Nishkama Karma, and Frankl's last of human freedoms — that helped me process this without bitterness. If someone says I wasted three years, I respectfully disagree. Those years were an expensive education in self‑awareness. I've extracted every rupee of value from them."</em></p>
+        </div>
+    </main>
+</body>
+</html>
