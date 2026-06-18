@@ -1,0 +1,518 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-24 · Middle East Land Borders — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --amber: #d97706;
+            --amber-dim: rgba(217, 119, 6, 0.1);
+            --sand: #b45309;
+            --sand-dim: rgba(180, 83, 9, 0.12);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--sand); box-shadow: 0 0 20px rgba(180,83,9,0.12); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--sand); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #92400e; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-sand {
+            border-left: 4px solid var(--sand); background: var(--sand-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-amber {
+            border-left: 4px solid var(--amber); background: var(--amber-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.05rem; }
+
+        .canvas-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+        canvas { max-width: 100%; height: auto; }
+
+        .route-box {
+            background: rgba(180,83,9,0.06); border: 1px solid rgba(180,83,9,0.2);
+            border-radius: 12px; padding: 1.2rem; margin: 1rem 0;
+            font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; text-align: center;
+            letter-spacing: 0.05em;
+        }
+        .route-box span { color: var(--sand); }
+        .route-box .arrow { color: var(--rose); margin: 0 0.3rem; }
+
+        .border-card {
+            background: rgba(180,83,9,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem; text-align: center;
+        }
+        .border-card .country { color: var(--text-bright); font-weight: 600; font-size: 0.95rem; }
+        .border-card .direction { color: var(--sand); font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; margin-top: 0.2rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--sand);">[ID: CA-24] · [STATUS: VERIFIED] · [BLOCK: WORLD GEOGRAPHY]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--sand);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · WORLD GEOGRAPHY & STRATEGIC CHOKEPOINTS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Middle East Land Borders — Tracing the Routes</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The Lebanon‑to‑Oman route that a student missed, Iran's seven land neighbours, and the geographic reasoning that panelists use to test whether you understand the map or just memorise headlines.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">LEBANON→OMAN ROUTE</span><div class="value">Lebanon → Syria → Jordan → Saudi Arabia → Oman</div></div>
+                <div class="fact-box"><span class="label">MOST MISSED</span><div class="value">Jordan (often forgotten between Syria and Saudi Arabia)</div></div>
+                <div class="fact-box"><span class="label">IRAN'S LAND NEIGHBOURS</span><div class="value">7 countries (Iraq, Turkey, Armenia, Azerbaijan, Turkmenistan, Afghanistan, Pakistan)</div></div>
+                <div class="fact-box"><span class="label">IRAN'S STRATEGIC POSITION</span><div class="value">Connects Central Asia, South Asia, and the Middle East</div></div>
+                <div class="fact-box"><span class="label">TURKEY'S UNIQUE POSITION</span><div class="value">Borders 8 countries; transcontinental (Europe & Asia)</div></div>
+                <div class="fact-box"><span class="label">SAUDI ARABIA BORDERS</span><div class="value">8 countries (Jordan, Iraq, Kuwait, Qatar, UAE, Oman, Yemen, plus maritime with Bahrain)</div></div>
+            </div>
+        </div>
+
+        <!-- Schematic Map -->
+        <div class="canvas-container">
+            <canvas id="meMap" width="600" height="400"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">Schematic map of Middle East land borders — Lebanon to Oman route highlighted</p>
+
+        <!-- The Critical Route -->
+        <div class="glass-panel" style="border-left: 4px solid var(--rose);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🗺️ The Lebanon‑to‑Oman Route — The Question That Appeared Directly</h2>
+            <p style="color:var(--text-body);">In one transcript, a panelist asked a student to trace the land route from <strong>Lebanon to Oman</strong>. The student missed <strong>Jordan</strong> — a critical omission. This question tests whether you can visualise the map of the Middle East rather than just recall isolated facts about individual countries.</p>
+            <div class="route-box">
+                🇱🇧 <span>Lebanon</span> <span class="arrow">→</span> 🇸🇾 <span>Syria</span> <span class="arrow">→</span> 🇯🇴 <span>Jordan</span> <span class="arrow">→</span> 🇸🇦 <span>Saudi Arabia</span> <span class="arrow">→</span> 🇴🇲 <span>Oman</span>
+            </div>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Why Jordan is the one students miss:</strong> Syria and Saudi Arabia share a border — but only a <strong>very small one</strong> in the remote desert region near the Jordan‑Iraq‑Saudi tripoint. The more natural and significant land route passes through Jordan, which sits squarely between Syria and Saudi Arabia. Forgetting Jordan is like forgetting Madhya Pradesh when tracing a route from Maharashtra to Uttar Pradesh.</p>
+            <div class="callout-sand" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview line:</strong> "To travel overland from Lebanon to Oman, you pass through Syria, Jordan, Saudi Arabia, and then into Oman. Jordan is the country most people forget — it sits directly between Syria and Saudi Arabia."</p>
+            </div>
+        </div>
+
+        <!-- Why This Matters -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🧭 Why Panelists Ask These Route‑Tracing Questions</h2>
+            <p style="color:var(--text-body);">Route‑tracing questions are not about memorising a list. They test <strong>spatial reasoning and regional awareness</strong> — whether you can construct a coherent mental map of a geopolitically critical region. The Middle East is particularly important because:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.4rem;"><strong>Energy security:</strong> The region contains the world's largest oil and gas reserves. Knowing who borders whom is essential to understanding pipeline routes, export corridors, and conflict dynamics.</li>
+                <li style="margin-bottom:0.4rem;"><strong>India's neighbourhood:</strong> The Middle East is India's extended neighbourhood. Over 8.5 million Indians live in the GCC, and the region supplies the bulk of India's energy. Understanding its geography is directly relevant to Indian foreign policy.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Conflict spillover:</strong> The Syrian civil war, the Israel‑Palestine conflict, the Yemen war — all involve neighbouring states. Understanding borders is understanding how conflicts spread or are contained.</li>
+            </ul>
+            <div class="callout-amber" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Other routes you should be able to trace:</strong> Iraq to Egypt (via Jordan or Saudi Arabia), Turkey to Saudi Arabia (via Syria and Jordan, or via Iraq and Kuwait), Iran to Egypt (via Iraq, then Jordan/Saudi Arabia or via maritime routes). Being able to trace any route in the region demonstrates genuine geographic fluency.</p>
+            </div>
+        </div>
+
+        <!-- Iran's Extensive Borders -->
+        <div class="glass-panel" style="border-left: 4px solid var(--sand);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇮🇷 Iran — Not Just Hormuz; A Land Bridge Across Asia</h2>
+            <p style="color:var(--text-body);">Many people think of Iran only in terms of the <strong>Persian Gulf</strong> and the <strong>Strait of Hormuz</strong>. But Iran is a <strong>land‑connected country</strong> that borders seven nations spanning Central Asia, the Caucasus, and South Asia. It is not an isolated Gulf state — it is a <strong>geographic bridge</strong> between the Middle East, Central Asia, and the Indian subcontinent.</p>
+            <p style="color:var(--text-body);margin-top:1rem;font-weight:600;">Iran's seven land neighbours:</p>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.6rem;margin-top:0.8rem;">
+                <div class="border-card"><div class="country">🇮🇶 Iraq</div><div class="direction">WEST</div></div>
+                <div class="border-card"><div class="country">🇹🇷 Turkey</div><div class="direction">NORTHWEST</div></div>
+                <div class="border-card"><div class="country">🇦🇲 Armenia</div><div class="direction">NORTH</div></div>
+                <div class="border-card"><div class="country">🇦🇿 Azerbaijan</div><div class="direction">NORTH</div></div>
+                <div class="border-card"><div class="country">🇹🇲 Turkmenistan</div><div class="direction">NORTHEAST</div></div>
+                <div class="border-card"><div class="country">🇦🇫 Afghanistan</div><div class="direction">EAST</div></div>
+                <div class="border-card"><div class="country">🇵🇰 Pakistan</div><div class="direction">SOUTHEAST</div></div>
+            </div>
+            <div class="callout-sand" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Why this matters:</strong> "Iran is not just a Gulf power. It borders seven countries and sits at the crossroads of the Middle East, Central Asia, and South Asia. Its land connectivity gives it strategic depth that a maritime chokepoint like the Strait of Hormuz cannot fully capture."</p>
+            </div>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Strategic implications:</strong> Iran's land borders with <strong>Afghanistan and Pakistan</strong> give it direct access to South Asia. Its borders with <strong>Turkmenistan and the Caucasus states</strong> connect it to Central Asia's energy resources and China's Belt and Road routes. Its border with <strong>Turkey</strong> links it to Europe via Anatolia. Understanding Iran's geography means understanding it not as a contained threat, but as a <strong>continental power</strong> with multiple theatres of influence.</p>
+        </div>
+
+        <!-- Management-School Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Management‑School Context — Geography as Business Intelligence</h2>
+            <p style="color:var(--text-body);">Understanding land borders is not just an academic exercise — it is <strong>fundamental business intelligence</strong> for anyone working in international trade, logistics, or energy. Consider:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.4rem;"><strong>Pipeline routes:</strong> The proposed <strong>Iran‑Pakistan‑India (IPI) gas pipeline</strong> depends entirely on Iran's land border with Pakistan. The <strong>Turkmenistan‑Afghanistan‑Pakistan‑India (TAPI) pipeline</strong> traverses multiple borders. Knowing the geography is knowing the business case.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Trade corridors:</strong> The <strong>International North‑South Transport Corridor (INSTC)</strong> connects India to Russia via Iran — a route that depends on Iran's land connectivity through the Caucasus.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Sanctions evasion:</strong> Iran's land borders with Turkey, Iraq, and Pakistan are conduits for trade that circumvents maritime sanctions — understanding this is crucial for compliance and risk assessment.</li>
+            </ul>
+            <p style="color:var(--text-body);margin-top:0.8rem;">For management students, the lesson is clear: <strong>geography is a hard constraint on strategy</strong>. No amount of financial engineering or marketing brilliance can change the fact that moving goods between two countries requires crossing specific borders, traversing specific terrain, and navigating specific political relationships.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Trace the land route from Lebanon to Oman. Which countries do you pass through?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">From Lebanon, you travel south into <strong>Syria</strong>. From Syria, you continue south into <strong>Jordan</strong>. From Jordan, you enter <strong>Saudi Arabia</strong> — crossing the vast Arabian Peninsula. Finally, from Saudi Arabia, you cross into <strong>Oman</strong>. The complete route: <strong>Lebanon → Syria → Jordan → Saudi Arabia → Oman</strong>. Jordan is the country most frequently missed.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: How many countries share a land border with Iran? Name them.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Iran borders <strong>seven countries</strong>: <strong>Iraq</strong> to the west, <strong>Turkey</strong> to the northwest, <strong>Armenia</strong> and <strong>Azerbaijan</strong> to the north, <strong>Turkmenistan</strong> to the northeast, <strong>Afghanistan</strong> to the east, and <strong>Pakistan</strong> to the southeast. This makes Iran a land bridge connecting the Middle East, Central Asia, and South Asia.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Why is Jordan the country most often missed in the Lebanon‑to‑Oman route?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Because Syria and Saudi Arabia share a very small, remote desert border, people sometimes assume you can go directly from Syria to Saudi Arabia. But the primary, most significant land route passes through <strong>Jordan</strong>, which sits directly between Syria and Saudi Arabia. Forgetting Jordan is a common error that reveals a lack of detailed geographic knowledge of the region.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Why is Iran's land connectivity strategically significant beyond the Strait of Hormuz?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Iran's land borders with Afghanistan and Pakistan give it direct access to South Asia. Its borders with Turkmenistan, Armenia, and Azerbaijan connect it to Central Asia and the Caucasus — key regions for energy resources and China's Belt and Road Initiative. Its border with Turkey links it to Europe. This land connectivity means Iran is not just a Gulf power dependent on maritime chokepoints — it is a continental power with multiple strategic theatres.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What other Middle East routes should you be able to trace?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Key routes to know: <strong>Iraq to Egypt</strong> (via Jordan or Saudi Arabia, then across the Sinai); <strong>Turkey to Saudi Arabia</strong> (via Syria and Jordan, or via Iraq and Kuwait); <strong>Iran to Egypt</strong> (via Iraq, then Jordan or Saudi Arabia, or via maritime routes through the Red Sea). Being able to trace any of these routes demonstrates genuine Middle East geographic fluency.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--sand);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--sand);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The Middle East's geography is more than headlines — it's a map of borders that shape trade, energy, and conflict. The land route from Lebanon to Oman runs through Syria, Jordan, and Saudi Arabia — Jordan being the country most students forget. Iran, often seen only through the lens of the Strait of Hormuz, actually borders seven nations: Iraq, Turkey, Armenia, Azerbaijan, Turkmenistan, Afghanistan, and Pakistan — making it a continental power bridging Central Asia, South Asia, and the Middle East. Understanding these routes and borders is not academic trivia; it's essential for grasping pipeline politics, trade corridors, and the strategic depth of regional powers."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('meMap');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Mediterranean Sea
+            ctx.fillStyle = 'rgba(2, 132, 199, 0.1)';
+            ctx.fillRect(0, 50, 100, 150);
+            ctx.fillStyle = '#c8d6d0';
+            ctx.font = 'bold 10px "JetBrains Mono", monospace';
+            ctx.fillText('MEDITERRANEAN', 10, 130);
+
+            // Persian Gulf
+            ctx.fillStyle = 'rgba(2, 132, 199, 0.1)';
+            ctx.beginPath();
+            ctx.moveTo(340, 230);
+            ctx.lineTo(460, 220);
+            ctx.lineTo(480, 260);
+            ctx.lineTo(440, 290);
+            ctx.lineTo(360, 280);
+            ctx.closePath();
+            ctx.fill();
+            ctx.fillText('PERSIAN', 380, 250);
+            ctx.fillText('GULF', 395, 265);
+
+            // Red Sea
+            ctx.fillStyle = 'rgba(2, 132, 199, 0.08)';
+            ctx.beginPath();
+            ctx.moveTo(220, 300);
+            ctx.lineTo(250, 280);
+            ctx.lineTo(260, 340);
+            ctx.lineTo(240, 380);
+            ctx.lineTo(210, 360);
+            ctx.closePath();
+            ctx.fill();
+            ctx.fillText('RED SEA', 195, 340);
+
+            // Turkey
+            ctx.fillStyle = 'rgba(180, 83, 9, 0.06)';
+            ctx.strokeStyle = '#b45309';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.moveTo(160, 40);
+            ctx.lineTo(280, 30);
+            ctx.lineTo(320, 60);
+            ctx.lineTo(300, 90);
+            ctx.lineTo(260, 100);
+            ctx.lineTo(220, 90);
+            ctx.lineTo(180, 80);
+            ctx.lineTo(150, 60);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#b45309';
+            ctx.font = 'bold 10px "JetBrains Mono", monospace';
+            ctx.fillText('TURKEY', 220, 55);
+
+            // Syria
+            ctx.fillStyle = 'rgba(180, 83, 9, 0.04)';
+            ctx.strokeStyle = '#b45309';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.moveTo(220, 90);
+            ctx.lineTo(280, 100);
+            ctx.lineTo(290, 130);
+            ctx.lineTo(260, 150);
+            ctx.lineTo(230, 140);
+            ctx.lineTo(200, 120);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillText('SYRIA', 235, 120);
+
+            // Lebanon
+            ctx.fillStyle = 'rgba(232, 69, 51, 0.15)';
+            ctx.strokeStyle = '#e84533';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(190, 110);
+            ctx.lineTo(200, 105);
+            ctx.lineTo(205, 115);
+            ctx.lineTo(195, 120);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#e84533';
+            ctx.font = 'bold 9px "JetBrains Mono", monospace';
+            ctx.fillText('LEBANON', 170, 115);
+
+            // Jordan
+            ctx.fillStyle = 'rgba(180, 83, 9, 0.04)';
+            ctx.strokeStyle = '#b45309';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.moveTo(230, 140);
+            ctx.lineTo(270, 150);
+            ctx.lineTo(280, 200);
+            ctx.lineTo(250, 210);
+            ctx.lineTo(220, 180);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillText('JORDAN', 235, 180);
+
+            // Iraq
+            ctx.fillStyle = 'rgba(180, 83, 9, 0.04)';
+            ctx.strokeStyle = '#b45309';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.moveTo(280, 100);
+            ctx.lineTo(340, 120);
+            ctx.lineTo(350, 170);
+            ctx.lineTo(320, 200);
+            ctx.lineTo(280, 180);
+            ctx.lineTo(260, 150);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillText('IRAQ', 300, 150);
+
+            // Saudi Arabia
+            ctx.fillStyle = 'rgba(180, 83, 9, 0.04)';
+            ctx.strokeStyle = '#b45309';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.moveTo(250, 210);
+            ctx.lineTo(320, 220);
+            ctx.lineTo(360, 280);
+            ctx.lineTo(440, 290);
+            ctx.lineTo(480, 320);
+            ctx.lineTo(440, 360);
+            ctx.lineTo(350, 370);
+            ctx.lineTo(280, 350);
+            ctx.lineTo(220, 300);
+            ctx.lineTo(200, 250);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillText('SAUDI ARABIA', 320, 310);
+
+            // Kuwait
+            ctx.fillStyle = 'rgba(180, 83, 9, 0.04)';
+            ctx.strokeStyle = '#b45309';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(350, 190);
+            ctx.lineTo(370, 195);
+            ctx.lineTo(365, 210);
+            ctx.lineTo(345, 205);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillText('KW', 355, 205);
+
+            // Iran
+            ctx.fillStyle = 'rgba(217, 119, 6, 0.08)';
+            ctx.strokeStyle = '#d97706';
+            ctx.lineWidth = 1.8;
+            ctx.beginPath();
+            ctx.moveTo(350, 40);
+            ctx.lineTo(460, 30);
+            ctx.lineTo(520, 60);
+            ctx.lineTo(540, 100);
+            ctx.lineTo(530, 150);
+            ctx.lineTo(510, 200);
+            ctx.lineTo(480, 260);
+            ctx.lineTo(440, 290);
+            ctx.lineTo(360, 280);
+            ctx.lineTo(340, 220);
+            ctx.lineTo(320, 170);
+            ctx.lineTo(320, 120);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#d97706';
+            ctx.font = 'bold 12px "JetBrains Mono", monospace';
+            ctx.fillText('IRAN', 430, 120);
+
+            // Oman
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.12)';
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(480, 320);
+            ctx.lineTo(540, 310);
+            ctx.lineTo(560, 350);
+            ctx.lineTo(530, 380);
+            ctx.lineTo(480, 370);
+            ctx.lineTo(440, 360);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#10b981';
+            ctx.font = 'bold 12px "JetBrains Mono", monospace';
+            ctx.fillText('OMAN', 490, 355);
+
+            // UAE
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.06)';
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(440, 290);
+            ctx.lineTo(480, 300);
+            ctx.lineTo(475, 320);
+            ctx.lineTo(435, 310);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillText('UAE', 455, 310);
+
+            // Yemen
+            ctx.fillStyle = 'rgba(180, 83, 9, 0.04)';
+            ctx.strokeStyle = '#b45309';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(440, 360);
+            ctx.lineTo(480, 370);
+            ctx.lineTo(470, 390);
+            ctx.lineTo(440, 395);
+            ctx.lineTo(420, 380);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillText('YEMEN', 435, 390);
+
+            // ROUTE ARROWS (Lebanon → Oman)
+            ctx.strokeStyle = '#e84533';
+            ctx.lineWidth = 2.5;
+            ctx.setLineDash([6, 3]);
+            ctx.beginPath();
+            ctx.moveTo(200, 115);
+            ctx.lineTo(240, 120);
+            ctx.lineTo(245, 180);
+            ctx.lineTo(320, 310);
+            ctx.lineTo(490, 355);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Route labels
+            ctx.fillStyle = '#e84533';
+            ctx.font = 'italic bold 8px "JetBrains Mono", monospace';
+            ctx.fillText('Lebanon → Syria → Jordan → Saudi Arabia → Oman', 180, 395);
+
+            // Iran's neighbours
+            ctx.fillStyle = '#d97706';
+            ctx.font = '7px "JetBrains Mono", monospace';
+            const labels = [
+                { text: 'Armenia', x: 440, y: 35 },
+                { text: 'Azerbaijan', x: 460, y: 25 },
+                { text: 'Turkmenistan', x: 510, y: 60 },
+                { text: 'Afghanistan', x: 540, y: 110 },
+                { text: 'Pakistan', x: 540, y: 160 },
+            ];
+            labels.forEach(l => ctx.fillText(l.text, l.x, l.y));
+        })();
+    </script>
+</body>
+</html>

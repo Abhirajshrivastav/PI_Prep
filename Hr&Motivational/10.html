@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>HR-25/26/27 · Family and Background Questions — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--gold); box-shadow: 0 0 20px rgba(245,158,11,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--gold); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #d97706; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-rose {
+            border-left: 4px solid var(--rose); background: var(--rose-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-info {
+            border-left: 4px solid var(--info); background: var(--info-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .section-header {
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .section-header h2 { color: var(--gold); font-size: 1.6rem; }
+
+        .block-quote {
+            background: rgba(16,185,129,0.05); border: 1px solid var(--accent);
+            border-radius: 14px; padding: 1.8rem; margin: 1.5rem 0;
+            color: var(--text-body); line-height: 1.9; font-size: 0.95rem;
+            position: relative; font-style: italic;
+        }
+        .block-quote::before { content: '"'; position: absolute; top: 0.3rem; left: 1rem; font-size: 4rem; color: var(--accent); opacity: 0.15; font-family: 'Playfair Display', serif; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--gold);">[ID: HR-25/26/27] · [STATUS: CRAFTED] · [BLOCK 9: FAMILY & BACKGROUND]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 9 · FAMILY AND BACKGROUND QUESTIONS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Your Roots, Your Story, Your Readiness</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Describing the store with genuine business insight, answering financial questions with dignity, and showing that you are prepared for the IIM Indore environment — not as a passive recipient, but as an active contributor.</p>
+        </div>
+
+        <!-- HR-25: Describing the Store -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🏪 HR‑25 · Describing Your Father's General Store With Insight</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">Show the panel that you see the store not just as a chore, but as a living case study in retail, credit, and human behaviour.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: Tell us more about your father's store. What does he sell?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"It's a general provision store, located in our home itself, in Ghazipur. We sell daily essentials — groceries, rice, flour, pulses, sugar, tea, toiletries, soaps, biscuits. The kind of items a family in a small town needs every day or every week. It's not a large shop. It's a single‑counter operation. But it serves the neighbourhood reliably, and it has been doing so for years."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What have you observed about how a small retail business actually works?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I've observed that a small store runs on <strong>three things more than on price</strong>. First, trust. People buy from us because they know us, and they know we won't cheat on weight or quality. Second, credit. Many customers don't pay daily. We maintain a notebook, and they settle at month‑end or after a harvest cycle. That credit system is built entirely on personal relationships and memory. Third, convenience. We are open when people need us — early morning, late evening. If someone runs out of something at night, they knock on our door. That availability builds loyalty that no supermarket can match in a small town.</p><p style="color:var(--text-body);margin-top:0.8rem;">I've also noticed that the business is very sensitive to small inefficiencies. A little wastage, a supplier who delays, a regular customer who stops coming — these things show up immediately on the bottom line. It's a thin‑margin business. It teaches you to pay attention."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is the most important skill you have learned from working there?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"<strong>Reading people.</strong> When a customer walks in, you have to quickly judge their mood, their urgency, and what they expect. Are they in a hurry? Are they stressed about money? Will they want credit today, or will they pay upfront? This is not something you learn from a manual. You learn it by making mistakes and observing quietly. I think this skill — understanding people without them having to explain — is directly relevant to management. A manager who can read a room, read a client, read a team member's unspoken hesitation, is far more effective than one who only reads reports."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: If you had to improve one thing about the store, what would it be?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I would introduce a very simple digital ledger. Currently, all credit is tracked in a paper notebook. It works, but it's fragile. If the notebook is lost, years of trust data disappear. A basic app that records customer names, amounts, and dates — nothing complicated — would reduce risk and also give us insights: who are our most loyal customers, what do they buy most, when do they typically repay. I think even a small store can benefit from data, as long as it doesn't complicate the human relationship. <strong>The human relationship must stay primary. The data should serve it, not replace it.</strong>"</p></div>
+            </details>
+        </div>
+
+        <!-- HR-26: Financial Background -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>💰 HR‑26 · Financial Background — Honesty With Dignity</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">The panel wants to see if you carry any shame or chip on your shoulder. Answer with simple, dignified honesty. No self‑pity. No false pride. Just fact.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: What does your father do? What is your family background?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"My father runs a small general store in Ghazipur. It's our family's primary source of income. My mother is a homemaker. We are a modest family — not in any distress, but not with any surplus. The store provides enough to live decently, but not enough to afford big investments in coaching or expensive education. I've always known that if I want something beyond the basics, I have to earn it through scholarships, government institutions, or my own effort."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Has your financial background ever been a limitation for you?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"It has been a constraint, yes. I couldn't afford expensive JEE coaching in a big city. I couldn't afford to take multiple drops without worrying about the burden on my family. But a limitation is not the same as a stop sign. I learned to use free resources — YouTube, online documentation, library books. The IIT Madras BS programme I joined has a very reasonable fee structure. The IPM programme, if I'm selected, has education loan provisions. <strong>I've learned to find a way.</strong> I don't focus on what I don't have. I focus on what is accessible and work backwards from there."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: How did your family manage the cost of your education so far?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"My schooling was in a government school, so the fees were minimal. For any additional resources — books, some online materials — my father would set aside a small amount. We live simply. There were no luxuries, but there was no deprivation either. I'm aware that my father stretched himself at times, and that awareness keeps me grounded. <strong>I don't take any opportunity lightly, because I know what it costs — not just in money, but in his faith that I will make it count.</strong>"</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Some students from humble backgrounds struggle to adjust at elite institutions. How will you handle it?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I'm aware that I'll meet students who have had very different upbringings — international schools, foreign holidays, networks I don't have. I'm not intimidated by that. I'm curious. I want to learn from them, just as I hope they'll learn something from my perspective. I don't think adjustment is about pretending to be the same as everyone else. <strong>It's about being comfortable in your own story while respecting others'.</strong> I've spent four years dealing with customers of all temperaments in a small shop. I can handle a classroom with diverse backgrounds. I'll be fine."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: Does your family support your decision to pursue IPM?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Initially, like any parents, they had hopes tied to the JEE path. When that didn't work out, there was disappointment — but not pressure. They saw that I was serious about finding a genuine alternative, not just drifting. When I cleared IPMAT, their faith was restored — not because the IIM brand impressed them, but because they saw I had a direction again. My father runs a small store, but he's a practical man. <strong>He understands that a path you're genuinely committed to is worth more than a path you're forced into.</strong> He supports me fully now."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-27: Prepared for IIM Indore -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🎓 HR‑27 · Answering 'Prepared for the IIM Indore Environment?'</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">This is the question beneath the question: Will you fit in? Will you contribute? Or will you be overwhelmed? Show that you have thought about what IIM Indore demands, that you know your gaps, and that you are ready to grow.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: You come from a government Hindi‑medium school and a small town. Are you prepared for the academic rigour of IIM Indore?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Academically, I know there will be a gap — especially in quantitative subjects. I'm not coming in as a topper. But I'm coming in as someone who has already started bridging that gap. The IIT Madras Data Science programme is my deliberate preparation. It has rigorous mathematics, statistics, and programming. By the time I enter IPM — if selected — I will already have a semester or more of that foundation.</p><p style="color:var(--text-body);margin-top:0.8rem;">More importantly, I'm prepared for the attitude required. I know I will struggle. I know I will need to ask for help. I'm not embarrassed by that. I've struggled before — in JEE, in the store during festival rushes, in learning English. Each time, I found a way. I'll find a way at IIM Indore too, with better resources and a peer group around me."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: How will you handle being in a classroom with students who have had much better schooling than you?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I'll handle it the same way I've handled the rest of my life: by focusing on what I can contribute, not on what I lack. Yes, someone from a top CBSE school may be faster at calculus. But when the discussion turns to small retail, or customer behaviour in small towns, or handling a real business under constraint, I will have something to say that they may not. <strong>A classroom is not a competition. It's a collective.</strong> I'll learn from them where I'm weak. I'll offer my perspective where I'm strong. That's the exchange that makes a diverse cohort valuable."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What do you think will be your biggest challenge at IIM Indore?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Two things, honestly. One is the formal communication. I can speak clearly, and I can write my thoughts. But I haven't had the experience of formal presentations, structured debates, or academic writing in English. I'll need to work on that — actively, deliberately, by volunteering for presentations early, even if I'm nervous. The second is simply the pace. IIM Indore will be faster and more demanding than anything I've experienced. But I've learned that pace is something you adapt to, not something you're born with. I'll adapt. The first semester will be hard. <strong>That's fine. Hard is not the same as impossible.</strong>"</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Some students feel lost in a residential programme, away from home for the first time. How will you cope?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I've been away from home for shorter periods, but not for five years. I'm sure there will be moments of homesickness. But I've also had a kind of training in independence — running the store alone, making decisions without my father, managing customers and cash when no one else was available. That independence is transferable. The residential aspect is actually one of the things I'm most looking forward to. I've never had a peer group that shares my direction. I want to be in that environment — late‑night conversations, group projects, shared struggles. <strong>I think the community will be part of the coping, not just the challenge.</strong>"</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What unique perspective will you bring to the IIM Indore batch?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I'll bring the perspective of someone who has seen India's small‑town economy from inside a shop, not from a case study. When we discuss rural marketing, or micro‑credit, or distribution in tier‑3 India, I won't be guessing. I'll be describing something I've lived. I think that's valuable in a management classroom that often relies on abstract models. I'm not a theorist. I'm a practitioner — a very early‑stage one, but a real one.</p><p style="color:var(--text-body);margin-top:0.8rem;">I'll also bring a certain steadiness. I've already failed publicly and rebuilt. I'm not afraid of a low grade or a tough term. When group projects get stressful — and they will — I'll be the person who says, 'Okay, what do we do now?' rather than panicking. That comes from the store. You learn to keep serving customers even when the day is going badly."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q6: Is there anything about the IIM Indore environment that worries you?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I think my only real concern is the cost. I know the fee structure, and I know it's significant for a family like mine. But I've researched the education loan options and the scholarship provisions. I'm prepared to take a loan and repay it. I see it as an investment, not a burden. My family is supportive. My father has told me, 'If you get in, we'll find a way.' So the worry is there, but it's not paralysing. It's just something to plan for responsibly."</p></div>
+            </details>
+        </div>
+
+        <!-- Block 9 Closing Statement -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);margin-bottom:0.5rem;">💡 IF THE PANEL SAYS "YOU'RE FROM A VERY DIFFERENT BACKGROUND. CONVINCE US YOU BELONG HERE."</p>
+            <div class="block-quote">
+                <p>"I belong here precisely because my background is different. IIM Indore doesn't need another batch of identical high scorers from the same five cities. It needs people who bring different life experiences into the classroom — who can say, 'In my father's store, I saw this differently.' I bring four years of ground‑level business observation. I bring the experience of teaching myself skills and clearing a national exam without coaching. I bring the steadiness of someone who has already failed, rebuilt, and kept moving. I may not look like the typical admit on paper. But in a classroom, in a group project, in a late‑night discussion about real India — I will contribute something that grades alone cannot supply. That's why I belong."</p>
+            </div>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);margin-top:1.5rem;">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"My father runs a small general store in Ghazipur — our family's primary source of income. Working there for four years taught me that a small business runs on trust, credit, and convenience more than on price. I learned to read people, manage inventory, and handle pressure during festival rushes. Financially, we are a modest family — not in distress, but with no surplus. I've always known that opportunities beyond the basics must be earned through scholarships or my own effort. I'm aware that I'll face gaps at IIM Indore — in formal communication, in quantitative depth. But I've already started bridging them through the IIT Madras Data Science programme, and I'm prepared to ask for help when I need it. I belong in that classroom not despite my background, but because of the perspective it gives me — a perspective on real India that grades alone cannot supply."</em></p>
+        </div>
+    </main>
+</body>
+</html>

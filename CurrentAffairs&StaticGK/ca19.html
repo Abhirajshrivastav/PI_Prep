@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-19 · Strait of Hormuz — The World's Oil Chokepoint — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --crimson: #e84533;
+            --crimson-dim: rgba(232, 69, 51, 0.1);
+            --ocean: #0284c7;
+            --ocean-dim: rgba(2, 132, 199, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--crimson); box-shadow: 0 0 20px rgba(232,69,51,0.12); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--crimson); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #be123c; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-crimson {
+            border-left: 4px solid var(--crimson); background: var(--crimson-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-ocean {
+            border-left: 4px solid var(--ocean); background: var(--ocean-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.05rem; }
+
+        .canvas-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+        canvas { max-width: 100%; height: auto; }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace; font-size: 2.5rem; font-weight: 800;
+            color: var(--crimson); line-height: 1;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--crimson);">[ID: CA-19] · [STATUS: VERIFIED] · [BLOCK: WORLD GEOGRAPHY & STRATEGIC CHOKEPOINTS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--crimson);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · WORLD GEOGRAPHY & STRATEGIC CHOKEPOINTS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Strait of Hormuz — The World's Oil Chokepoint</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">A narrow waterway between Iran and Oman through which one‑fifth of the world's oil passes daily — the single most critical artery of the global energy system.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">LOCATION</span><div class="value">Between Iran (north) and Oman (south)</div></div>
+                <div class="fact-box"><span class="label">WIDTH (NARROWEST)</span><div class="value">~33 km (21 nautical miles)</div></div>
+                <div class="fact-box"><span class="label">OIL TRANSIT</span><div class="value">~20‑21% of global petroleum consumption</div></div>
+                <div class="fact-box"><span class="label">DAILY VOLUME</span><div class="value">~17‑20 million barrels per day</div></div>
+                <div class="fact-box"><span class="label">CONNECTS</span><div class="value">Persian Gulf → Gulf of Oman → Arabian Sea → Indian Ocean</div></div>
+                <div class="fact-box"><span class="label">MAJOR EXPORTERS</span><div class="value">Saudi Arabia, Iraq, Kuwait, UAE, Qatar</div></div>
+                <div class="fact-box"><span class="label">US NAVAL PRESENCE</span><div class="value">Fifth Fleet, based in Bahrain</div></div>
+                <div class="fact-box"><span class="label">IRAN'S THREATS</span><div class="value">Has repeatedly threatened closure during tensions</div></div>
+            </div>
+        </div>
+
+        <!-- Schematic Map -->
+        <div class="canvas-container">
+            <canvas id="hormuzMap" width="600" height="350"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">Schematic map of the Strait of Hormuz and surrounding region</p>
+
+        <!-- The Geography -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🗺️ The Geography — A Maritime Funnel</h2>
+            <p style="color:var(--text-body);">The Strait of Hormuz is a narrow waterway that forms the <strong>only sea passage</strong> from the Persian Gulf to the open ocean. On its northern shore lies <strong>Iran</strong>; on its southern shore lies the <strong>Musandam Peninsula</strong>, an exclave of <strong>Oman</strong>. At its narrowest point, the strait is only about <strong>33 kilometres (21 nautical miles) wide</strong>. Shipping lanes in each direction are just 2 nautical miles wide, separated by a buffer zone — meaning tankers traverse extremely constrained corridors.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The Persian Gulf itself is a semi‑enclosed basin. All maritime traffic entering or leaving the Gulf — whether from Saudi Arabia, Iraq, Kuwait, the UAE, Qatar, or Bahrain — must pass through this single chokepoint. There is no alternative sea route. This geographic reality makes the Strait of Hormuz the most concentrated point of <strong>energy supply vulnerability</strong> in the world.</p>
+            <div class="callout-crimson" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview line:</strong> "The Strait of Hormuz is the only maritime exit from the Persian Gulf. If it were blocked, there is no alternative sea route for Gulf oil — making it the world's most irreplaceable energy chokepoint."</p>
+            </div>
+        </div>
+
+        <!-- The Oil Flow -->
+        <div class="glass-panel" style="border-left: 4px solid var(--crimson);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🛢️ The Oil — What Passes Through Daily</h2>
+            <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+                <div style="text-align:center;min-width:150px;">
+                    <div class="stat-number">~20%</div>
+                    <p style="color:var(--text-muted);font-size:0.85rem;">of global oil consumption</p>
+                </div>
+                <div style="text-align:center;min-width:150px;">
+                    <div class="stat-number">~17‑20M</div>
+                    <p style="color:var(--text-muted);font-size:0.85rem;">barrels per day</p>
+                </div>
+                <div style="text-align:center;min-width:150px;">
+                    <div class="stat-number">~30%</div>
+                    <p style="color:var(--text-muted);font-size:0.85rem;">of seaborne‑traded oil</p>
+                </div>
+            </div>
+            <p style="color:var(--text-body);margin-top:1rem;">The numbers are staggering. Approximately <strong>17 to 20 million barrels of crude oil and petroleum products</strong> pass through the Strait of Hormuz every single day. This represents roughly <strong>one‑fifth of total global oil consumption</strong> and about <strong>30% of all oil traded by sea</strong>. The Strait is also the route for a significant share of the world's <strong>Liquefied Natural Gas (LNG)</strong>, primarily from Qatar — the world's largest LNG exporter.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">A sustained closure of the strait would remove this volume from global markets almost instantly. The resulting price spike would not be a matter of cents per gallon — it would be an <strong>existential shock to the global economy</strong>, triggering recessions in oil‑importing nations and cascading through every sector dependent on energy: transport, manufacturing, agriculture, and logistics.</p>
+        </div>
+
+        <!-- US Fifth Fleet -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇺🇸 The US Fifth Fleet — The Guardian of the Gulf</h2>
+            <p style="color:var(--text-body);">The <strong>United States Fifth Fleet</strong>, headquartered in <strong>Bahrain</strong>, is the primary guarantor of freedom of navigation in the Persian Gulf and the Strait of Hormuz. Its presence is not incidental — it is the backbone of a <strong>decades‑long US commitment</strong> to ensuring that the global oil supply is not held hostage by any single state. The Fifth Fleet operates under the broader <strong>US Central Command (CENTCOM)</strong> and conducts regular patrols, escort operations for commercial vessels, and joint exercises with allied navies.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The US Navy's presence is complemented by the <strong>Combined Maritime Forces (CMF)</strong>, a multinational naval partnership of 38 nations — including the UK, France, and regional allies — that coordinates maritime security operations. The key missions include <strong>counter‑piracy, counter‑smuggling, and ensuring the free flow of commerce</strong> through the Gulf's narrow shipping lanes.</p>
+            <div class="callout-ocean" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Why Bahrain?</strong> Bahrain has hosted the US Navy since 1948. Its location at the geographic centre of the Gulf makes it the ideal base for rapid response to any disruption in the Strait. The Fifth Fleet's presence is also a powerful signal of the US security umbrella over its Gulf allies — Saudi Arabia, UAE, Kuwait, and Qatar.</p>
+            </div>
+        </div>
+
+        <!-- Iran's Threats & The History -->
+        <div class="glass-panel" style="border-left: 4px solid var(--rose);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">☢️ Iran's Threats — The Strait as a Strategic Weapon</h2>
+            <p style="color:var(--text-body);">Iran has repeatedly <strong>threatened to close or disrupt the Strait of Hormuz</strong> during periods of heightened tension with the United States and its allies. These threats are not idle — the Strait is Iran's single most powerful lever of asymmetric warfare. While Iran's conventional military is no match for the US Navy, its ability to <strong>mine the narrow shipping lanes, deploy swarms of small fast‑attack craft, and launch anti‑ship missiles from its coastline</strong> makes the Strait a genuine vulnerability.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Historical context — The Tanker War (1984‑1987):</strong> During the Iran‑Iraq War, both sides attacked each other's oil tankers in the Gulf. This escalated into the <strong>"Tanker War,"</strong> during which hundreds of commercial vessels were attacked. The US Navy intervened to escort re‑flagged Kuwaiti tankers (Operation Earnest Will), leading to direct naval confrontations with Iranian forces. This history is the precedent for current tensions: the Strait has been a battleground before, and the infrastructure of disruption — mines, speedboats, coastal missile batteries — remains in place.</p>
+            <div class="callout-crimson" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Recent tensions (2024‑2026):</strong> During the current cycle of US‑Iran tensions over the nuclear programme, Iran has again signalled its willingness to disrupt Gulf shipping. Houthi attacks on Red Sea vessels (which Iran supports) have demonstrated that asymmetric maritime warfare is a credible threat. Any direct confrontation in the Strait of Hormuz would be exponentially more disruptive than the Red Sea crisis, given the volume of oil at stake.</p>
+            </div>
+        </div>
+
+        <!-- India's Stake -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇮🇳 India's Stake — Why New Delhi Watches the Strait Nervously</h2>
+            <p style="color:var(--text-body);">India is one of the world's largest importers of crude oil, and the <strong>vast majority of its Middle Eastern oil imports pass through the Strait of Hormuz</strong>. Saudi Arabia, Iraq, the UAE, and Kuwait are among India's top oil suppliers. A disruption in the Strait would not just raise global oil prices — it would directly threaten <strong>India's energy security, its current account deficit, and its inflation trajectory</strong>.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Beyond oil, India has an enormous diaspora in the Gulf — over <strong>8.5 million Indians</strong> live and work in the GCC countries (UAE, Saudi Arabia, Kuwait, Qatar, Oman, Bahrain). Any military conflict in the Gulf would endanger these citizens and disrupt the <strong>remittance flows (over $80 billion annually from the Gulf)</strong> that are a significant component of India's balance of payments. India's strategic interests in the Gulf are therefore both <strong>economic and humanitarian</strong> — a fact that deeply shapes India's diplomatic posture toward Iran, the US, and the Gulf states.</p>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>India's response:</strong> India has historically maintained a careful balance — engaging diplomatically with Iran (including the Chabahar port project) while deepening strategic partnerships with Saudi Arabia, the UAE, and the US. During crises, India has deployed its navy to the Gulf for anti‑piracy and escort operations, and maintains strong bilateral defence ties with Gulf states to protect its interests.</p>
+            </div>
+        </div>
+
+        <!-- Management-School Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Management‑School Context — Supply Chain Concentration Risk</h2>
+            <p style="color:var(--text-body);">The Strait of Hormuz is the ultimate case study in <strong>supply chain concentration risk</strong>. A single geographic chokepoint handling 20% of global oil creates an enormous <strong>systemic vulnerability</strong> — a <strong>single point of failure</strong> in the global energy system. For businesses, this translates into <strong>oil price volatility risk, shipping insurance premiums, and contingency planning</strong> for supply disruptions.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The global response to this risk has been multifaceted:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.5rem;list-style-type:disc;">
+                <li style="margin-bottom:0.3rem;"><strong>Strategic Petroleum Reserves (SPRs):</strong> The US maintains approximately 700 million barrels in its SPR. India has built its own strategic reserves at Visakhapatnam, Mangaluru, and Padur, with a combined capacity of about <strong>5.33 million tonnes</strong> — approximately 9‑10 days of India's crude oil import cover.</li>
+                <li style="margin-bottom:0.3rem;"><strong>Shipping Insurance:</strong> War risk premiums for tankers transiting the Strait spike dramatically during geopolitical crises, directly affecting corporate logistics costs and global supply chain economics.</li>
+                <li style="margin-bottom:0.3rem;"><strong>Diversification:</strong> Countries and companies are investing in alternative energy sources, pipeline routes, and domestic production to reduce dependence on Gulf oil transiting a single chokepoint.</li>
+            </ul>
+            <p style="color:var(--text-body);margin-top:0.8rem;">For management students, the Strait of Hormuz illustrates the principle that <strong>geographic concentration of any critical input is a strategic vulnerability</strong> — whether that input is oil, semiconductors, rare earth minerals, or data.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Where is the Strait of Hormuz, and why is it so strategically important?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Strait of Hormuz is a narrow waterway between <strong>Iran and Oman</strong>, forming the only maritime exit from the Persian Gulf. It is the world's most critical oil chokepoint — roughly <strong>20% of global oil consumption</strong> (17‑20 million barrels per day) passes through it. There is no alternative sea route for Gulf oil, making any disruption an immediate threat to global energy prices and economic stability.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Why has Iran threatened to close the Strait, and what could it actually do?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Iran uses the threat of closure as strategic leverage during tensions with the US and its allies. While Iran's conventional navy cannot match the US Fifth Fleet, it can <strong>mine the narrow shipping lanes, deploy swarms of small fast‑attack craft, and launch anti‑ship missiles from its coastline</strong> — tactics proven during the Tanker War of the 1980s. A full closure is unlikely to be sustained, but even partial disruption could spike oil prices and insurance costs dramatically.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is the US Fifth Fleet, and why is it based in Bahrain?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The US Fifth Fleet, headquartered in <strong>Bahrain</strong>, is the primary guarantor of freedom of navigation in the Persian Gulf and Strait of Hormuz. Bahrain has hosted the US Navy since 1948, and its central location allows rapid response to any disruption. The Fifth Fleet coordinates with the <strong>Combined Maritime Forces (CMF)</strong>, a 38‑nation partnership, to conduct patrols, escort commercial vessels, and deter threats.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: How does the Strait of Hormuz affect India specifically?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">India is one of the world's largest oil importers, and the majority of its Middle Eastern crude passes through the Strait. A disruption would directly threaten India's <strong>energy security, current account deficit, and inflation</strong>. Additionally, over <strong>8.5 million Indians</strong> live in the Gulf, sending home over <strong>$80 billion annually</strong> in remittances. Any conflict would endanger these citizens and disrupt these crucial financial flows.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What is the Tanker War, and why is it relevant today?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Tanker War (1984‑1987) was a phase of the Iran‑Iraq War where both sides attacked commercial oil tankers in the Gulf. The US Navy intervened to escort re‑flagged Kuwaiti tankers (Operation Earnest Will), leading to direct naval clashes with Iran. This history is relevant because the same asymmetric tactics — mines, speedboats, coastal missiles — remain available to Iran today, making the Strait a genuine vulnerability despite the US naval presence.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--crimson);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--crimson);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The Strait of Hormuz, located between Iran and Oman, is the only maritime exit from the Persian Gulf and the world's most critical oil chokepoint — roughly one‑fifth of global oil consumption passes through it daily. The US Fifth Fleet, based in Bahrain, is the primary guarantor of freedom of navigation, but Iran's asymmetric capabilities — mines, speedboats, and coastal missiles — make the Strait a persistent vulnerability. For India, the Strait is of existential importance: it is the route for the majority of India's oil imports and the lifeline for over 8.5 million Indian workers in the Gulf. Understanding this chokepoint means understanding the geography of global energy security and the fragility of concentrated supply chains."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('hormuzMap');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Persian Gulf (blue water)
+            ctx.fillStyle = 'rgba(2, 132, 199, 0.15)';
+            ctx.beginPath();
+            ctx.moveTo(100, 200);
+            ctx.lineTo(280, 200);
+            ctx.lineTo(320, 180);
+            ctx.lineTo(340, 150);
+            ctx.lineTo(320, 120);
+            ctx.lineTo(280, 100);
+            ctx.lineTo(200, 80);
+            ctx.lineTo(120, 100);
+            ctx.lineTo(80, 140);
+            ctx.closePath();
+            ctx.fill();
+            ctx.fillStyle = '#c8d6d0';
+            ctx.font = 'bold 13px "JetBrains Mono", monospace';
+            ctx.fillText('PERSIAN GULF', 120, 155);
+
+            // Gulf of Oman
+            ctx.fillStyle = 'rgba(2, 132, 199, 0.12)';
+            ctx.beginPath();
+            ctx.moveTo(340, 150);
+            ctx.lineTo(420, 160);
+            ctx.lineTo(480, 180);
+            ctx.lineTo(500, 220);
+            ctx.lineTo(460, 260);
+            ctx.lineTo(380, 240);
+            ctx.lineTo(340, 210);
+            ctx.closePath();
+            ctx.fill();
+            ctx.fillText('GULF OF OMAN', 400, 210);
+
+            // Arabian Sea
+            ctx.fillStyle = 'rgba(2, 132, 199, 0.08)';
+            ctx.beginPath();
+            ctx.moveTo(460, 260);
+            ctx.lineTo(560, 280);
+            ctx.lineTo(580, 340);
+            ctx.lineTo(500, 350);
+            ctx.lineTo(380, 300);
+            ctx.closePath();
+            ctx.fill();
+            ctx.fillText('ARABIAN SEA', 470, 310);
+
+            // Strait of Hormuz highlight (narrow channel)
+            ctx.fillStyle = 'rgba(232, 69, 51, 0.2)';
+            ctx.strokeStyle = '#e84533';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(320, 150);
+            ctx.lineTo(340, 150);
+            ctx.lineTo(345, 180);
+            ctx.lineTo(340, 210);
+            ctx.lineTo(320, 200);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // Iran (north shore)
+            ctx.fillStyle = 'rgba(245, 158, 11, 0.1)';
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(80, 50);
+            ctx.lineTo(280, 50);
+            ctx.lineTo(340, 80);
+            ctx.lineTo(380, 60);
+            ctx.lineTo(440, 50);
+            ctx.lineTo(500, 60);
+            ctx.lineTo(520, 100);
+            ctx.lineTo(320, 120);
+            ctx.lineTo(280, 100);
+            ctx.lineTo(200, 80);
+            ctx.lineTo(120, 100);
+            ctx.lineTo(80, 140);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#f59e0b';
+            ctx.font = 'bold 11px "JetBrains Mono", monospace';
+            ctx.fillText('IRAN', 220, 40);
+
+            // Oman / Musandam (south shore)
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.1)';
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(320, 200);
+            ctx.lineTo(360, 240);
+            ctx.lineTo(340, 280);
+            ctx.lineTo(400, 320);
+            ctx.lineTo(500, 350);
+            ctx.lineTo(560, 340);
+            ctx.lineTo(520, 300);
+            ctx.lineTo(480, 260);
+            ctx.lineTo(380, 240);
+            ctx.lineTo(340, 210);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#10b981';
+            ctx.font = 'bold 11px "JetBrains Mono", monospace';
+            ctx.fillText('OMAN', 440, 310);
+
+            // Strait label
+            ctx.fillStyle = '#e84533';
+            ctx.font = 'bold italic 10px "JetBrains Mono", monospace';
+            ctx.fillText('STRAIT OF', 280, 175);
+            ctx.fillText('HORMUZ', 283, 188);
+
+            // Bahrain marker
+            ctx.fillStyle = '#f0f5f3';
+            ctx.beginPath();
+            ctx.arc(180, 170, 4, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.font = '8px "JetBrains Mono", monospace';
+            ctx.fillText('Bahrain (US 5th Fleet)', 130, 185);
+
+            // Saudi Arabia marker
+            ctx.fillText('SAUDI ARABIA', 90, 230);
+
+            // UAE marker
+            ctx.fillText('UAE', 260, 260);
+
+            // Qatar marker
+            ctx.fillText('Qatar', 150, 240);
+        })();
+    </script>
+</body>
+</html>

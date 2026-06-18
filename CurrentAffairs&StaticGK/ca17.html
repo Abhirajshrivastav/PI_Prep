@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-17 · ASEAN & Act East Policy — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+            --teal: #0891b2;
+            --teal-dim: rgba(8, 145, 178, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--teal); box-shadow: 0 0 20px rgba(8,145,178,0.12); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--teal); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #065f46; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-teal {
+            border-left: 4px solid var(--teal); background: var(--teal-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.05rem; }
+
+        .member-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.6rem;
+        }
+        .member-tag {
+            background: rgba(8,145,178,0.05); border: 1px solid rgba(8,145,178,0.2);
+            border-radius: 8px; padding: 0.8rem; text-align: center; font-size: 0.85rem;
+            color: var(--text-body);
+        }
+        .member-tag .flag { font-size: 2rem; display: block; margin-bottom: 0.3rem; }
+
+        .timeline-node {
+            display: flex; gap: 1rem; align-items: baseline;
+            border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0;
+        }
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace; color: var(--teal); font-size: 0.85rem; min-width: 5rem;
+        }
+        .timeline-desc { color: var(--text-body); font-size: 0.9rem; }
+
+        .canvas-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+        canvas { max-width: 100%; height: auto; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--teal);">[ID: CA-17] · [STATUS: VERIFIED] · [BLOCK: INTERNATIONAL ORGANIZATIONS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--teal);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · INTERNATIONAL ORGANIZATIONS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">ASEAN — The Southeast Asian Anchor</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Ten nations, one of the world's most successful regional blocs, and the theatre where India's Act East Policy meets China's Belt and Road.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">FULL NAME</span><div class="value">Association of Southeast Asian Nations (ASEAN)</div></div>
+                <div class="fact-box"><span class="label">FOUNDED</span><div class="value">8 August 1967 (Bangkok Declaration)</div></div>
+                <div class="fact-box"><span class="label">FOUNDING MEMBERS</span><div class="value">5 (Indonesia, Malaysia, Philippines, Singapore, Thailand)</div></div>
+                <div class="fact-box"><span class="label">CURRENT MEMBERS</span><div class="value">10 (Brunei, Vietnam, Laos, Myanmar, Cambodia joined later)</div></div>
+                <div class="fact-box"><span class="label">HEADQUARTERS</span><div class="value">Jakarta, Indonesia</div></div>
+                <div class="fact-box"><span class="label">SECRETARY‑GENERAL</span><div class="value">Kao Kim Hourn (Cambodia, since 2023)</div></div>
+                <div class="fact-box"><span class="label">COMBINED GDP</span><div class="value">~$3.6 trillion (5th largest economy if a single country)</div></div>
+                <div class="fact-box"><span class="label">INDIA'S POLICY</span><div class="value">Act East Policy (upgraded from Look East in 2014)</div></div>
+            </div>
+        </div>
+
+        <!-- The Ten Members -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌏 The Ten Member States</h2>
+            <div class="member-grid">
+                <div class="member-tag"><span class="flag">🇮🇩</span>Indonesia</div>
+                <div class="member-tag"><span class="flag">🇲🇾</span>Malaysia</div>
+                <div class="member-tag"><span class="flag">🇵🇭</span>Philippines</div>
+                <div class="member-tag"><span class="flag">🇸🇬</span>Singapore</div>
+                <div class="member-tag"><span class="flag">🇹🇭</span>Thailand</div>
+                <div class="member-tag"><span class="flag">🇧🇳</span>Brunei</div>
+                <div class="member-tag"><span class="flag">🇻🇳</span>Vietnam</div>
+                <div class="member-tag"><span class="flag">🇱🇦</span>Laos</div>
+                <div class="member-tag"><span class="flag">🇲🇲</span>Myanmar</div>
+                <div class="member-tag"><span class="flag">🇰🇭</span>Cambodia</div>
+            </div>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-top:0.8rem;">Timor‑Leste is an observer and is in the process of becoming the 11th member. Papua New Guinea also has observer status.</p>
+        </div>
+
+        <!-- Schematic Map -->
+        <div class="canvas-container">
+            <canvas id="aseanMap" width="600" height="350"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">Schematic map of ASEAN member states and India's strategic position</p>
+
+        <!-- Founding & Evolution -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📜 Founding & Evolution — From Anti‑Communist Bloc to Economic Community</h2>
+            <p style="color:var(--text-body);">ASEAN was founded in 1967 by five nations — Indonesia, Malaysia, the Philippines, Singapore, and Thailand — against the backdrop of the Cold War and regional instability. The original Bangkok Declaration focused on <strong>economic growth, social progress, and cultural development</strong>, but the unstated purpose was to create a bulwark against the spread of communism in Southeast Asia.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Over the decades, ASEAN evolved from a loose political grouping into a deeply integrated <strong>economic community</strong>. The <strong>ASEAN Economic Community (AEC)</strong>, launched in 2015, created a single market of over 650 million people with free movement of goods, services, investment, and skilled labour. Intra‑ASEAN trade now accounts for roughly <strong>25% of members' total trade</strong> — far higher than SAARC's dismal 5%.</p>
+            <div class="timeline-node" style="margin-top:1rem;"><span class="timeline-year">1967</span><span class="timeline-desc">ASEAN founded by 5 nations (Bangkok Declaration).</span></div>
+            <div class="timeline-node"><span class="timeline-year">1984</span><span class="timeline-desc">Brunei joins.</span></div>
+            <div class="timeline-node"><span class="timeline-year">1995–1999</span><span class="timeline-desc">Vietnam, Laos, Myanmar, Cambodia join — expanding ASEAN to 10.</span></div>
+            <div class="timeline-node"><span class="timeline-year">2015</span><span class="timeline-desc"><strong>ASEAN Economic Community (AEC)</strong> launched.</span></div>
+        </div>
+
+        <!-- India's Act East Policy -->
+        <div class="glass-panel" style="border-left: 4px solid var(--teal);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇮🇳 India's Act East Policy — From Observer to Strategic Partner</h2>
+            <p style="color:var(--text-body);">India's engagement with ASEAN has been one of the most consistent and successful strands of its foreign policy. It began with the <strong>Look East Policy</strong> launched by PM Narasimha Rao in the early 1990s — a strategic recognition that India's economic future lay in integrating with the dynamic economies of Southeast Asia.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">In 2014, PM Narendra Modi upgraded this to the <strong>Act East Policy</strong> — signaling a shift from passive observation to active, deep engagement. India became a <strong>Sectoral Dialogue Partner</strong> of ASEAN in 1992, a full <strong>Dialogue Partner</strong> in 1995, and a <strong>Strategic Partner</strong> in 2012.</p>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem;">
+                <div style="background:rgba(8,145,178,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--teal);font-size:0.7rem;">TRADE</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">India‑ASEAN bilateral trade exceeds <strong>$130 billion</strong>. The ASEAN‑India Free Trade Area (AIFTA) has been operational since 2010.</p>
+                </div>
+                <div style="background:rgba(8,145,178,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--teal);font-size:0.7rem;">CONNECTIVITY</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">The <strong>India‑Myanmar‑Thailand Trilateral Highway</strong> is a flagship connectivity project linking India's Northeast to Southeast Asia by road. The <strong>Kaladan Multi‑Modal Transit Transport Project</strong> connects Kolkata to Myanmar's Sittwe port.</p>
+                </div>
+                <div style="background:rgba(8,145,178,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--teal);font-size:0.7rem;">SECURITY</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">India participates in the <strong>ASEAN Defence Ministers' Meeting Plus (ADMM‑Plus)</strong>, which includes the US, China, Japan, and others — a key forum for maritime security cooperation in the Indo‑Pacific.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ASEAN Centrality & China Rivalry -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚔️ ASEAN Centrality — The Stage for India‑China Rivalry</h2>
+            <p style="color:var(--text-body);">ASEAN sits at the <strong>geographic and strategic crossroads of the Indo‑Pacific</strong>. It is the only regional organisation that regularly brings together the foreign ministers and leaders of India, China, the US, Japan, Russia, and Australia at the same table through its <strong>East Asia Summit (EAS)</strong> and <strong>ASEAN Regional Forum (ARF)</strong>.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>ASEAN Centrality</strong> is the principle that ASEAN must remain at the centre of regional architecture — setting the agenda, hosting the meetings, and ensuring that no single external power dominates the region. This principle directly benefits India, because it prevents China from establishing exclusive control over Southeast Asian institutions.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">China has courted ASEAN intensively through the <strong>Belt and Road Initiative (BRI)</strong> and massive infrastructure lending. India has countered by offering an alternative model — <strong>transparent, sustainable, and ASEAN‑led infrastructure development</strong> — though India cannot match China's financial muscle. The South China Sea dispute — where several ASEAN members (Vietnam, Philippines, Malaysia) have direct territorial conflicts with China — is the central fault line. India supports freedom of navigation and the peaceful resolution of disputes under <strong>UNCLOS</strong>, aligning with ASEAN members who resist China's expansive maritime claims.</p>
+            <div class="callout-teal" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Strategic insight:</strong> "ASEAN is the theatre where India and China compete for influence in the Indo‑Pacific. India's strategy is to deepen economic and security ties with ASEAN while supporting ASEAN centrality — ensuring that the region's architecture is not captured by a single power."</p>
+            </div>
+        </div>
+
+        <!-- Myanmar Problem -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚠️ The Myanmar Crisis — ASEAN's Biggest Test</h2>
+            <p style="color:var(--text-body);">Since the <strong>February 2021 military coup</strong> in Myanmar, ASEAN has faced its most severe internal crisis. The junta has violently suppressed pro‑democracy protests, and ASEAN's <strong>Five‑Point Consensus</strong> — calling for an immediate cessation of violence and inclusive dialogue — has been ignored by the Myanmar military. ASEAN has barred the junta's political representatives from high‑level meetings, but has stopped short of suspending Myanmar's membership — a reflection of the organisation's commitment to <strong>non‑interference</strong> in members' internal affairs.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">For India, the Myanmar crisis is particularly significant because Myanmar is the <strong>land bridge</strong> between India and Southeast Asia — essential for the Act East Policy's connectivity projects. India has maintained a delicate balancing act: engaging with the junta on security and border issues while supporting ASEAN's diplomatic efforts to restore democracy.</p>
+        </div>
+
+        <!-- Management-School Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Management‑School Context — ASEAN as a Regional Integration Model</h2>
+            <p style="color:var(--text-body);">ASEAN is one of the world's most successful examples of <strong>regional economic integration</strong> among developing countries. Unlike the EU, which pursued deep political union, ASEAN followed a model of <strong>shallow but sustained integration</strong> — building trust through decades of dialogue before attempting formal institutional deepening. Its success demonstrates that regional cooperation does not require a common currency, a parliament, or a supranational court; it requires <strong>consistent engagement, economic interdependence, and a shared commitment to stability</strong>.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The <strong>ASEAN Way</strong> — informal, consensus‑based, and non‑confrontational — is often criticised for being slow and toothless, particularly in crises like Myanmar. But it is precisely this approach that has kept the organisation intact across five decades while encompassing communist Vietnam, military‑ruled Myanmar, and capitalist Singapore under one roof. For India, ASEAN offers a model of what South Asian regionalism could look like — if only the political conditions permitted it.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is ASEAN and who are its members?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">ASEAN — the Association of Southeast Asian Nations — is a regional bloc of <strong>ten countries</strong>: Indonesia, Malaysia, the Philippines, Singapore, Thailand, Brunei, Vietnam, Laos, Myanmar, and Cambodia. Founded in 1967, it has evolved into a deeply integrated economic community of over 650 million people with a combined GDP of approximately $3.6 trillion.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What is India's Act East Policy, and how does it differ from the earlier Look East Policy?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The <strong>Look East Policy</strong> (1990s) was India's initial post‑Cold War pivot to engage Southeast Asia economically. The <strong>Act East Policy</strong> (2014, under PM Modi) upgraded this to a more proactive, security‑focused approach — deepening defence cooperation, building connectivity infrastructure (the India‑Myanmar‑Thailand Trilateral Highway), and positioning India as a net security provider in the Indo‑Pacific.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Why is ASEAN important in the India‑China competition?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">ASEAN sits at the strategic crossroads of the Indo‑Pacific. Both India and China compete for influence in the region through trade, investment, and security partnerships. China uses the Belt and Road Initiative and massive infrastructure lending; India offers an alternative model of transparent, sustainable development. The <strong>South China Sea dispute</strong> — where several ASEAN members resist China's expansive claims — is a central theatre of this rivalry. India supports ASEAN centrality and freedom of navigation under UNCLOS.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is the "ASEAN Way" and what is its significance?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The "ASEAN Way" refers to the organisation's informal, consensus‑based, non‑confrontational approach to diplomacy. Decisions are made through consultation and consensus, not majority voting. While criticised for being slow — particularly in responding to crises like the Myanmar coup — this approach has kept ASEAN intact across five decades, accommodating countries with vastly different political systems.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: How does ASEAN compare to SAARC?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">ASEAN has been far more successful than SAARC. Intra‑ASEAN trade is approximately <strong>25% of members' total trade</strong>, compared to SAARC's <strong>below 5%</strong>. The key difference: ASEAN was built on economic interdependence among states that, while having historical tensions, did not have a single bilateral conflict as deep and persistent as India‑Pakistan. ASEAN's "ASEAN Way" of gradualism worked because the underlying political conditions allowed it. SAARC's identical design failed because the politics didn't.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--teal);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--teal);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"ASEAN — the Association of Southeast Asian Nations — is a ten‑member regional bloc founded in 1967 that has evolved into one of the world's most successful examples of economic integration, with a combined GDP of $3.6 trillion. For India, ASEAN is the central theatre of its Act East Policy — a strategic pivot to deepen trade, connectivity, and security ties with Southeast Asia. The bloc is also the stage where India and China compete for regional influence, with India supporting ASEAN centrality and the peaceful resolution of disputes under UNCLOS, particularly in the contested South China Sea. ASEAN's success — built on consensus, gradualism, and economic interdependence — stands in stark contrast to the paralysis of SAARC, offering a model of what South Asian regionalism could achieve if political conditions permitted."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('aseanMap');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // India outline
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.1)';
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(30, 80);
+            ctx.lineTo(60, 60);
+            ctx.lineTo(90, 80);
+            ctx.lineTo(110, 120);
+            ctx.lineTo(120, 180);
+            ctx.lineTo(90, 260);
+            ctx.lineTo(50, 250);
+            ctx.lineTo(20, 200);
+            ctx.lineTo(15, 140);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = 'bold 12px "JetBrains Mono", monospace';
+            ctx.fillText('INDIA', 35, 170);
+
+            // Southeast Asia landmass (schematic)
+            ctx.fillStyle = 'rgba(8, 145, 178, 0.1)';
+            ctx.strokeStyle = '#0891b2';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(180, 100);
+            ctx.lineTo(280, 80);
+            ctx.lineTo(400, 90);
+            ctx.lineTo(480, 140);
+            ctx.lineTo(520, 200);
+            ctx.lineTo(500, 280);
+            ctx.lineTo(440, 310);
+            ctx.lineTo(350, 300);
+            ctx.lineTo(280, 280);
+            ctx.lineTo(200, 230);
+            ctx.lineTo(160, 170);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // Island arcs (Indonesia, Philippines)
+            ctx.strokeStyle = '#0891b2';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([2, 3]);
+            // Philippines
+            ctx.beginPath();
+            ctx.moveTo(500, 120);
+            ctx.lineTo(540, 130);
+            ctx.lineTo(560, 160);
+            ctx.lineTo(550, 190);
+            ctx.stroke();
+            // Indonesia
+            ctx.beginPath();
+            ctx.moveTo(440, 310);
+            ctx.lineTo(470, 320);
+            ctx.lineTo(500, 315);
+            ctx.lineTo(530, 325);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Labels for ASEAN countries
+            ctx.fillStyle = '#c8d6d0';
+            ctx.font = '8px "JetBrains Mono", monospace';
+            const labels = [
+                { name: 'MYANMAR', x: 180, y: 130 },
+                { name: 'THAILAND', x: 230, y: 160 },
+                { name: 'LAOS', x: 270, y: 135 },
+                { name: 'VIETNAM', x: 350, y: 125 },
+                { name: 'CAMBODIA', x: 300, y: 200 },
+                { name: 'MALAYSIA', x: 250, y: 265 },
+                { name: 'SINGAPORE', x: 220, y: 280 },
+                { name: 'BRUNEI', x: 380, y: 240 },
+                { name: 'PHILIPPINES', x: 540, y: 155 },
+                { name: 'INDONESIA', x: 480, y: 310 }
+            ];
+            labels.forEach(l => ctx.fillText(l.name, l.x, l.y));
+
+            // ASEAN label
+            ctx.fillStyle = '#0891b2';
+            ctx.font = 'bold italic 11px "Playfair Display", serif';
+            ctx.fillText('ASEAN', 310, 170);
+
+            // Arrow from India to ASEAN
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([6, 4]);
+            ctx.beginPath();
+            ctx.moveTo(125, 200);
+            ctx.lineTo(165, 210);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle = '#f59e0b';
+            ctx.font = 'italic 9px "JetBrains Mono", monospace';
+            ctx.fillText('Act East', 70, 230);
+        })();
+    </script>
+</body>
+</html>

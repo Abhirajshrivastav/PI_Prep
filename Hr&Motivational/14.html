@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>HR-37/38/39/40/41 · Deep Self‑Awareness Questions — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--violet); box-shadow: 0 0 20px rgba(139,92,246,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--violet); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #7c3aed; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-violet {
+            border-left: 4px solid var(--violet); background: var(--violet-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .section-header {
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .section-header h2 { color: var(--violet); font-size: 1.6rem; }
+
+        .closing-quote {
+            background: rgba(139,92,246,0.04); border: 1px solid var(--violet);
+            border-radius: 14px; padding: 1.8rem; margin: 1.5rem 0;
+            color: var(--text-body); line-height: 1.9; font-size: 0.95rem;
+            position: relative; font-style: italic;
+        }
+        .closing-quote::before { content: '"'; position: absolute; top: 0.3rem; left: 1rem; font-size: 4rem; color: var(--violet); opacity: 0.15; font-family: 'Playfair Display', serif; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--violet);">[ID: HR-37/38/39/40/41] · [STATUS: CRAFTED] · [BLOCK 13: DEEP SELF‑AWARENESS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--violet);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 13 · DEEP SELF‑AWARENESS QUESTIONS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Who You Are When Everything Is Stripped Away</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Proving worth without credentials, unlearning old beliefs, navigating certainty, owning your biggest mistake, and articulating the unique lessons your background has taught you.</p>
+        </div>
+
+        <!-- HR-37: If All Records Were Erased -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🪞 HR‑37 · If All Records Were Erased, How Would You Prove Your Worth?</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">This question strips away marksheets, certificates, and titles. It asks: who are you when there is no proof but yourself? Your answer must be grounded in behaviour, not claims.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: Imagine all your marksheets, certificates, and records are erased. How would you prove your worth?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I wouldn't point to a document. I would point to patterns of behaviour that can be verified by anyone who knows me. I would say: give me a task I care about and watch how I approach it. You'll see that I don't wait for instructions — I find resources, I teach myself, I build. That's how I learned web development from scratch and built projects that attracted a startup offer. That's how I pivoted from JEE and cleared IPMAT in two months. The certificates are gone, but the pattern remains.</p><p style="color:var(--text-body);margin-top:0.8rem;">I would also say: put me in a room with customers or clients and watch how I handle them. You'll see four years of small‑store experience — reading people, managing expectations, handling complaints calmly. I can't show you a certificate for that. But I can show you the skill itself, in real time.</p><p style="color:var(--text-body);margin-top:0.8rem;">And finally, I would say: give me a difficult setback and watch what I do next. You'll see that I don't collapse. I process, I re‑evaluate, and I move. That's not written on any paper. But it's the truest thing about me."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: So your worth is not in your credentials. What is it in?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"My worth is in my response to circumstances. Credentials measure past performance in controlled environments. They matter, but they're incomplete. My worth — if I have any — is in what happens when I face something I haven't been prepared for. Do I freeze, or do I figure it out? Do I complain about what I lack, or do I use what I have? So far, the pattern has been: I figure it out. I use what I have. That's not a credential. It's a character trait. And it's the one I'd stake my future on."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-38: What Have You Unlearned -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🔄 HR‑38 · What Have You Completely Unlearned in the Past Year?</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">This question tests whether you can change your mind — a critical trait for a management student. The best answer names something you genuinely used to believe, explains why it was wrong, and describes what replaced it.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: What is something you believed strongly one year ago that you no longer believe?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I used to believe that persistence alone could overcome anything. That if I just worked hard enough, long enough, I could succeed at whatever I set my mind to. JEE broke that belief — not gently, but completely. I worked very hard for three years. The effort was real. The result was 34 percentile.</p><p style="color:var(--text-body);margin-top:0.8rem;">What I unlearned was the idea that persistence is a universal solvent. It's not. Persistence on the wrong path is just stubbornness with a schedule. What replaced that belief is a more nuanced view: persistence is essential, but only after alignment. First, you have to honestly ask: 'Is this something I am genuinely suited for? Does my curiosity sustain, or am I just grinding?' If the answer is yes, persist with everything you have. If the answer is no, the most intelligent thing you can do is pivot. That's not quitting. That's reallocation. I wish I had learned this earlier. But I've learned it now, and I won't forget it."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Was there a moment when this unlearning crystallised?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Yes. It was the day I received my JEE Main Session 1 result in February 2026. I had taken a drop year. I had studied daily. And the number on the screen was almost identical to my previous attempt. In that moment, I realised: more time won't fix this. The problem isn't the hours. The problem is the fit. That was the moment the old belief cracked. I didn't replace it overnight. But I stopped defending the old belief and started looking for a new one. The new one came through reflection, through books, and through the IPMAT practice tests that felt different — easier, more natural. The old belief died in February. The new one was operational by March."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What else have you unlearned?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I've also unlearned the idea that formal education is the only path to real competence. In my environment, the JEE‑IIT route was treated as the only legitimate path to a decent life. I believed that. But my own experience contradicted it. I learned web development without a teacher and got an offer. I learned more about business in my father's store than I ever did in a commerce class. I prepared for IPMAT without coaching and cleared it. Formal education is valuable — that's why I'm sitting here. But it's not the only source of competence. And tying your self‑worth entirely to formal academic performance is a recipe for unnecessary suffering. I've unlearned that hierarchy. I now value learning wherever it happens."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-39: Too Young to Know -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🌱 HR‑39 · Are You Not Too Young to Know What You Want?</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">The panel may challenge your certainty. They want to see if you have thought about the limits of your own self‑knowledge, or if you are just delivering a confident performance.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: You're 18 or 19. How can you possibly know what you want for your career?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I don't know exactly what I want. I've said that repeatedly — I don't have a precise job title in mind. What I do know is the kind of work that energises me, and the kind that drains me. I know that I thrive when I'm building something, solving problems that involve both logic and people, and working in an environment where my curiosity is engaged. I know that I shut down when the work feels abstract and disconnected from real‑world application. These are not career goals. They are self‑observations, built over years, including through failure. I'm not claiming certainty about the destination. I'm claiming clarity about the direction. That clarity is based on evidence, not fantasy."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: But won't your interests change? You're very young.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"They might. And if they do, I'll re‑evaluate again. That's actually the point. The skill I've built is not a fixed career plan. It's the ability to honestly assess whether a path is working, and to pivot if it's not. I did it once. I can do it again. So if my interests evolve, I won't cling to a plan out of stubbornness. I'll apply the same self‑awareness that brought me here. The IPM programme actually supports that — it's broad, it's exploratory, it gives you time to discover. I'm not locking myself into a narrow track. I'm choosing a broad foundation that allows for evolution. That's exactly the right choice for someone my age."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: How do you distinguish between a genuine interest and a passing phase?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"By duration and by behaviour under difficulty. A passing phase fades when it becomes inconvenient. A genuine interest survives inconvenience. I started coding in 2022. It's been years, and I still code — the focus shifted from web dev to CP and data science, but the core interest persists. I started reading seriously around the same time. I still read. These are not phases. They are durable curiosities.</p><p style="color:var(--text-body);margin-top:0.8rem;">The second test is whether I'm willing to do the unglamorous parts. I enjoy building a website, but I also debugged alone for three days once. I enjoy reading philosophy, but I also re‑read difficult passages until I understood them. If an interest survives the boring, difficult parts, it's real. My interest in technology and business has survived both. That's how I know."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-40: Biggest Mistake -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>💔 HR‑40 · What Is the Biggest Mistake You Have Made?</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">This is a direct invitation to revisit JEE, but with a new framing: not as a failure, but as a decision error. Your answer should show that you understand the root cause of the mistake and have corrected the decision‑making process that led to it.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: What is the biggest mistake you have made in your life so far?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"My biggest mistake was not re‑evaluating my path sooner. Not the JEE attempt itself — I don't regret trying. The mistake was ignoring the signals for too long. I knew, somewhere in the back of my mind, that Physics and Chemistry didn't engage me the way coding or reading or the store did. But I suppressed that knowledge because the herd was running in one direction, and I didn't have the courage to stop and ask: 'Is this my race?' I spent three years on a path that deep down I knew wasn't mine. That delay was the mistake. Not the failure. The failure was just the consequence."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What did the mistake cost you?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Time. Three years I could have spent building skills and exploring directions that genuinely fit me. Also some confidence — public failure takes a toll. And my family's emotional investment — they hoped for a different outcome, and I disappointed them. The cost was real.</p><p style="color:var(--text-body);margin-top:0.8rem;">But I also gained something: a permanent lesson about listening to internal signals. That lesson has already changed my trajectory — it brought me to IPMAT, to IIT Madras, to this interview. So the mistake was expensive, but I didn't let the cost become waste. I extracted every rupee of value from it. I won't make the same category of mistake again. That's the best anyone can do with a mistake: learn from it so completely that it becomes a vaccine, not just a scar."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: If you could go back and give your 15‑year‑old self one piece of advice, what would it be?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I would say: 'Don't ask what path is most respected. Ask what path makes you most alive. Respect follows genuine engagement. It doesn't work the other way around.' I would also say: 'The store is not a distraction from your future. It is a laboratory. Pay attention to what it's teaching you. Those lessons will matter more than any coaching module.'</p><p style="color:var(--text-body);margin-top:0.8rem;">But honestly, I'm not sure my 15‑year‑old self would have listened. Some lessons can only be learned through experience. I learned this one the hard way. That's probably why it stuck."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-41: Background Taught You Uniquely -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🏡 HR‑41 · What Has Your Background Taught You Uniquely?</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">This is the closing question of the deep self‑awareness block. It invites you to synthesise everything you have learned from your context — Ghazipur, the store, the government school, the JEE failure — into a coherent statement of perspective.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: What has your background taught you that a privileged upbringing might not?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Three things.</p><p style="color:var(--text-body);margin-top:0.5rem;"><strong>First, the informal economy is not a footnote to the Indian economy — it is the Indian economy.</strong> I've seen how credit, trust, and personal relationships form the backbone of commerce in small towns. That's not in textbooks. It's in the daily operation of millions of small businesses like ours. I understand that economy not as a concept, but as a lived reality.</p><p style="color:var(--text-body);margin-top:0.5rem;"><strong>Second, resources are not the same as resourcefulness.</strong> I didn't have coaching, an English‑medium school, or a guided path. But I learned that resourcefulness — the ability to find a way with what you have — compounds over time. It's a meta‑skill. Once you know you can teach yourself anything, the absence of formal support stops feeling like a barrier and starts feeling like a challenge.</p><p style="color:var(--text-body);margin-top:0.5rem;"><strong>Third, failure is not the opposite of success — it's often a precursor to it,</strong> if you process it correctly. My father's store has bad days. My JEE result was a bad year. But neither defined me. What defined me was what I did next. Privilege can sometimes protect you from failure, which means it can also delay the learning that failure brings. I've had my dose of failure early. I've learned from it. I'm not afraid of it anymore."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: How does your father feature in what your background has taught you?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"My father is the quiet centre of everything I've learned about work and character. He never gave me a lecture on management. But he showed me, every day, that reliability is the foundation of business. He opens the shop at the same time every day. He never cheats on weight. He extends credit to families in difficulty and doesn't harass them. He treats every customer with respect, whether they're buying ten rupees of salt or a month's ration.</p><p style="color:var(--text-body);margin-top:0.8rem;">He also trusted me. When he had to travel, he didn't close the shop. He handed me the keys. That trust was his way of teaching me responsibility — not by talking about it, but by giving it to me. My background isn't just a place. It's a person. And what I've learned from him is that management isn't about frameworks. It's about showing up, being fair, and being someone others can count on. I want to build a career that honours that lesson."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: If someone said your background is a disadvantage, how would you respond?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I would say: it depends on what you're measuring. If you're measuring access to coaching, English fluency at age ten, or board exam marks — yes, my background was a disadvantage. But if you're measuring practical business understanding, resilience, self‑reliance, and the ability to connect with people across social and economic divides — my background was an advantage. It's not about whether the background is good or bad. It's about what you do with it. I chose to treat it as a training ground. That choice turned a potential disadvantage into a differentiator. I'm sitting here because of my background, not in spite of it."</p></div>
+            </details>
+        </div>
+
+        <!-- Block 13 Closing Reflection -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);margin-bottom:0.5rem;">💡 IF THE PANEL ASKS "AFTER ALL THIS REFLECTION, WHO ARE YOU, REALLY?"</p>
+            <div class="closing-quote">
+                <p>"I am someone who learned early that life doesn't follow the syllabus. I am someone who has failed, reflected, and rebuilt. I am someone who has seen the Indian economy from the ground floor — a small store in a small town — and wants to engage with it at scale. I am someone who reads not to impress, but to understand. I am someone who codes not just for marks, but because building things is satisfying. And I am someone who is sitting here not because I followed a path, but because I found the courage to leave one that wasn't mine. I'm not finished. I'm not perfect. But I'm real, I'm self‑aware, and I'm ready."</p>
+            </div>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--violet);margin-top:1.5rem;">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--violet);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"My worth is not in my marksheets — it's in my pattern of response to difficulty. If all records were erased, I'd prove myself through behaviour: self‑directed learning, calmness under pressure, and the ability to rebuild after setbacks. Over the past year, I've unlearned the belief that persistence alone conquers everything — alignment matters as much as effort. At my age, I don't claim certainty about a specific career, but I have clarity about direction, grounded in years of evidence about what energises me and what drains me. My biggest mistake was ignoring internal signals and staying on the JEE path too long — but I extracted every rupee of value from that experience. My background taught me that resourcefulness compounds, that the informal economy is the real Indian economy, and that failure, processed honestly, is a teacher. I'm not finished. I'm not perfect. But I'm real, I'm self‑aware, and I'm ready."</em></p>
+        </div>
+    </main>
+</body>
+</html>

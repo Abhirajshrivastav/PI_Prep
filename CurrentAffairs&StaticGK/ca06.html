@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA‑BANGLADESH · Bangladesh Political Crisis — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --sky: #0ea5e9;
+            --sky-dim: rgba(14, 165, 233, 0.06);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--sky); box-shadow: 0 0 20px rgba(14,165,233,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--sky); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #0369a1; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-sky {
+            border-left: 4px solid var(--sky); background: var(--sky-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-rose {
+            border-left: 4px solid var(--rose); background: var(--rose-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; }
+
+        .profile-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem;
+        }
+        .profile-card h3 { color: var(--sky); font-size: 1.2rem; margin-bottom: 0.3rem; }
+        .profile-card .role { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+
+        .timeline-node {
+            display: flex; gap: 1rem; align-items: baseline;
+            border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0;
+        }
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace; color: var(--sky); font-size: 0.85rem; min-width: 5rem;
+        }
+        .timeline-desc { color: var(--text-body); font-size: 0.9rem; }
+
+        .compare-table {
+            width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0;
+        }
+        .compare-table th {
+            text-align: left; padding: 0.6rem 0.8rem; background: rgba(14,165,233,0.08);
+            color: var(--sky); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+            text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .compare-table td {
+            padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border-subtle); color: var(--text-body);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--sky);">[ID: CA‑BANGLADESH] · [STATUS: VERIFIED] · [BLOCK: INTERNATIONAL RELATIONS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--sky);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · HIGH‑PROBABILITY IR TOPIC</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Bangladesh Political Crisis (2024–2026)</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The fall of Sheikh Hasina, Muhammad Yunus's interim government, the Nobel-winning microfinance revolution, and what this political transition means for India's most important eastern neighbour.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">TRIGGER</span><div class="value">Student‑led protests over public‑sector job quotas</div></div>
+                <div class="fact-box"><span class="label">FORMER PM</span><div class="value">Sheikh Hasina (in office 2009–2024; now in India)</div></div>
+                <div class="fact-box"><span class="label">INTERIM LEADER</span><div class="value">Muhammad Yunus (Chief Adviser)</div></div>
+                <div class="fact-box"><span class="label">YUNUS FAMOUS FOR</span><div class="value">Founder of Grameen Bank; pioneer of microfinance</div></div>
+                <div class="fact-box"><span class="label">NOBEL PRIZE</span><div class="value">Nobel Peace Prize 2006 (with Grameen Bank)</div></div>
+                <div class="fact-box"><span class="label">INDIA'S KEY CONCERN</span><div class="value">Strategic partnership continuity; border stability; China's influence</div></div>
+                <div class="fact-box"><span class="label">TRADE VOLUME</span><div class="value">~$16 billion bilateral trade (2023–24)</div></div>
+                <div class="fact-box"><span class="label">SHARED BORDER</span><div class="value">~4,096 km (India's longest international border)</div></div>
+            </div>
+        </div>
+
+        <!-- The Crisis: What Happened -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚠️ The Crisis — What Happened?</h2>
+            <p style="color:var(--text-body);">In <strong>2024</strong>, Bangladesh witnessed <strong>massive student‑led protests</strong> that began over the <strong>public‑sector job quota system</strong> — a policy that reserved a significant percentage of government jobs for descendants of freedom fighters from the 1971 Liberation War. Students argued the system was unfair and benefited politically connected families rather than merit. The protests rapidly expanded into broader <strong>anti‑government demonstrations</strong> against the long‑ruling Awami League government.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The unrest eventually led to the <strong>fall of Sheikh Hasina's government</strong> in August 2024. Hasina — who had dominated Bangladeshi politics for over 15 years and was one of South Asia's longest‑serving leaders — <strong>travelled to India</strong> after leaving office. An <strong>interim administration</strong> was formed under <strong>Muhammad Yunus</strong>, the Nobel Peace Prize‑winning economist and founder of Grameen Bank.</p>
+            <div class="timeline-node" style="margin-top:1rem;"><span class="timeline-year">July 2024</span><span class="timeline-desc">Student protests over job quotas erupt across Bangladesh; turn violent.</span></div>
+            <div class="timeline-node"><span class="timeline-year">Aug 2024</span><span class="timeline-desc">Sheikh Hasina resigns and travels to India. Muhammad Yunus is sworn in as Chief Adviser of an interim government.</span></div>
+            <div class="timeline-node"><span class="timeline-year">2024–2026</span><span class="timeline-desc">Interim government manages a fragile transition. Elections are pending. India maintains careful diplomatic engagement.</span></div>
+        </div>
+
+        <!-- Muhammad Yunus & Microfinance -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">👤 Muhammad Yunus — The Banker to the Poor</h2>
+            <div class="profile-card">
+                <h3>Muhammad Yunus</h3>
+                <div class="role">Chief Adviser of the Interim Government of Bangladesh (since August 2024)</div>
+                <p style="color:var(--text-body);">Yunus is not a conventional politician. He is an <strong>economist and social entrepreneur</strong> who founded <strong>Grameen Bank</strong> in 1983, pioneering the concept of <strong>microfinance</strong> — providing very small loans (often as little as $50–$100) to poor people, particularly <strong>rural women</strong>, who could not access traditional banking. The idea was revolutionary: lack of access to credit traps people in poverty. A small loan could help someone buy a sewing machine, purchase livestock, or start a tiny business — generating income and breaking the cycle.</p>
+                <p style="color:var(--text-body);margin-top:0.5rem;">In <strong>2006</strong>, Yunus and Grameen Bank jointly received the <strong>Nobel Peace Prize</strong> for promoting economic and social development through microcredit. The Nobel Committee's argument: reducing poverty can contribute to peace and stability. As of 2024, Grameen Bank has over <strong>9 million borrowers</strong>, 97% of whom are women, with a loan recovery rate exceeding 95%.</p>
+            </div>
+            <!-- Microfinance vs Traditional Banking Table -->
+            <div style="overflow-x:auto; margin-top:1rem;">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Traditional Banking</th>
+                            <th>Microfinance (Grameen Model)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="font-weight:600;">Loan Size</td><td>Large</td><td>Very small ($50–$500)</td></tr>
+                        <tr><td style="font-weight:600;">Collateral</td><td>Often required</td><td>No collateral; group guarantee</td></tr>
+                        <tr><td style="font-weight:600;">Target Borrower</td><td>Salaried / business</td><td>Poor, rural women</td></tr>
+                        <tr><td style="font-weight:600;">Primary Goal</td><td>Profit</td><td>Poverty alleviation + sustainability</td></tr>
+                        <tr><td style="font-weight:600;">Recovery Mechanism</td><td>Legal / asset seizure</td><td>Peer pressure via group lending</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Connection to Poor Economics -->
+        <div class="glass-panel" style="border-left: 4px solid var(--sky);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📚 Connection to Poor Economics — Your Intellectual Edge</h2>
+            <p style="color:var(--text-body);">If an interviewer knows you've read <strong>Poor Economics</strong> by Banerjee and Duflo, they may probe your understanding of microfinance. Here is the nuanced view that distinguishes a thoughtful candidate from one who simply memorised a headline.</p>
+            <div class="callout-sky" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview‑ready synthesis:</strong> "Banerjee and Duflo acknowledge that microfinance improves access to finance and can help households manage risks or start small businesses. However, their RCT evidence suggests it is <strong>not a magic bullet</strong> that automatically lifts people out of poverty. The impact is real but modest. Poverty reduction also requires education, healthcare, infrastructure, and employment opportunities. Microfinance is one useful tool in a broader portfolio — not a standalone solution."</p>
+            </div>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Why this impresses:</strong> Most candidates, if they know about Yunus at all, will say "microfinance eliminates poverty." Your nuanced answer — acknowledging both the genuine access it provides and the evidence that its transformative power is limited — demonstrates that you have actually engaged with the ideas in the books you claim to have read. This is exactly the depth panelists look for.</p>
+        </div>
+
+        <!-- Why India Cares -->
+        <div class="glass-panel" style="border-left: 4px solid var(--rose);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇮🇳 Why This Matters for India</h2>
+            <p style="color:var(--text-body);">Bangladesh is arguably <strong>India's most important bilateral partner</strong> in South Asia. The two countries share a <strong>4,096‑km border</strong> — India's longest — and have deeply intertwined economic, security, and cultural ties.</p>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem;">
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">UNDER HASINA</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">Strong India‑friendly cooperation: counter‑terrorism, border management, connectivity projects, Northeast India access.</p>
+                </div>
+                <div style="background:rgba(244,63,94,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--rose);font-size:0.7rem;">POST‑TRANSITION CONCERNS</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">Future security cooperation uncertain; treatment of minorities (Hindus); border stability; growing Chinese influence in Dhaka.</p>
+                </div>
+                <div style="background:rgba(14,165,233,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--sky);font-size:0.7rem;">INDIA'S APPROACH</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">Maintain working relations with the interim government; avoid interference in internal politics; quietly engage to protect strategic interests.</p>
+                </div>
+            </div>
+            <div class="callout-rose" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Key geopolitical concern:</strong> China has invested heavily in Bangladesh through the Belt and Road Initiative. Any political vacuum or shift in Dhaka's foreign policy orientation directly affects India's strategic position in the region.</p>
+            </div>
+        </div>
+
+        <!-- Management-School Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Management‑School Context — Microfinance as Social Entrepreneurship</h2>
+            <p style="color:var(--text-body);">Grameen Bank is one of the world's most studied case studies in <strong>social entrepreneurship</strong> — building a financially self‑sustaining organisation that pursues a social mission. Its group‑lending model solved the <strong>information asymmetry problem</strong> in credit markets: traditional banks could not assess the creditworthiness of poor, illiterate borrowers, so they simply excluded them. Grameen's innovation was to use <strong>peer monitoring</strong> (five‑woman groups jointly guaranteeing each other's loans) as a substitute for collateral — a brilliant example of <strong>mechanism design</strong> in practice.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">However, the microfinance industry also faced a <strong>reputation crisis</strong> in the late 2000s — particularly in Andhra Pradesh, where aggressive lending and coercive recovery practices led to borrower suicides and a state‑government crackdown. This illustrates the <strong>mission‑drift problem</strong>: when social enterprises scale and attract commercial capital, the original social mission can be compromised by profit pressures. This tension — between impact and sustainability — is a core theme in development economics and social enterprise management.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What triggered the political crisis in Bangladesh in 2024?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Massive <strong>student‑led protests</strong> began over the public‑sector job quota system, which reserved a large percentage of government jobs for descendants of 1971 freedom fighters. The protests expanded into broader anti‑government demonstrations against Sheikh Hasina's long‑ruling Awami League government, eventually leading to her resignation and departure to India in August 2024.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Who is Muhammad Yunus, and why is he significant?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Muhammad Yunus is a Nobel Peace Prize‑winning economist (2006) who founded <strong>Grameen Bank</strong> and pioneered <strong>microfinance</strong> — providing very small loans to poor people, especially rural women, who cannot access traditional banking. His work demonstrated that lack of access to credit traps people in poverty. In August 2024, he was appointed Chief Adviser of Bangladesh's interim government after the fall of Sheikh Hasina.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is microfinance, and how does it differ from traditional banking?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Microfinance provides <strong>very small loans</strong> (often $50–$500) to poor borrowers without requiring collateral, typically using a <strong>group‑lending model</strong> where peers guarantee each other's loans. Traditional banking offers larger loans, usually requires collateral, and targets salaried or business customers. The Grameen model specifically focuses on rural women and uses peer pressure as the enforcement mechanism rather than legal action or asset seizure.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What does Poor Economics say about microfinance?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Banerjee and Duflo acknowledge that microfinance improves access to finance and can help households manage risks or start small businesses. However, their RCT evidence suggests it is <strong>not a magic bullet</strong> that automatically lifts people out of poverty. The impact is real but modest. Poverty reduction also requires education, healthcare, infrastructure, and employment opportunities. Microfinance is one useful tool — not a standalone solution."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: Why is Bangladesh important to India, and what are India's concerns?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Bangladesh is one of India's most important neighbours — they share India's <strong>longest international border</strong> (4,096 km), have deep trade ties (~$16 billion bilateral trade), and cooperate on counter‑terrorism, connectivity, and Northeast India access. Under Hasina, relations were strong. After the transition, India's concerns include the <strong>future of security cooperation, treatment of minorities, border stability, and China's growing influence</strong> in Dhaka. India's approach has been to maintain working relations while avoiding interference in internal politics.</p></div>
+            </details>
+        </div>
+
+        <!-- One Insight That Impresses Panels -->
+        <section>
+            <div class="glass-panel" style="border-left:4px solid var(--sky);">
+                <p class="font-mono" style="font-size:0.7rem;color:var(--sky);margin-bottom:0.5rem;">💡 ONE INSIGHT THAT SOUNDS MATURE</p>
+                <p style="color:var(--text-body);font-style:italic;">"Muhammad Yunus is significant not just because he heads an interim government, but because his work helped shift development economics from asking 'Why are people poor?' to asking 'How can institutions expand opportunities for the poor?'"</p>
+            </div>
+        </section>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--sky);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--sky);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Bangladesh underwent a major political transition in 2024 after large student‑led protests over job quotas led to the departure of Prime Minister Sheikh Hasina. An interim government was formed under Muhammad Yunus, the Nobel Peace Prize‑winning economist who founded Grameen Bank and pioneered microfinance — providing small, collateral‑free loans to poor rural women. Yunus is internationally significant because his work shifted development economics toward expanding institutional access for the poor. For India, the transition is strategically critical: Bangladesh is India's largest trade partner in South Asia, shares its longest border, and is a key ally in connectivity and security. The challenge for India is maintaining strong bilateral relations while adapting to Bangladesh's evolving political landscape — and managing the influence of other powers like China."</em></p>
+        </div>
+    </main>
+</body>
+</html>

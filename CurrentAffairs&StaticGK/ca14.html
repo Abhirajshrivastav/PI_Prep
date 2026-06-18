@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-14 · IMF & World Bank — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+            --emerald: #10b981;
+            --emerald-dim: rgba(16, 185, 129, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--emerald); box-shadow: 0 0 20px rgba(16,185,129,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--emerald); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #047857; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-emerald {
+            border-left: 4px solid var(--emerald); background: var(--emerald-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.05rem; }
+
+        .compare-table {
+            width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0;
+        }
+        .compare-table th {
+            text-align: left; padding: 0.7rem 0.8rem; background: rgba(16,185,129,0.08);
+            color: var(--emerald); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+            text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .compare-table td {
+            padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--border-subtle); color: var(--text-body);
+        }
+
+        .profile-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem;
+            display: flex; gap: 1.5rem; align-items: flex-start;
+        }
+        .profile-card .avatar {
+            width: 60px; height: 60px; border-radius: 50%; background: rgba(16,185,129,0.12);
+            display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0;
+        }
+        .profile-card h3 { color: var(--emerald); font-size: 1.2rem; margin-bottom: 0.2rem; }
+        .profile-card .role { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.4rem; }
+
+        .sdr-box {
+            background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.2);
+            border-radius: 12px; padding: 1.2rem; margin: 1rem 0;
+        }
+        .sdr-box h3 { color: var(--gold); font-size: 1.1rem; margin-bottom: 0.5rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--emerald);">[ID: CA-14] · [STATUS: VERIFIED] · [BLOCK: INTERNATIONAL ORGANIZATIONS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--emerald);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · INTERNATIONAL ORGANIZATIONS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">IMF & World Bank — The Bretton Woods Twins</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Two institutions born from the ashes of World War II — one guards global financial stability, the other funds development. Understanding their distinct roles, the SDR, and the significance of an Indian‑American at the helm of the World Bank.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">IMF HEAD</span><div class="value">Kristalina Georgieva (Bulgaria)</div></div>
+                <div class="fact-box"><span class="label">WORLD BANK HEAD</span><div class="value">Ajay Banga (Indian‑American)</div></div>
+                <div class="fact-box"><span class="label">BOTH FOUNDED</span><div class="value">1944 (Bretton Woods Conference, New Hampshire, USA)</div></div>
+                <div class="fact-box"><span class="label">HEADQUARTERS</span><div class="value">Both in Washington D.C., USA</div></div>
+                <div class="fact-box"><span class="label">IMF MEMBERS</span><div class="value">190 countries</div></div>
+                <div class="fact-box"><span class="label">WORLD BANK MEMBERS</span><div class="value">189 countries (IBRD)</div></div>
+                <div class="fact-box"><span class="label">SDR BASKET</span><div class="value">USD, EUR, CNY, JPY, GBP (5 currencies)</div></div>
+                <div class="fact-box"><span class="label">INDIA'S VOTING SHARE</span><div class="value">IMF: ~2.75% | World Bank: ~3.1%</div></div>
+            </div>
+        </div>
+
+        <!-- Side-by-Side Comparison -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚖️ IMF vs World Bank — The Core Distinction</h2>
+            <p style="color:var(--text-body);margin-bottom:1rem;">Though born together, these institutions serve fundamentally different purposes. The simplest way to remember: <strong>IMF = Doctor. World Bank = Builder.</strong></p>
+            <div style="overflow-x:auto;">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th style="color:var(--info);">IMF</th>
+                            <th style="color:var(--emerald);">World Bank</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:600;">Primary Role</td>
+                            <td>Global financial stability & crisis management</td>
+                            <td>Long‑term development & poverty reduction</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:600;">What it does</td>
+                            <td>Lends to countries facing balance of payments crises; monitors global economy</td>
+                            <td>Provides loans, grants, and technical assistance for development projects (schools, roads, health)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:600;">Current Head</td>
+                            <td><strong>Kristalina Georgieva</strong> (Bulgarian economist, since 2019)</td>
+                            <td><strong>Ajay Banga</strong> (Indian‑American, former Mastercard CEO, since June 2023)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:600;">Key Instrument</td>
+                            <td><strong>SDR</strong> (Special Drawing Right) — a reserve asset</td>
+                            <td>IBRD loans, IDA concessional credits for poorest nations</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:600;">Conditionality</td>
+                            <td>Often requires structural reforms (fiscal austerity, etc.)</td>
+                            <td>Project‑based conditions; policy advice</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="callout-emerald" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Management‑School Insight:</strong> The IMF and World Bank are classic examples of <strong>principal‑agent dynamics</strong> in global governance. Voting power is tied to financial contribution (quotas), not to one‑country‑one‑vote. This means the US and Europe collectively hold disproportionate influence over both institutions — a structural imbalance that BRICS and the New Development Bank (NDB) were explicitly designed to challenge.</p>
+            </div>
+        </div>
+
+        <!-- Ajay Banga Profile -->
+        <div class="glass-panel" style="border-left: 4px solid var(--emerald);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">👤 Ajay Banga — The Indian‑American Leading the World Bank</h2>
+            <div class="profile-card">
+                <div class="avatar">🇮🇳</div>
+                <div>
+                    <h3>Ajay Banga</h3>
+                    <div class="role">President, World Bank Group (since June 2023)</div>
+                    <p style="color:var(--text-body);">Born in <strong>Pune, India</strong> (1959). Educated at IIM Ahmedabad. Spent most of his career in the private sector — CEO of <strong>Mastercard</strong> (2010–2020) — before being nominated by US President Joe Biden to lead the World Bank. He is the <strong>first Indian‑born person</strong> to head the institution.</p>
+                    <p style="color:var(--text-body);margin-top:0.5rem;"><strong>Why this matters for interviews:</strong> Mentioning Banga's Indian origin and IIM‑Ahmedabad connection demonstrates current awareness and subtly signals your own aspirations. His appointment also reflects the growing influence of the Indian diaspora in global institutions.</p>
+                </div>
+            </div>
+            <div class="callout" style="margin-top:0.5rem;">
+                <p style="color:var(--text-body);"><strong>Interview Line:</strong> "The World Bank is currently led by Ajay Banga, an Indian‑American and IIM Ahmedabad alumnus, who previously served as CEO of Mastercard. His appointment reflects both the growing influence of the Indian diaspora in global governance and a shift toward leadership with private‑sector experience."</p>
+            </div>
+        </div>
+
+        <!-- SDR Deep Dive -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">💱 The SDR — Special Drawing Right</h2>
+            <p style="color:var(--text-body);">The <strong>Special Drawing Right (SDR)</strong> is one of the most frequently misunderstood concepts in global finance — and it appeared directly in one transcript. It is <strong>not a currency</strong>. It is an <strong>international reserve asset</strong> created by the IMF in 1969 to supplement member countries' official reserves.</p>
+            <div class="sdr-box">
+                <h3>🧠 What the SDR Actually Is</h3>
+                <ul style="color:var(--text-body);margin-left:1.5rem;list-style-type:disc;font-size:0.9rem;">
+                    <li style="margin-bottom:0.3rem;">The SDR is a <strong>basket of five currencies</strong>: US Dollar (USD), Euro (EUR), Chinese Renminbi (CNY), Japanese Yen (JPY), and British Pound (GBP).</li>
+                    <li style="margin-bottom:0.3rem;">Its value is calculated daily based on weighted exchange rates of these five currencies.</li>
+                    <li style="margin-bottom:0.3rem;">Countries can exchange SDRs for freely usable currencies when they face balance of payments difficulties — without conditionality.</li>
+                    <li style="margin-bottom:0.3rem;">The Chinese Yuan (Renminbi) was added to the SDR basket in <strong>2016</strong> — a significant milestone in China's push to internationalise its currency.</li>
+                </ul>
+            </div>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Why the SDR matters now:</strong> In <strong>August 2021</strong>, the IMF approved a historic <strong>$650 billion SDR allocation</strong> — the largest in its history — to help countries cope with the economic impact of COVID‑19. India received approximately <strong>$17.86 billion</strong> worth of SDRs.</p>
+        </div>
+
+        <!-- India's Relationship -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇮🇳 India's Relationship With the IMF & World Bank</h2>
+            <p style="color:var(--text-body);">India is a <strong>founding member</strong> of both institutions and has had a complex relationship with them over the decades.</p>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem;">
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--emerald);font-size:0.7rem;">THE 1991 MOMENT</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">During India's 1991 balance of payments crisis, the IMF provided a <strong>$2.2 billion loan</strong> — but with conditions. India had to pledge its gold reserves as collateral (a humiliating moment that is seared into Indian policy memory) and implement structural reforms. This crisis directly catalysed the <strong>1991 economic liberalisation</strong> under PM Narasimha Rao and FM Manmohan Singh.</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--emerald);font-size:0.7rem;">PRESENT STATUS</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">India is now a <strong>net creditor</strong> to the IMF, not a borrower. It has contributed to the IMF's lending resources. The World Bank continues to finance large infrastructure and development projects in India, though India's reliance has decreased as its own domestic financial capacity has grown.</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--emerald);font-size:0.7rem;">REFORM ADVOCACY</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">India consistently advocates for <strong>quota reform</strong> at the IMF — arguing that voting shares should better reflect the current global economic weight of emerging economies rather than the post‑WWII distribution of power that still favours Europe disproportionately.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is the difference between the IMF and the World Bank?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The <strong>IMF</strong> is focused on global financial stability — it monitors the global economy and provides short‑term loans to countries facing balance of payments crises. The <strong>World Bank</strong> is focused on long‑term development — it finances projects like schools, roads, and health systems in developing countries. Think: IMF = doctor for financial emergencies. World Bank = builder for long‑term growth.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Who currently heads the World Bank, and why is that significant?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The World Bank is currently led by <strong>Ajay Banga</strong>, an Indian‑American and IIM Ahmedabad alumnus who previously served as CEO of Mastercard. He took office in June 2023. His appointment is significant because he is the <strong>first Indian‑born person</strong> to head the institution, reflecting the growing influence of the Indian diaspora in global governance.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is the SDR? Is it a currency?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">No, the SDR — Special Drawing Right — is <strong>not a currency</strong>. It is an international reserve asset created by the IMF in 1969. Its value is based on a <strong>basket of five currencies</strong>: the US Dollar, Euro, Chinese Renminbi, Japanese Yen, and British Pound. Countries can exchange SDRs for freely usable currencies when needed. The Chinese Yuan was added to the basket in 2016.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What was India's 1991 crisis and how did the IMF feature in it?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">In 1991, India faced a severe <strong>balance of payments crisis</strong> — foreign reserves had dropped so low that India could barely cover three weeks of imports. The IMF provided a <strong>$2.2 billion loan</strong>, but required India to pledge its gold reserves as collateral and implement structural economic reforms. This crisis directly catalysed the <strong>1991 economic liberalisation</strong> that transformed India's economy.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--emerald);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--emerald);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The IMF and World Bank, both created at the 1944 Bretton Woods Conference, serve distinct purposes: the IMF maintains global financial stability and assists countries with balance of payments crises, while the World Bank provides long‑term development financing for projects in poorer nations. The IMF is led by Kristalina Georgieva; the World Bank is headed by Ajay Banga, the first Indian‑born president of the institution. The SDR — Special Drawing Right — is not a currency but an IMF reserve asset based on a basket of five major currencies. India is a founding member of both institutions and has transformed from a borrower during the 1991 crisis to a net creditor today, while consistently advocating for governance reforms that reflect the modern global economy."</em></p>
+        </div>
+    </main>
+</body>
+</html>

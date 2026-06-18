@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-21 · Bab el‑Mandeb & Red Sea Crisis — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --crimson: #e84533;
+            --crimson-dim: rgba(232, 69, 51, 0.1);
+            --ocean: #0284c7;
+            --ocean-dim: rgba(2, 132, 199, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--crimson); box-shadow: 0 0 20px rgba(232,69,51,0.12); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--crimson); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #be123c; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-crimson {
+            border-left: 4px solid var(--crimson); background: var(--crimson-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-ocean {
+            border-left: 4px solid var(--ocean); background: var(--ocean-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.05rem; }
+
+        .canvas-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+        canvas { max-width: 100%; height: auto; }
+
+        .impact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;
+        }
+        .impact-card {
+            background: rgba(244,63,94,0.04); border: 1px solid rgba(244,63,94,0.15);
+            border-radius: 10px; padding: 1rem;
+        }
+        .impact-card h4 { color: var(--rose); font-size: 0.9rem; margin-bottom: 0.3rem; }
+        .impact-card p { color: var(--text-body); font-size: 0.85rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--crimson);">[ID: CA-21] · [STATUS: VERIFIED] · [BLOCK: WORLD GEOGRAPHY & STRATEGIC CHOKEPOINTS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--crimson);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · WORLD GEOGRAPHY & STRATEGIC CHOKEPOINTS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Bab el‑Mandeb — The Gate of Tears</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The narrow chokepoint between Yemen and Djibouti that controls access to the Red Sea and the Suez Canal — and the Houthi attacks that have forced global shipping to reroute, directly hitting India's trade and freight costs.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">LOCATION</span><div class="value">Between Yemen (Arabian Peninsula) and Djibouti (Horn of Africa)</div></div>
+                <div class="fact-box"><span class="label">WIDTH</span><div class="value">~30 km at the narrowest point (Bab el‑Mandeb Strait)</div></div>
+                <div class="fact-box"><span class="label">CONNECTS</span><div class="value">Indian Ocean → Red Sea → Suez Canal → Mediterranean</div></div>
+                <div class="fact-box"><span class="label">MEANING</span><div class="value">"Gate of Tears" (Arabic) — named for the perilous navigation historically</div></div>
+                <div class="fact-box"><span class="label">GLOBAL TRADE</span><div class="value">~12% of global trade passes through (via Suez Canal)</div></div>
+                <div class="fact-box"><span class="label">KEY THREAT</span><div class="value">Houthi rebels (Yemen) targeting commercial vessels (2024‑2025)</div></div>
+                <div class="fact-box"><span class="label">INDIA'S STAKE</span><div class="value">~60% of India's trade with Europe & North Africa passes this route</div></div>
+                <div class="fact-box"><span class="label">FREIGHT COST IMPACT</span><div class="value">Rerouting via Cape of Good Hope adds ~10‑14 days and ~200‑300% cost</div></div>
+            </div>
+        </div>
+
+        <!-- Schematic Map -->
+        <div class="canvas-container">
+            <canvas id="babMap" width="600" height="380"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">Schematic map of the Bab el‑Mandeb Strait and surrounding region</p>
+
+        <!-- The Geography -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🗺️ The Geography — The Gateway to the Red Sea</h2>
+            <p style="color:var(--text-body);">The Bab el‑Mandeb Strait is the narrow maritime passage that connects the <strong>Indian Ocean (via the Gulf of Aden) to the Red Sea</strong>. On its eastern shore lies <strong>Yemen</strong>, and on its western shore lies <strong>Djibouti</strong> — a tiny Horn of Africa nation that hosts military bases from the US, China, France, and Japan precisely because of its strategic location. The strait is about <strong>30 kilometres wide</strong> at its narrowest point, and is further divided by the island of <strong>Perim</strong> (also called Mayyun) into two channels.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The strait is the <strong>southern gateway</strong> to one of the world's most important maritime corridors. Ships passing through Bab el‑Mandeb travel north through the Red Sea, enter the <strong>Suez Canal</strong> in Egypt, and emerge into the Mediterranean Sea — the fastest route between Asia and Europe. This corridor handles approximately <strong>12% of total global trade by volume</strong>, including a significant share of the world's container traffic, oil tankers, and LNG carriers.</p>
+            <div class="callout-crimson" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview line:</strong> "Bab el‑Mandeb is the southern door to the Red Sea and the Suez Canal. If this strait becomes unsafe, the entire Asia‑Europe maritime corridor is compromised — forcing ships to take the long route around Africa."</p>
+            </div>
+        </div>
+
+        <!-- The Houthi Crisis -->
+        <div class="glass-panel" style="border-left: 4px solid var(--crimson);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🚀 The Houthi Attacks — A Chokepoint Under Fire</h2>
+            <p style="color:var(--text-body);">Since <strong>November 2023</strong>, the <strong>Houthi rebels</strong> — an Iran‑backed group that controls much of Yemen, including the coastline along the Bab el‑Mandeb — have launched a sustained campaign of <strong>drone and missile attacks</strong> against commercial vessels transiting the Red Sea. The Houthis claim to be targeting ships linked to Israel in solidarity with Palestinians in Gaza, but the attacks have affected vessels of all nationalities, including those with no connection to Israel.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Major global shipping companies — including <strong>Maersk, MSC, Hapag‑Lloyd, and CMA CGM</strong> — have suspended Red Sea transits and rerouted vessels around the <strong>Cape of Good Hope</strong> at the southern tip of Africa. This adds approximately <strong>10 to 14 days</strong> of voyage time and increases fuel costs, crew wages, and insurance premiums by <strong>200‑300%</strong> per container. The US and UK have conducted airstrikes against Houthi targets in Yemen in an effort to restore freedom of navigation, but the attacks have continued into 2025.</p>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Historical precedent:</strong> The Bab el‑Mandeb has been a flashpoint before. During the <strong>Yom Kippur War (1973)</strong>, Egypt blockaded the strait. The <strong>USS Cole bombing (2000)</strong> — an al‑Qaeda attack on a US Navy destroyer — occurred in the port of Aden, just east of the strait. The region has been unstable for decades, but the current Houthi campaign is unprecedented in its scale and duration.</p>
+            </div>
+        </div>
+
+        <!-- India's Direct Impact -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇮🇳 The Direct Blow to India's Trade & Logistics</h2>
+            <p style="color:var(--text-body);">The Red Sea crisis is not a distant foreign affair — it is a <strong>direct and immediate threat to India's economic interests</strong>. Approximately <strong>60% of India's trade with Europe, the Mediterranean, and North Africa</strong> transits through the Red Sea and Suez Canal. This includes:</p>
+            <div class="impact-grid" style="margin-top:1rem;">
+                <div class="impact-card">
+                    <h4>📦 EXPORTS</h4>
+                    <p>Indian exports of textiles, pharmaceuticals, auto components, engineering goods, and agricultural products to European markets face severe delays and cost escalation.</p>
+                </div>
+                <div class="impact-card">
+                    <h4>🛢️ ENERGY IMPORTS</h4>
+                    <p>India imports crude oil and LNG from the Middle East and Mediterranean that transit the Red Sea. Disruption increases landed costs and threatens energy security.</p>
+                </div>
+                <div class="impact-card">
+                    <h4>💰 FREIGHT COSTS</h4>
+                    <p>Container freight rates on the India‑Europe route have surged — spot rates from India to Rotterdam rose by <strong>150‑250%</strong> during the crisis peak. Insurance premiums have multiplied.</p>
+                </div>
+                <div class="impact-card">
+                    <h4>⏱️ DELIVERY DELAYS</h4>
+                    <p>Export shipments taking 25‑30 days now take 40‑45 days via the Cape route, causing contract penalties, inventory shortages, and loss of competitiveness for Indian exporters.</p>
+                </div>
+            </div>
+            <div class="callout-crimson" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview line:</strong> "For India, the Bab el‑Mandeb crisis is not a geopolitical abstraction. It is showing up in higher freight bills, delayed export shipments, and rising import costs — a direct hit to the competitiveness of Indian trade."</p>
+            </div>
+        </div>
+
+        <!-- Management-School Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Management‑School Context — Supply Chain Fragility & Rerouting</h2>
+            <p style="color:var(--text-body);">The Bab el‑Mandeb crisis is a textbook case study in <strong>supply chain concentration risk</strong> and the <strong>cost of rerouting</strong>. When the Suez Canal‑Red Sea corridor becomes unsafe, the alternative — circumnavigating Africa — is not a simple detour. It fundamentally alters the economics of global trade.</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.4rem;"><strong>Ton‑Mile Demand:</strong> The longer route increases the distance ships must travel, which absorbs global shipping capacity. This pushes up freight rates for <strong>all</strong> routes, not just the affected corridor, because vessels are tied up for longer voyages.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Just‑in‑Time vs. Just‑in‑Case:</strong> The crisis is forcing companies to reconsider lean inventory models. Holding <strong>safety stock</strong> — inventory buffers to absorb supply shocks — is becoming economically rational again, reversing decades of supply chain optimisation.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Insurance & Risk Premiums:</strong> War risk insurance for vessels transiting the Red Sea has skyrocketed. Some underwriters have excluded the region entirely. This creates a <strong>two‑tier shipping market</strong>: those willing to accept risk (at a premium) and those forced onto longer routes.</li>
+                <li style="margin-bottom:0.4rem;"><strong>Strategic Diversification:</strong> The crisis is accelerating investment in alternative trade corridors — the <strong>India‑Middle East‑Europe Economic Corridor (IMEC)</strong>, the <strong>International North‑South Transport Corridor (INSTC)</strong>, and the Northern Sea Route (Arctic) — as long‑term hedges against chokepoint vulnerability.</li>
+            </ul>
+            <p style="color:var(--text-body);margin-top:0.8rem;">For management students, the Bab el‑Mandeb demonstrates that <strong>geopolitical risk is now a core business variable</strong>, not an externality. Companies that build supply chain resilience — through diversification, strategic inventories, and flexible logistics — will outperform those that optimise purely for cost.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Where is the Bab el‑Mandeb Strait, and why is it strategically important?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Bab el‑Mandeb is the narrow strait between <strong>Yemen (Arabian Peninsula) and Djibouti (Horn of Africa)</strong> that connects the Indian Ocean to the Red Sea. It is the southern gateway to the <strong>Suez Canal</strong>, through which approximately <strong>12% of global trade</strong> passes. Its strategic importance lies in being an irreplaceable chokepoint on the fastest sea route between Asia and Europe.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What are the Houthi attacks, and how have they disrupted global shipping?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Since November 2023, the <strong>Houthi rebels</strong> in Yemen — backed by Iran — have launched sustained drone and missile attacks on commercial vessels in the Red Sea. Major shipping companies have suspended Red Sea transits and rerouted vessels around the <strong>Cape of Good Hope</strong> in Africa. This adds <strong>10‑14 days</strong> of voyage time and increases freight costs by <strong>200‑300%</strong> per container.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: How does the Bab el‑Mandeb crisis specifically affect India?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Roughly <strong>60% of India's trade with Europe, the Mediterranean, and North Africa</strong> transits the Red Sea. The crisis has caused <strong>shipping delays, freight rate spikes (150‑250% increase on India‑Europe routes), and higher insurance premiums</strong>. Indian exporters of textiles, pharma, engineering goods, and agri‑products are facing delivery delays and cost escalation, directly affecting their competitiveness.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What does the Bab el‑Mandeb crisis teach us about supply chain management?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">It demonstrates that <strong>geopolitical risk is a core business variable</strong>, not an externality. Companies are being forced to reconsider <strong>lean inventory models</strong>, invest in <strong>safety stock</strong>, and diversify supply routes. The crisis is also accelerating interest in alternative corridors like the <strong>India‑Middle East‑Europe Economic Corridor (IMEC)</strong> and the <strong>INSTC</strong> — strategic hedges against chokepoint dependency.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What does "Bab el‑Mandeb" mean, and why is it called that?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Bab el‑Mandeb translates from Arabic as <strong>"Gate of Tears"</strong> or "Gate of Grief." The name reflects the historically perilous navigation through the narrow, reef‑strewn waters, where many ships were lost. The name is tragically apt today, as the strait has once again become a zone of danger for commercial shipping.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--crimson);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--crimson);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The Bab el‑Mandeb Strait, located between Yemen and Djibouti, is the southern gateway to the Red Sea and the Suez Canal — a corridor through which about 12% of global trade passes. Since late 2023, Houthi rebels in Yemen have attacked commercial vessels near the strait, forcing major shipping lines to reroute around the Cape of Good Hope — adding 10‑14 days and tripling freight costs. For India, which sends roughly 60% of its European trade through this route, the crisis means higher export costs, shipment delays, and rising import bills. It is a stark reminder that geographic chokepoints are business risks — and that supply chain resilience is now a strategic imperative."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('babMap');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Indian Ocean
+            ctx.fillStyle = 'rgba(2, 132, 199, 0.06)';
+            ctx.fillRect(0, 240, w, h-240);
+            ctx.fillStyle = '#c8d6d0';
+            ctx.font = 'bold 11px "JetBrains Mono", monospace';
+            ctx.fillText('INDIAN OCEAN', 250, 340);
+
+            // Gulf of Aden
+            ctx.fillStyle = 'rgba(2, 132, 199, 0.15)';
+            ctx.beginPath();
+            ctx.moveTo(200, 180);
+            ctx.lineTo(300, 160);
+            ctx.lineTo(380, 170);
+            ctx.lineTo(420, 210);
+            ctx.lineTo(360, 260);
+            ctx.lineTo(280, 270);
+            ctx.lineTo(180, 240);
+            ctx.closePath();
+            ctx.fill();
+            ctx.fillText('GULF OF ADEN', 260, 210);
+
+            // Red Sea
+            ctx.fillStyle = 'rgba(2, 132, 199, 0.1)';
+            ctx.beginPath();
+            ctx.moveTo(200, 80);
+            ctx.lineTo(280, 60);
+            ctx.lineTo(300, 100);
+            ctx.lineTo(280, 160);
+            ctx.lineTo(200, 180);
+            ctx.lineTo(180, 140);
+            ctx.closePath();
+            ctx.fill();
+            ctx.fillText('RED SEA', 210, 120);
+
+            // Suez Canal (narrow line)
+            ctx.strokeStyle = '#0284c7';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(240, 60);
+            ctx.lineTo(250, 30);
+            ctx.stroke();
+            ctx.fillText('Suez Canal', 220, 25);
+
+            // Mediterranean Sea
+            ctx.fillStyle = 'rgba(2, 132, 199, 0.08)';
+            ctx.beginPath();
+            ctx.moveTo(180, 20);
+            ctx.lineTo(300, 15);
+            ctx.lineTo(320, 40);
+            ctx.lineTo(280, 50);
+            ctx.lineTo(200, 45);
+            ctx.closePath();
+            ctx.fill();
+            ctx.fillText('MEDITERRANEAN', 190, 45);
+
+            // Bab el‑Mandeb Strait highlight
+            ctx.fillStyle = 'rgba(232, 69, 51, 0.25)';
+            ctx.strokeStyle = '#e84533';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(200, 180);
+            ctx.lineTo(220, 185);
+            ctx.lineTo(225, 200);
+            ctx.lineTo(220, 215);
+            ctx.lineTo(200, 220);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // Yemen (east of strait)
+            ctx.fillStyle = 'rgba(245, 158, 11, 0.1)';
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(220, 140);
+            ctx.lineTo(300, 120);
+            ctx.lineTo(380, 140);
+            ctx.lineTo(420, 180);
+            ctx.lineTo(440, 230);
+            ctx.lineTo(400, 300);
+            ctx.lineTo(320, 320);
+            ctx.lineTo(280, 280);
+            ctx.lineTo(220, 220);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#f59e0b';
+            ctx.font = 'bold 10px "JetBrains Mono", monospace';
+            ctx.fillText('YEMEN', 340, 200);
+            ctx.fillStyle = '#e84533';
+            ctx.font = 'italic 8px "JetBrains Mono", monospace';
+            ctx.fillText('(Houthi‑controlled)', 320, 215);
+
+            // Djibouti / Horn of Africa (west of strait)
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.1)';
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(160, 200);
+            ctx.lineTo(180, 230);
+            ctx.lineTo(160, 280);
+            ctx.lineTo(140, 320);
+            ctx.lineTo(100, 330);
+            ctx.lineTo(80, 300);
+            ctx.lineTo(100, 240);
+            ctx.lineTo(130, 210);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#10b981';
+            ctx.font = 'bold 10px "JetBrains Mono", monospace';
+            ctx.fillText('DJIBOUTI', 70, 260);
+            ctx.fillText('(HORN OF AFRICA)', 50, 275);
+
+            // Strait label
+            ctx.fillStyle = '#e84533';
+            ctx.font = 'bold italic 9px "JetBrains Mono", monospace';
+            ctx.fillText('BAB EL‑MANDEB', 140, 210);
+            ctx.fillText('STRAIT', 158, 222);
+
+            // Cape of Good Hope alternative (bottom left)
+            ctx.fillStyle = '#6b7d74';
+            ctx.font = 'italic 9px "JetBrains Mono", monospace';
+            ctx.fillText('← ALTERNATIVE ROUTE', 30, 365);
+            ctx.fillText('VIA CAPE OF GOOD HOPE', 30, 378);
+            ctx.fillText('(+10‑14 days, +200‑300% cost)', 30, 391);
+
+            // Arrow showing diversion
+            ctx.strokeStyle = '#6b7d74';
+            ctx.lineWidth = 1.5;
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            ctx.moveTo(360, 330);
+            ctx.lineTo(400, 355);
+            ctx.lineTo(450, 365);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillText('REROUTING', 410, 370);
+
+            // India marker
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath();
+            ctx.arc(480, 280, 6, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = 'bold 10px "JetBrains Mono", monospace';
+            ctx.fillText('INDIA', 470, 270);
+
+            // Arrow from India to the strait
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 1.5;
+            ctx.setLineDash([3, 3]);
+            ctx.beginPath();
+            ctx.moveTo(470, 280);
+            ctx.lineTo(380, 270);
+            ctx.lineTo(320, 250);
+            ctx.lineTo(250, 210);
+            ctx.stroke();
+            ctx.setLineDash([]);
+        })();
+    </script>
+</body>
+</html>

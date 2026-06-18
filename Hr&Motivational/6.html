@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>HR-14/15/16 · Goals and Future Vision — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--gold); box-shadow: 0 0 20px rgba(245,158,11,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--gold); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #d97706; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-rose {
+            border-left: 4px solid var(--rose); background: var(--rose-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-info {
+            border-left: 4px solid var(--info); background: var(--info-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .section-header {
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .section-header h2 { color: var(--gold); font-size: 1.6rem; }
+
+        .vision-box {
+            background: rgba(16,185,129,0.05); border: 1px solid var(--accent);
+            border-radius: 14px; padding: 1.8rem; margin: 1.5rem 0;
+            color: var(--text-body); line-height: 1.9; font-size: 0.95rem;
+            position: relative;
+        }
+        .vision-box::before { content: '"'; position: absolute; top: 0.3rem; left: 1rem; font-size: 4rem; color: var(--accent); opacity: 0.15; font-family: 'Playfair Display', serif; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--gold);">[ID: HR-14/15/16] · [STATUS: CRAFTED] · [BLOCK 5: GOALS & VISION]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 5 · GOALS AND FUTURE VISION</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Direction, Not False Precision</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Specific about direction without being falsely precise about destination — the kind of work you want, the context that gives you an unfair advantage, and the arc of your next fifteen years.</p>
+        </div>
+
+        <!-- HR-14: Goals vs Dreams -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🎯 HR‑14 · Goals vs Dreams — Specific Direction, Not False Precision</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">The trap is naming a job title you can't justify. Your escape is describing the <em>kind of work</em>, the <em>context</em>, and the <em>why</em>.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: Where do you see yourself career‑wise? What kind of role?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I want to work <strong>between technology and people</strong>. Not purely technical, not purely managerial. I want to understand what engineers build and what customers need, and connect them. IPM builds that capability stack: analytical thinking, people skills, strategic judgement. The specific role — product management, business operations, eventually something of my own — will emerge from that foundation. I'll name it when I've earned the right to."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: (If they push) But you must have some idea. What kind of company? What sector?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"False precision is more dangerous than honest direction. I know the kind of work that energises me: building things, solving problems that need both systems and people, making decisions with judgment, not just calculation. The next five years are for exploring and building. I'll name the destination when I'm closer to it. But the direction — that's clear. And it's rooted in what I've already done: the store, the coding, the books."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-15: Tier-2/3 India -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🏡 HR‑15 · Building Businesses in Tier‑2 & Tier‑3 India</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">No one else in that room has four years of hands‑on small‑town business experience. Lead with it. This is your unfair advantage.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: You talk about your father's store. Do you want to go back to it?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Not in its current form. But I want to take the insight — about trust, distribution, customer behaviour — and apply it at scale, whether in a company or something I build. The store was the lab. The next version is something that reaches beyond one neighbourhood."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What do you mean by 'tier‑2 and tier‑3 India'? Why is that interesting to you?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I've seen tier‑3 consumption not in a report, but across a counter. I know what people buy, when, how they decide, and what they value — trust, credit, relationship. Most products are designed for metros and pushed down. There's a gap. India's next growth wave will come from places like Ghazipur. I've lived that. That's insight no classroom can teach."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Give us a specific example of something you've observed that a company could use.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"In our store, a big portion of sales is informal credit — a notebook, month‑end settlement. It runs on personal trust. If someone migrates, their credit history disappears. A digital ledger or scoring system built on local trust signals could unlock formal credit for millions. I've managed that notebook. I know the problem."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-16: Vision Arcs -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🗺️ HR‑16 · Five‑Year, Ten‑Year, Fifteen‑Year Vision Arcs</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">The progression should feel like a genuine thought arc, not three versions of the same answer.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: Where do you see yourself in five years?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"At the end of IPM, with a portfolio of internships, projects, maybe something I've tried to build. I want to be in a role like product management or business operations in a company that serves mass markets — fintech, e‑commerce, agritech. I'll be in the arena. Learning. Not leading yet. Building the foundation."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: And in ten years?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Domain depth acquired. Leading a team or business unit — owning a P&L, making strategic decisions. The network from IPM and industry compounding. I'll have earned the right to shape direction, not just execute."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Fifteen years — what's the long arc?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Something of my own. A company, an institution. Serving a market I understand, likely in the India I grew up in. Not a small shop. Something that scales, that outlasts me. The deeper answer: creating value for others — customers, employees, partners. Drawing on everything I am: roots, failures, skills, relationships. The harder, longer, more meaningful path."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What's your metric for success?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Am I still learning? Am I still curious? Do people I respect want to work with me? External markers follow if the internal ones are right."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: And if nothing works out? What's your fallback?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"The store. Self‑teaching something new. I've already navigated failure and pivot once. I can again. Not afraid. Confident in being useful."</p></div>
+            </details>
+        </div>
+
+        <!-- One-Minute Vision Statement -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);margin-bottom:0.5rem;">💡 IF THE PANEL SAYS "TELL US YOUR FUTURE VISION, QUICKLY"</p>
+            <div class="vision-box">
+                <p>"I come from a small town and a family store. I've seen business at the ground level. I've taught myself technical skills. Over the next five years at IPM, I want to build analytical rigour and people skills. In the decade after, I want to lead teams and shape products for the India beyond the top cities — the 800 million whose needs are underserved. Eventually, I want to build something of my own. I don't have all the answers, but I have a direction rooted in lived experience, and the stubbornness to keep building."</p>
+            </div>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);margin-top:1.5rem;">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"I want to work at the intersection of technology and people — not purely technical, not purely managerial. IPM builds the analytical and strategic skills for that bridge. My unfair advantage is ground‑level experience in tier‑2 and tier‑3 India — four years in my father's store taught me about trust, distribution, and the real consumer economy that no report captures. In five years, I want to be in a product or operations role in a company serving mass markets. In ten, leading a team and owning decisions. In fifteen, building something of my own. The timeline can adjust, but the direction is clear. I measure success by whether I'm still learning, still curious, and still surrounded by people who push me."</em></p>
+        </div>
+    </main>
+</body>
+</html>

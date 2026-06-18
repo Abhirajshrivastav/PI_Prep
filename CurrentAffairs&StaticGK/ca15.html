@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-15 · WTO & Trade Disputes — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+            --amber: #d97706;
+            --amber-dim: rgba(217, 119, 6, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--amber); box-shadow: 0 0 20px rgba(217,119,6,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--amber); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #92400e; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-amber {
+            border-left: 4px solid var(--amber); background: var(--amber-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-rose {
+            border-left: 4px solid var(--rose); background: var(--rose-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.05rem; }
+
+        .profile-card {
+            background: rgba(217,119,6,0.04); border: 1px solid rgba(217,119,6,0.2);
+            border-radius: 12px; padding: 1.4rem; margin-bottom: 1rem;
+            display: flex; gap: 1.5rem; align-items: flex-start;
+        }
+        .profile-card .avatar {
+            width: 60px; height: 60px; border-radius: 50%; background: rgba(217,119,6,0.12);
+            display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0;
+        }
+        .profile-card h3 { color: var(--amber); font-size: 1.2rem; margin-bottom: 0.2rem; }
+        .profile-card .role { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.4rem; }
+
+        .timeline-node {
+            display: flex; gap: 1rem; align-items: baseline;
+            border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0;
+        }
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace; color: var(--amber); font-size: 0.85rem; min-width: 5rem;
+        }
+        .timeline-desc { color: var(--text-body); font-size: 0.9rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--amber);">[ID: CA-15] · [STATUS: VERIFIED] · [BLOCK: INTERNATIONAL ORGANIZATIONS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--amber);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · INTERNATIONAL ORGANIZATIONS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">WTO — The Referee of Global Trade</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The only global body governing trade between nations — its principles, its crisis, and India's fight to protect food security for 800 million people against rigid subsidy rules.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">FULL NAME</span><div class="value">World Trade Organization</div></div>
+                <div class="fact-box"><span class="label">FOUNDED</span><div class="value">1 January 1995 (Marrakesh Agreement)</div></div>
+                <div class="fact-box"><span class="label">PREDECESSOR</span><div class="value">GATT (General Agreement on Tariffs and Trade, 1947)</div></div>
+                <div class="fact-box"><span class="label">HEADQUARTERS</span><div class="value">Geneva, Switzerland</div></div>
+                <div class="fact-box"><span class="label">MEMBERS</span><div class="value">166 countries (representing ~98% of global trade)</div></div>
+                <div class="fact-box"><span class="label">CURRENT DG</span><div class="value">Ngozi Okonjo-Iweala (Nigeria) — first woman, first African</div></div>
+                <div class="fact-box"><span class="label">CORE PRINCIPLES</span><div class="value">Non‑Discrimination (MFN & National Treatment), Reciprocity, Binding Commitments</div></div>
+                <div class="fact-box"><span class="label">INDIA'S KEY DISPUTE</span><div class="value">Public Stockholding for Food Security vs. WTO Agricultural Subsidy Limits</div></div>
+            </div>
+        </div>
+
+        <!-- What the WTO Is -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🏛️ What the WTO Does — The Global Trade Referee</h2>
+            <p style="color:var(--text-body);">The WTO is the only global international organisation dealing with the <strong>rules of trade between nations</strong>. At its heart are the WTO agreements, negotiated and signed by the bulk of the world's trading nations and ratified in their parliaments. The goal is to ensure that trade flows <strong>as smoothly, predictably, and freely as possible</strong>.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The WTO performs three core functions: it provides a <strong>forum for negotiating trade agreements</strong> (multilateral rounds where countries bargain tariff reductions); it <strong>administers a dispute settlement system</strong> where countries can challenge each other's trade policies; and it <strong>monitors national trade policies</strong> through regular reviews.</p>
+            <div class="callout-amber" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>The GATT → WTO transition:</strong> The WTO was born in 1995 out of the <strong>Uruguay Round</strong> of trade negotiations (1986–1994). It replaced the older GATT, which was merely a provisional agreement. The WTO is a permanent institution with a far broader mandate — covering not just goods but also services (GATS) and intellectual property (TRIPS).</p>
+            </div>
+        </div>
+
+        <!-- Core Principles -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📜 Core Principles — The Rules of the Game</h2>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
+                <div style="background:rgba(217,119,6,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--amber);font-size:0.7rem;">MOST‑FAVOURED NATION (MFN)</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">A country cannot discriminate between its trading partners. If you grant a special favour (e.g., lower tariff) to one country, you must do the same for all other WTO members. This prevents bilateral favouritism and keeps trade rules universal.</p>
+                </div>
+                <div style="background:rgba(217,119,6,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--amber);font-size:0.7rem;">NATIONAL TREATMENT</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">Imported goods must be treated <strong>no less favourably</strong> than domestically produced goods once they enter the market. A country cannot impose a higher internal tax on an imported product than on the domestic equivalent.</p>
+                </div>
+                <div style="background:rgba(217,119,6,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--amber);font-size:0.7rem;">BINDING COMMITMENTS</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">When countries agree to lower tariffs, they "bind" those commitments — meaning they cannot arbitrarily raise tariffs above the bound rate without compensating affected trading partners.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ngozi Okonjo-Iweala -->
+        <div class="glass-panel" style="border-left: 4px solid var(--amber);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">👤 Ngozi Okonjo‑Iweala — A Historic First</h2>
+            <div class="profile-card">
+                <div class="avatar">🇳🇬</div>
+                <div>
+                    <h3>Ngozi Okonjo-Iweala</h3>
+                    <div class="role">Director‑General, World Trade Organization (since March 2021)</div>
+                    <p style="color:var(--text-body);">A Nigerian‑American economist and development expert. She is the <strong>first woman and first African</strong> to lead the WTO in its history. She previously served as Nigeria's Finance Minister (twice) and as Managing Director of the World Bank. She also chaired the board of <strong>Gavi, the Vaccine Alliance</strong>, and is widely respected for her pragmatic, reform‑oriented leadership.</p>
+                    <p style="color:var(--text-body);margin-top:0.5rem;"><strong>Why this matters:</strong> Her appointment broke the glass ceiling at an institution historically dominated by European men. She has pushed for reforms to revive the WTO's paralysed dispute settlement system and has advocated for developing countries' concerns — particularly on vaccine equity and food security.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- India's Core Clash: Agricultural Subsidies -->
+        <div class="glass-panel" style="border-left: 4px solid var(--rose);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌾 India's Core Clash — Food Security vs. WTO Rules</h2>
+            <p style="color:var(--text-body);">The most persistent and high‑stakes conflict between India and the WTO revolves around <strong>agricultural subsidies</strong> — specifically, India's <strong>Public Stockholding (PSH) programme</strong> for food security.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>What India does:</strong> The Government of India procures rice and wheat from farmers at a <strong>Minimum Support Price (MSP)</strong> — a guaranteed price that is often higher than market rates. This grain is then distributed to over <strong>800 million people</strong> through the Public Distribution System (PDS) under the <strong>National Food Security Act, 2013</strong>. This is the world's largest food safety net.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>The WTO problem:</strong> Under the WTO's <strong>Agreement on Agriculture (AoA)</strong>, subsidies that are considered "trade‑distorting" are capped at <strong>10% of the value of production</strong> for developing countries. India argues that its MSP procurement, when calculated using the WTO's outdated methodology (based on 1986‑88 reference prices), breaches this limit — even though India's per‑farmer subsidy is a tiny fraction of what the US and EU provide.</p>
+            <div class="callout-rose" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>India's position:</strong> "Food security for 800 million poor Indians is non‑negotiable. The WTO's subsidy calculation methodology is fundamentally flawed and penalises developing countries for supporting their farmers and feeding their poor. The developed world's massive farm subsidies — which far exceed India's on a per‑farmer basis — escape scrutiny because of how the rules are structured."</p>
+            </div>
+        </div>
+
+        <!-- The Peace Clause & Permanent Solution -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⏳ The Peace Clause & The Fight for a Permanent Solution</h2>
+            <p style="color:var(--text-body);">To prevent a legal crisis, WTO members agreed at the <strong>Bali Ministerial Conference (2013)</strong> to a <strong>"Peace Clause"</strong> — a temporary understanding that no country would bring a legal challenge against another's food stockholding programmes, even if they breached subsidy limits, while a permanent solution was negotiated.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">That permanent solution <strong>has not yet been agreed</strong>, despite over a decade of negotiations. India has consistently insisted that it will not accept any outcome that compromises its ability to procure food at MSP for the PDS. At the <strong>2022 Geneva Ministerial Conference (MC12)</strong>, members agreed to continue working toward a permanent solution, but no breakthrough was achieved.</p>
+            <div class="callout-amber" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview framing:</strong> "India's position at the WTO is that the rules governing agricultural subsidies are structurally biased — designed to protect the interests of developed countries while constraining developing nations from supporting their poor. The fight for a permanent solution on public stockholding is fundamentally about whether trade rules can accommodate the reality that food security is a sovereign imperative, not a negotiable concession."</p>
+            </div>
+        </div>
+
+        <!-- The Dispute Settlement Crisis -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚖️ The Appellate Body Crisis — A Court Without Judges</h2>
+            <p style="color:var(--text-body);">The WTO's <strong>dispute settlement system</strong> — often called the "crown jewel" of the organisation — is currently in crisis. The system has two tiers: a panel of experts that hears a case, and an <strong>Appellate Body</strong> (essentially a supreme court for trade disputes) that hears appeals. Since <strong>December 2019</strong>, the Appellate Body has been <strong>non‑functional</strong> because the United States blocked the appointment of new judges, citing concerns about judicial overreach.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The result: countries can appeal a ruling into a void — and the case effectively goes nowhere. This has severely weakened the WTO's enforcement mechanism. A <strong>Multi‑Party Interim Appeal Arbitration Arrangement (MPIA)</strong> has been created by a subset of members (including the EU, China, and Australia, but notably <strong>not India or the US</strong>) as a temporary alternative.</p>
+        </div>
+
+        <!-- Management-School Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Management‑School Context — Negotiation & Institutional Design</h2>
+            <p style="color:var(--text-body);">The WTO is a classic case study in <strong>multilateral negotiation theory</strong> and <strong>institutional gridlock</strong>. The <strong>Doha Development Round</strong>, launched in 2001 with the explicit goal of addressing developing‑country concerns, has been effectively dead for over a decade. Why? Because the WTO operates on <strong>consensus</strong> — all 166 members must agree. This makes it a textbook example of the <strong>lowest‑common‑denominator problem</strong> in international institutions: the requirement for unanimity gives every member a veto, making ambitious reform nearly impossible.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The shift to <strong>plurilateral agreements</strong> — where subsets of willing members negotiate rules among themselves — is an attempt to bypass this gridlock. The <strong>India‑US trade friction</strong> over agriculture also illustrates the <strong>framing problem</strong> in negotiations: India frames PSH as a food security right, while critics frame it as a trade‑distorting subsidy. The outcome depends significantly on which frame dominates the agenda.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is the WTO and what are its core principles?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The World Trade Organization, founded in 1995, is the only global body governing trade rules between nations. Its core principles are <strong>non‑discrimination</strong> (Most‑Favoured Nation and National Treatment), <strong>reciprocity</strong>, and <strong>binding commitments</strong>. It provides a forum for trade negotiations, administers a dispute settlement system, and monitors national trade policies. It currently has 166 members.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Who is the current head of the WTO?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The current Director‑General is <strong>Ngozi Okonjo‑Iweala</strong> from Nigeria — the <strong>first woman and first African</strong> to lead the organisation. She took office in March 2021. She is a respected development economist who previously served as Nigeria's Finance Minister and as Managing Director of the World Bank.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is India's main dispute with the WTO?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">India's core dispute is over <strong>agricultural subsidies and public stockholding for food security</strong>. India procures grain at MSP to feed 800 million people under the National Food Security Act. The WTO's Agreement on Agriculture caps trade‑distorting subsidies at 10% of production value, and India argues that the calculation methodology — based on 1986‑88 prices — is outdated and unfair. India insists on a <strong>permanent solution</strong> that protects its food security programmes, while a temporary "Peace Clause" (since 2013) prevents legal challenges in the interim.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is the Appellate Body crisis at the WTO?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The WTO's Appellate Body — the "supreme court" for trade disputes — has been <strong>non‑functional since December 2019</strong> because the United States has blocked the appointment of new judges. Without a functioning appeals mechanism, countries can appeal rulings into a void, severely weakening the WTO's enforcement power. This is one of the most serious institutional crises the WTO has faced.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: How does the WTO's consensus rule affect its effectiveness?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The WTO operates on <strong>consensus</strong> — all 166 members must agree to any agreement. While this protects the interests of smaller nations, it also creates a <strong>lowest‑common‑denominator problem</strong>: any single member can block progress. The Doha Development Round, launched in 2001, has been dead for over a decade because of this gridlock. The trend toward <strong>plurilateral agreements</strong> (where willing members negotiate among themselves) is a response to this structural weakness.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--amber);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--amber);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The World Trade Organization, founded in 1995 and headquartered in Geneva, is the only global body governing international trade. Its current Director‑General, Ngozi Okonjo‑Iweala, is the first woman and first African to hold the post. The WTO operates on principles of non‑discrimination and binding commitments, but is currently in crisis — its Appellate Body has been paralysed since 2019 due to US obstruction. For India, the central conflict is over agricultural subsidies: India insists that its food security programme, which feeds 800 million people through MSP procurement, must be protected from WTO limits. The 2013 Peace Clause provides temporary immunity, but India continues to push for a permanent solution that treats food security as a sovereign right, not a trade barrier."</em></p>
+        </div>
+    </main>
+</body>
+</html>

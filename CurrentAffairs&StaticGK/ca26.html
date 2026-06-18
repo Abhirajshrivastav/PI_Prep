@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-26 · Hemispheres & Latitudes — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --amber: #d97706;
+            --amber-dim: rgba(217, 119, 6, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--amber); box-shadow: 0 0 20px rgba(217,119,6,0.12); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--amber); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #92400e; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-amber {
+            border-left: 4px solid var(--amber); background: var(--amber-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.05rem; }
+
+        .canvas-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+        canvas { max-width: 100%; height: auto; }
+
+        .state-list {
+            display: flex; flex-wrap: wrap; gap: 0.5rem;
+        }
+        .state-tag {
+            background: rgba(217,119,6,0.08); border: 1px solid rgba(217,119,6,0.2);
+            border-radius: 20px; padding: 0.3rem 0.8rem; font-size: 0.8rem; color: var(--text-body);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--amber);">[ID: CA-26] · [STATUS: VERIFIED] · [BLOCK: WORLD GEOGRAPHY]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--amber);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · WORLD GEOGRAPHY</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Hemispheres & Latitudes — Where India Sits on the Globe</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">A question that appeared directly in a transcript — and a classic test of basic geographic literacy. India is in the Northern and Eastern Hemispheres. The Tropic of Cancer slices through its heart.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">HEMISPHERE (N/S)</span><div class="value">Northern Hemisphere (above the Equator)</div></div>
+                <div class="fact-box"><span class="label">HEMISPHERE (E/W)</span><div class="value">Eastern Hemisphere (east of the Prime Meridian)</div></div>
+                <div class="fact-box"><span class="label">TROPIC OF CANCER</span><div class="value">23.5°N latitude — passes through 8 Indian states</div></div>
+                <div class="fact-box"><span class="label">EQUATOR</span><div class="value">0° latitude — does NOT pass through India</div></div>
+                <div class="fact-box"><span class="label">PRIME MERIDIAN</span><div class="value">0° longitude (Greenwich, UK) — India is east of it</div></div>
+                <div class="fact-box"><span class="label">INDIAN STANDARD TIME</span><div class="value">UTC+5:30 (82.5°E longitude, near Mirzapur, UP)</div></div>
+            </div>
+        </div>
+
+        <!-- Schematic Map Canvas -->
+        <div class="canvas-container">
+            <canvas id="hemisphereMap" width="600" height="350"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">India in the Northern & Eastern Hemispheres — Tropic of Cancer highlighted</p>
+
+        <!-- The Hemispheres Explanation -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌍 Which Hemispheres Does India Lie In?</h2>
+            <p style="color:var(--text-body);">India is entirely in the <strong>Northern Hemisphere</strong> — every part of the country lies north of the <strong>Equator (0° latitude)</strong>, which passes through the Indian Ocean far south of the Indian mainland. India is also entirely in the <strong>Eastern Hemisphere</strong> — the country lies east of the <strong>Prime Meridian (0° longitude)</strong>, which runs through Greenwich in the United Kingdom.</p>
+            <div class="callout-amber" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview line:</strong> "India is located in the Northern Hemisphere — north of the Equator — and in the Eastern Hemisphere — east of the Prime Meridian. It's a simple fact, but it appeared directly in one transcript because panelists test whether you understand basic global positioning."</p>
+            </div>
+            <p style="color:var(--text-body);margin-top:0.8rem;"><strong>Avoid this confusion:</strong> The <strong>Equator</strong> divides the Northern and Southern Hemispheres. The <strong>Prime Meridian</strong> divides the Eastern and Western Hemispheres. They are different lines. A country can be in the Northern and Western Hemispheres (like the USA), or Southern and Eastern (like Australia), or any combination. India is Northern + Eastern.</p>
+        </div>
+
+        <!-- Tropic of Cancer -->
+        <div class="glass-panel" style="border-left: 4px solid var(--amber);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">☀️ The Tropic of Cancer — The Line That Defines India's Climate</h2>
+            <p style="color:var(--text-body);">The <strong>Tropic of Cancer</strong> is the circle of latitude at approximately <strong>23.5° North</strong> of the Equator. It is the northernmost latitude where the Sun can appear directly overhead at noon — an astronomical fact that defines the boundaries of the tropical zone. This line passes almost exactly through the middle of India, dividing the country into roughly <strong>tropical South</strong> and <strong>subtropical North</strong>.</p>
+            <p style="color:var(--text-body);margin-top:1rem;font-weight:600;">The Tropic of Cancer passes through <strong>8 Indian states</strong>:</p>
+            <div class="state-list" style="margin-top:0.8rem;">
+                <span class="state-tag">Gujarat</span>
+                <span class="state-tag">Rajasthan</span>
+                <span class="state-tag">Madhya Pradesh</span>
+                <span class="state-tag">Chhattisgarh</span>
+                <span class="state-tag">Jharkhand</span>
+                <span class="state-tag">West Bengal</span>
+                <span class="state-tag">Tripura</span>
+                <span class="state-tag">Mizoram</span>
+            </div>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Why this matters for interviews:</strong> "The Tropic of Cancer passes through eight Indian states, from Gujarat in the west to Mizoram in the east. This line is not just a geographic curiosity — it determines India's climate zones, agricultural patterns, and even the design of solar energy projects."</p>
+            </div>
+        </div>
+
+        <!-- Management-School Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Management‑School Context — Geography Shapes Business</h2>
+            <p style="color:var(--text-body);">The Tropic of Cancer is not merely a line on a map — it has tangible business implications. India's position straddling the tropical and subtropical zones means it experiences <strong>diverse climate patterns</strong> — from the arid Thar Desert in the northwest to the humid tropics of Kerala. This directly affects <strong>agricultural supply chains</strong> (crop selection, irrigation needs, harvest cycles), <strong>energy demand</strong> (air‑conditioning load in tropical regions, heating in the north), and <strong>logistics</strong> (monsoon‑related disruptions).</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">India's Eastern Hemisphere location also determines its <strong>time zone</strong>. Indian Standard Time (IST) is based on the <strong>82.5°E meridian</strong>, which passes near <strong>Mirzapur, Uttar Pradesh</strong> — not far from Ghazipur. This puts India 5 hours and 30 minutes ahead of Greenwich Mean Time (UTC+5:30). For businesses operating across time zones — coordinating with European, American, and East Asian markets — this precise offset is a daily operational reality.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Which hemispheres does India lie in?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">India lies entirely in the <strong>Northern Hemisphere</strong> (north of the Equator) and the <strong>Eastern Hemisphere</strong> (east of the Prime Meridian). It does not cross the Equator and does not extend into the Western Hemisphere.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Through how many Indian states does the Tropic of Cancer pass? Name them.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Tropic of Cancer passes through <strong>8 Indian states</strong>: <strong>Gujarat, Rajasthan, Madhya Pradesh, Chhattisgarh, Jharkhand, West Bengal, Tripura, and Mizoram</strong>. This line defines the northern boundary of the tropical zone in India.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is the difference between the Equator and the Prime Meridian?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The <strong>Equator</strong> (0° latitude) divides the Earth into Northern and Southern Hemispheres. The <strong>Prime Meridian</strong> (0° longitude), passing through Greenwich, UK, divides the Earth into Eastern and Western Hemispheres. They are perpendicular to each other. India is north of the Equator and east of the Prime Meridian.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is the longitude on which Indian Standard Time is based?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Indian Standard Time (IST) is based on the <strong>82.5° East longitude</strong> meridian, which passes near <strong>Mirzapur, Uttar Pradesh</strong>. IST is UTC+5:30 — five and a half hours ahead of Greenwich Mean Time.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--amber);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--amber);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"India lies entirely in the Northern Hemisphere — north of the Equator — and in the Eastern Hemisphere — east of the Prime Meridian. The Tropic of Cancer, at 23.5° North, passes through eight Indian states from Gujarat to Mizoram, roughly bisecting the country into tropical and subtropical zones. Indian Standard Time is set at UTC+5:30, based on the 82.5°E meridian. These are fundamental geographic facts that panelists test to assess whether you can place your country on the globe with precision."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('hemisphereMap');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // World outline (schematic)
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.04)';
+            ctx.strokeStyle = '#4a5a52';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(50, 100);
+            ctx.lineTo(200, 80);
+            ctx.lineTo(300, 60);
+            ctx.lineTo(400, 70);
+            ctx.lineTo(500, 100);
+            ctx.lineTo(550, 160);
+            ctx.lineTo(520, 240);
+            ctx.lineTo(400, 280);
+            ctx.lineTo(250, 300);
+            ctx.lineTo(100, 280);
+            ctx.lineTo(30, 220);
+            ctx.lineTo(20, 160);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // Equator line
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([6, 4]);
+            ctx.beginPath();
+            ctx.moveTo(20, 220);
+            ctx.lineTo(580, 220);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle = '#f59e0b';
+            ctx.font = '10px "JetBrains Mono", monospace';
+            ctx.fillText('EQUATOR (0°N)', 500, 215);
+
+            // Prime Meridian
+            ctx.strokeStyle = '#3b82f6';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([6, 4]);
+            ctx.beginPath();
+            ctx.moveTo(300, 30);
+            ctx.lineTo(300, 340);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle = '#3b82f6';
+            ctx.fillText('PRIME MERIDIAN (0°E)', 160, 65);
+
+            // Tropic of Cancer
+            ctx.strokeStyle = '#d97706';
+            ctx.lineWidth = 2.5;
+            ctx.setLineDash([8, 3]);
+            ctx.beginPath();
+            ctx.moveTo(250, 140);
+            ctx.lineTo(400, 140);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle = '#d97706';
+            ctx.font = '9px "JetBrains Mono", monospace';
+            ctx.fillText('TROPIC OF CANCER (23.5°N)', 400, 135);
+
+            // India highlight
+            ctx.fillStyle = 'rgba(245, 158, 11, 0.2)';
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(260, 120);
+            ctx.lineTo(330, 110);
+            ctx.lineTo(360, 140);
+            ctx.lineTo(340, 180);
+            ctx.lineTo(310, 210);
+            ctx.lineTo(270, 200);
+            ctx.lineTo(250, 170);
+            ctx.lineTo(240, 145);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = 'bold 11px "JetBrains Mono", monospace';
+            ctx.fillText('INDIA', 280, 165);
+
+            // Northern / Southern labels
+            ctx.fillStyle = '#c8d6d0';
+            ctx.font = 'italic 11px "JetBrains Mono", monospace';
+            ctx.fillText('NORTHERN HEMISPHERE', 350, 50);
+            ctx.fillText('SOUTHERN HEMISPHERE', 350, 310);
+
+            // Eastern / Western labels
+            ctx.fillText('EASTERN', 320, 25);
+            ctx.fillText('WESTERN', 100, 25);
+        })();
+    </script>
+</body>
+</html>

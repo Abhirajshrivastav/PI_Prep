@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>HR-28/29/30 · Leadership and Teamwork Questions — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--gold); box-shadow: 0 0 20px rgba(245,158,11,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--gold); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #d97706; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-rose {
+            border-left: 4px solid var(--rose); background: var(--rose-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-info {
+            border-left: 4px solid var(--info); background: var(--info-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .section-header {
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .section-header h2 { color: var(--gold); font-size: 1.6rem; }
+
+        .star-card {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem;
+        }
+        .star-card h3 { color: var(--accent); font-size: 1.15rem; margin-bottom: 0.3rem; }
+        .star-card .label-row {
+            display: flex; gap: 1rem; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem; color: var(--info); margin-bottom: 0.6rem;
+        }
+        .star-card .label-row span { background: var(--info-dim); padding: 0.2rem 0.6rem; border-radius: 6px; }
+
+        .block-quote {
+            background: rgba(16,185,129,0.05); border: 1px solid var(--accent);
+            border-radius: 14px; padding: 1.8rem; margin: 1.5rem 0;
+            color: var(--text-body); line-height: 1.9; font-size: 0.95rem;
+            position: relative; font-style: italic;
+        }
+        .block-quote::before { content: '"'; position: absolute; top: 0.3rem; left: 1rem; font-size: 4rem; color: var(--accent); opacity: 0.15; font-family: 'Playfair Display', serif; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--gold);">[ID: HR-28/29/30] · [STATUS: CRAFTED] · [BLOCK 10: LEADERSHIP & TEAMWORK]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 10 · LEADERSHIP AND TEAMWORK QUESTIONS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Real Leadership, Real Self‑Awareness</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Genuine leadership examples without formal titles, honest answers about what your friends criticise, and three fully prepared STAR‑method stories drawn from your life.</p>
+        </div>
+
+        <!-- HR-28: Genuine Leadership Examples -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🦉 HR‑28 · Finding Genuine Leadership Examples Without Formal Titles</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">Leadership isn't a badge. It's taking responsibility when no one else is available, making a decision under pressure, and ensuring people around you are better off because you were there.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: Give me an example of a time you showed leadership.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I don't have a formal leadership title. But I've led in a very practical sense: for the last four years, whenever my father has been away — sometimes for days, sometimes for a week or more — I have run our family store entirely on my own. That means opening and closing the shop, managing inventory, handling cash, dealing with suppliers, and most importantly, managing customers. When the evening crowd comes, I have to prioritise who to serve first, keep people calm, and ensure no one leaves unhappy. That's leadership in its rawest form: taking full responsibility for an operation, making decisions in real time, and being accountable for the outcome. No title needed."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Have you ever had to lead peers, not just manage a situation alone?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Yes. During the peak festival seasons — Diwali, Holi — the store gets too busy for one person. Sometimes we have a helper, sometimes a younger cousin steps in. I've had to quickly explain what needs to be done, divide tasks, and keep coordination smooth while the pressure is high. For Holi, I created a small system: pre‑weighed sugar packets in 2.5 kg and 5 kg quantities. I showed the helper which packets to hand out for which requests, and I handled the custom orders myself. The result was that we served more people in less time with fewer mistakes. It was a small team, a small project, but it was real leadership: seeing a problem, creating a solution, and aligning others to execute it."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What do you think makes a good leader?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Two things, based on what I've seen and tried to practice. First, competence — a leader needs to understand the work well enough to make decisions and earn respect. In the store, if I didn't know the products and prices, no one would listen to me. Second, calmness under pressure. People watch the leader's face when things go wrong. If you panic, everyone panics. If you stay steady and just start solving, the energy shifts. I've experienced this during a sudden rush when a customer is angry and others are waiting. If I raise my voice, the chaos increases. If I lower my voice, apologise, and start serving in order, things settle. <strong>Leadership is often just being the most composed person in the room.</strong>"</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Is there a leader you look up to?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I don't have a single icon. But I've learned from observing my father. He is not an educated man. He doesn't use management terms. But he has built a loyal customer base over two decades entirely through trust and consistency. He never cheats on weight. He extends credit to families in difficulty and doesn't harass them for repayment. He opens the shop at the same time every day. That's a kind of leadership — not loud, not charismatic, but deeply reliable. I think reliability is underrated. It's the foundation of all lasting influence."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-29: What Friends Don't Like -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🪞 HR‑29 · Answering 'What Do Your Friends Not Like About You?'</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">This question tests self‑awareness and the ability to accept criticism without defensiveness. A real flaw, thoughtfully explained, builds trust.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: What would your friends say is your biggest flaw?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I think they'd say I can be <strong>too self‑sufficient</strong> — that I don't ask for help easily, even when I clearly need it. I tend to figure things out on my own before I involve others. That's partly because of my background: in a government school, you don't always have teachers or mentors available, so you learn to rely on yourself. In the store, when my father is away, there is no one to ask. So the habit formed: see a problem, solve it alone.</p><p style="color:var(--text-body);margin-top:0.8rem;">But I know this can be a flaw. Collaboration means letting others in, not just delivering results by yourself. In a group project, if I take on too much silently, I deny my teammates the chance to contribute and I deny myself their perspectives. My friends have pointed this out, and they're right. I'm working on it."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Can you give an example where this self‑sufficiency actually caused a problem?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"In class 10, when I was learning web development, I spent three days stuck on a bug in a React project. I kept debugging alone, refusing to post on a forum or ask someone. Eventually I solved it, but I had lost three days. If I had just asked, someone would have spotted the issue in ten minutes. That stubborn independence — the instinct to prove I can do it alone — sometimes costs time and energy that collaboration would save. I'm aware of it, and I'm actively trying to involve others earlier, especially in learning environments."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: How do you plan to address this at IIM Indore, where teamwork is essential?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Deliberately. I will set a rule for myself: in any group project, I will not attempt to complete my part in isolation and then present it. I will share early, share unfinished work, and ask for feedback while the work is still rough. That's uncomfortable for me. But I know it's the only way to genuinely collaborate. I'm also telling myself: <strong>'Not asking for help is not a strength. It's a barrier.'</strong> I'll treat collaboration as a skill I need to build, just like calculus or public speaking."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What would your father say about you that's critical?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"He'd say I sometimes overthink decisions that should be simple. In the store, if a supplier offers a discount on bulk buying, my father makes a quick call based on instinct. I'll sit and calculate margins, potential wastage, cash flow impact — and by the time I'm done, sometimes the opportunity has passed. He's told me more than once: <strong>'Not everything needs a spreadsheet. Sometimes you just need to decide.'</strong> He's right. I'm analytical by nature, but analysis can become delay. I'm learning to balance thinking with acting."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-30: STAR Method Stories -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>⭐ HR‑30 · The STAR Method for Behavioral Questions</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">Three fully prepared STAR‑ready stories from your life, directly usable in the interview.</p>
+
+            <!-- Story 1 -->
+            <div class="star-card">
+                <h3>📦 STAR Story 1: Managing the Store Independently</h3>
+                <div class="label-row">
+                    <span>Situation</span><span>Task</span><span>Action</span><span>Result</span>
+                </div>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Questions it answers:</strong> "Tell me about a time you took responsibility." / "Give an example of working under pressure."</p>
+                <p style="color:var(--text-body);font-size:0.9rem;margin-top:0.5rem;"><strong>Situation:</strong> My father had to travel out of town during a busy period. The store couldn't close — we would lose daily income and disappoint regular customers.</p>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Task:</strong> I had to manage the entire store operation alone for a full week — opening, closing, sales, cash handling, supplier interactions, customer management.</p>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Action:</strong> I prepared in advance — checked stock levels, noted pending credit amounts, maintained exact opening and closing times, handled the evening rush by prioritising urgent customers, cross‑checked supplier bills against stock received.</p>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Result:</strong> The week passed without a single major complaint. Daily sales remained steady. When my father returned, the shop was running as he had left it. That experience cemented his trust. I was sixteen the first time.</p>
+            </div>
+
+            <!-- Story 2 -->
+            <div class="star-card">
+                <h3>🍬 STAR Story 2: The Holi Sugar System</h3>
+                <div class="label-row">
+                    <span>Situation</span><span>Task</span><span>Action</span><span>Result</span>
+                </div>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Questions it answers:</strong> "Tell me about a time you improved a process." / "Give an example of a problem you solved creatively."</p>
+                <p style="color:var(--text-body);font-size:0.9rem;margin-top:0.5rem;"><strong>Situation:</strong> During Holi, sugar demand peaks. Weighing on the spot caused long queues and errors.</p>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Task:</strong> Reduce serving time per customer without compromising accuracy or trust.</p>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Action:</strong> I pre‑weighed sugar into sealed 2.5 kg and 5 kg packets a day before. I kept a scale visible for verification. I assigned my cousin to handle only pre‑weighed packets while I handled custom orders.</p>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Result:</strong> Serving time dropped significantly. We served more people with zero weight complaints. Total sales increased compared to the previous year's Holi. This taught me that pre‑working the bottleneck transforms execution under pressure.</p>
+            </div>
+
+            <!-- Story 3 -->
+            <div class="star-card">
+                <h3>💻 STAR Story 3: Self‑Learning Web Development and the Offer Letter</h3>
+                <div class="label-row">
+                    <span>Situation</span><span>Task</span><span>Action</span><span>Result</span>
+                </div>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Questions it answers:</strong> "Tell me about a time you learned something entirely on your own." / "Give an example of a goal you set and achieved without formal support."</p>
+                <p style="color:var(--text-body);font-size:0.9rem;margin-top:0.5rem;"><strong>Situation:</strong> December 2022, Class 10 winter break. I became curious about how websites work — no teacher, no coaching, no mentor. Just a laptop and internet.</p>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Task:</strong> Teach myself web development to a level where I could build real, functional projects.</p>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Action:</strong> Started with HTML, CSS, JavaScript — moved to React. Built a live code editor and a Google Search clone using the API. Put everything on GitHub. Was active on LinkedIn.</p>
+                <p style="color:var(--text-body);font-size:0.9rem;"><strong>Result:</strong> By April 2023, a Web3 edtech startup reached out after seeing my work and offered me a part‑time front‑end developer role. I had produced work good enough that someone was willing to pay for it. That gave me permanent confidence: I can acquire any skill if the interest is genuine and the effort is structured.</p>
+            </div>
+        </div>
+
+        <!-- Block 10 Closing Statement -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);margin-bottom:0.5rem;">💡 IF THE PANEL SAYS "YOU DON'T HAVE FORMAL LEADERSHIP ROLES. WHAT MAKES YOU THINK YOU CAN LEAD?"</p>
+            <div class="block-quote">
+                <p>"I haven't led a school club. I've led a store. I haven't captained a team. I've managed a festival rush with a helper and a system I designed. Leadership, in my understanding, is not about a title. It's about stepping up when something needs to be done, staying calm when others are stressed, and making sure the people around you can do their work. I've done that repeatedly. The context has been a small shop, not a stage. But the skill is the same — and it transfers. At IIM Indore, I'll lead the same way: quietly, reliably, and with a focus on getting things done rather than being seen doing them."</p>
+            </div>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);margin-top:1.5rem;">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"I haven't held formal leadership titles, but I've led a store alone for weeks at a time — managing customers, cash, inventory, and suppliers without supervision. During Holi, I redesigned our sugar distribution system with pre‑weighed packets, cutting serving time and increasing sales. I taught myself web development from scratch and earned an internship offer without applying. My friends would say I'm too self‑sufficient — I solve problems alone when collaboration would be faster. I'm working on that. For me, leadership is not a badge. It's stepping up, staying calm under pressure, and making sure the people around you can do their work. That skill transfers — whether in a shop, a classroom, or a group project at IIM Indore."</em></p>
+        </div>
+    </main>
+</body>
+</html>

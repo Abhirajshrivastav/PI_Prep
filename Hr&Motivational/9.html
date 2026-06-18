@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>HR-22/23/24 · Hobbies and Personal Life — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--gold); box-shadow: 0 0 20px rgba(245,158,11,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--gold); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #d97706; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .section-header {
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.6rem; margin-bottom: 1.5rem;
+        }
+        .section-header h2 { color: var(--gold); font-size: 1.6rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--gold);">[ID: HR-22/23/24] · [STATUS: CRAFTED] · [BLOCK 8: HOBBIES & PERSONAL LIFE]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 8 · HOBBIES AND PERSONAL LIFE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Reading, Philosophy & Real Interests</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Framing your reading as intellectual engagement, connecting Stoic principles to your life arc, and presenting your hobbies as genuine, unforced dimensions of who you are.</p>
+        </div>
+
+        <!-- HR-22: Framing Reading -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>📚 HR‑22 · Framing Reading as Intellectual Engagement</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">Your reading is not a passive hobby. It is evidence that you think seriously about ideas, that you seek frameworks during difficult times, and that you connect what you read to your own life.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: You mentioned you read. What kind of books?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I read non‑fiction mostly — business, psychology, philosophy, biographies. I'm drawn to books that explain why people and systems work the way they do. The last two I read were <strong>Outliers</strong> by Malcolm Gladwell and <strong>Man's Search for Meaning</strong> by Viktor Frankl. I don't read just to pass time. I read to understand something I'm living through, or to prepare for something I want to become."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Tell me about the last book you read and what you took from it.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"The last book I read was <strong>Outliers</strong>. The main idea is that extraordinary success is rarely just about individual talent or hard work. It's deeply shaped by hidden advantages — timing, cultural legacy, the opportunities you happen to be born into. Gladwell gives the example of Bill Gates, who had unique access to a computer at a time when almost no one else did, and accumulated his 10,000 hours before most people knew what a computer was.</p><p style="color:var(--text-body);margin-top:0.8rem;">What I took from it personally was a different way of looking at my own background. I used to think my government school and small town were just disadvantages. But the book made me ask: what hidden advantage did they give me? The store gave me a business education no classroom could. That's my unique access. I stopped seeing myself as behind, and started seeing myself as differently prepared."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: And the other book — why Man's Search for Meaning?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I read it in 2025, when my JEE preparation was going nowhere despite a lot of effort. I needed something to lean on. Frankl's core argument is that even in the worst circumstances — he was in a concentration camp — you retain what he calls the last of human freedoms: the freedom to choose your attitude. He wrote, 'Everything can be taken from a man but one thing: the last of the human freedoms — to choose one's attitude in any given set of circumstances.'</p><p style="color:var(--text-body);margin-top:0.8rem;">That hit me directly. I couldn't change my JEE results. But I could choose whether to let those results define me as a failure, or whether to use the pain as a signal to find a better path. The book didn't just comfort me. It reoriented me. That's why I mention it. It's not just a book I read. It's a book I used."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: If I asked you to recommend one of these books, which would you choose and why?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"It would depend on the person. If someone is trying to understand success and opportunity — why some people rise and others don't, even with equal talent — I'd give them <strong>Outliers</strong>. If someone is going through a difficult period and needs a reason to keep going, I'd give them <strong>Man's Search for Meaning</strong>. For me, they served different purposes. One helped me think. The other helped me endure."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: Do you read fiction? Or only self‑help and business?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I've mostly read non‑fiction so far, but I'm aware that fiction builds empathy and imagination in a different way. It's a gap I want to fill. At IPM, I'd love to explore more literature — partly for the pleasure of it, and partly because I know it will make me a better communicator and a deeper thinker. I'm not well‑read in a classical sense. But I'm a curious reader, and the habit is real."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-23: Connecting Stoic Reading -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🧘 HR‑23 · Connecting Stoic Reading to Your Life Arc</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">You have already mentioned Stoic ideas and Ryan Holiday in Block 4. Here you show they are operating principles you have actually applied.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: You mentioned Stoic ideas earlier. Where did you come across them?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Initially through Ryan Holiday's work — he writes about Stoicism in a very practical, modern way. The central idea that stuck with me is from <strong>The Obstacle Is the Way</strong>: the thing that blocks you is actually the thing you need to engage with, not run from. My JEE failure was the obstacle. For a long time I treated it as a wall. When I finally treated it as information — that this path isn't mine — it became a signpost. The obstacle didn't destroy me. It redirected me."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What's a Stoic concept you actually use in daily life, not just in crises?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"The idea of the <strong>'dichotomy of control'</strong> — separating what is in my control from what is not. In the store, for example, I can't control how many customers walk in on a given day. I can control how the shop is arranged, how I greet people, whether the regular items are stocked. In an exam, I can't control the difficulty of the paper. I can control my preparation and my composure. This sounds simple, but applying it deliberately changes your stress levels. I learned it from Stoic reading, but I practice it at the shop counter."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Stoicism can sound quite detached — almost cold. How do you reconcile that with ambition?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I think that's a misunderstanding of Stoicism. It's not about not caring. It's about not letting outcomes you can't fully control determine your inner state. You can be deeply ambitious — I am — and still be steady when things don't go your way. The Gita says something similar: do your work with full effort, but don't be attached to the fruit. That's not coldness. It's <strong>focus without desperation</strong>. I want IPM very much. But if I don't get it, I won't shatter. That's the balance."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Have these ideas actually helped you in a concrete situation recently?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Yes. During IPMAT preparation, I had only two months. It would have been easy to panic. But I applied the dichotomy of control. I couldn't control the exam's difficulty or the competition. I could control my daily study hours, my mock test analysis, my sleep. So I focused entirely on those, and I refused to obsess over the outcome. I told myself: do the work, let the result take care of itself. I cleared the exam. I can't prove causation, but I know the approach kept me functional when others might have frozen."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: If someone said 'this is just motivational thinking, not real philosophy,' how would you respond?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I'd say: I'm not a philosophy student. I'm someone who needed a framework to not fall apart. These ideas worked. They are practical. They are tested — not in a seminar room, but in a concentration camp (Frankl), in a Roman prison (the Stoics), on a battlefield (the Gita). If something works under those conditions, it's probably worth paying attention to. I'm not here to debate philosophy. I'm here to tell you it helped me."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-24: Framework-Attachment Principle -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🎨 HR‑24 · The Framework‑Attachment Principle for Hobbies</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">Hobbies should touch three dimensions: creative, learning, and physical/health. You have real activities in the first two. For the third, be honest about what you do, even if it's simple.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: What are your hobbies, apart from reading?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I think of my free time in three buckets. One is <strong>creative</strong>: I code. I don't do it just for exams or degrees. I genuinely enjoy building things — even small web projects or solving a good problem on Codeforces. It's a creative outlet as much as a technical one.</p><p style="color:var(--text-body);margin-top:0.5rem;">The second is <strong>learning</strong>: reading, which we've already discussed. Books, long‑form articles, sometimes podcasts on geopolitics or business. I'm naturally curious, and I feed that curiosity deliberately.</p><p style="color:var(--text-body);margin-top:0.5rem;">The third is <strong>physical</strong>: I'll be honest, I don't have a formal sport or gym routine. But I walk. The Ganga is near my home in Ghazipur, and walking along the river is something I do often, especially when I'm thinking through a problem. It's not a hobby I can put on a certificate. But it keeps me sane. At IPM, I'd like to pick up a sport properly — something I've never had the structured opportunity to do."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Coding as a hobby? Isn't that also academic work for you?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"It can be both. When I'm working on a problem for IITM or solving a Codeforces question, it's structured. But when I built the Google clone or the code editor in class 10, there was no syllabus. I just wanted to see if I could. That's the hobby side — building something because it's fun to solve the puzzle and see the result. I don't code all day. But when I do it for myself, it doesn't feel like work. It feels like play."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: You don't play any sport? Don't you think that's a gap?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I do. In my schooling, there wasn't a strong sports culture, and my time was split between studies and the store. So I never developed a formal sporting habit. I walk regularly, but I know that's not the same as team sport or fitness training. It's a genuine gap, and I want to address it. One of the things I'm excited about at IPM is the sports infrastructure and the culture. I want to be a beginner at something physical — maybe badminton, maybe football. I'm not embarrassed to start late. I'm just aware that health is a long‑term asset, and I haven't invested in it systematically yet."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: If you had a completely free Sunday — no store, no study — how would you spend it?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Honestly, a truly free day is rare. But if I had one, I'd probably do three things. A long walk by the river in the morning. A couple of hours of reading — something not on any syllabus. And then maybe tinkering with a small coding project or writing something — reflections, ideas, just to process what I've been thinking. In the evening, I'd sit at the store for a bit even if I'm not needed, because that's also where I connect with people. It's not an exciting answer. But it's an honest one."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: How do you make time for hobbies when you have the store, studies, and now IITM coursework?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I don't always manage it perfectly. But I've learned to use the small gaps. The store has quiet hours — that's when I read a few pages or think through a coding problem. The walk by the river is sometimes my only unstructured time in a day. I protect it. I've also learned to combine things: a podcast while stocking shelves, an audiobook summary while closing up. It's not ideal, but it's how I keep curiosity alive when life is full. At IPM, with a more structured schedule, I think I'll actually have more dedicated hobby time — not less."</p></div>
+            </details>
+        </div>
+
+        <!-- Block 8 Closing Statement -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);margin-bottom:0.5rem;">💡 IF THE PANEL SAYS "TELL US SOMETHING ABOUT YOU THAT ISN'T ON ANY FORM"</p>
+            <p style="color:var(--text-body);font-style:italic;">"I think what isn't captured in forms is that I don't just read books — I use them. I read <strong>Man's Search for Meaning</strong> during my hardest year, and it changed how I see struggle. I read <strong>Outliers</strong> and it made me proud of my small‑town store background instead of defensive about it. And I code not just for marks, but because building something that works is deeply satisfying to me. I'm a curious person before I'm a candidate. I think that matters."</p>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--gold);margin-top:1.5rem;">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--gold);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"I'm a curious reader — I read Outliers during my JEE years to understand success and opportunity, and Man's Search for Meaning when I needed a framework to keep going. These aren't just books I've read; they're books I've used. I also came across Stoic ideas through Ryan Holiday, and the dichotomy of control — separating what I can control from what I can't — is something I practice daily, whether in the store or during exam preparation. Beyond reading, I code as a creative outlet, and I walk along the Ganga to clear my head. I don't have a formal sport yet, but I plan to pick one up at IPM. My hobbies aren't flashy, but they're real, and they sustain me."</em></p>
+        </div>
+    </main>
+</body>
+</html>

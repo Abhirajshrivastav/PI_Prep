@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-25 · Scandinavia vs Nordic Countries — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --ice: #06b6d4;
+            --ice-dim: rgba(6, 182, 212, 0.1);
+            --navy: #1e3a5f;
+            --navy-dim: rgba(30, 58, 95, 0.15);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--ice); box-shadow: 0 0 20px rgba(6,182,212,0.12); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--ice); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #0891b2; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-ice {
+            border-left: 4px solid var(--ice); background: var(--ice-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-navy {
+            border-left: 4px solid var(--navy); background: var(--navy-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem; text-align: center;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.05rem; }
+
+        .country-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem;
+        }
+        .country-card {
+            background: rgba(6,182,212,0.04); border: 1px solid rgba(6,182,212,0.2);
+            border-radius: 10px; padding: 1rem; text-align: center;
+        }
+        .country-card .flag { font-size: 2rem; display: block; margin-bottom: 0.4rem; }
+        .country-card .name { color: var(--text-bright); font-weight: 600; font-size: 0.9rem; }
+
+        .sea-card {
+            background: rgba(30,58,95,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem;
+        }
+        .sea-card h3 { color: var(--navy); font-size: 1.15rem; margin-bottom: 0.5rem; }
+        .sea-card .countries { color: var(--text-body); font-size: 0.9rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--ice);">[ID: CA-25] · [STATUS: VERIFIED] · [BLOCK: WORLD GEOGRAPHY]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--ice);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · WORLD GEOGRAPHY</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Scandinavia vs Nordic Countries</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">A classic interview trick question — the precise geographical distinction between three and five, and the seas that surround them: the Baltic and the Black.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">SCANDINAVIA</span><div class="value">Norway, Sweden, Denmark (3 countries)</div></div>
+                <div class="fact-box"><span class="label">NORDIC COUNTRIES</span><div class="value">Scandinavia + Finland + Iceland (5 countries)</div></div>
+                <div class="fact-box"><span class="label">BALTIC SEA</span><div class="value">Surrounded by Scandinavia, Finland, Baltic States, Poland, Germany, Russia</div></div>
+                <div class="fact-box"><span class="label">BLACK SEA</span><div class="value">Bordered by Turkey, Bulgaria, Romania, Moldova, Ukraine, Russia</div></div>
+                <div class="fact-box"><span class="label">NORDIC COUNCIL</span><div class="value">Formal inter‑governmental body (founded 1952)</div></div>
+                <div class="fact-box"><span class="label">INDIA'S LINK</span><div class="value">Nordic countries are key partners in climate tech, renewable energy, and the Arctic</div></div>
+            </div>
+        </div>
+
+        <!-- Scandinavia vs Nordic Visual -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇸🇪 Scandinavia — The Core Three</h2>
+            <div class="country-grid">
+                <div class="country-card"><span class="flag">🇳🇴</span><span class="name">Norway</span></div>
+                <div class="country-card"><span class="flag">🇸🇪</span><span class="name">Sweden</span></div>
+                <div class="country-card"><span class="flag">🇩🇰</span><span class="name">Denmark</span></div>
+            </div>
+            <div style="margin: 1.5rem 0; height: 1px; background: var(--border-subtle);"></div>
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌐 Nordic Countries — The Extended Five</h2>
+            <div class="country-grid">
+                <div class="country-card"><span class="flag">🇳🇴</span><span class="name">Norway</span></div>
+                <div class="country-card"><span class="flag">🇸🇪</span><span class="name">Sweden</span></div>
+                <div class="country-card"><span class="flag">🇩🇰</span><span class="name">Denmark</span></div>
+                <div class="country-card"><span class="flag">🇫🇮</span><span class="name">Finland</span></div>
+                <div class="country-card"><span class="flag">🇮🇸</span><span class="name">Iceland</span></div>
+            </div>
+            <div class="callout-ice" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview line:</strong> "Scandinavia refers specifically to Norway, Sweden, and Denmark — the three kingdoms that share closely related languages and a common historical and cultural heritage. The Nordic countries add Finland and Iceland to that core. It's a precise geographical distinction that many people get wrong."</p>
+            </div>
+        </div>
+
+        <!-- The Baltic & Black Seas -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌊 The Two Seas — Baltic & Black</h2>
+            <div class="sea-card">
+                <h3>🔷 Baltic Sea</h3>
+                <p class="countries">Surrounded by <strong>Scandinavia</strong> (Sweden, Denmark), <strong>Finland</strong>, the <strong>Baltic States</strong> (Estonia, Latvia, Lithuania), <strong>Poland</strong>, <strong>Germany</strong>, and <strong>Russia</strong>. It is a brackish, relatively shallow sea connected to the Atlantic only through the narrow Danish straits.</p>
+            </div>
+            <div class="sea-card">
+                <h3>🔶 Black Sea</h3>
+                <p class="countries">Bordered by <strong>Turkey</strong>, <strong>Bulgaria</strong>, <strong>Romania</strong>, <strong>Moldova</strong>, <strong>Ukraine</strong>, and <strong>Russia</strong>. It connects to the Mediterranean through the Bosporus Strait, the Sea of Marmara, and the Dardanelles — a crucial maritime corridor for Russian and Ukrainian grain exports.</p>
+            </div>
+        </div>
+
+        <!-- Management-School & Interview Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Why This Matters in an Interview</h2>
+            <p style="color:var(--text-body);">Questions about Scandinavia vs. Nordic countries are classic <strong>precision tests</strong>. The panel is checking whether you understand the map beyond casual use. Getting this right signals attention to detail — a quality that matters in management. Getting it wrong — calling Finland "Scandinavian" — is a small error that can undermine credibility.</p>
+            <div class="callout-navy" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>India‑Nordic connection:</strong> India holds regular <strong>India‑Nordic Summits</strong>. The Nordic countries are global leaders in renewable energy, sustainability, and digital governance — all areas of active Indian cooperation. Finland's education model is frequently studied in Indian policy circles. Knowing this broader context transforms a geography question into a demonstration of strategic awareness.</p>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is the difference between Scandinavia and the Nordic countries?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);"><strong>Scandinavia</strong> refers strictly to <strong>Norway, Sweden, and Denmark</strong> — the three kingdoms on the Scandinavian Peninsula (plus Denmark, which is geographically on the Jutland Peninsula but historically and culturally Scandinavian). The <strong>Nordic countries</strong> add <strong>Finland and Iceland</strong> to this core group. All five are members of the Nordic Council, a formal inter‑governmental body.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Which countries surround the Baltic Sea?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Baltic Sea is surrounded by <strong>Scandinavia</strong> (Sweden and Denmark), <strong>Finland</strong>, the <strong>Baltic States</strong> (Estonia, Latvia, Lithuania), <strong>Poland</strong>, <strong>Germany</strong>, and <strong>Russia</strong>. It is a brackish, semi‑enclosed sea connected to the North Sea only through the narrow Danish straits.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Which countries border the Black Sea?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Black Sea is bordered by <strong>Turkey, Bulgaria, Romania, Moldova, Ukraine, and Russia</strong>. It is a strategically critical body of water — it connects to the Mediterranean through the Bosporus and Dardanelles straits, both controlled by Turkey, making it a vital corridor for Russian and Ukrainian grain and energy exports.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Why is Finland not considered part of Scandinavia?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Finland is <strong>linguistically and ethnically distinct</strong> from the Scandinavian countries. Swedish, Norwegian, and Danish are closely related North Germanic languages. Finnish belongs to the <strong>Finno‑Ugric language family</strong>, completely unrelated to the Scandinavian languages. However, Finland is culturally and politically part of the broader Nordic community through the Nordic Council.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--ice);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--ice);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"Scandinavia comprises Norway, Sweden, and Denmark — three closely related kingdoms. The Nordic countries add Finland and Iceland to form a broader group of five nations. The Baltic Sea is the body of water surrounded by Scandinavia, Finland, the Baltic States, Poland, Germany, and Russia. The Black Sea is bordered by Turkey, Bulgaria, Romania, Moldova, Ukraine, and Russia. It's a common interview trick question, and the distinction between three and five is worth getting right."</em></p>
+        </div>
+    </main>
+</body>
+</html>

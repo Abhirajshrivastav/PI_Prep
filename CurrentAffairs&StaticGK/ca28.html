@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-28 · Tropic of Cancer — 8 Indian States — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --amber: #d97706;
+            --amber-dim: rgba(217, 119, 6, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--amber); box-shadow: 0 0 20px rgba(217,119,6,0.12); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--amber); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #92400e; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-amber {
+            border-left: 4px solid var(--amber); background: var(--amber-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.05rem; }
+
+        .canvas-container {
+            background: #0a120e; border-radius: 12px; padding: 1rem; margin: 1.5rem 0;
+            display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-subtle);
+        }
+        canvas { max-width: 100%; height: auto; }
+
+        .state-list {
+            display: flex; flex-wrap: wrap; gap: 0.5rem;
+        }
+        .state-tag {
+            background: rgba(217,119,6,0.08); border: 1px solid rgba(217,119,6,0.2);
+            border-radius: 20px; padding: 0.4rem 0.9rem; font-size: 0.85rem; color: var(--text-body);
+        }
+        .state-tag .num { color: var(--amber); font-weight: 700; margin-right: 0.3rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--amber);">[ID: CA-28] · [STATUS: VERIFIED] · [BLOCK: WORLD GEOGRAPHY]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--amber);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · WORLD GEOGRAPHY</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Tropic of Cancer — The 8 Indian States</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The line at 23.5°N that bisects India — defining its climate, agriculture, and solar energy potential. Eight states, from Gujarat to Mizoram, and why this list matters in an interview.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">LATITUDE</span><div class="value">23.5° North (23°26′ N)</div></div>
+                <div class="fact-box"><span class="label">STATES IT PASSES THROUGH</span><div class="value">8 (Gujarat to Mizoram)</div></div>
+                <div class="fact-box"><span class="label">CLIMATIC SIGNIFICANCE</span><div class="value">Divides India into tropical South and subtropical North</div></div>
+                <div class="fact-box"><span class="label">SUN DIRECTLY OVERHEAD</span><div class="value">On the summer solstice (June 21), the Sun is directly overhead at this latitude</div></div>
+                <div class="fact-box"><span class="label">NEAREST CITY ON THE LINE</span><div class="value">Ujjain (Madhya Pradesh) — site of the ancient Jantar Mantar observatory</div></div>
+                <div class="fact-box"><span class="label">SOLAR ENERGY</span><div class="value">Regions along and south of this line receive the highest solar insolation — ideal for solar power</div></div>
+            </div>
+        </div>
+
+        <!-- Schematic Map Canvas -->
+        <div class="canvas-container">
+            <canvas id="tropicMap" width="600" height="400"></canvas>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:0.3rem;">Schematic map of India — the Tropic of Cancer (orange line) and the 8 states it passes through</p>
+
+        <!-- The Eight States -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇮🇳 The 8 States — From Gujarat to Mizoram</h2>
+            <p style="color:var(--text-body);margin-bottom:1rem;">The Tropic of Cancer enters India at the western border of <strong>Gujarat</strong> and exits at the eastern border of <strong>Mizoram</strong>. Memorising the sequence from west to east helps you recall all eight.</p>
+            <div class="state-list" style="margin-top:0.8rem;">
+                <span class="state-tag"><span class="num">1</span> Gujarat</span>
+                <span class="state-tag"><span class="num">2</span> Rajasthan</span>
+                <span class="state-tag"><span class="num">3</span> Madhya Pradesh</span>
+                <span class="state-tag"><span class="num">4</span> Chhattisgarh</span>
+                <span class="state-tag"><span class="num">5</span> Jharkhand</span>
+                <span class="state-tag"><span class="num">6</span> West Bengal</span>
+                <span class="state-tag"><span class="num">7</span> Tripura</span>
+                <span class="state-tag"><span class="num">8</span> Mizoram</span>
+            </div>
+            <div class="callout-amber" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview line:</strong> "The Tropic of Cancer passes through eight Indian states — Gujarat, Rajasthan, Madhya Pradesh, Chhattisgarh, Jharkhand, West Bengal, Tripura, and Mizoram. It's one of those questions that appears in interviews precisely because it tests whether you can visualise India's geography beyond just the political map."</p>
+            </div>
+        </div>
+
+        <!-- Why It Matters: Climate & Agriculture -->
+        <div class="glass-panel" style="border-left: 4px solid var(--amber);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌡️ Why the Tropic of Cancer Matters — Climate, Agriculture & Energy</h2>
+            <p style="color:var(--text-body);">The Tropic of Cancer is not just a line on the map — it is a <strong>climatic boundary</strong> that fundamentally shapes India's geography.</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.5rem;"><strong>Tropical vs. Subtropical:</strong> The area <strong>south</strong> of the Tropic of Cancer lies in the <strong>tropical zone</strong>, where temperatures remain relatively high year‑round and the monsoon is the dominant climatic influence. The area <strong>north</strong> of the line experiences a <strong>subtropical climate</strong> with more pronounced seasonal variation — cold winters in Punjab, Haryana, and the Himalayan foothills.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Agriculture:</strong> Crop patterns shift across this line. South of it, tropical crops like rice, coconut, rubber, and spices thrive. North of it, wheat, mustard, and temperate fruits dominate. The Kharif‑Rabi cropping cycle is directly influenced by the latitudinal position relative to the Tropic.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Solar Energy:</strong> Regions along and south of the Tropic of Cancer receive the highest <strong>solar insolation</strong> in India — the amount of solar radiation reaching the Earth's surface. This makes Gujarat, Rajasthan, and Madhya Pradesh ideal for large‑scale solar power projects. India's National Solar Mission targets many of its largest installations in this belt.</li>
+                <li style="margin-bottom:0.5rem;"><strong>The Summer Solstice:</strong> On <strong>21 June</strong>, the Sun appears directly overhead at the Tropic of Cancer — this is the <strong>summer solstice</strong> in the Northern Hemisphere. The city of <strong>Ujjain, Madhya Pradesh</strong>, lies almost exactly on the Tropic, and its ancient <strong>Jantar Mantar observatory</strong> was built in part to track this precise astronomical event.</li>
+            </ul>
+        </div>
+
+        <!-- Management-School Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Management‑School Context — Geography as a Business Variable</h2>
+            <p style="color:var(--text-body);">For anyone in agriculture, renewable energy, logistics, or retail, the Tropic of Cancer is a <strong>business variable</strong>. A company planning cold‑chain logistics for perishable goods must understand that southern India has different temperature profiles than northern India. A solar energy developer must know that the highest insolation zones are along this belt. A retailer sourcing mangoes must know that the tropical south produces different varieties and has different harvest windows than the subtropical north.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The Tropic of Cancer also passes through <strong>some of India's most mineral‑rich states</strong> — Gujarat (petrochemicals, ports), Madhya Pradesh (copper, diamonds), Chhattisgarh (coal, iron ore), Jharkhand (minerals). Understanding this geography means understanding where India's industrial resources are concentrated, and why certain states are economic powerhouses while others are not.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Through how many Indian states does the Tropic of Cancer pass? Name them.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Tropic of Cancer passes through <strong>8 Indian states</strong>: from west to east — <strong>Gujarat, Rajasthan, Madhya Pradesh, Chhattisgarh, Jharkhand, West Bengal, Tripura, and Mizoram</strong>.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What is the climatic significance of the Tropic of Cancer for India?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">It divides India into <strong>tropical</strong> (south) and <strong>subtropical</strong> (north) climatic zones. South of the line, temperatures are consistently higher and the monsoon is dominant. North of the line, there are more pronounced seasonal variations, including cold winters. This division directly affects agriculture, energy demand, and infrastructure design across the country.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Which Indian city lies almost exactly on the Tropic of Cancer?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);"><strong>Ujjain, Madhya Pradesh</strong>, lies almost exactly on the Tropic of Cancer. It is home to an ancient <strong>Jantar Mantar observatory</strong> built by Maharaja Jai Singh II, which was used to track the Sun's position, including the summer solstice when the Sun is directly overhead at this latitude.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Why is the Tropic of Cancer important for solar energy in India?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Tropic of Cancer passes through the zone of <strong>highest solar insolation</strong> in India — the amount of solar radiation reaching the ground. States like Gujarat, Rajasthan, and Madhya Pradesh, which lie along this belt, are ideal locations for large‑scale solar power projects. India's National Solar Mission has concentrated many of its largest installations in this region.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What happens at the Tropic of Cancer during the summer solstice?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">On <strong>21 June</strong> — the summer solstice in the Northern Hemisphere — the Sun is directly overhead at the Tropic of Cancer (23.5°N). This marks the longest day of the year in the Northern Hemisphere and is the point at which the Sun reaches its northernmost position in the sky before appearing to move southward.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--amber);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--amber);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The Tropic of Cancer, at 23.5° North, passes through eight Indian states — Gujarat, Rajasthan, Madhya Pradesh, Chhattisgarh, Jharkhand, West Bengal, Tripura, and Mizoram. This line is the boundary between India's tropical and subtropical climate zones, directly shaping agricultural patterns, energy consumption, and solar power potential. On the summer solstice, the Sun appears directly overhead at this latitude — a phenomenon tracked for centuries by observatories like the Jantar Mantar in Ujjain. Knowing this geography is fundamental to understanding India's economy, climate, and resource distribution."</em></p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('tropicMap');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // India outline
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.05)';
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(80, 100);
+            ctx.lineTo(140, 60);
+            ctx.lineTo(240, 50);
+            ctx.lineTo(300, 60);
+            ctx.lineTo(360, 80);
+            ctx.lineTo(400, 120);
+            ctx.lineTo(420, 160);
+            ctx.lineTo(400, 220);
+            ctx.lineTo(350, 280);
+            ctx.lineTo(280, 320);
+            ctx.lineTo(240, 340);
+            ctx.lineTo(160, 320);
+            ctx.lineTo(120, 280);
+            ctx.lineTo(80, 220);
+            ctx.lineTo(60, 160);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // Tropic of Cancer line
+            ctx.strokeStyle = '#d97706';
+            ctx.lineWidth = 3;
+            ctx.setLineDash([8, 4]);
+            ctx.beginPath();
+            ctx.moveTo(70, 200);
+            ctx.lineTo(430, 200);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Label
+            ctx.fillStyle = '#d97706';
+            ctx.font = 'bold 11px "JetBrains Mono", monospace';
+            ctx.fillText('TROPIC OF CANCER (23.5°N)', 180, 195);
+
+            // Ujjain marker
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath();
+            ctx.arc(210, 200, 6, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = '9px "JetBrains Mono", monospace';
+            ctx.fillText('Ujjain', 218, 195);
+
+            // State names along the line
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = 'bold 10px "JetBrains Mono", monospace';
+            const states = [
+                { name: 'Gujarat', x: 70, y: 180 },
+                { name: 'Rajasthan', x: 120, y: 180 },
+                { name: 'Madhya Pradesh', x: 190, y: 180 },
+                { name: 'Chhattisgarh', x: 280, y: 180 },
+                { name: 'Jharkhand', x: 340, y: 180 },
+                { name: 'West Bengal', x: 390, y: 180 },
+                { name: 'Tripura', x: 440, y: 210 },
+                { name: 'Mizoram', x: 440, y: 230 },
+            ];
+            states.forEach(s => ctx.fillText(s.name, s.x, s.y));
+
+            // India label
+            ctx.fillStyle = '#f0f5f3';
+            ctx.font = 'bold 14px "JetBrains Mono", monospace';
+            ctx.fillText('INDIA', 230, 150);
+
+            // Tropical / Subtropical labels
+            ctx.fillStyle = '#c8d6d0';
+            ctx.font = 'italic 11px "JetBrains Mono", monospace';
+            ctx.fillText('SUBTROPICAL ZONE', 160, 260);
+            ctx.fillText('TROPICAL ZONE', 170, 310);
+        })();
+    </script>
+</body>
+</html>

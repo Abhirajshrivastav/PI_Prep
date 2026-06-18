@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-10 · G7 vs G20 — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+            --navy: #1e3a5f;
+            --navy-dim: rgba(30, 58, 95, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--navy); box-shadow: 0 0 20px rgba(30,58,95,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--navy); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #2563eb; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-navy {
+            border-left: 4px solid var(--navy); background: var(--navy-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.05rem; }
+
+        .compare-table {
+            width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0;
+        }
+        .compare-table th {
+            text-align: left; padding: 0.7rem 0.8rem; background: rgba(30,58,95,0.08);
+            color: var(--navy); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+            text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .compare-table td {
+            padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--border-subtle); color: var(--text-body);
+        }
+        .compare-table .row-g7 { border-left: 3px solid var(--rose); }
+        .compare-table .row-g20 { border-left: 3px solid var(--gold); }
+
+        .badge-g7 {
+            background: var(--rose-dim); color: var(--rose); border: 1px solid rgba(244,63,94,0.3);
+            padding: 0.2rem 0.8rem; border-radius: 20px; font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+        }
+        .badge-g20 {
+            background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(245,158,11,0.3);
+            padding: 0.2rem 0.8rem; border-radius: 20px; font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--navy);">[ID: CA-10] · [STATUS: VERIFIED] · [BLOCK: INTERNATIONAL ORGANIZATIONS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--navy);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · INTERNATIONAL ORGANIZATIONS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">G7 vs G20 — The Old Guard & The New Table</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">From exclusive Western clubs to inclusive global governance — India's 2023 presidency, the African Union's entry, and the rebalancing of the world economic order.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">G7 MEMBERS</span><div class="value">7 + EU (USA, UK, France, Germany, Italy, Japan, Canada)</div></div>
+                <div class="fact-box"><span class="label">G20 MEMBERS</span><div class="value">20 (incl. all G7, BRICS nations, + AU since 2023)</div></div>
+                <div class="fact-box"><span class="label">G7 GDP SHARE</span><div class="value">~30% of global GDP (nominal, declining)</div></div>
+                <div class="fact-box"><span class="label">G20 GDP SHARE</span><div class="value">~85% of global GDP</div></div>
+                <div class="fact-box"><span class="label">G20 POPULATION</span><div class="value">~2/3 of the world</div></div>
+                <div class="fact-box"><span class="label">INDIA'S G20 YEAR</span><div class="value">2023 Presidency (New Delhi Summit)</div></div>
+                <div class="fact-box"><span class="label">MAJOR ACHIEVEMENT</span><div class="value">African Union (AU) admitted as permanent member</div></div>
+                <div class="fact-box"><span class="label">RUSSIA IN G7</span><div class="value">Suspended in 2014 (Crimea annexation)</div></div>
+            </div>
+        </div>
+
+        <!-- Side-by-Side Comparison Table -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">⚖️ G7 vs G20 — Structural Comparison</h2>
+            <div style="overflow-x:auto;">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th><span class="badge-g7">G7</span> Group of Seven</th>
+                            <th><span class="badge-g20">G20</span> Group of Twenty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row-g7">
+                            <td style="font-weight:600;">Membership</td>
+                            <td>USA, UK, France, Germany, Italy, Japan, Canada (+ EU)</td>
+                            <td>All G7 + India, China, Brazil, South Africa, Russia, Australia, South Korea, Mexico, Indonesia, Turkey, Argentina, AU (since 2023)</td>
+                        </tr>
+                        <tr class="row-g7">
+                            <td style="font-weight:600;">Nature</td>
+                            <td>Wealthy Western liberal democracies</td>
+                            <td>Major advanced and emerging economies; more representative</td>
+                        </tr>
+                        <tr class="row-g7">
+                            <td style="font-weight:600;">GDP Share (Nominal)</td>
+                            <td>~30% (declining)</td>
+                            <td>~85%</td>
+                        </tr>
+                        <tr class="row-g7">
+                            <td style="font-weight:600;">Primary Agenda</td>
+                            <td>Political coordination, security, values-based</td>
+                            <td>Economic and financial stability, development, climate finance</td>
+                        </tr>
+                        <tr class="row-g7">
+                            <td style="font-weight:600;">Russia's Status</td>
+                            <td>Suspended (formerly G8, until 2014)</td>
+                            <td>Full member</td>
+                        </tr>
+                        <tr class="row-g20">
+                            <td style="font-weight:600;">Key Milestone</td>
+                            <td>1975 inception (Rambouillet)</td>
+                            <td>Elevated to Leaders' Level during 2008 Global Financial Crisis</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="callout-navy" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Why the G20 emerged:</strong> The 2008 Financial Crisis proved that the G7 alone could not stabilize the global economy. The G20 was elevated precisely because it included the emerging economies that held the reserves and growth needed for a coordinated response.</p>
+            </div>
+        </div>
+
+        <!-- India's 2023 G20 Presidency -->
+        <div class="glass-panel" style="border-left: 4px solid var(--gold);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇮🇳 India's 2023 G20 Presidency — A Diplomatic Masterclass</h2>
+            <p style="color:var(--text-body);">India held the <strong>G20 Presidency in 2023</strong>, hosting the Leaders' Summit in <strong>New Delhi</strong> in September 2023. The theme was <strong>"Vasudhaiva Kutumbakam"</strong> — One Earth, One Family, One Future. It was widely regarded as one of the most ambitious and inclusive presidencies in G20 history.</p>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem;">
+                <div style="background:rgba(245,158,11,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--gold);font-size:0.7rem;">AFRICAN UNION INCLUSION</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">India secured a <strong>permanent seat for the African Union (AU)</strong> in the G20 — a major diplomatic win that elevated the voice of 55 African nations and shifted the global governance architecture. It was compared to the inclusion of the EU in the G20.</p>
+                </div>
+                <div style="background:rgba(245,158,11,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--gold);font-size:0.7rem;">DELHI DECLARATION</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">Despite deep divisions over the Ukraine war, India forged a <strong>consensus Delhi Declaration</strong> with language that was accepted by both Russia and the Western members — a remarkable feat of diplomatic bridging.</p>
+                </div>
+                <div style="background:rgba(245,158,11,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--gold);font-size:0.7rem;">GLOBAL SOUTH SUMMIT</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">India convened a <strong>Voice of the Global South Summit</strong> to bring developing nations' concerns — debt, climate finance, food security — to the centre of the G20 agenda.</p>
+                </div>
+            </div>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Management‑School Insight:</strong> India's G20 presidency is a case study in <strong>coalition‑building</strong> and <strong>strategic framing</strong>. By positioning itself as the voice of the Global South, India bridged the North‑South divide and demonstrated its capacity to shape global agendas without alienating Western partners — a perfect embodiment of strategic autonomy.</p>
+            </div>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: Who are the members of the G7?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The G7 — Group of Seven — includes the <strong>United States, United Kingdom, France, Germany, Italy, Japan, and Canada</strong>, plus the <strong>European Union</strong> as a non‑enumerated member. Russia was suspended in 2014 after the Crimea annexation, reducing the group from G8 to G7.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: What is the main difference between the G7 and the G20?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The <strong>G7</strong> is a club of wealthy, industrialized Western democracies that meet primarily for political and security coordination. The <strong>G20</strong> includes all G7 members plus major emerging economies — India, China, Brazil, Russia, South Africa, and others — making it far more <strong>representative</strong>. The G20 accounts for ~85% of global GDP and 2/3 of the world's population, reflecting the multipolar reality of the 21st century.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Why was Russia suspended from the G8?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Russia was suspended from the G8 — which then became the G7 — in <strong>2014</strong> following its <strong>annexation of Crimea</strong> from Ukraine. The other members deemed the annexation a violation of international law and suspended Russia's participation indefinitely. Russia remains a full member of the G20.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What was India's major achievement during the 2023 G20 presidency?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">India achieved two major milestones. First, it secured <strong>permanent membership for the African Union (AU)</strong> in the G20 — a historic diplomatic victory that brought 55 African nations to the table. Second, it brokered the <strong>Delhi Declaration consensus</strong> on the Ukraine war, getting language accepted by both Russia and the Western powers. The theme was "Vasudhaiva Kutumbakam" — One Earth, One Family, One Future.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: Why is the G20 considered more legitimate than the G7 today?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Because the G7 represents only the wealthy Western world, whose share of global GDP has been declining for decades. The G20 includes emerging economies like India, China, Brazil, Indonesia, and now the African Union — making it far more representative of the global population and economic weight. The G20 was elevated during the 2008 Financial Crisis precisely because the G7 could not solve the problem alone. Global challenges now require global solutions, and the G20 reflects that reality.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--navy);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--navy);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The G7 — US, UK, France, Germany, Italy, Japan, Canada, and the EU — represents the wealthy Western democracies. Russia was suspended in 2014 after the Crimea annexation. The G20, which includes all G7 members plus major emerging economies like India, China, Brazil, and now the African Union, was elevated during the 2008 Financial Crisis to provide inclusive global economic governance. India's 2023 G20 presidency was a landmark — it secured permanent AU membership and forged the Delhi Declaration consensus on Ukraine, demonstrating India's ability to bridge the North‑South divide. The shift from G7 to G20 reflects the fundamental rebalancing of the global economy."</em></p>
+        </div>
+    </main>
+</body>
+</html>

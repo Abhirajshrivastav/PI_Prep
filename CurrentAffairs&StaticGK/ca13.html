@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-13 · NATO — The North Atlantic Alliance — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --ice: #38bdf8;
+            --ice-dim: rgba(56, 189, 248, 0.1);
+            --navy: #1e3a5f;
+            --navy-dim: rgba(30, 58, 95, 0.15);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--ice); box-shadow: 0 0 20px rgba(56,189,248,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--ice); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #0284c7; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-ice {
+            border-left: 4px solid var(--ice); background: var(--ice-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-navy {
+            border-left: 4px solid var(--navy); background: var(--navy-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.05rem; }
+
+        .timeline-node {
+            display: flex; gap: 1rem; align-items: baseline;
+            border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0;
+        }
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace; color: var(--ice); font-size: 0.85rem; min-width: 5rem;
+        }
+        .timeline-desc { color: var(--text-body); font-size: 0.9rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--ice);">[ID: CA-13] · [STATUS: VERIFIED] · [BLOCK: INTERNATIONAL ORGANIZATIONS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--ice);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · INTERNATIONAL ORGANIZATIONS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">NATO — The North Atlantic Alliance</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The world's most powerful military alliance, its sacred Article 5, the dramatic expansion reshaping Europe's borders, and why India's doctrine of strategic autonomy keeps it out.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">FULL NAME</span><div class="value">North Atlantic Treaty Organization (NATO)</div></div>
+                <div class="fact-box"><span class="label">FOUNDED</span><div class="value">4 April 1949 (Washington D.C.)</div></div>
+                <div class="fact-box"><span class="label">FOUNDING MEMBERS</span><div class="value">12 (USA, UK, Canada, France, etc.)</div></div>
+                <div class="fact-box"><span class="label">CURRENT MEMBERS</span><div class="value">32 (as of 2024, with Finland & Sweden)</div></div>
+                <div class="fact-box"><span class="label">HEADQUARTERS</span><div class="value">Brussels, Belgium</div></div>
+                <div class="fact-box"><span class="label">CORE PRINCIPLE</span><div class="value">Article 5: Collective Defence (Attack on One = Attack on All)</div></div>
+                <div class="fact-box"><span class="label">ARTICLE 5 TRIGGERED</span><div class="value">Only once — after 9/11 attacks (2001)</div></div>
+                <div class="fact-box"><span class="label">INDIA'S STANCE</span><div class="value">Not a member; no aspiration to join (Strategic Autonomy)</div></div>
+            </div>
+        </div>
+
+        <!-- What NATO Is & Article 5 -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🛡️ The Alliance & Its Sacred Oath — Article 5</h2>
+            <p style="color:var(--text-body);">NATO was born out of the Cold War. Its founding treaty, the <strong>Washington Treaty</strong>, established a system of collective defence where the security of North America and Europe is permanently linked. The alliance is fundamentally built on <strong>Article 5</strong> of the treaty, which states that an armed attack against one or more members in Europe or North America shall be considered an attack against them all. In response, each member will take "such action as it deems necessary, including the use of armed force," to restore and maintain security.</p>
+            <div class="callout-ice" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>The Article 5 Precedent:</strong> Despite being a military alliance for over 70 years, Article 5 has been invoked <strong>only once</strong> — on <strong>September 12, 2001</strong>, the day after the 9/11 terrorist attacks on the United States. This is a crucial distinction: NATO's power is primarily in its <strong>deterrent capability</strong>, not in frequent offensive action.</p>
+            </div>
+        </div>
+
+        <!-- Expansion Timeline -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📜 The Expansion Waves — From 12 to 32</h2>
+            <p style="color:var(--text-body);">NATO's open‑door policy (Article 10 of the Treaty) allows any European state to join if it meets the criteria and all existing members agree. Russia has long viewed this eastward expansion as a direct threat.</p>
+            <div class="timeline-node"><span class="timeline-year">1949</span><span class="timeline-desc"><strong>Founding:</strong> 12 nations including the US, UK, Canada, France, and Italy.</span></div>
+            <div class="timeline-node"><span class="timeline-year">1952‑1982</span><span class="timeline-desc"><strong>Cold War Expansion:</strong> Greece, Turkey, West Germany, and Spain join.</span></div>
+            <div class="timeline-node"><span class="timeline-year">1999‑2004</span><span class="timeline-desc"><strong>Post‑Cold War Wave:</strong> Eastern European nations (Poland, Hungary, Czech Republic) and the Baltic states (Estonia, Latvia, Lithuania) join.</span></div>
+            <div class="timeline-node"><span class="timeline-year">2023‑2024</span><span class="timeline-desc"><strong>Ukraine War Response:</strong> <strong>Finland</strong> joins in 2023, abandoning decades of neutrality. <strong>Sweden</strong> follows in 2024, bringing NATO to <strong>32 members</strong>. This is a direct strategic defeat for Putin, who cited NATO expansion as a reason for invading Ukraine.</span></div>
+        </div>
+
+        <!-- India's Strategic Non-Alignment -->
+        <div class="glass-panel" style="border-left: 4px solid var(--ice);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇮🇳 Why India is NOT a Member — Strategic Autonomy Explained</h2>
+            <p style="color:var(--text-body);">India is not a NATO member, nor does it seek to be one. This is not a diplomatic oversight but a conscious strategic choice rooted in India's foundational foreign policy doctrine of <strong>strategic autonomy</strong>, inherited from the <strong>Non‑Aligned Movement (NAM)</strong>.</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.8rem;list-style-type:disc;">
+                <li style="margin-bottom:0.5rem;"><strong>Historical Legacy:</strong> India was a founding leader of NAM, refusing to join either the US‑led or Soviet‑led blocs during the Cold War. Joining a formal military alliance like NATO would represent a complete ideological reversal.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Defence Sovereignty:</strong> NATO membership requires interoperability and deep integration of military systems. India's military is heavily reliant on Russian‑origin equipment. Joining NATO would jeopardise this relationship and compromise India's ability to make independent defence procurement decisions.</li>
+                <li style="margin-bottom:0.5rem;"><strong>Geopolitical Flexibility:</strong> India prefers <strong>issue‑based coalitions</strong> (like the Quad, which is an informal forum, not a military alliance) to rigid treaty‑bound commitments. India does not want to be forced into a conflict (e.g., against Russia over Ukraine) that does not serve its direct national interest.</li>
+            </ul>
+            <div class="callout-navy" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>The Quad vs. NATO:</strong> India's comfort with the Quad but refusal of NATO is a perfect illustration of strategic autonomy. The Quad is <strong>informal, flexible, and issue‑based</strong>. NATO is <strong>formal, permanent, and treaty‑bound</strong>. India deliberately chooses the former to maintain its sovereignty of decision‑making.</p>
+            </div>
+        </div>
+
+        <!-- Management-School Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Management‑School Context — Collective Security & Game Theory</h2>
+            <p style="color:var(--text-body);">NATO is the ultimate case study in <strong>collective security</strong> and <strong>game theory</strong>. The alliance solves a <strong>free‑rider problem</strong>: smaller states benefit from the security umbrella provided by larger powers (primarily the US). It also creates a <strong>credible commitment</strong> problem — Article 5 is only as strong as the members' willingness to enforce it. NATO's enduring success (compared to the failed League of Nations) lies in its institutionalisation of trust and burden‑sharing, though the perennial debate over European defence spending (the 2% of GDP target) shows that even successful alliances face internal coordination challenges.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is NATO and how many members does it currently have?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">NATO is a political and military alliance founded in 1949. It currently has <strong>32 members</strong>, after Finland joined in 2023 and Sweden in 2024 in response to Russia's invasion of Ukraine. Its core is Article 5, stating that an attack on one is an attack on all.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Why did Finland and Sweden abandon their long-standing neutrality to join NATO?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Russia's unprovoked full‑scale invasion of Ukraine in 2022 shattered the security assumptions of Europe. Both Finland and Sweden, which had remained militarily non‑aligned for decades, determined that only NATO's collective defence guarantee could provide security against a potentially aggressive Russia.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Has Article 5 ever been invoked?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Yes, only <strong>once</strong>. It was invoked on September 12, 2001, the day after the 9/11 terrorist attacks on the World Trade Center and the Pentagon, demonstrating that the collective defence clause applies to terrorist attacks as well.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Why doesn't India want to join NATO?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">India follows a policy of <strong>strategic autonomy</strong>. Joining a formal military alliance like NATO would compromise India's independent foreign policy, its historical legacy of non‑alignment, and its critical defence relationship with Russia. India prefers flexible, issue‑based coalitions like the Quad to rigid treaty‑bound alliances.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--ice);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--ice);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"NATO — the North Atlantic Treaty Organization — is a military alliance of 32 countries anchored by Article 5, which declares that an attack on one member is an attack on all. Founded in 1949 to counter the Soviet Union, it has expanded dramatically, most recently to include Finland and Sweden following Russia's invasion of Ukraine. India is not a member and does not seek membership, preferring its long‑standing doctrine of strategic autonomy and non‑alignment over being tied to a formal, treaty‑bound military bloc. This allows India to maintain its independent defence relationships and geopolitical flexibility."</em></p>
+        </div>
+    </main>
+</body>
+</html>

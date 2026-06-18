@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-08 · SAARC & Its Inactivity — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+            --amber: #f59e0b;
+            --amber-dim: rgba(245, 158, 11, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--amber); box-shadow: 0 0 20px rgba(245,158,11,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--amber); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #b45309; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-rose {
+            border-left: 4px solid var(--rose); background: var(--rose-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem; text-align: center;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.1rem; margin-top: 0.2rem; }
+
+        .member-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.6rem;
+        }
+        .member-tag {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 8px; padding: 0.7rem; text-align: center; font-size: 0.85rem;
+            color: var(--text-body);
+        }
+        .member-tag .flag { font-size: 1.5rem; display: block; margin-bottom: 0.2rem; }
+
+        .timeline-node {
+            display: flex; gap: 1rem; align-items: baseline;
+            border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0;
+        }
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace; color: var(--amber); font-size: 0.85rem; min-width: 5rem;
+        }
+        .timeline-desc { color: var(--text-body); font-size: 0.9rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--amber);">[ID: CA-08] · [STATUS: VERIFIED] · [BLOCK: INTERNATIONAL ORGANIZATIONS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--amber);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · INTERNATIONAL ORGANIZATIONS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">SAARC — The Promise & Its Paralysis</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The world's least integrated regional bloc — eight South Asian nations, a founding vision of cooperation, and a bitter freeze that has rendered it effectively inoperative since 2016.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">FULL NAME</span><div class="value">South Asian Association for Regional Cooperation</div></div>
+                <div class="fact-box"><span class="label">FOUNDED</span><div class="value">8 December 1985 (Dhaka, Bangladesh)</div></div>
+                <div class="fact-box"><span class="label">FOUNDING MEMBERS</span><div class="value">7 (Afghanistan joined in 2007)</div></div>
+                <div class="fact-box"><span class="label">HEADQUARTERS</span><div class="value">Kathmandu, Nepal</div></div>
+                <div class="fact-box"><span class="label">LAST SUMMIT</span><div class="value">18th Summit (2014, Kathmandu)</div></div>
+                <div class="fact-box"><span class="label">19th SUMMIT</span><div class="value">Scheduled for Islamabad (2016) — indefinitely postponed</div></div>
+                <div class="fact-box"><span class="label">MEMBERS</span><div class="value">8 (India, Pakistan, Bangladesh, Nepal, Sri Lanka, Bhutan, Maldives, Afghanistan)</div></div>
+                <div class="fact-box"><span class="label">OBSERVERS</span><div class="value">9 — including USA, China, EU, Japan, South Korea, Iran</div></div>
+            </div>
+        </div>
+
+        <!-- The Eight Member States -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🗺️ The Eight Member States</h2>
+            <div class="member-grid">
+                <div class="member-tag"><span class="flag">🇮🇳</span>India</div>
+                <div class="member-tag"><span class="flag">🇵🇰</span>Pakistan</div>
+                <div class="member-tag"><span class="flag">🇧🇩</span>Bangladesh</div>
+                <div class="member-tag"><span class="flag">🇳🇵</span>Nepal</div>
+                <div class="member-tag"><span class="flag">🇱🇰</span>Sri Lanka</div>
+                <div class="member-tag"><span class="flag">🇧🇹</span>Bhutan</div>
+                <div class="member-tag"><span class="flag">🇲🇻</span>Maldives</div>
+                <div class="member-tag"><span class="flag">🇦🇫</span>Afghanistan</div>
+            </div>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-top:0.8rem;">Afghanistan joined SAARC in 2007 at the 14th Summit in New Delhi, becoming the eighth member.</p>
+        </div>
+
+        <!-- The Founding Vision -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌱 The Founding Vision — What SAARC Was Meant to Be</h2>
+            <p style="color:var(--text-body);">SAARC was conceived in the early 1980s, largely at the initiative of <strong>Bangladesh's President Ziaur Rahman</strong>, as a platform to promote <strong>regional cooperation</strong> in South Asia — one of the least economically integrated regions in the world despite deep cultural and historical ties. The founding charter identified core areas of cooperation: agriculture, rural development, health, education, culture, sports, science and technology, and the suppression of terrorism.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The ultimate goal was to create a <strong>South Asian Economic Union</strong> — a common market with free movement of goods, services, capital, and eventually people. SAARC's sister agreement, <strong>SAFTA (South Asian Free Trade Area)</strong>, came into force in 2006 with the aim of reducing tariffs to zero by 2016. Neither goal has been achieved. Intra‑regional trade in South Asia remains below <strong>5% of total trade</strong> — compared to <strong>25% in ASEAN</strong> and <strong>60% in the European Union</strong>.</p>
+            <div class="callout">
+                <p style="color:var(--text-body);"><strong>The fundamental failure:</strong> South Asia is the world's least economically integrated region despite being home to nearly a quarter of humanity. SAARC was supposed to change that. It hasn't.</p>
+            </div>
+        </div>
+
+        <!-- The Breakdown: Why SAARC is Inactive -->
+        <div class="glass-panel" style="border-left: 4px solid var(--rose);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">💥 The Breakdown — Why SAARC Has Been Frozen Since 2016</h2>
+            <p style="color:var(--text-body);">On <strong>18 September 2016</strong>, a terrorist attack on an Indian Army base in <strong>Uri, Jammu & Kashmir</strong>, killed 19 soldiers. India attributed the attack to Pakistan‑based terrorist groups — specifically <strong>Jaish‑e‑Mohammed</strong>. In response, India announced it would <strong>boycott the 19th SAARC Summit</strong>, which was scheduled to be held in <strong>Islamabad, Pakistan</strong>, in November 2016.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">India's stated reason was simple: <em>"In the prevailing circumstances, the Government of India is unable to participate in the proposed Summit in Islamabad."</em> The subtext was clear — India would not sit at the same table as Pakistan while cross‑border terrorism continued. <strong>Bangladesh, Bhutan, and Afghanistan</strong> soon followed India's lead and also pulled out, citing security concerns. The summit was <strong>indefinitely postponed</strong> and has never been rescheduled.</p>
+            <div class="timeline-node" style="margin-top:1rem;"><span class="timeline-year">1985–2014</span><span class="timeline-desc">18 SAARC Summits held, albeit with periodic tensions. SAFTA signed (2006). Modest progress on trade and people‑to‑people contact.</span></div>
+            <div class="timeline-node"><span class="timeline-year">Sept 2016</span><span class="timeline-desc"><strong>Uri attack.</strong> India announces boycott of the Islamabad Summit. Bangladesh, Bhutan, Afghanistan follow suit. Summit indefinitely postponed.</span></div>
+            <div class="timeline-node"><span class="timeline-year">2016–2026</span><span class="timeline-desc"><strong>No SAARC Summit held.</strong> The organisation exists on paper. Secretariat in Kathmandu remains functional but the political process is deadlocked.</span></div>
+            <div class="callout-rose" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>India's position:</strong> "Pakistan's continued support for cross‑border terrorism makes meaningful regional cooperation impossible. India will not engage through SAARC until Pakistan acts against terrorist groups operating from its soil."</p>
+            </div>
+        </div>
+
+        <!-- India's Alternatives: BIMSTEC & BBIN -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🔄 India's Strategic Pivot — BIMSTEC, BBIN & "SAARC Minus Pakistan"</h2>
+            <p style="color:var(--text-body);">With SAARC effectively paralysed, India has strategically shifted its regional cooperation efforts toward platforms that <strong>exclude Pakistan</strong>:</p>
+            <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem;">
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">BIMSTEC</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;"><strong>Bay of Bengal Initiative for Multi‑Sectoral Technical and Economic Cooperation.</strong> Includes India, Bangladesh, Sri Lanka, Nepal, Bhutan, Myanmar, and Thailand. Excludes Pakistan. India hosted the 2016 BRICS‑BIMSTEC Outreach Summit in Goa — a direct signal of the pivot.</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">BBIN</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;"><strong>Bangladesh, Bhutan, India, Nepal</strong> — a sub‑regional initiative focused on road connectivity and motor vehicle agreements to facilitate trade and passenger movement. Excludes both Pakistan and Sri Lanka.</p>
+                </div>
+                <div style="background:rgba(16,185,129,0.04);border:1px solid var(--border-subtle);border-radius:10px;padding:1rem;">
+                    <p class="font-mono" style="color:var(--accent);font-size:0.7rem;">SCO</p>
+                    <p style="color:var(--text-body);font-size:0.9rem;">India and Pakistan are both members of the <strong>Shanghai Cooperation Organisation</strong>, but it is Central Asia‑focused and not a replacement for SAARC's South‑Asia‑specific mandate.</p>
+                </div>
+            </div>
+            <div class="callout" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>Interview insight:</strong> "India's de facto policy is now 'SAARC minus Pakistan' — pursuing regional integration through platforms like BIMSTEC that allow South Asian cooperation without being held hostage by the India‑Pakistan bilateral conflict. BIMSTEC connects South Asia to Southeast Asia, which is strategically aligned with India's Act East policy."</p>
+            </div>
+        </div>
+
+        <!-- Management-School Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Management‑School Context — SAARC as a Case Study in Institutional Failure</h2>
+            <p style="color:var(--text-body);">SAARC is a textbook example of <strong>regional public goods failure</strong>. The economic benefits of integration — larger markets, freer trade, shared infrastructure, coordinated disaster response — are collectively enormous. But the political costs of cooperation, particularly when one member (Pakistan) is perceived as actively undermining regional security, make the <strong>collective action problem</strong> insurmountable.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">From a game‑theory perspective, SAARC is trapped in a <strong>prisoner's dilemma</strong>. Every member would benefit from cooperation, but the dominant strategy for India — given Pakistan's use of terrorism as an instrument of policy — is to defect. The <strong>principal‑agent problem</strong> also applies: the SAARC Secretariat (the agent) has no enforcement power over member states (the principals). It cannot compel compliance with agreements, resolve disputes, or sanction non‑cooperative behaviour.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">The contrast with <strong>ASEAN</strong> is instructive. ASEAN succeeded partly because it was built on a foundation of <strong>economic interdependence</strong> among states that, while having historical tensions, did not have a single dyadic conflict as deep and persistent as India‑Pakistan. ASEAN's "ASEAN Way" — consensus, non‑interference, gradualism — worked because the underlying political conditions allowed it. SAARC has never had that luxury.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is SAARC, and who are its members?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">SAARC — the South Asian Association for Regional Cooperation — was founded in 1985 with seven members. Afghanistan joined in 2007, making eight: <strong>India, Pakistan, Bangladesh, Nepal, Sri Lanka, Bhutan, Maldives, and Afghanistan</strong>. Its headquarters is in Kathmandu, Nepal. The goal was to promote economic and cultural cooperation in one of the world's least integrated regions.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Why has SAARC been inactive since 2016?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">After the <strong>Uri terrorist attack</strong> in September 2016, India announced it would boycott the 19th SAARC Summit scheduled to be held in Islamabad, citing Pakistan's support for cross‑border terrorism. Bangladesh, Bhutan, and Afghanistan followed India's lead and also pulled out. The summit was <strong>indefinitely postponed</strong> and no summit has been held since. India's position is that meaningful regional cooperation is impossible while Pakistan continues to sponsor terrorist groups targeting India.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: What is India doing instead of SAARC?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">India has strategically pivoted to platforms that exclude Pakistan: <strong>BIMSTEC</strong> (Bay of Bengal Initiative — India, Bangladesh, Sri Lanka, Nepal, Bhutan, Myanmar, Thailand) and <strong>BBIN</strong> (Bangladesh, Bhutan, India, Nepal) for sub‑regional connectivity. These allow South Asian cooperation without being paralysed by the India‑Pakistan bilateral conflict. BIMSTEC also connects South Asia to Southeast Asia, aligning with India's Act East policy.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Why is intra‑regional trade in South Asia so low compared to other regions?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">Intra‑regional trade in South Asia is below <strong>5% of total trade</strong>, compared to 25% in ASEAN and 60% in the EU. The primary reasons: the <strong>India‑Pakistan conflict</strong> prevents normal trade relations, <strong>non‑tariff barriers</strong> (restrictive visa regimes, customs bottlenecks, infrastructure gaps), <strong>political distrust</strong> among smaller neighbours toward India's dominance, and the failure of <strong>SAFTA</strong> (South Asian Free Trade Area) to meaningfully reduce protectionism. The economic potential is enormous but remains unrealised.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: How does SAARC compare to ASEAN? Why did ASEAN succeed?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">ASEAN succeeded partly because its members, while having historical tensions, did not have a single bilateral conflict as deep and persistent as India‑Pakistan. ASEAN was built on <strong>economic interdependence</strong> — trade integration drove cooperation, which created a virtuous cycle. SAARC, by contrast, was launched as a political project in a region where the foundational political conditions — trust between India and Pakistan — never existed. ASEAN's "ASEAN Way" of consensus and gradualism worked because the underlying politics allowed it. SAARC's identical institutional design failed because the politics didn't.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--amber);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--amber);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"SAARC — the South Asian Association for Regional Cooperation — was founded in 1985 with the vision of integrating one of the world's least connected regions. Its eight members — India, Pakistan, Bangladesh, Nepal, Sri Lanka, Bhutan, Maldives, and Afghanistan — represent nearly a quarter of humanity, yet intra‑regional trade remains below 5% of total trade. SAARC has been effectively frozen since 2016, when India boycotted the Islamabad summit after the Uri terrorist attack, citing Pakistan's support for cross‑border terrorism. India has since pivoted to platforms that exclude Pakistan — BIMSTEC and BBIN — effectively pursuing a 'SAARC minus Pakistan' strategy. SAARC remains a powerful case study in how a single unresolved bilateral conflict can paralyse an entire regional institution."</em></p>
+        </div>
+    </main>
+</body>
+</html>

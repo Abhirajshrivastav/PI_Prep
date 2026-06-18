@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>HR-34/35/36 · Pressure Questions Designed to Rattle — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--rose); box-shadow: 0 0 20px rgba(244,63,94,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--rose); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #be123c; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-rose {
+            border-left: 4px solid var(--rose); background: var(--rose-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .section-header {
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .section-header h2 { color: var(--rose); font-size: 1.6rem; }
+
+        .mantra-box {
+            background: rgba(244,63,94,0.04); border: 1px solid var(--rose);
+            border-radius: 14px; padding: 1.8rem; margin: 1.5rem 0;
+            color: var(--text-body); line-height: 1.9; font-size: 0.95rem;
+            position: relative; font-style: italic;
+        }
+        .mantra-box::before { content: '🧘'; position: absolute; top: -1rem; left: 1rem; font-size: 2rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--rose);">[ID: HR-34/35/36] · [STATUS: CRAFTED] · [BLOCK 12: PRESSURE QUESTIONS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--rose);letter-spacing:0.1em;margin-bottom:0.5rem;">BLOCK 12 · PRESSURE QUESTIONS DESIGNED TO RATTLE</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">Steady When the Ground Shifts</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">Deciding your response before you enter the room, acknowledging mistakes without crumbling, and understanding pressure as a test of character rather than rejection.</p>
+        </div>
+
+        <!-- Block 12 Mindset Mantra -->
+        <div class="mantra-box">
+            <p style="margin-top:0.5rem;"><em>"I am not here to be liked. I am here to be known. I will answer honestly. I will stay calm. If I make a mistake, I will acknowledge it and move forward. If the panel is sharp, I will take it as focus, not hostility. I have been through worse. I have rebuilt from zero. This is a conversation, not a verdict. I am ready."</em></p>
+        </div>
+        <p class="font-mono" style="text-align:center;font-size:0.7rem;color:var(--rose);margin-top:0.3rem;margin-bottom:1.5rem;">Repeat this to yourself before you enter that room. It is your anchor.</p>
+
+        <!-- HR-34: Deciding Your Response -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🧠 HR‑34 · Deciding Your Response Before Entering the Room</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">Your composure is not something the panel gives or takes. It is a choice you make before you walk in. You decide in advance: <em>I will not be rattled. I will treat every question as a genuine inquiry, even if the tone is sharp. I will remain curious, not defensive.</em></p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: You seem nervous. Are you?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I am alert. I think there's a difference between nervousness and alertness. I care about this interview, so my senses are heightened. But I've been in higher‑pressure situations — a shop full of festival customers, a JEE result day, opening the IPMAT score. This is important, but it's not overwhelming. I'm here to have a conversation, not to survive an attack."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: If I told you this interview is going badly, what would you say?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I'd ask you what specifically isn't working, so I could address it directly. And I'd remind myself that an interview is a snapshot, not a verdict. I've had bad days before. I've also had days where I turned things around. I wouldn't give up mid‑conversation. I'd stay present and try to understand what you need from me."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Have you prepared too much? You sound rehearsed.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I've prepared honestly — I've thought deeply about my experiences and how to articulate them clearly. If that comes across as rehearsed, it's because I've taken this seriously. But I'm not reading from a script. If you ask me something unexpected, I'll answer from reflection, not memory. Try me."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: What is the mindset you chose before entering this room today?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I chose two things. One: <strong>honesty over impression</strong>. I decided I'd rather be rejected for who I am than accepted for a performance. Two: <strong>calm over panic</strong>. I've already faced a much harder rejection. I told myself this morning: 'You've been through worse and you're still standing. This is a conversation, not a trial.' That mindset is what's keeping me steady right now."</p></div>
+            </details>
+        </div>
+
+        <!-- HR-35: Acknowledging Mistakes -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <h2>🪞 HR‑35 · Acknowledging Mistakes Without Crumbling</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">If you make a factual error, or the panel spots a contradiction, your response determines everything. Do not defend. Do not collapse. Acknowledge briefly, correct if possible, and move on with your dignity intact.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: (Timeline press) You said you cleared IPMAT in two months. But earlier you said March. That's not two months if the exam was in May.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"You're right to press on the timeline. I started intensive preparation in the first week of March, and the exam was in the first week of May. That's two calendar months of focused work. If my phrasing was imprecise, I apologise. The point I want to stand by is that when I pivoted to something I was genuinely aligned with, I made rapid progress. The exact number of days isn't as important as the contrast with three years of stagnation in JEE."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: (Exaggeration check) You managed the store for 'weeks straight' at sixteen. That seems exaggerated. Clarify.</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"It's not an exaggeration. 'Weeks' means periods of seven to ten days at a stretch when my father had to be out of town for personal or medical reasons. Not months. I should have been more precise. But yes, I handled the full operation — opening, closing, cash, customers, suppliers — for those stretches. It was challenging, but in a small family business, responsibility comes early. I'm not claiming I ran a supermarket. I'm claiming I kept a single‑counter store running in my father's absence, which is what happened."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: (Factual trap) What's the publication year of Outliers?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I don't remember the exact publication year. I believe it was 2008, but I'd rather not guess. What I remember is the content — the ideas about hidden advantage, the 10,000‑hour rule, the 1975 birth window for tech founders. I read for ideas, not for bibliography. If that's a gap, I acknowledge it."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: (Contradiction) You just contradicted yourself. Do you want to correct your previous statement?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Thank you for pointing it out. If I've been inconsistent, I'd like to clarify. Could you tell me what the contradiction was, so I can address it directly? I want to be accurate."</p><p style="color:var(--text-muted);font-size:0.85rem;margin-top:0.5rem;">(This shows you don't crumble. You seek clarity and correct honestly.)</p></div>
+            </details>
+        </div>
+
+        <!-- HR-36: Pressure as Test -->
+        <div class="glass-panel" style="border-left: 4px solid var(--rose);">
+            <div class="section-header">
+                <h2>🔥 HR‑36 · Understanding Pressure as a Test, Not Rejection</h2>
+            </div>
+            <p style="color:var(--text-body);margin-bottom:1rem;">The panel may turn up the heat to see if you interpret pressure as hostility or as a stimulus to perform better. Your framing: pressure is not rejection. It's a signal that they are taking you seriously enough to test.</p>
+
+            <details class="recall-toggle">
+                <summary><span>Q1: We're going to ask you some difficult questions now. Are you ready?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I'm ready. I don't expect an easy conversation. I expect a real one. If a question is difficult, it means it's worth answering. I'll do my best."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: You understand we're deliberately putting you under pressure, right? Why do we do that?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I think you're testing whether I can stay clear‑headed when the environment becomes uncomfortable. Management is full of uncomfortable situations — difficult clients, team conflicts, high‑stakes decisions with incomplete information. If I can't handle pressure in an interview room, I probably can't handle it in a boardroom or a crisis. That's a fair test. I respect it."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: Some candidates break down in these interviews. What makes you different?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I don't break easily. Not because I'm hard, but because I've been broken before and rebuilt. When my JEE result came, I didn't have a backup. I didn't have a plan. I just had a 34 percentile and three years of effort that looked wasted. I didn't break then. I sat with the pain, read Frankl, re‑evaluated my direction, and moved. That experience gave me a kind of emotional scar tissue. This interview is not zero. This interview is an opportunity. I can handle a tough question. I've handled much worse."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: If we reject you today, will you still say pressure is a test and not rejection?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"Yes. Because a rejection is not the same as a judgment on my worth. It's a decision about fit — this seat, this year, this panel's assessment. I've been rejected before. It hurt, but it didn't define me. I would go back, continue my IIT Madras degree, continue helping at the store, and either try again or find the next door. I would be disappointed. I would not be destroyed. That distinction is important. Pressure tests your steadiness. Rejection tests your resilience. I've trained both."</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q5: What if I told you that you don't belong in a top B‑school? How would you respond?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">"I'd ask you why you think that, because I genuinely want to understand the gap you see. If it's academic — I accept my PCM record is weak and I'm working on it. If it's background — I'd argue that elite institutions need diverse backgrounds to stay relevant. If it's something I haven't addressed — I'd listen, learn, and either clarify my position or accept the feedback. But I wouldn't crumble. I know I'm not the typical admit. I also know that typical is not the same as valuable."</p></div>
+            </details>
+        </div>
+
+        <!-- Block 12 Closing -->
+        <div class="glass-panel" style="border-left:4px solid var(--rose);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--rose);margin-bottom:0.5rem;">💡 BLOCK 12 CLOSING THOUGHT</p>
+            <p style="color:var(--text-body);font-style:italic;">Pressure questions are not traps. They are invitations to demonstrate the steadiness you have built through four years in a store, through a public failure, through a pivot that worked. You have already proven you can handle pressure. Now just let them see it. The panel may create discomfort — a hostile tone, a sudden interruption, a question designed to provoke. They are not being cruel. They are testing whether you can stay steady when the ground shifts. You can. You have. You will.</p>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--rose);margin-top:1.5rem;">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--rose);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"I chose my mindset before entering this room: honesty over impression, calm over panic. I've been through a much harder rejection — JEE — and rebuilt from zero, so this interview, while important, does not feel like a trial to me. If I make a mistake, I'll acknowledge it directly and move forward rather than defend or crumble. I understand that pressure in this room is a deliberate test of composure — the same composure required in management when facing difficult clients, team conflicts, or high‑stakes decisions. I don't break easily. Not because I'm hard, but because I've been broken before and learned to rebuild. That steadiness is what I bring — to this conversation, and to the programme if selected."</em></p>
+        </div>
+    </main>
+</body>
+</html>

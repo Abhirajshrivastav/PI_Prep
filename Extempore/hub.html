@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Sector 06 · HR & Motivational Questions — IPMAT PI Command</title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <title>Sector 05 · Extempore — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
         rel="stylesheet">
@@ -54,8 +53,8 @@
         }
 
         .ambient-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(120px); opacity: 0.07; }
-        .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #f43f5e 0%, transparent 70%); top: -100px; right: -100px; }
-        .orb-2 { width: 350px; height: 350px; background: radial-gradient(circle, #f59e0b 0%, transparent 70%); bottom: -50px; left: -50px; }
+        .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #f59e0b 0%, transparent 70%); top: -100px; right: -100px; }
+        .orb-2 { width: 350px; height: 350px; background: radial-gradient(circle, #10b981 0%, transparent 70%); bottom: -50px; left: -50px; }
 
         .content-layer { position: relative; z-index: 1; }
 
@@ -131,7 +130,7 @@
         <nav style="position:sticky;top:0;z-index:100;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.9rem 2rem;">
             <div style="max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
                 <a href="../index.html" class="back-link"><span style="font-size:1.2rem;">←</span> RETURN TO CENTRAL COMMAND</a>
-                <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">SECTOR 06 · HR & MOTIVATIONAL QUESTIONS</span>
+                <span class="font-mono" style="font-size:0.7rem;color:var(--accent);">SECTOR 05 · EXTEMPORE</span>
             </div>
         </nav>
 
@@ -140,11 +139,11 @@
             <div style="display:flex;flex-direction:column;gap:1rem;">
                 <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
                     <span class="font-mono" style="font-size:0.7rem;color:var(--gold);letter-spacing:0.1em;">MODULE HUB</span>
-                    <span class="font-mono" style="font-size:0.65rem;color:var(--text-dim);">5% INTERVIEW PRIORITY — HIGH FINAL‑IMPRESSION WEIGHT</span>
-                    <span class="module-tag">15 BLOCKS · 54 MODULES</span>
+                    <span class="font-mono" style="font-size:0.65rem;color:var(--text-dim);">10% INTERVIEW PRIORITY — DAILY SPEAKING DRILLS</span>
+                    <span class="module-tag">13 BLOCKS · 53 MODULES</span>
                 </div>
-                <h1 class="font-display" style="font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;">HR & Motivational Questions</h1>
-                <p style="color:var(--text-muted);font-size:1rem;max-width:750px;">The questions that shape the final impression — your introduction, your JEE‑to‑IPMAT pivot, your goals, your self‑awareness, and the quiet composure that holds when the panel pushes hardest.</p>
+                <h1 class="font-display" style="font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;">Extempore</h1>
+                <p style="color:var(--text-muted);font-size:1rem;max-width:750px;">Structured speaking under time pressure — daily 90‑second drills. Master the skeleton, the opening, the closing, and the cross‑questioning that turns a good extempore into a great one.</p>
             </div>
         </header>
 
@@ -159,7 +158,7 @@
                 </div>
             </div>
 
-            <!-- Blocks injected by JS -->
+            <!-- Blocks Container -->
             <div id="blocksContainer"></div>
             <p id="noResults" style="text-align:center;color:var(--text-muted);margin-top:2rem;display:none;">No modules match your filter.</p>
         </main>
@@ -182,165 +181,149 @@
             }
         })();
 
-        // Module data — organized by 15 blocks
         const blockData = {
             block1: {
-                title: "BLOCK 1 · The Introduction — The Answer That Drives Everything",
-                icon: "🎙️",
-                accent: "rose",
+                title: "BLOCK 1 · The Structure — The Single Most Important Thing",
+                icon: "🦴",
+                accent: "gold",
                 modules: [
-                    { id: "HR-01", title: "Draft Your 45‑60 Second Introduction", tags: ["intro", "pitch", "strategy"], block: "BLOCK 1", url: "./1.html" },
-                    { id: "HR-02", title: "Know What Every Introduction Element Opens Up", tags: ["hooks", "follow‑up", "preparation"], block: "BLOCK 1", url: "./2.html" },
-                    { id: "HR-03", title: "Practice Being Interrupted & Recovering", tags: ["composure", "adaptability", "drill"], block: "BLOCK 1", url: "#" },
-                    { id: "HR-04", title: "Strategic Hooks: Self‑Taught Dev, Reading, Ghazipur", tags: ["narrative", "unique", "positioning"], block: "BLOCK 1", url: "#" },
+                    { id: "EXT-01", title: "Internalise the Core 3‑Point Structure", tags: ["skeleton", "opening", "body", "closing"], block: "BLOCK 1", url: "#" },
+                    { id: "EXT-02", title: "Point vs Elaboration vs Example — Know the Difference", tags: ["claim", "explanation", "illustration"], block: "BLOCK 1", url: "#" },
+                    { id: "EXT-03", title: "Finding Three Points on Any Topic in 20 Seconds", tags: ["individual", "societal", "systemic"], block: "BLOCK 1", url: "#" },
+                    { id: "EXT-04", title: "Handling Uncertainty: Commit to a Position", tags: ["conviction", "nuance", "provisional"], block: "BLOCK 1", url: "#" },
                 ]
             },
             block2: {
-                title: "BLOCK 2 · Why IPM & Why Not Engineering — Your Most Important Answer",
-                icon: "🔁",
-                accent: "gold",
+                title: "BLOCK 2 · Opening Techniques — First Ten Seconds",
+                icon: "🚪",
+                accent: "info",
                 modules: [
-                    { id: "HR-05", title: "The Honest JEE‑to‑IPMAT Pivot Narrative", tags: ["JEE", "pivot", "self‑awareness"], block: "BLOCK 2", url: "./3.html" },
-                    { id: "HR-06", title: "Answering 'Isn't This Your Second Choice?'", tags: ["fit", "aptitude", "data"], block: "BLOCK 2", url: "#" },
-                    { id: "HR-07", title: "Why Not Just a BBA or Wait for CAT?", tags: ["IPM", "integrated", "foundation"], block: "BLOCK 2", url: "#" },
+                    { id: "EXT-05", title: "Five Types of Openings to Master", tags: ["question", "statistic", "quote", "personal", "reframe"], block: "BLOCK 2", url: "#" },
+                    { id: "EXT-06", title: "When NOT to Use a Quote", tags: ["generic", "relevance", "stoic", "gita"], block: "BLOCK 2", url: "#" },
+                    { id: "EXT-07", title: "One‑Sentence Framing Lines for Topic Clusters", tags: ["AI", "education", "economy", "context"], block: "BLOCK 2", url: "#" },
                 ]
             },
             block3: {
-                title: "BLOCK 3 · Why IIM Indore Specifically",
-                icon: "🏛️",
-                accent: "info",
+                title: "BLOCK 3 · Closing Techniques — The Line They Remember",
+                icon: "🔚",
+                accent: "violet",
                 modules: [
-                    { id: "HR-08", title: "Crafting a Non‑Generic 'Why IIM Indore' Answer", tags: ["specific", "research", "fit"], block: "BLOCK 3", url: "./4.html" },
-                    { id: "HR-09", title: "Connecting IPM's Structure to Your Story", tags: ["curriculum", "liberal arts", "management"], block: "BLOCK 3", url: "#" },
-                    { id: "HR-10", title: "How You Will Use the Program Specifically", tags: ["goals", "application", "vision"], block: "BLOCK 3", url: "#" },
+                    { id: "EXT-08", title: "Three Types of Powerful Closings", tags: ["call to action", "philosophical", "circular return"], block: "BLOCK 3", url: "#" },
+                    { id: "EXT-09", title: "Signature Closing Lines in Your Voice", tags: ["completion", "invitation", "genuine"], block: "BLOCK 3", url: "#" },
                 ]
             },
             block4: {
-                title: "BLOCK 4 · The JEE Failure Arc — The Question Beneath Every Question",
-                icon: "🪞",
-                accent: "violet",
+                title: "BLOCK 4 · Topics That Appeared in Transcripts — Prepare First",
+                icon: "🎤",
+                accent: "rose",
                 modules: [
-                    { id: "HR-11", title: "The Four‑Part Framework for Discussing Failure", tags: ["attempt", "effort", "learning", "action"], block: "BLOCK 4", url: "./5.html" },
-                    { id: "HR-12", title: "Using Stoic & Gita Frameworks Genuinely", tags: ["Obstacle Is the Way", "Nishkama Karma", "resilience"], block: "BLOCK 4", url: "#" },
-                    { id: "HR-13", title: "Answering the Hostile Version: 'You Wasted Three Years'", tags: ["fit", "diminishing returns", "defense"], block: "BLOCK 4", url: "#" },
+                    { id: "EXT-10", title: "Social Media and Its Effects", tags: ["dopamine", "filter bubbles", "attention economy"], block: "BLOCK 4", url: "#" },
+                    { id: "EXT-11", title: "Impact of AI on Education", tags: ["tutor", "assessment", "equaliser"], block: "BLOCK 4", url: "#" },
+                    { id: "EXT-12", title: "Income Inequality in India", tags: ["Gini", "growth vs distribution", "regional imbalance"], block: "BLOCK 4", url: "#" },
+                    { id: "EXT-13", title: "TV vs OTT", tags: ["democratisation", "quality", "social fragmentation"], block: "BLOCK 4", url: "#" },
+                    { id: "EXT-14", title: "Physical Education vs Academic Education", tags: ["false dichotomy", "sports talent", "management relevance"], block: "BLOCK 4", url: "#" },
+                    { id: "EXT-15", title: "College Ranking Systems", tags: ["NIRF", "Goodhart's Law", "gaming metrics"], block: "BLOCK 4", url: "#" },
+                    { id: "EXT-16", title: "CBSE Choosing Any 5 Subjects Freely", tags: ["NEP 2020", "interest", "implementation"], block: "BLOCK 4", url: "#" },
+                    { id: "EXT-17", title: "Gender Equality", tags: ["opportunity vs outcome", "FLFPR", "McKinsey $700B"], block: "BLOCK 4", url: "#" },
                 ]
             },
             block5: {
-                title: "BLOCK 5 · Goals and Future Vision",
-                icon: "🎯",
+                title: "BLOCK 5 · Education Topics — Future High Probability",
+                icon: "🎓",
                 accent: "amber",
                 modules: [
-                    { id: "HR-14", title: "Goals vs Dreams — Specific Direction, Not False Precision", tags: ["direction", "rationale", "capabilities"], block: "BLOCK 5", url: "./6.html" },
-                    { id: "HR-15", title: "Building Businesses in Tier‑2 & Tier‑3 India", tags: ["hinterland", "800 million", "opportunity"], block: "BLOCK 5", url: "#" },
-                    { id: "HR-16", title: "Five‑Year, Ten‑Year, Fifteen‑Year Vision Arcs", tags: ["progression", "internship", "long‑term"], block: "BLOCK 5", url: "#" },
+                    { id: "EXT-18", title: "NEP 2020 — Transformative or Overambitious?", tags: ["5+3+3+4", "mother tongue", "implementation"], block: "BLOCK 5", url: "#" },
+                    { id: "EXT-19", title: "JEE and Competitive Exam Culture", tags: ["meritocracy", "coaching", "Kota"], block: "BLOCK 5", url: "#" },
+                    { id: "EXT-20", title: "English Medium vs Mother Tongue Instruction", tags: ["cognitive", "gatekeeping", "bilingual"], block: "BLOCK 5", url: "#" },
+                    { id: "EXT-21", title: "Online Education vs Offline Education", tags: ["scale", "social learning", "BYJU's"], block: "BLOCK 5", url: "#" },
                 ]
             },
             block6: {
-                title: "BLOCK 6 · What If Not Selected",
-                icon: "❓",
-                accent: "rose",
+                title: "BLOCK 6 · Technology and AI Topics — Future",
+                icon: "🤖",
+                accent: "info",
                 modules: [
-                    { id: "HR-17", title: "Honest Alternatives Without Defensiveness", tags: ["JIPMAT", "CUET", "next attempt"], block: "BLOCK 6", url: "./7.html" },
-                    { id: "HR-18", title: "Genuine Clarity vs. Rehearsed Calm", tags: ["equanimity", "preference", "plan"], block: "BLOCK 6", url: "#" },
+                    { id: "EXT-22", title: "AI Regulation — Who Should Regulate?", tags: ["self‑regulation", "government", "international", "EU AI Act"], block: "BLOCK 6", url: "#" },
+                    { id: "EXT-23", title: "Automation and Job Displacement", tags: ["displacement vs net effect", "demographic dividend"], block: "BLOCK 6", url: "#" },
+                    { id: "EXT-24", title: "Data Privacy and Digital Rights", tags: ["Digital Personal Data Protection Act", "surveillance", "Cambridge Analytica"], block: "BLOCK 6", url: "#" },
+                    { id: "EXT-25", title: "Electric Vehicles — India's EV Transition", tags: ["30% by 2030", "lithium", "charging infra"], block: "BLOCK 6", url: "#" },
+                    { id: "EXT-26", title: "Cybersecurity and Digital Threats", tags: ["ransomware", "AIIMS attack", "UPI"], block: "BLOCK 6", url: "#" },
                 ]
             },
             block7: {
-                title: "BLOCK 7 · Strengths and Weaknesses",
-                icon: "⚖️",
-                accent: "info",
+                title: "BLOCK 7 · Economy and Business Topics — Future",
+                icon: "📈",
+                accent: "gold",
                 modules: [
-                    { id: "HR-19", title: "Evidenced Strengths — Not Adjectives, Proof", tags: ["self‑taught", "web dev", "specific"], block: "BLOCK 7", url: "./8.html" },
-                    { id: "HR-20", title: "Real Weaknesses With Genuine Mitigation Plans", tags: ["English fluency", "self‑direction", "honest"], block: "BLOCK 7", url: "#" },
-                    { id: "HR-21", title: "Avoiding the 'Fake Weakness' Trap", tags: ["perfectionist", "authenticity", "self‑awareness"], block: "BLOCK 7", url: "#" },
+                    { id: "EXT-27", title: "Startup Ecosystem — Success or Overhyped?", tags: ["100 unicorns", "funding winter", "tier‑2"], block: "BLOCK 7", url: "#" },
+                    { id: "EXT-28", title: "GST — Has It Achieved Its Goals?", tags: ["cascading taxes", "formalisation", "small traders"], block: "BLOCK 7", url: "#" },
+                    { id: "EXT-29", title: "Demonetisation — Was It a Success?", tags: ["black money", "digital payments", "RBI report"], block: "BLOCK 7", url: "#" },
+                    { id: "EXT-30", title: "Universal Basic Income — Should India Implement It?", tags: ["cash transfers", "fiscal cost", "PM‑KISAN"], block: "BLOCK 7", url: "#" },
+                    { id: "EXT-31", title: "Gig Economy and Worker Rights", tags: ["Zomato", "Swiggy", "Code on Social Security"], block: "BLOCK 7", url: "#" },
                 ]
             },
             block8: {
-                title: "BLOCK 8 · Hobbies and Personal Life",
-                icon: "📚",
+                title: "BLOCK 8 · India Current Affairs Topics — Future",
+                icon: "🇮🇳",
                 accent: "violet",
                 modules: [
-                    { id: "HR-22", title: "Framing Reading as Intellectual Engagement", tags: ["Poor Economics", "Banerjee", "RCT"], block: "BLOCK 8", url: "./9.html" },
-                    { id: "HR-23", title: "Connecting Stoic Reading to Your Life Arc", tags: ["Ryan Holiday", "preferred indifferents", "application"], block: "BLOCK 8", url: "#" },
-                    { id: "HR-24", title: "The Framework‑Attachment Principle for Hobbies", tags: ["creative", "learning", "health"], block: "BLOCK 8", url: "#" },
+                    { id: "EXT-32", title: "Operation Sindoor — India's New Security Doctrine", tags: ["strategic ambiguity", "escalation", "deterrence"], block: "BLOCK 8", url: "#" },
+                    { id: "EXT-33", title: "India's Demographic Dividend — Opportunity or Threat?", tags: ["median age 28", "youth unemployment", "skills gap"], block: "BLOCK 8", url: "#" },
+                    { id: "EXT-34", title: "Viksit Bharat 2047 — Is It Achievable?", tags: ["$12k per capita", "8-9% growth", "structural reform"], block: "BLOCK 8", url: "#" },
+                    { id: "EXT-35", title: "One Nation One Election", tags: ["federalism", "model code of conduct", "cost"], block: "BLOCK 8", url: "#" },
                 ]
             },
             block9: {
-                title: "BLOCK 9 · Family and Background Questions",
-                icon: "🏠",
-                accent: "gold",
+                title: "BLOCK 9 · Environment and Science Topics — Future",
+                icon: "🌍",
+                accent: "rose",
                 modules: [
-                    { id: "HR-25", title: "Describing Your Father's General Store With Insight", tags: ["retail", "credit", "observation"], block: "BLOCK 9", url: "./10.html" },
-                    { id: "HR-26", title: "Financial Background: Honesty With Dignity", tags: ["humble", "strength", "perspective"], block: "BLOCK 9", url: "#" },
-                    { id: "HR-27", title: "Answering 'Prepared for the IIM Indore Environment?'", tags: ["contribution", "diversity", "difference"], block: "BLOCK 9", url: "#" },
+                    { id: "EXT-36", title: "Climate Change — India's Response & Responsibilities", tags: ["Net Zero 2070", "climate justice", "500 GW renewables"], block: "BLOCK 9", url: "#" },
+                    { id: "EXT-37", title: "Nuclear Energy — Should India Expand It?", tags: ["thorium", "AHWR", "India‑US civil nuclear deal"], block: "BLOCK 9", url: "#" },
+                    { id: "EXT-38", title: "AI and Scientific Discovery", tags: ["AlphaFold", "drug development", "commercial interests"], block: "BLOCK 9", url: "#" },
                 ]
             },
             block10: {
-                title: "BLOCK 10 · Leadership and Teamwork Questions",
-                icon: "🤝",
+                title: "BLOCK 10 · Governance and Society Topics — Future",
+                icon: "🏛️",
                 accent: "amber",
                 modules: [
-                    { id: "HR-28", title: "Finding Genuine Leadership Examples Without Formal Titles", tags: ["initiative", "mentorship", "community"], block: "BLOCK 10", url: "./11.html" },
-                    { id: "HR-29", title: "Answering 'What Do Your Friends Not Like About You?'", tags: ["self‑sufficient", "collaboration", "honest"], block: "BLOCK 10", url: "#" },
-                    { id: "HR-30", title: "The STAR Method for Behavioral Questions", tags: ["situation", "task", "action", "result"], block: "BLOCK 10", url: "#" },
+                    { id: "EXT-39", title: "Free Press and Democracy in India", tags: ["RSF ranking", "accountability", "bias"], block: "BLOCK 10", url: "#" },
+                    { id: "EXT-40", title: "Reservation — Economic vs Caste Criteria", tags: ["creamy layer", "Mandal Commission", "social stigma"], block: "BLOCK 10", url: "#" },
+                    { id: "EXT-41", title: "Urbanisation in India — Managed or Chaotic?", tags: ["smart cities", "migration", "infrastructure stress"], block: "BLOCK 10", url: "#" },
                 ]
             },
             block11: {
-                title: "BLOCK 11 · Contribution and Fit Questions",
-                icon: "🧩",
+                title: "BLOCK 11 · Intro‑Linked Topics — Highest Probability",
+                icon: "🔗",
                 accent: "info",
                 modules: [
-                    { id: "HR-31", title: "Why Should We Select You? — Perspective, Not Credentials", tags: ["value", "cohort", "unique"], block: "BLOCK 11", url: "./12.html" },
-                    { id: "HR-32", title: "What You Bring to the IIM Indore Classroom", tags: ["informal economy", "tier‑3", "real India"], block: "BLOCK 11", url: "#" },
-                    { id: "HR-33", title: "Handling Being in a Room With Stronger Academic Backgrounds", tags: ["contribution", "learning", "reciprocal"], block: "BLOCK 11", url: "#" },
+                    { id: "EXT-42", title: "Self‑Taught Learning & Future of Formal Education", tags: ["bootcamps", "credentials", "mentorship"], block: "BLOCK 11", url: "#" },
+                    { id: "EXT-43", title: "Small Businesses vs Large Retail — Kirana Store Era Over?", tags: ["Reliance Retail", "credit", "digitisation"], block: "BLOCK 11", url: "#" },
+                    { id: "EXT-44", title: "Stoicism as a Life Philosophy — Relevant to Modern India?", tags: ["dichotomy of control", "Gita", "pressure"], block: "BLOCK 11", url: "#" },
+                    { id: "EXT-45", title: "Should India Move Away from the JEE System?", tags: ["meritocracy", "coaching", "alternatives"], block: "BLOCK 11", url: "#" },
+                    { id: "EXT-46", title: "Bhagavad Gita in Modern Management", tags: ["servant leadership", "detachment", "decision‑making"], block: "BLOCK 11", url: "#" },
                 ]
             },
             block12: {
-                title: "BLOCK 12 · Pressure Questions Designed to Rattle",
-                icon: "🔥",
+                title: "BLOCK 12 · Cross‑Questioning Preparation",
+                icon: "⚔️",
                 accent: "rose",
                 modules: [
-                    { id: "HR-34", title: "Deciding Your Response Before Entering the Room", tags: ["composure", "internal state", "choice"], block: "BLOCK 12", url: "./13.html" },
-                    { id: "HR-35", title: "Acknowledging Mistakes Without Crumbling", tags: ["steady voice", "engagement", "recovery"], block: "BLOCK 12", url: "#" },
-                    { id: "HR-36", title: "Understanding Pressure as a Test, Not Rejection", tags: ["management", "stress", "composure"], block: "BLOCK 12", url: "#" },
+                    { id: "EXT-47", title: "Defending Your Position Under Cross‑Questioning", tags: ["example", "counterargument", "implementation"], block: "BLOCK 12", url: "#" },
+                    { id: "EXT-48", title: "Handling 'Do You Really Believe That?'", tags: ["honesty", "uncertainty", "strategic position"], block: "BLOCK 12", url: "#" },
+                    { id: "EXT-49", title: "Acknowledging the Strongest Counterargument", tags: ["intellectual maturity", "nuance", "sophistication"], block: "BLOCK 12", url: "#" },
                 ]
             },
             block13: {
-                title: "BLOCK 13 · Deep Self‑Awareness Questions",
-                icon: "🔍",
-                accent: "violet",
-                modules: [
-                    { id: "HR-37", title: "If All Records Were Erased, How Would You Prove Your Worth?", tags: ["stripped", "essence", "value"], block: "BLOCK 13", url: "./14.html" },
-                    { id: "HR-38", title: "What Have You Completely Unlearned in the Past Year?", tags: ["persistence", "discipline", "reassessment"], block: "BLOCK 13", url: "#" },
-                    { id: "HR-39", title: "Are You Not Too Young to Know What You Want?", tags: ["experience", "clarity", "certainty"], block: "BLOCK 13", url: "#" },
-                    { id: "HR-40", title: "What Is the Biggest Mistake You Have Made?", tags: ["JEE", "signals", "redirection"], block: "BLOCK 13", url: "#" },
-                    { id: "HR-41", title: "What Has Your Background Taught You Uniquely?", tags: ["informal economy", "father", "management"], block: "BLOCK 13", url: "#" },
-                ]
-            },
-            block14: {
-                title: "BLOCK 14 · Questions Specific to Your Profile",
-                icon: "🎭",
+                title: "BLOCK 13 · Daily Practice Protocol",
+                icon: "🏋️",
                 accent: "gold",
                 modules: [
-                    { id: "HR-42", title: "Two Months Prep — Doesn't That Mean It Wasn't Your First Choice?", tags: ["rapid learning", "aptitude", "efficiency"], block: "BLOCK 14", url: "./15.html" },
-                    { id: "HR-43", title: "No Traditional ECAs — What Have You Been Doing?", tags: ["reading", "web dev", "substance"], block: "BLOCK 14", url: "#" },
-                    { id: "HR-44", title: "Gaps From Your School Background — Honest Assessment", tags: ["English fluency", "structured frameworks", "curiosity"], block: "BLOCK 14", url: "#" },
-                    { id: "HR-45", title: "Why Management and Not Technology?", tags: ["business acumen", "real world", "impact"], block: "BLOCK 14", url: "#" },
-                ]
-            },
-            block15: {
-                title: "BLOCK 15 · Practice Protocol",
-                icon: "🏋️",
-                accent: "amber",
-                modules: [
-                    { id: "HR-46", title: "Write Genuine Answers by Hand First", tags: ["writing", "specificity", "gap discovery"], block: "BLOCK 15", url: "#" },
-                    { id: "HR-47", title: "Practice Standing, Out Loud, Without Notes Daily", tags: ["speaking", "hearing", "fluency"], block: "BLOCK 15", url: "#" },
-                    { id: "HR-48", title: "Have Someone Push Back on Your Answers", tags: ["argument", "defense", "discomfort"], block: "BLOCK 15", url: "#" },
-                    { id: "HR-49", title: "The Night Before: Rest, Don't Review", tags: ["calm", "grounded", "trust"], block: "BLOCK 15", url: "#" },
-                    { id: "HR-50", title: "Recording & Self‑Review of Spoken Answers", tags: ["listen back", "silence", "articulation"], block: "BLOCK 15", url: "#" },
-                    { id: "HR-51", title: "Mock Interview Simulation Protocol", tags: ["realistic", "pressure", "feedback"], block: "BLOCK 15", url: "#" },
-                    { id: "HR-52", title: "Building Composure Under Interruption", tags: ["mid‑sentence", "recovery", "unflappable"], block: "BLOCK 15", url: "#" },
-                    { id: "HR-53", title: "Daily Reflection Journal for Clarity", tags: ["thoughts", "beliefs", "articulation"], block: "BLOCK 15", url: "#" },
-                    { id: "HR-54", title: "30‑Day Preparation Tracker & Milestones", tags: ["schedule", "progress", "accountability"], block: "BLOCK 15", url: "#" },
+                    { id: "EXT-50", title: "Daily 90‑Second Unscripted Speaking Drill", tags: ["20 seconds prep", "out loud", "without notes"], block: "BLOCK 13", url: "#" },
+                    { id: "EXT-51", title: "Weekly Recording & Self‑Review", tags: ["listen back", "structure check", "closing force"], block: "BLOCK 13", url: "#" },
+                    { id: "EXT-52", title: "Practice With Unknown Topics (Worst‑Case Scenario)", tags: ["first principles", "structure generation", "retrieval"], block: "BLOCK 13", url: "#" },
+                    { id: "EXT-53", title: "Building a Personal Content Bank", tags: ["facts", "examples", "quotes", "personal stories"], block: "BLOCK 13", url: "#" },
                 ]
             },
         };

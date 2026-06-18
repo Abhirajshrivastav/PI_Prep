@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CA-11 · SCO — Shanghai Cooperation Organisation — IPMAT PI Command</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@300;0,400;0,500;0,600;0,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #040906;
+            --bg-card: #080f0c;
+            --border-subtle: #13221c;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.08);
+            --text-bright: #f0f5f3;
+            --text-body: #c8d6d0;
+            --text-muted: #6b7d74;
+            --text-dim: #4a5a52;
+            --gold: #f59e0b;
+            --gold-dim: rgba(245, 158, 11, 0.1);
+            --rose: #f43f5e;
+            --rose-dim: rgba(244, 63, 94, 0.06);
+            --info: #3b82f6;
+            --info-dim: rgba(59, 130, 246, 0.08);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.08);
+            --slate: #64748b;
+            --slate-dim: rgba(100, 116, 139, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-bright);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent);
+            text-decoration: none; font-size: 0.9rem; transition: gap 0.3s ease;
+        }
+        .back-link:hover { gap: 0.8rem; }
+
+        .glass-panel {
+            background: rgba(10, 18, 14, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-subtle); border-radius: 16px; padding: 1.8rem;
+            transition: all 0.3s ease; margin-bottom: 1.5rem;
+        }
+
+        details.recall-toggle {
+            border: 1px solid var(--border-subtle); border-radius: 12px; background: rgba(10, 18, 14, 0.6);
+            backdrop-filter: blur(10px); overflow: hidden; transition: all 0.3s ease; margin-bottom: 0.8rem;
+        }
+        details.recall-toggle[open] { border-color: var(--slate); box-shadow: 0 0 20px rgba(100,116,139,0.1); }
+        details.recall-toggle>summary {
+            cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.4rem; font-weight: 600; color: var(--text-bright);
+        }
+        details.recall-toggle>summary::-webkit-details-marker { display: none; }
+        details.recall-toggle>summary .icon {
+            font-size: 1.3rem; color: var(--slate); transition: transform 0.3s ease;
+        }
+        details.recall-toggle[open]>summary .icon { transform: rotate(45deg); color: #475569; }
+        .details-content { padding: 0 1.4rem 1.3rem; animation: fadeSlide 0.3s ease; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .callout {
+            border-left: 4px solid var(--gold); background: var(--gold-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+        .callout-slate {
+            border-left: 4px solid var(--slate); background: var(--slate-dim);
+            border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0;
+        }
+
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;
+        }
+        .fact-box {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 10px; padding: 1rem;
+        }
+        .fact-box .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+        .fact-box .value { color: var(--text-body); font-weight: 600; font-size: 1.05rem; }
+
+        .member-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.6rem;
+        }
+        .member-tag {
+            background: rgba(16,185,129,0.04); border: 1px solid var(--border-subtle);
+            border-radius: 8px; padding: 0.8rem; text-align: center; font-size: 0.85rem;
+            color: var(--text-body);
+        }
+        .member-tag .flag { font-size: 2rem; display: block; margin-bottom: 0.3rem; }
+
+        .timeline-node {
+            display: flex; gap: 1rem; align-items: baseline;
+            border-bottom: 1px solid var(--border-subtle); padding: 0.8rem 0;
+        }
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace; color: var(--slate); font-size: 0.85rem; min-width: 5rem;
+        }
+        .timeline-desc { color: var(--text-body); font-size: 0.9rem; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 8px; }
+        ::selection { background: rgba(16,185,129,0.3); color: var(--text-bright); }
+    </style>
+</head>
+<body>
+    <nav style="position:sticky;top:0;z-index:50;background:rgba(4,9,6,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);padding:0.8rem 1.5rem;">
+        <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="hub.html" class="back-link">← RETURN TO SECTOR HUB</a>
+            <span class="font-mono" style="font-size:0.7rem;color:var(--slate);">[ID: CA-11] · [STATUS: VERIFIED] · [BLOCK: INTERNATIONAL ORGANIZATIONS]</span>
+        </div>
+    </nav>
+
+    <main style="max-width:1000px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+        <!-- Header -->
+        <div style="margin-bottom:2rem;">
+            <div class="font-mono" style="font-size:0.65rem;color:var(--slate);letter-spacing:0.1em;margin-bottom:0.5rem;">CURRENT AFFAIRS & STATIC GK · INTERNATIONAL ORGANIZATIONS</div>
+            <h1 class="font-display" style="font-size:2.8rem;font-weight:900;letter-spacing:-0.02em;">SCO — The Eastern Counterweight</h1>
+            <p style="color:var(--text-muted);font-size:1rem;margin-top:0.5rem;">The Shanghai Cooperation Organisation — from border talks to a geopolitical bloc spanning Eurasia, and the diplomatic complexity of hosting both India and Pakistan under the same roof.</p>
+        </div>
+
+        <!-- Key Facts Grid -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📌 Key Facts at a Glance</h2>
+            <div class="fact-grid">
+                <div class="fact-box"><span class="label">FULL NAME</span><div class="value">Shanghai Cooperation Organisation (SCO)</div></div>
+                <div class="fact-box"><span class="label">PREDECESSOR</span><div class="value">Shanghai Five (1996)</div></div>
+                <div class="fact-box"><span class="label">FOUNDED</span><div class="value">15 June 2001 (Shanghai)</div></div>
+                <div class="fact-box"><span class="label">FOUNDERS</span><div class="value">China, Russia, Kazakhstan, Kyrgyzstan, Tajikistan, Uzbekistan</div></div>
+                <div class="fact-box"><span class="label">CURRENT MEMBERS</span><div class="value">9 (India & Pakistan joined 2017; Iran joined 2023)</div></div>
+                <div class="fact-box"><span class="label">HEADQUARTERS</span><div class="value">Beijing, China</div></div>
+                <div class="fact-box"><span class="label">KEY INSTITUTION</span><div class="value">Regional Anti‑Terrorist Structure (RATS) — Tashkent</div></div>
+                <div class="fact-box"><span class="label">INDIA'S JOINING</span><div class="value">2017 (Astana Summit)</div></div>
+            </div>
+        </div>
+
+        <!-- The Nine Members -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🌐 The Nine Full Members</h2>
+            <div class="member-grid">
+                <div class="member-tag"><span class="flag">🇨🇳</span>China</div>
+                <div class="member-tag"><span class="flag">🇷🇺</span>Russia</div>
+                <div class="member-tag"><span class="flag">🇰🇿</span>Kazakhstan</div>
+                <div class="member-tag"><span class="flag">🇰🇬</span>Kyrgyzstan</div>
+                <div class="member-tag"><span class="flag">🇹🇯</span>Tajikistan</div>
+                <div class="member-tag"><span class="flag">🇺🇿</span>Uzbekistan</div>
+                <div class="member-tag"><span class="flag">🇮🇳</span>India</div>
+                <div class="member-tag"><span class="flag">🇵🇰</span>Pakistan</div>
+                <div class="member-tag"><span class="flag">🇮🇷</span>Iran</div>
+            </div>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-top:0.8rem;">Observers include Afghanistan, Belarus, and Mongolia. Dialogue Partners include Turkey, Sri Lanka, and several ASEAN states.</p>
+        </div>
+
+        <!-- Genesis & India's Strategic Calculus -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📜 Genesis — From Border Talks to Security Bloc</h2>
+            <p style="color:var(--text-body);">The SCO originated as the <strong>Shanghai Five</strong> in 1996, when China, Russia, Kazakhstan, Kyrgyzstan, and Tajikistan signed treaties to demilitarise their borders and build confidence after the Soviet Union's collapse. In 2001, with Uzbekistan's inclusion, it was formally institutionalised as the SCO — a forum focused initially on combating the "<strong>three evils</strong>" of terrorism, separatism, and extremism. The <strong>Regional Anti‑Terrorist Structure (RATS)</strong> was established in Tashkent to coordinate intelligence and security efforts.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">Over time, the SCO's mandate expanded to include <strong>economic cooperation, energy partnerships, and cultural exchange</strong>. The organisation is widely viewed — particularly in the West — as a <strong>counterweight to NATO and Western security architecture</strong>, though its members officially deny it is a military alliance.</p>
+            <div class="timeline-node" style="margin-top:1rem;"><span class="timeline-year">1996</span><span class="timeline-desc">Shanghai Five formed to resolve border disputes among China, Russia, and three Central Asian states.</span></div>
+            <div class="timeline-node"><span class="timeline-year">2001</span><span class="timeline-desc">Uzbekistan joins; the group becomes the <strong>SCO</strong>. Focus on terrorism, separatism, extremism.</span></div>
+            <div class="timeline-node"><span class="timeline-year">2017</span><span class="timeline-desc"><strong>India and Pakistan</strong> formally admitted as full members at the Astana Summit.</span></div>
+            <div class="timeline-node"><span class="timeline-year">2023</span><span class="timeline-desc"><strong>Iran</strong> becomes the ninth full member. Belarus is in the process of joining.</span></div>
+        </div>
+
+        <!-- India's Position & The Awkward Reality -->
+        <div class="glass-panel" style="border-left: 4px solid var(--slate);">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">🇮🇳 India's Strategic Calculus — Access & The Awkward Table</h2>
+            <p style="color:var(--text-body);">India's decision to join the SCO in 2017 was driven by several strategic imperatives:</p>
+            <ul style="color:var(--text-body);margin-left:1.5rem;margin-top:0.5rem;list-style-type:disc;">
+                <li style="margin-bottom:0.3rem;"><strong>Central Asian connectivity:</strong> India has deep historical and cultural ties to Central Asia but lacks direct land access (Pakistan blocks overland routes). The SCO provides a platform to engage with the region's energy resources and security dynamics through India's <strong>Connect Central Asia</strong> policy.</li>
+                <li style="margin-bottom:0.3rem;"><strong>Countering China's dominance:</strong> Being inside the SCO allows India to monitor and influence agendas rather than being excluded from a China‑Russia‑led forum that claims to speak for the region.</li>
+                <li style="margin-bottom:0.3rem;"><strong>Afghanistan stabilisation:</strong> The SCO has a contact group on Afghanistan, directly relevant to India's regional security interests, especially after the Taliban's return.</li>
+            </ul>
+            <div class="callout-slate" style="margin-top:1rem;">
+                <p style="color:var(--text-body);"><strong>The awkward reality:</strong> "The SCO is a forum where India and Pakistan sit at the same table, and where India and China sit at the same table despite unresolved border tensions. This creates a unique diplomatic dynamic — multilateral meetings routinely become stages for bilateral tensions. The SCO is therefore less a cohesive alliance and more a mechanism for managing rivalries that cannot be resolved elsewhere."</p>
+            </div>
+            <p style="color:var(--text-body);margin-top:0.8rem;">India has consistently used the SCO platform to raise concerns about <strong>cross‑border terrorism</strong> — a pointed reference to Pakistan — and has refused to endorse China's <strong>Belt and Road Initiative (BRI)</strong>, which the Central Asian members support, citing sovereignty concerns over the China‑Pakistan Economic Corridor (CPEC) in Pakistan‑occupied Kashmir.</p>
+        </div>
+
+        <!-- Management-School Context -->
+        <div class="glass-panel">
+            <h2 class="font-display" style="font-size:1.6rem;font-weight:700;margin-bottom:1rem;">📊 Management‑School Context — The Coordination Problem</h2>
+            <p style="color:var(--text-body);">The SCO is a classic case study in <strong>institutional gridlock</strong> and the limits of <strong>multilateralism without trust</strong>. The organisation has an expansive mandate — from counter‑terrorism to economic integration — but its most powerful members (China and India) are engaged in an active border dispute, and two others (India and Pakistan) have frozen bilateral relations. This creates a <strong>coordination problem</strong>: the forum can issue joint declarations but struggles to deliver concrete collective action on any issue that touches core national security interests.</p>
+            <p style="color:var(--text-body);margin-top:0.8rem;">For India, the SCO represents a <strong>strategic dilemma</strong>: engagement is necessary to maintain relevance in Eurasia, but deep institutional commitment risks being drawn into a China‑led bloc that could constrain India's strategic autonomy. The Indian approach — participate actively, but resist any move toward a formal alliance — is a textbook example of <strong>hedging</strong> in international relations.</p>
+        </div>
+
+        <!-- Active Recall Questions -->
+        <h2 class="font-display" style="font-size:1.8rem;font-weight:700;margin-bottom:1rem;">🎯 Likely Interview Questions</h2>
+        <div class="space-y-3">
+            <details class="recall-toggle">
+                <summary><span>Q1: What is the SCO, and who are its members?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The Shanghai Cooperation Organisation is a Eurasian political, economic, and security bloc founded in 2001 by China, Russia, and four Central Asian states. It now has <strong>nine full members</strong>: China, Russia, Kazakhstan, Kyrgyzstan, Tajikistan, Uzbekistan, India, Pakistan, and Iran. It is often seen as a counterweight to Western alliances like NATO.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q2: Why did India join the SCO in 2017?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">India joined primarily to gain strategic access to <strong>Central Asia</strong> — a region rich in energy resources and historically connected to India — and to ensure it had a seat at a forum increasingly dominated by China and Russia. It also aligns with India's Connect Central Asia policy and its interest in Afghanistan's stabilisation. Being inside allows India to shape agendas rather than being excluded from them.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q3: How does India manage its differences with China and Pakistan within the SCO?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">The SCO provides a <strong>multilateral platform</strong> where India can engage with both China and Pakistan without endorsing their positions. India uses the forum to raise concerns about cross‑border terrorism (directed at Pakistan) and refuses to endorse China's Belt and Road Initiative (BRI) due to sovereignty concerns over CPEC. It is a case study in <strong>compartmentalisation</strong> — cooperating on areas like counter‑terrorism and trade while maintaining firm positions on bilateral disputes.</p></div>
+            </details>
+            <details class="recall-toggle">
+                <summary><span>Q4: Is the SCO a military alliance like NATO?</span><span class="icon">+</span></summary>
+                <div class="details-content"><p style="color:var(--text-body);">No, officially it is not. The SCO conducts joint military exercises (called "Peace Mission"), but it lacks NATO's Article 5‑style collective defence clause. It is primarily a forum for <strong>security cooperation, intelligence sharing (RATS), and economic partnerships</strong> rather than a mutual defence pact. It is better described as a geopolitical bloc that aims to balance Western influence in Eurasia.</p></div>
+            </details>
+        </div>
+
+        <!-- 30‑Second Summary -->
+        <div class="glass-panel" style="border-left:4px solid var(--slate);">
+            <p class="font-mono" style="font-size:0.7rem;color:var(--slate);">⚡ 30‑SECOND INTERVIEW SUMMARY</p>
+            <p style="color:var(--text-body);margin-top:0.5rem;"><em>"The Shanghai Cooperation Organisation, founded in 2001 by China, Russia, and Central Asian states, is a Eurasian bloc focused on security, counter‑terrorism, and economic cooperation. It now has nine members — including India, Pakistan, and Iran — and is widely seen as a geopolitical counterweight to Western alliances. India joined in 2017 to deepen its engagement with Central Asia and to have a voice in a forum dominated by its strategic rivals. The organisation's internal reality is diplomatically complex: India sits at the same table as both China and Pakistan, making it less a cohesive alliance and more a mechanism for managing Eurasia's overlapping rivalries."</em></p>
+        </div>
+    </main>
+</body>
+</html>
